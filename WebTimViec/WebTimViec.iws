@@ -6,62 +6,126 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1ad7cbc-3604-4011-b5cb-c35d9ba3f363" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WebTimViec.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebTimViec.ipr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebTimViec.iws" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/aopalliance-1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-aop-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-aspects-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-beans-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-context-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-context-support-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-core-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-data-commons/2.2.4.RELEASE/spring-data-commons-2.2.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-data-jpa/2.2.4.RELEASE/spring-data-jpa-2.2.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-expression-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-instrument-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-jdbc-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-jms-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-messaging-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-orm-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-oxm-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-test-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-tx-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-web-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/spring-webmvc-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/classes/META-INF/WebTimViec.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/aopalliance-1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-aop-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-aspects-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-beans-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-context-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-context-support-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-core-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-data-commons-2.2.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-data-jpa-2.2.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-expression-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-instrument-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-jdbc-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-jms-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-messaging-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-orm-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-oxm-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-test-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-tx-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-web-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/lib/spring-webmvc-5.2.3.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/WebTimViec_war_exploded/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/WebTimViec/META-INF/WebTimViec.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+    <list default="true" id="d1ad7cbc-3604-4011-b5cb-c35d9ba3f363" name="Default Changelist" comment="fist commit">
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/css/colors/green-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/css/custom-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/css/style1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/6604.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/banner-9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/blog/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/blog/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/blog/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/can-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/can-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/can-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/can-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/can-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/can-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/check.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/client-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/client-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/client-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/client-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/client-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/com-7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/debit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/footer-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/gallery1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/gallery2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/gallery3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/gb.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/gtrr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/img-home-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/img-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/logo-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/microsoft-home-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/microsoft-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/mothercare-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/paypal-home-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/paypal-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/rong.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/serv-home-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/serv-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/simple-banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/step-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/step-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/step-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/wp-iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/xerox-home-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/xerox-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/xx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/yahoo-home-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/img/yahoo-home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/js/jQuery.style.switcher.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/js/js-custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/js/vietnamlocalselector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/et-line.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/et-line.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/et-line.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/et-line.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/et-lined41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/fontawesome-webfont9efe.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/fontawesome-webfont9efe.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/fontawesome-webfont9efe.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/fontawesome-webfont9efe.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/plugins.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/src/datedropper.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/src/datedropper.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/src/datedropper.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/src/datedropper.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/css/src/datedropperd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/bootsnav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/bootstrap-wysihtml5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/datedropper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/dropzone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/gmap3.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/jquery.easy-autocomplete.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/loader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/select2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/slick.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/viewportchecker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/assets/plugins/js/wysihtml5-0.3.0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/create-job.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/debug.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/e-wallet.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/employer-profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/freelancer-profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/index-6.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/job-apply-detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/lost-password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/payment-methode.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/pricing.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/search-new.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/signin-signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/views/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebTimViec.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WebTimViec.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebTimViec.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/WebTimViec.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebTimViec.iws" beforeDir="false" afterPath="$PROJECT_DIR$/WebTimViec.iws" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,8 +137,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,11 +157,16 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Desktop\thuongMaiDienTu\WebTimViec\web\WEB-INF\views" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -195,7 +264,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606910530456</updated>
-      <workItem from="1606910535282" duration="1039000" />
+      <workItem from="1606910535282" duration="3107000" />
     </task>
     <servers />
   </component>
@@ -212,5 +281,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fist commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fist commit" />
   </component>
 </project>
