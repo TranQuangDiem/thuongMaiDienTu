@@ -1,3 +1,5 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!doctype html>
 <html lang="en">
 <!-- index-540:42-->
@@ -7,9 +9,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- CSS==================================================-->
-    <link rel="stylesheet" href="http://localhost:8080/WebTimViec_war_exploded/WEB-INF/views/assets/plugins/css/plugins.css">
-    <link href="http://localhost:8080/WebTimViec_war_exploded/WEB-INF/views/assets/css/style.css" rel="stylesheet">
-    <link type="text/css" rel="http://localhost:8080/WebTimViec_war_exploded/WEB-INF/views/stylesheet" id="jssDefault" href="http://localhost:8080/WebTimViec_war_exploded/WEB-INF/views/assets/css/colors/green-style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/plugins/css/plugins.css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
+    <link type="text/css" rel="${pageContext.request.contextPath}/resources/stylesheet" id="jssDefault" href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
 </head>
 <body>
 <div class="Loader"></div>
@@ -18,7 +20,7 @@
         <div class="container">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i
                     class="fa fa-bars"></i></button>
-            <div class="navbar-header"><a class="navbar-brand" href="index-6.jsp"><img src="assets/img/logo.png"
+            <div class="navbar-header"><a class="navbar-brand" href="index-6.jsp"><img src="${pageContext.request.contextPath}/resources/assets/img/logo.png"
                                                                                         class="logo logo-scrolled"
                                                                                         alt=""></a></div>
             <div class="collapse navbar-collapse" id="navbar-menu">
@@ -43,7 +45,7 @@
         </div>
     </nav>
     <div class="clearfix"></div>
-    <div class="banner home-5" style="background-image:url(assets/img/6604.jpg);">
+    <div class="banner home-5" style="background-image:url(${pageContext.request.contextPath}/resources/assets/img/6604.jpg);">
         <div class="container">
             <div class="banner-caption">
                 <div class="col-md-12 col-sm-12 banner-text">
@@ -62,12 +64,12 @@
                             <div class="input-group">
                                 <select id="choose-city" class="form-control">
                                     <option>Choose City</option>
-                                    <option>Thủ Đức</option>
-                                    <option>Quận 1</option>
-                                    <option>Quận 2</option>
-                                    <option>Quận 3</option>
-                                    <option>Quận 4</option>
-                                    <option>Quận 5</option>
+                                    <option>Thá»§ Äá»©c</option>
+                                    <option>Quáº­n 1</option>
+                                    <option>Quáº­n 2</option>
+                                    <option>Quáº­n 3</option>
+                                    <option>Quáº­n 4</option>
+                                    <option>Quáº­n 5</option>
                                 </select>
                             </div>
                         </div>
@@ -95,7 +97,7 @@
             <div class="row extra-mrg">
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -119,7 +121,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -143,7 +145,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -167,7 +169,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -191,7 +193,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -215,7 +217,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -239,7 +241,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -263,7 +265,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
-                        <div class="brows-job-company-img"><img src="assets/img/com-2.jpg" class="img-responsive"
+                        <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
                             <h3><a href="job-detail.html">Design Logo</a></h3>
@@ -388,7 +390,7 @@
             <div class="row">
                 <div id="client-testimonial-slider" class="owl-carousel">
                     <div class="client-testimonial">
-                        <div class="pic"><img src="assets/img/client-1.jpg" alt=""></div>
+                        <div class="pic"><img src="${pageContext.request.contextPath}/resources/assets/img/client-1.jpg" alt=""></div>
                         <p class="client-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor et dolore magna aliqua.</p>
 
@@ -400,7 +402,7 @@
                         </ul>
                     </div>
                     <div class="client-testimonial">
-                        <div class="pic"><img src="assets/img/client-2.jpg" alt=""></div>
+                        <div class="pic"><img src="${pageContext.request.contextPath}/resources/assets/img/client-2.jpg" alt=""></div>
                         <p class="client-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor et dolore magna aliqua.</p>
 
@@ -412,7 +414,7 @@
                         </ul>
                     </div>
                     <div class="client-testimonial">
-                        <div class="pic"><img src="assets/img/client-3.jpg" alt=""></div>
+                        <div class="pic"><img src="${pageContext.request.contextPath}/resources/assets/img/client-3.jpg" alt=""></div>
                         <p class="client-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor et dolore magna aliqua.</p>
 
@@ -424,7 +426,7 @@
                         </ul>
                     </div>
                     <div class="client-testimonial">
-                        <div class="pic"><img src="assets/img/client-4.jpg" alt=""></div>
+                        <div class="pic"><img src="${pageContext.request.contextPath}/resources/assets/img/client-4.jpg" alt=""></div>
                         <p class="client-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor et dolore magna aliqua.</p>
 
@@ -519,7 +521,7 @@
     <footer class="footer">
         <div class="row lg-menu">
             <div class="container">
-                <div class="col-md-4 col-sm-4"><img src="assets/img/footer-logo.png" class="img-responsive" alt=""/>
+                <div class="col-md-4 col-sm-4"><img src="${pageContext.request.contextPath}/resources/assets/img/footer-logo.png" class="img-responsive" alt=""/>
                 </div>
                 <div class="col-md-8 co-sm-8 pull-right">
                     <ul>
@@ -624,7 +626,7 @@
                         </ul>
                         <div class="tab-content" id="myModalLabel2">
                             <div role="tabpanel" class="tab-pane fade in active" id="login">
-                                <img src="assets/img/logo.png" class="img-responsive" alt=""/>
+                                <img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="img-responsive" alt=""/>
 
                                 <div class="subscribe wow fadeInUp">
                                     <form class="form-inline" method="post">
@@ -647,7 +649,7 @@
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="register">
-                                <img src="assets/img/logo.png" class="img-responsive" alt=""/>
+                                <img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="img-responsive" alt=""/>
 
                                 <form class="form-inline" method="post">
                                     <div class="col-sm-12">
@@ -690,22 +692,22 @@
         </ul>
     </div>
     <!-- Scripts==================================================-->
-    <script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/viewportchecker.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/bootsnav.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/select2.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/wysihtml5-0.3.0.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/bootstrap-wysihtml5.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/datedropper.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/dropzone.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/loader.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/slick.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/jQuery.style.switcher.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/viewportchecker.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootsnav.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/select2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/datedropper.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/dropzone.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/loader.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/slick.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/gmap3.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/jQuery.style.switcher.js"></script>
     <script type="text/javascript">$(document).ready(function () {
         $('#styleOptions').styleSwitcher();
     });</script>
