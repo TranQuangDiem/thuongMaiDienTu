@@ -198,3 +198,17 @@ All custom js files contents are below
 
 			
 })(jQuery);
+
+
+$(document).ready(function() {
+	$('#styleOptions').styleSwitcher();
+});
+
+function openRightMenu() {
+	document.getElementById("rightMenu").style.display = "block";
+}
+
+function closeRightMenu() {
+	document.getElementById("rightMenu").style.display = "none";
+}
+		
