@@ -1,8 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
-
-<!-- Start Message -->
+<%@ page contentType="text/html;charset=UTF-8"%>
 <div id="rate" class="tab-pane fade">
 	<div class="inbox-body inbox-widget">
 		<div class="row" style="margin-top: 40px;">
@@ -47,152 +45,154 @@
 			</div>
 
 		</div>
-		
-	</div>
 
-	<div class="mail-card">
-		<header class="card-header cursor-pointer collapsed"
-			data-toggle="collapse" data-target="#meaages-2" aria-expanded="false">
-			<div class="card-title flexbox">
-				<img class="img-responsive img-circle avatar"
-					src="${pageContext.request.contextPath}/resources/assets/img/can-2.png"
-					alt="...">
-				<div>
-					<h6>Daniel Duke</h6>
-					<small>Today at 07:34 AM</small>
+		<div class="mail-card">
+			<header class="card-header cursor-pointer collapsed"
+				data-toggle="collapse" data-target="#meaages-2"
+				aria-expanded="false">
+				<div class="card-title flexbox">
+					<img class="img-responsive img-circle avatar"
+						src="${pageContext.request.contextPath}/resources/assets/img/can-2.png"
+						alt="...">
+					<div>
+						<h6>Daniel Duke</h6>
+						<small>Today at 07:34 AM</small>
+					</div>
 				</div>
-			</div>
-			<div class="rate-star">
-				<span class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span class="fa fa-star "></span>
-			</div>
-		</header>
-		<div class="collapse" id="meaages-2" aria-expanded="false"
-			style="height: 0px;">
-			<div class="card-body">
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-					voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo.</p>
+				<div class="rate-star">
+					<span class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span class="fa fa-star "></span>
+				</div>
+			</header>
+			<div class="collapse" id="meaages-2" aria-expanded="false"
+				style="height: 0px;">
+				<div class="card-body">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo.</p>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="mail-card">
-		<header class="card-header cursor-pointer collapsed"
-			data-toggle="collapse" data-target="#meaages-3" aria-expanded="false">
-			<div class="card-title flexbox">
-				<img class="img-responsive img-circle avatar"
-					src="${pageContext.request.contextPath}/resources/assets/img/can-1.png"
-					alt="...">
-				<div>
-					<h6>Daniel Duke</h6>
-					<small>Today at 07:34 AM</small>
+		<div class="mail-card">
+			<header class="card-header cursor-pointer collapsed"
+				data-toggle="collapse" data-target="#meaages-3"
+				aria-expanded="false">
+				<div class="card-title flexbox">
+					<img class="img-responsive img-circle avatar"
+						src="${pageContext.request.contextPath}/resources/assets/img/can-1.png"
+						alt="...">
+					<div>
+						<h6>Daniel Duke</h6>
+						<small>Today at 07:34 AM</small>
+					</div>
 				</div>
-			</div>
-			<div class="rate-star">
-				<span class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span>
-			</div>
-		</header>
-		<div class="collapse" id="meaages-3" aria-expanded="false"
-			style="height: 0px;">
-			<div class="card-body">
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-					voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo.</p>
+				<div class="rate-star">
+					<span class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span>
+				</div>
+			</header>
+			<div class="collapse" id="meaages-3" aria-expanded="false"
+				style="height: 0px;">
+				<div class="card-body">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo.</p>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="mail-card">
-		<header class="card-header cursor-pointer collapsed"
-			data-toggle="collapse" data-target="#meaages-4" aria-expanded="false">
-			<div class="card-title flexbox">
-				<img class="img-responsive img-circle avatar"
-					src="${pageContext.request.contextPath}/resources/assets/img/can-3.png"
-					alt="...">
-				<div>
-					<h6>Daniel Duke</h6>
-					<small>Today at 07:34 AM</small>
+		<div class="mail-card">
+			<header class="card-header cursor-pointer collapsed"
+				data-toggle="collapse" data-target="#meaages-4"
+				aria-expanded="false">
+				<div class="card-title flexbox">
+					<img class="img-responsive img-circle avatar"
+						src="${pageContext.request.contextPath}/resources/assets/img/can-3.png"
+						alt="...">
+					<div>
+						<h6>Daniel Duke</h6>
+						<small>Today at 07:34 AM</small>
+					</div>
 				</div>
-			</div>
-			<div class="rate-star">
-				<span class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span class="fa fa-star "></span>
-			</div>
-		</header>
-		<div class="collapse" id="meaages-4" aria-expanded="false"
-			style="height: 0px;">
-			<div class="card-body">
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-					voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo.</p>
+				<div class="rate-star">
+					<span class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span class="fa fa-star "></span>
+				</div>
+			</header>
+			<div class="collapse" id="meaages-4" aria-expanded="false"
+				style="height: 0px;">
+				<div class="card-body">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo.</p>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="mail-card">
-		<header class="card-header cursor-pointer collapsed"
-			data-toggle="collapse" data-target="meaages-5" aria-expanded="false">
-			<div class="card-title flexbox">
-				<img class="img-responsive img-circle avatar"
-					src="${pageContext.request.contextPath}/resources/assets/img/can-4.png"
-					alt="...">
-				<div>
-					<h6>Daniel Duke</h6>
-					<small>Today at 07:34 AM</small>
+		<div class="mail-card">
+			<header class="card-header cursor-pointer collapsed"
+				data-toggle="collapse" data-target="meaages-5" aria-expanded="false">
+				<div class="card-title flexbox">
+					<img class="img-responsive img-circle avatar"
+						src="${pageContext.request.contextPath}/resources/assets/img/can-4.png"
+						alt="...">
+					<div>
+						<h6>Daniel Duke</h6>
+						<small>Today at 07:34 AM</small>
+					</div>
 				</div>
-			</div>
-			<div class="rate-star">
-				<span class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span>
-			</div>
-		</header>
-		<div class="collapse" id="meaages-5" aria-expanded="false"
-			style="height: 0px;">
-			<div class="card-body">
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-					voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam,
-					eaque ipsa quae ab illo inventore veritatis et quasi architecto
-					beatae vitae dicta sunt explicabo.</p>
+				<div class="rate-star">
+					<span class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span> <span
+						class="fa fa-star star-checked"></span>
+				</div>
+			</header>
+			<div class="collapse" id="meaages-5" aria-expanded="false"
+				style="height: 0px;">
+				<div class="card-body">
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo.</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
+
 
 
 <!-- End Message -->

@@ -1,13 +1,10 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <tiles:importAttribute name="stylesheets"/>
 <tiles:importAttribute name="javascripts"/>
-
-
 <!doctype html>
 <html lang="en">
 
@@ -19,12 +16,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+	<!-- CSS
+	================================================== -->
 	<!-- CSS -->
 	<c:forEach var="css" items="${stylesheets}">
        <link rel="stylesheet" type="text/css" href="<c:url value="${css}"/>">
     </c:forEach>
-	
-	
+    <!-- Custom style -->
 	</head>
 	<body>
 		<div class="Loader"></div>
@@ -453,9 +451,11 @@
 									</div>
 								</div>
 								<!-- End Friend List -->
-								<!-- Start Message -->
 								
+								<!-- Start Message -->
 								<tiles:insertAttribute name="message" />
+								
+								
 								
 								<!-- End Message -->
 								
@@ -736,16 +736,16 @@
 			
 			<!-- Scripts
 			================================================== -->
+			<!-- Scripts
+			================================================== -->
 			<c:forEach var="script" items="${javascripts}">
-        <script src="<c:url value="${script}"/>"></script>
-    </c:forEach> 
+		        <script src="<c:url value="${script}"/>"></script>
+		    </c:forEach> 
 			
 			<!-- Custom Js -->
 			<script src="${pageContext.request.contextPath}/resources/assets/js/custom.js"></script>
 			
-			
-			
-		</div>
+			</div>
 	</body>
 
 <!-- employer-profile41:42-->
