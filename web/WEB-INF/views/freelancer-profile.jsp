@@ -453,7 +453,8 @@
 								<!-- End Friend List -->
 								
 								<!-- Start Message -->
-								<tiles:insertAttribute name="message" />
+								<tiles:insertAttribute name="evaluate" />
+									
 								
 								
 								

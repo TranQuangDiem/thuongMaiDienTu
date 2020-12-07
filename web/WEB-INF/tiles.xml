@@ -5,8 +5,8 @@
 <tiles-definitions>
 	<definition name="freelancer-profile"
 		template="/WEB-INF/views/freelancer-profile.jsp">
-		<put-attribute name="message"
-			value="/message" />
+		<put-attribute name="evaluate"
+			value="/evaluate" />
 		
 		<put-list-attribute name="stylesheets">
 			<add-attribute value="/resources/assets/plugins/css/plugins.css" />
