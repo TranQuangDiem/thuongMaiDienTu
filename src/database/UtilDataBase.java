@@ -7,6 +7,7 @@ import java.util.List;
 
 import database.model.Account;
 import database.model.Evaluate;
+import database.model.Pricing;
 
 public class UtilDataBase {
 	public static Account getAccount(int id_account) {
@@ -26,13 +27,27 @@ public class UtilDataBase {
 				
 			}
 			
-			
-			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 		return rs;
+	}
+	public static List<Pricing> getPricing () {
+		List<Pricing> danhsachgoi = new ArrayList<Pricing>();
+		try {
+			String sql= "select * from goibaidang ";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				danhsachgoi.add(p);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return danhsachgoi;
 	}
 
 }
