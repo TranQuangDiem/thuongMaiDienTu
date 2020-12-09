@@ -21,6 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
 </head>
 <body>
+	<c:url value="/thanhtoan" var="urlThanhtoan" />
 	<div class="Loader"></div>
 	<div class="wrapper">
 
@@ -82,34 +83,34 @@
 			<c:if test="${not empty danhsachgoi}">
 				<c:forEach var="goi" items="${danhsachgoi}">
 					<div class="col-md-4 col-sm-4">
-				<div class="pr-table">
-					<div class="pr-header active">
-						<div class="pr-plan">
-							<h4>${goi.tengoi}</h4>
+						<div class="pr-table">
+							<div class="pr-header active">
+								<div class="pr-plan">
+									<h4>${goi.tengoi}</h4>
+								</div>
+								<div class="pr-price">
+									<h3>
+										${goi.gia}<sub>VNĐ</sub>
+									</h3>
+								</div>
+							</div>
+							<div class="pr-features">
+								<ul>
+									<li>Thời hạn : ${goi.thoihan}</li>
+									<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
+									<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
+									<li>${goi.mota}</li>
+								</ul>
+							</div>
+							<div class="pr-buy-button">
+								<a href="${urlThanhtoan}/${goi.id}" class="pr-btn active"
+									title="Price Button">Get Started</a>
+							</div>
 						</div>
-						<div class="pr-price">
-							<h3>
-								${goi.gia}<sub>VNĐ</sub>
-							</h3>
-						</div>
 					</div>
-					<div class="pr-features">
-						<ul>
-							<li>Thời hạn : ${goi.thoihan}</li>
-							<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
-							<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
-							<li>${goi.mota}</li>
-						</ul>
-					</div>
-					<div class="pr-buy-button">
-						<a href="#" class="pr-btn active" title="Price Button">Get
-							Started</a>
-					</div>
-				</div>
-			</div>
 				</c:forEach>
 			</c:if>
-			
+
 			<div class="col-md-4 col-sm-4">
 				<div class="pr-table">
 					<div class="pr-header">
