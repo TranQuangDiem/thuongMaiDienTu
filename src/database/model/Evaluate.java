@@ -9,7 +9,7 @@ public class Evaluate {
 	Date time;
 	float star;
 	String content;
-	int id_freelancer;
+	
 	
 	
 	
@@ -18,14 +18,14 @@ public class Evaluate {
 	}
 
 
-	public Evaluate(int id, Account account, Date time, float star, String content, int id_freelancer) {
+	public Evaluate(int id, Account account, Date time, float star, String content) {
 		super();
 		this.id = id;
 		this.account = account;
 		this.time = time;
 		this.star = star;
 		this.content = content;
-		this.id_freelancer = id_freelancer;
+		
 		
 		
 	}
@@ -81,14 +81,6 @@ public class Evaluate {
 	}
 
 
-	public int getId_freelancer() {
-		return id_freelancer;
-	}
-
-
-	public void setId_freelancer(int id_freelancer) {
-		this.id_freelancer = id_freelancer;
-	}
 	
 	
 	
