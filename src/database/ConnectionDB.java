@@ -33,6 +33,19 @@ public class ConnectionDB {
     	}
     	
     }
+    public static void close(ResultSet rs) {
+    	try {
+    		
+    		
+			rs.getStatement().getConnection().close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			
+		}
+    	
+    	
+    }
 
     public static void main(String[] args) throws Exception {
     	Statement s=ConnectionDB.createStatement();
