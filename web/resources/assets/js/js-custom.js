@@ -96,6 +96,7 @@ $(function(){
 
   openReviewBtn.click(function(e)
   {
+  	e.preventDefault();
     openReviewBtn.fadeOut(0);
     reviewBox.slideDown(500, function()
       {
