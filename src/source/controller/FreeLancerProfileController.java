@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +53,7 @@ public class FreeLancerProfileController {
 		return "/freelancer-profile/row_evaluate";
 	}
 
-	@ResponseBody
+	
 	@RequestMapping(value = "/submit-evaluate", params = { "rating", "id_freelancer",
 			"comment" }, method = RequestMethod.POST)
 	public String submitReview(HttpServletRequest request,Model model, @RequestParam(value = "rating") int rating,
@@ -59,14 +61,34 @@ public class FreeLancerProfileController {
 //		System.out.println(currentAccount.getUsername());
 		Account account = (Account) request.getSession().getAttribute("currentAccount");
 		
-		Evaluate evaluate = new Evaluate();
+		String []comments = comment.split("^[\\n\\r]$");
+		comment="";
+		for(String str: comments) {
+			comment+="<p>";
+			comment+=str;
+			comment+="</p>";
+		}
+		
+		BeanWrapper evaluateBean = new BeanWrapperImpl(new Evaluate());
+		evaluateBean.setPropertyValue("content", comment);
+		evaluateBean.setPropertyValue("star", rating);
+		evaluateBean.setPropertyValue("time", new Date());
+		evaluateBean.setPropertyValue("account", account);
+		
+		Evaluate evaluate= new Evaluate();
 		evaluate.setContent(comment);
 		evaluate.setStar(rating);
 		evaluate.setTime(new Date());
 		evaluate.setAccount(account);
 		UtilDataBase.insertEvaluate(id_freelancer, evaluate);
+		
+		List<Evaluate> lstEvaluate = FreeLancerPrefileDatabase.getEvaluate(id_freelancer, 0);
 
-		return "OK";
+		model.addAttribute("listEvaluate", lstEvaluate);
+		model.addAttribute("id_freelancer", id_freelancer + "");
+		return "/freelancer-profile/row_evaluate";
+
+		
 	}
 
 }

@@ -105,18 +105,32 @@ $(document).ready(function(){
 	});
 	//Add btn submit
 	$("#btn_submit_evaluate" ).click(function( event ) {
+		
 		  event.preventDefault();
 		  $.ajax({
 				type: "POST",
 				url: '${pageContext.request.contextPath}/submit-evaluate',
 				data : $('#form-submit-evaluate').serialize(),
 				success : function(data) {
-					console.log(data);
+					$('#evaluate-inbox-boy').children().slice(1).detach();
+					
+					$('#evaluate-inbox-boy').append(data);
+					countI=0;
+					$('#close-review-box').click();
+					$('#new-review').val('');
+				  	$('#ratings-hidden').val(0);
+				  	var stars = $("#stars").children('li.star');
+				  	for (i = 0; i < stars.length; i++) {
+				        $(stars[i]).removeClass('selected');
+				    }
+					
+						
 					
 				}
 			});
 		  
 	});
+	
 	  	
    		
 });

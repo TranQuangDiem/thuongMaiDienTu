@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 10/12/2020 18:02:49
+ Date: 10/12/2020 23:53:58
 */
 
 SET NAMES utf8mb4;
@@ -50,13 +50,15 @@ CREATE TABLE `evaluate`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id_account`(`id_account`) USING BTREE,
   CONSTRAINT `evaluate_ibfk_1` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of evaluate
 -- ----------------------------
 INSERT INTO `evaluate` VALUES (1, 2, 1, '2020-12-06 14:46:49', 3, '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia volu');
-INSERT INTO `evaluate` VALUES (2, 2, 1, '2020-12-10 18:00:52', 4, '123');
+INSERT INTO `evaluate` VALUES (29, 2, 1, '2020-12-10 23:52:22', 3, '<p>12323</p>');
+INSERT INTO `evaluate` VALUES (30, 2, 1, '2020-12-10 23:52:31', 5, '<p>Hi</p>');
+INSERT INTO `evaluate` VALUES (31, 2, 1, '2020-12-10 23:53:33', 1, '<p>Rủ đi chơi</p>');
 
 -- ----------------------------
 -- Table structure for goibaidang

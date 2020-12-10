@@ -11,7 +11,7 @@
 
 	<div class="mail-card">
 		<header class="card-header cursor-pointer collapsed"
-			data-toggle="collapse" data-target="#meaages-2"
+			data-toggle="collapse" data-target="#message-${evaluate.id}"
 			aria-expanded="false">
 			<div class="card-title flexbox">
 				<img class="img-responsive img-circle avatar"
@@ -24,13 +24,22 @@
 				</div>
 			</div>
 			<div class="rate-star">
-				<span class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span
-					class="fa fa-star star-checked"></span> <span class="fa fa-star "></span>
+			<c:forEach var="i" begin="0" end="4" varStatus="loop">
+				<c:if test="${i<evaluate.star}">
+					<span class="fa fa-star star-checked"></span>
+				</c:if>
+				<c:if test="${i>=evaluate.star}">
+					<span class="fa fa-star"></span>
+				</c:if>
+				
+				
+			    
+			</c:forEach>
+
+				 
 			</div>
 		</header>
-		<div class="collapse" id="meaages-2" aria-expanded="false"
+		<div class="collapse" id="message-${evaluate.id}" aria-expanded="false"
 			style="height: 0px;">
 			<div class="card-body">${evaluate.content}</div>
 		</div>
