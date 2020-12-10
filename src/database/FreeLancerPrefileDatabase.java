@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import database.model.Account;
-import database.model.Evaluate;
+import model.Account;
+import model.Evaluate;
 
 public class FreeLancerPrefileDatabase {
 	

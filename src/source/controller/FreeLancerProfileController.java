@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import database.FreeLancerPrefileDatabase;
 import database.UtilDataBase;
-import database.model.Account;
-import database.model.Evaluate;
+import model.Account;
+import model.Evaluate;
 
 
 @Controller

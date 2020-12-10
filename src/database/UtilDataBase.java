@@ -6,9 +6,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import database.model.Account;
-import database.model.Evaluate;
-import database.model.Pricing;
+import model.Account;
+import model.Evaluate;
+import model.Pricing;
 
 public class UtilDataBase {
 	public static Account getAccount(int id_account) {

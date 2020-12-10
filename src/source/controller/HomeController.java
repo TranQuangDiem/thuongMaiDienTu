@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import database.UtilDataBase;
-import database.model.Account;
+import model.Account;
 
 
 @Controller
