@@ -2,6 +2,7 @@ package database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,26 @@ public class UtilDataBase {
 		
 		return rs;
 	}
+	public static int insertEvaluate(int id_freelancer, Evaluate evaluate) {
+		int rs=0;
+		try {
+			String sql="insert  into evaluate(id_account,id_freelancer,time,star,content)"+
+						" values(?,?,?,?,?);";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, evaluate.getAccount().getId());
+			ps.setInt(2, id_freelancer);
+			ps.setTimestamp(3, new Timestamp(evaluate.getTime().getTime()));
+			ps.setInt(4, evaluate.getStar());
+			ps.setString(5, evaluate.getContent());
+			rs=ps.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return rs;
+	}
 	public static List<Pricing> getPricing () {
 		List<Pricing> danhsachgoi = new ArrayList<Pricing>();
 		try {
@@ -43,6 +64,7 @@ public class UtilDataBase {
 				Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7));
 				danhsachgoi.add(p);
 			}
+			ConnectionDB.close(rs);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

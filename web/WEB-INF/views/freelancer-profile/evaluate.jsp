@@ -1,11 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <div id="rate" class="tab-pane fade">
-	<div class="inbox-body inbox-widget">
+	<div id="evaluate-inbox-boy" class="inbox-body inbox-widget">
 		<div class="row" style="margin-top: 40px;">
 			<div class="col-sm-12">
 				<div class="well well-sm">
@@ -16,8 +16,12 @@
 
 					<div class="row" id="post-review-box" style="display: none;">
 						<div class="col-md-12">
-							<form accept-charset="UTF-8" action="" method="post">
-								<input id="ratings-hidden" name="rating" type="hidden">
+							<form accept-charset="UTF-8"
+								action="${pageContext.request.contextPath}/submit"
+								id="form-submit-evaluate"
+								method="post">
+								<input id="ratings-hidden" name="rating" type="hidden" value="0">
+								<input  name="id_freelancer" type="hidden" value="${id_freelancer}">
 								<textarea class="form-control animated" cols="50"
 									id="new-review" name="comment"
 									placeholder="Enter your review here..." rows="5"></textarea>
@@ -39,7 +43,7 @@
 									</div>
 									<a class="btn btn-danger btn-rate-cancel" href="#"
 										id="close-review-box" style="margin-right: 10px;">Cancel</a>
-									<button class="btn btn-success btn-rate-save" type="submit">Save</button>
+									<button id="btn_submit_evaluate" class="btn btn-success btn-rate-save" type="submit">Save</button>
 								</div>
 							</form>
 						</div>
@@ -48,70 +52,75 @@
 			</div>
 
 		</div>
-		
-		<!-- backend -->
-		<c:forEach var="evaluate" items="${listEvaluate}" varStatus="tagStatus">
-		  
-		
 
-			<div class="mail-card">
-				<header class="card-header cursor-pointer collapsed"
-					data-toggle="collapse" data-target="#meaages-2"
-					aria-expanded="false">
-					<div class="card-title flexbox">
-						<img class="img-responsive img-circle avatar"
-							src="${pageContext.request.contextPath}${evaluate.account.image}"
-							alt="...">
-						<div>
-							<h6>${evaluate.account.fullname}</h6>
-							<small><fmt:formatDate pattern="EEEE, d MMM yyyy hh:mm aaa" value="${evaluate.time}"  /></small>
-						</div>
-					</div>
-					<div class="rate-star">
-						<span class="fa fa-star star-checked"></span> <span
-							class="fa fa-star star-checked"></span> <span
-							class="fa fa-star star-checked"></span> <span
-							class="fa fa-star star-checked"></span> <span class="fa fa-star "></span>
-					</div>
-				</header>
-				<div class="collapse" id="meaages-2" aria-expanded="false"
-					style="height: 0px;">
-					<div class="card-body">
-						${evaluate.content}
-					</div>
-				</div>
-			</div>
+		<!-- Row -->
 
-		
-		</c:forEach>
-		
-		<div class="mail-card">
-			<header class="card-header cursor-pointer collapsed" data-toggle="collapse" data-target="#meaages-3" aria-expanded="false">
-				<div class="card-title flexbox">
-				  <img class="img-responsive img-circle avatar" src="${pageContext.request.contextPath}/resources/assets/img/can-1.png" alt="...">
-				  <div>
-					<h6>Daniel Duke</h6>
-					<small>Today at 07:34 AM</small>
-				  </div>
-				</div>
-				<div class="rate-star">
-					<span class="fa fa-star star-checked"></span>
-					<span class="fa fa-star star-checked"></span>
-					<span class="fa fa-star star-checked"></span>
-					<span class="fa fa-star star-checked"></span>
-					<span class="fa fa-star star-checked"></span>
-				</div>
-			</header>
-			<div class="collapse" id="meaages-3" aria-expanded="false" style="height: 0px;">
-				<div class="card-body">
-				  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.</p>
-				  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-				</div>
-			</div>
-		</div>
+
 
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+countI=0;
+$(document).ready(function(){
+	//Init row
+	$.ajax({
+			type: "GET",
+			url: '${pageContext.request.contextPath}/get-row-evaluate',
+		data : {
+			numberPage : 0,
+			id_freelancer:${id_freelancer}
+		},
+		success : function(
+				data) {
+	
+			$('#evaluate-inbox-boy').append(data);
+			
+		}
+	});
+	
+	//Sroll row
+  	$contentLoadTriggered = false;
+	$(window).scroll(function() {
+		if($(window).scrollTop() == $('evaluate-inbox-boy').height() - $(window).height()) {
+			$contentLoadTriggered = true; 
+			$.ajax({
+				type: "GET",
+				url: '${pageContext.request.contextPath}/get-row-evaluate',
+				data : {
+					numberPage : ++countI,
+					id_freelancer:${id_freelancer}
+				},
+				success : function(
+						data) {
+				
+					$('#evaluate-inbox-boy').append(data);
+					$contentLoadTriggered = false;  
+				}
+			});
+  		}
+
+	});
+	//Add btn submit
+	$("#btn_submit_evaluate" ).click(function( event ) {
+		  event.preventDefault();
+		  $.ajax({
+				type: "POST",
+				url: '${pageContext.request.contextPath}/submit-evaluate',
+				data : $('#form-submit-evaluate').serialize(),
+				success : function(data) {
+					console.log(data);
+					
+				}
+			});
+		  
+	});
+	  	
+   		
+});
+</script>
 
 
 

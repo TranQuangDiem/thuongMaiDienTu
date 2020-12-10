@@ -1,13 +1,13 @@
 package database.model;
 
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 public class Evaluate {
 	int id;
 	Account account;
 	Date time;
-	float star;
+	int star;
 	String content;
 	
 	
@@ -18,17 +18,18 @@ public class Evaluate {
 	}
 
 
-	public Evaluate(int id, Account account, Date time, float star, String content) {
+
+
+	public Evaluate(int id, Account account, Date time, int star, String content) {
 		super();
 		this.id = id;
 		this.account = account;
 		this.time = time;
 		this.star = star;
 		this.content = content;
-		
-		
-		
 	}
+
+
 
 
 	public int getId() {
@@ -36,9 +37,13 @@ public class Evaluate {
 	}
 
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 
 
 	public Account getAccount() {
@@ -46,9 +51,13 @@ public class Evaluate {
 	}
 
 
+
+
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
+
 
 
 	public Date getTime() {
@@ -56,19 +65,27 @@ public class Evaluate {
 	}
 
 
+
+
 	public void setTime(Date time) {
 		this.time = time;
 	}
 
 
-	public float getStar() {
+
+
+	public int getStar() {
 		return star;
 	}
 
 
-	public void setStar(float star) {
+
+
+	public void setStar(int star) {
 		this.star = star;
 	}
+
+
 
 
 	public String getContent() {
@@ -76,9 +93,14 @@ public class Evaluate {
 	}
 
 
+
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+
+	
 
 
 	

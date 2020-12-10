@@ -31,6 +31,8 @@
 			<add-attribute value="/resources/assets/plugins/js/jquery.easy-autocomplete.min.js" />
 			<add-attribute value="/resources/assets/js/jQuery.style.switcher.js" />
 			<add-attribute value="/resources/assets/js/vietnamlocalselector.js" />
+			<add-attribute value="/resources/assets/js/custom.js" />
+			<add-attribute value="/resources/assets/js/js-custom.js" />
 			
 		</put-list-attribute>
 	</definition>

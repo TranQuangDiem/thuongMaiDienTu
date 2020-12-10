@@ -22,7 +22,36 @@ public class FreeLancerPrefileDatabase {
 				int id_account= rsSet.getInt(2);
 				Account account = UtilDataBase.getAccount(id_account);
 				Evaluate e = new Evaluate(rsSet.getInt(1),account, rsSet.getTimestamp(3), 
-						rsSet.getFloat(4), rsSet.getString(5));
+						rsSet.getInt(4), rsSet.getString(5));
+				rs.add(e);
+//				 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+//				System.out.println(formatter.format(e.getTime()));
+				
+			}
+			ConnectionDB.close(rsSet);
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return rs;
+	}
+	public static List<Evaluate> getEvaluate(int id_freelancer, int numberPage) {
+		List<Evaluate> rs= new ArrayList<Evaluate>();
+		try {
+			String sql="select id, id_account, time, star, content from evaluate where id_freelancer=? order by time desc limit ?,?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, id_freelancer);
+			ps.setInt(2, numberPage*5);
+			ps.setInt(3, (id_freelancer+1)*5);
+			ResultSet rsSet=ps.executeQuery();
+			while(rsSet.next()) {
+				int id_account= rsSet.getInt(2);
+				Account account = UtilDataBase.getAccount(id_account);
+				Evaluate e = new Evaluate(rsSet.getInt(1),account, rsSet.getTimestamp(3), 
+						rsSet.getInt(4), rsSet.getString(5));
 				rs.add(e);
 //				 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 //				System.out.println(formatter.format(e.getTime()));

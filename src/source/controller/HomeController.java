@@ -1,16 +1,28 @@
 package source.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import database.UtilDataBase;
+import database.model.Account;
+
 
 @Controller
 public class HomeController {
 
+
 	@RequestMapping({ "/index", "/" })
-	private String trangchu() {
+	private String trangchu(HttpServletRequest request) {
+		
+		Account acount=UtilDataBase.getAccount(2);
+		
+		//Login
+		request.getSession().setAttribute("currentAccount",acount);
+		
 		return "index-6";
 	}
 
