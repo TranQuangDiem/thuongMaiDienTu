@@ -26,7 +26,7 @@ public class FreeLancerProfileController {
 
 	// url: /freelancer-profile?id_freelancer=1
 	@RequestMapping("/freelancer-profile")
-	public String helloWorld() {
+	public String layout() {
 		
 		
 		return "freelancer-profile";
@@ -34,11 +34,7 @@ public class FreeLancerProfileController {
 
 	@RequestMapping(value = "/evaluate", params = { "id_freelancer" }, method = RequestMethod.GET)
 	public String evaluate(Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
-//		List<Evaluate> lstEvaluate=FreeLancerPrefileDatabase.getEvaluate(id_freelancer);
-//
-//		model.addAttribute("listEvaluate", lstEvaluate);
 		model.addAttribute("id_freelancer", id_freelancer + "");
-
 		return "freelancer-profile/evaluate";
 	}
 
@@ -46,10 +42,8 @@ public class FreeLancerProfileController {
 	public String getRowsEvaluate(Model model, @RequestParam(value = "id_freelancer") int id_freelancer,
 			@RequestParam(value = "numberPage") int numberPage) {
 		List<Evaluate> lstEvaluate = FreeLancerPrefileDatabase.getEvaluate(id_freelancer, numberPage);
-
 		model.addAttribute("listEvaluate", lstEvaluate);
 		model.addAttribute("id_freelancer", id_freelancer + "");
-
 		return "/freelancer-profile/row_evaluate";
 	}
 
@@ -80,7 +74,7 @@ public class FreeLancerProfileController {
 		evaluate.setStar(rating);
 		evaluate.setTime(new Date());
 		evaluate.setAccount(account);
-		UtilDataBase.insertEvaluate(id_freelancer, evaluate);
+		FreeLancerPrefileDatabase.insertEvaluate(id_freelancer, evaluate);
 		
 		List<Evaluate> lstEvaluate = FreeLancerPrefileDatabase.getEvaluate(id_freelancer, 0);
 

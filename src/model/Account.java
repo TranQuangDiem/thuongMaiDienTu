@@ -6,6 +6,7 @@ public class Account {
 	String password;
 	String fullname;
 	String image;
+	float starAverage;
 	
 	
 	public Account() {
@@ -48,6 +49,13 @@ public class Account {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public float getStarAverage() {
+		return starAverage;
+	}
+	public void setStarAverage(float starAverage) {
+		this.starAverage = starAverage;
 	}
 	@Override
 	public String toString() {

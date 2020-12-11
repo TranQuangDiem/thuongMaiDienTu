@@ -94,9 +94,11 @@
                     <h2>New <span>Jobs</span></h2>
                 </div>
             </div>
+            <!-- Job List -->
             <div class="row extra-mrg">
                 <div class="col-md-3 col-sm-6">
                     <div class="grid-view brows-job-list">
+                    	<a href="${pageContext.request.contextPath}/job-apply-detail?id_job=1">
                         <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
                         <div class="brows-job-position">
@@ -104,6 +106,7 @@
 
                             <p><span>Google</span></p>
                         </div>
+                        </a>
                         <div class="job-position"><span class="job-num">5 Position</span></div>
                         <div class="brows-job-type"><span class="freelanc">Freelancer</span></div>
                         <ul class="grid-view-caption">

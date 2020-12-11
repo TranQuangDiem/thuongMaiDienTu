@@ -2,7 +2,7 @@ package database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class FreeLancerPrefileDatabase {
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_freelancer);
 			ps.setInt(2, numberPage*5);
-			ps.setInt(3, (id_freelancer+1)*5);
+			ps.setInt(3, (numberPage+1)*5);
 			ResultSet rsSet=ps.executeQuery();
 			while(rsSet.next()) {
 				int id_account= rsSet.getInt(2);
@@ -59,6 +59,26 @@ public class FreeLancerPrefileDatabase {
 			}
 			ConnectionDB.close(rsSet);
 			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return rs;
+	}
+	public static int insertEvaluate(int id_freelancer, Evaluate evaluate) {
+		int rs=0;
+		try {
+			String sql="insert  into evaluate(id_account,id_freelancer,time,star,content)"+
+						" values(?,?,?,?,?);";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, evaluate.getAccount().getId());
+			ps.setInt(2, id_freelancer);
+			ps.setTimestamp(3, new Timestamp(evaluate.getTime().getTime()));
+			ps.setInt(4, evaluate.getStar());
+			ps.setString(5, evaluate.getContent());
+			rs=ps.executeUpdate();
 			
 			
 		} catch (Exception e) {
