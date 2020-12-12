@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import model.Subscriber;
 
 public class JobApplyDetailDatabase {
@@ -38,7 +39,7 @@ public class JobApplyDetailDatabase {
 	public static List<Subscriber> getSubscribers(int id_job, int numberPage) {
 		List<Subscriber> rs= new ArrayList<Subscriber>();
 		try {
-			String sql="select id, id_account, date_apply, apply  from subscriber where id_job=? order by date_apply desc limit ?,?";
+			String sql="select id, id_account, date_apply, status  from subscriber where id_job=? order by date_apply desc limit ?,?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_job);
 			ps.setInt(2, numberPage*5);
@@ -50,7 +51,7 @@ public class JobApplyDetailDatabase {
 				subscriber.setId(rsSet.getInt(1));
 				subscriber.setAccount(UtilDataBase.getAccount(rsSet.getInt(2)));
 				subscriber.setDateApply(rsSet.getTimestamp(3));
-				subscriber.setApply(rsSet.getInt(4));
+				subscriber.setStatus(rsSet.getInt(4));
 				subscriber.setJob(UtilDataBase.getJob(id_job));
 				
 				rs.add(subscriber);
@@ -67,4 +68,24 @@ public class JobApplyDetailDatabase {
 		
 		return rs;
 	}
+	public static boolean changeStatusFreeLancer(int freelancer_id, int id_job, Subscriber.Status status) {
+		try {
+			String sql="update subscriber set status = ? where id_job=? and id_account=? ";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, status.getValue());
+			ps.setInt(2, id_job);
+			ps.setInt(3, freelancer_id);
+			
+			int row=ps.executeUpdate();
+			
+			ps.getConnection().close();
+			if(row==1)return true;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+	
 }

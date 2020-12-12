@@ -101,8 +101,9 @@
                     	<a href="${pageContext.request.contextPath}/job-apply-detail?id_job=1">
                         <div class="brows-job-company-img"><img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive"
                                                                 alt=""/></div>
+                                                                
                         <div class="brows-job-position">
-                            <h3><a href="job-detail.html">Design Logo</a></h3>
+                            <h3>Design Logo</h3>
 
                             <p><span>Google</span></p>
                         </div>

@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 11/12/2020 18:12:17
+ Date: 12/12/2020 16:09:11
 */
 
 SET NAMES utf8mb4;
@@ -34,8 +34,8 @@ CREATE TABLE `account`  (
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES (1, 'hoang', '123', 'Nguyễn Văn A', '/resources/user/image/rong.png', NULL);
-INSERT INTO `account` VALUES (2, 'test1', '123', 'Daniel Duke', '/resources/user/image/can-2.png', NULL);
+INSERT INTO `account` VALUES (1, 'hoang', '123', 'Nguyễn Văn A', '/resources/user/image/rong.png', 3.50);
+INSERT INTO `account` VALUES (2, 'test1', '123', 'Daniel Duke', '/resources/user/image/can-2.png', 2.50);
 
 -- ----------------------------
 -- Table structure for evaluate
@@ -105,7 +105,7 @@ CREATE TABLE `subscriber`  (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `id_account` int(255) NULL DEFAULT NULL,
   `id_job` int(255) NOT NULL,
-  `apply` int(1) NULL DEFAULT NULL,
+  `status` int(1) NULL DEFAULT NULL,
   `date_apply` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id_job`(`id_job`) USING BTREE,
@@ -117,7 +117,7 @@ CREATE TABLE `subscriber`  (
 -- ----------------------------
 -- Records of subscriber
 -- ----------------------------
-INSERT INTO `subscriber` VALUES (1, 2, 1, 1, '2020-12-11 17:23:15');
+INSERT INTO `subscriber` VALUES (1, 2, 1, 3, '2020-12-11 17:23:15');
 INSERT INTO `subscriber` VALUES (2, 1, 1, 2, '2020-12-24 18:04:05');
 
 SET FOREIGN_KEY_CHECKS = 1;

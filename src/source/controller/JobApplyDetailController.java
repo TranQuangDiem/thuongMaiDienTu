@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import database.FreeLancerPrefileDatabase;
 import database.JobApplyDetailDatabase;
@@ -44,5 +45,12 @@ public class JobApplyDetailController{
 		
 		return "job-apply-detail/row_subscriber";
 	}
+	@ResponseBody
+	@RequestMapping(value="/change-status-subscriber", params= {"freelancer_id", "id_job", "status"}, method=RequestMethod.POST)
+	public String changeStatusSubscriber(@RequestParam(value="freelancer_id") int freelancer_id, @RequestParam(value = "id_job") int id_job, @RequestParam(value = "status") String status) {
+		
+		return (JobApplyDetailDatabase.changeStatusFreeLancer(freelancer_id,id_job, Subscriber.Status.valueOf(status)))?"Ok":"Error";
+	}
+	
 
 }

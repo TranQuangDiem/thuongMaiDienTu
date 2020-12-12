@@ -7,7 +7,7 @@ public class Subscriber {
 	private Account account;
 	private Date dateApply;
 	private float starAverage;
-	private int apply;
+	private Status status;
 	private Job job;
 	public int getId() {
 		return id;
@@ -34,13 +34,27 @@ public class Subscriber {
 		this.starAverage = starAverage;
 	}
 	
-	public int getApply() {
-		return apply;
-	}
-	public void setApply(int apply) {
-		this.apply = apply;
-	}
 	
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		switch (status) {
+		case 1:
+			this.status = Status.APPLY;
+			break;
+		case 2:
+			this.status = Status.ACCEPT;
+			break;
+		case 3:
+			this.status = Status.REJECT;
+			break;
+
+		default:
+			break;
+		}
+		
+	}
 	public Job getJob() {
 		return job;
 	}
@@ -50,7 +64,18 @@ public class Subscriber {
 	@Override
 	public String toString() {
 		return "Subscriber [id=" + id + ", account=" + account + ", dateApply=" + dateApply + ", starAverage="
-				+ starAverage + ", apply=" + apply + ", job=" + job + "]";
+				+ starAverage + ", apply=" + status + ", job=" + job + "]";
+	}
+	public static enum Status {
+		APPLY(1),ACCEPT(2),REJECT(3);
+		public Integer value;
+		private Status(Integer i) {
+			this.value=i;
+		}
+		public Integer getValue() {
+			return value;
+		}
+
 	}
 	
 	

@@ -79,7 +79,7 @@ public class UtilDataBase {
 	public static Subscriber getSubscriber(int id_subscriber) {
 		Subscriber subscriber =null;
 		try {
-			String sql="select id, id_account, date_apply, apply, id_job  from subscriber where id=?";
+			String sql="select id, id_account, date_apply, status, id_job  from subscriber where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_subscriber);
 			ResultSet rsSet=ps.executeQuery();
@@ -88,7 +88,7 @@ public class UtilDataBase {
 				subscriber.setId(rsSet.getInt(1));
 				subscriber.setAccount(getAccount(rsSet.getInt(2)));
 				subscriber.setDateApply(rsSet.getTimestamp(3));
-				subscriber.setApply(rsSet.getInt(4));
+				subscriber.setStatus(rsSet.getInt(4));
 				subscriber.setJob(getJob(rsSet.getInt(5)));
 				
 				

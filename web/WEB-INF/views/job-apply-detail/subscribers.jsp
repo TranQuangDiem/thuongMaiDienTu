@@ -44,17 +44,16 @@
 		$.ajax({
 			type: "GET",
 			url: '${pageContext.request.contextPath}/get-row-subscriber',
-		data : {
-			numberPage : 0,
-			id_job:${id_job}
-		},
-		success : function(
-				data) {
-	
-			$('#bodyTable').append(data);
-			
-		}
-	});
+			data : {
+				numberPage : 0,
+				id_job: ${id_job}
+			},
+			success : function(data) {
+		
+				$('#bodyTable').append(data);
+				
+			}
+		});
 			
 			
 	});
