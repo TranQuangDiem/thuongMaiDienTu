@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import database.FreeLancerPrefileDatabase;
+import database.FreeLancerProfileDatabase;
 import database.UtilDataBase;
 import model.Account;
 import model.Evaluate;
@@ -23,11 +23,14 @@ import model.Evaluate;
 public class FreeLancerProfileController {
 
 	// url: /freelancer-profile?id_freelancer=1
-	@RequestMapping("/freelancer-profile")
-	public String layout(HttpServletRequest request,Model model) {
+	@RequestMapping(value="/freelancer-profile", params = { "id_freelancer" })
+	public String layout(HttpServletRequest request,Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
 		Account account = (Account) request.getSession().getAttribute("currentAccount");
 		Account currentAccount=UtilDataBase.getAccount(account.getId());
-		model.addAttribute("account", currentAccount);
+		Account freelancer=UtilDataBase.getAccount(id_freelancer);
+		model.addAttribute("freelancer", freelancer);
+		model.addAttribute("currentAccount", currentAccount);
+		
 //		System.out.println(currentAccount);
 		return "freelancer-profile";
 	}
@@ -37,11 +40,16 @@ public class FreeLancerProfileController {
 		model.addAttribute("id_freelancer", id_freelancer + "");
 		return "freelancer-profile/evaluate";
 	}
+	@RequestMapping(value = "/job-list", params = { "id_freelancer" }, method = RequestMethod.GET)
+	public String jobList(Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
+		model.addAttribute("id_freelancer", id_freelancer + "");
+		return "freelancer-profile/job-list";
+	}
 
 	@RequestMapping(value = "/get-row-evaluate", params = { "numberPage", "id_freelancer" }, method = RequestMethod.GET)
 	public String getRowsEvaluate(Model model, @RequestParam(value = "id_freelancer") int id_freelancer,
 			@RequestParam(value = "numberPage") int numberPage) {
-		List<Evaluate> lstEvaluate = FreeLancerPrefileDatabase.getEvaluate(id_freelancer, numberPage);
+		List<Evaluate> lstEvaluate = FreeLancerProfileDatabase.getEvaluate(id_freelancer, numberPage);
 		model.addAttribute("listEvaluate", lstEvaluate);
 		model.addAttribute("id_freelancer", id_freelancer + "");
 		return "/freelancer-profile/row_evaluate";
@@ -74,9 +82,9 @@ public class FreeLancerProfileController {
 		evaluate.setStar(rating);
 		evaluate.setTime(new Date());
 		evaluate.setAccount(account);
-		FreeLancerPrefileDatabase.insertEvaluate(id_freelancer, evaluate);
+		FreeLancerProfileDatabase.insertEvaluate(id_freelancer, evaluate);
 		
-		List<Evaluate> lstEvaluate = FreeLancerPrefileDatabase.getEvaluate(id_freelancer, 0);
+		List<Evaluate> lstEvaluate = FreeLancerProfileDatabase.getEvaluate(id_freelancer, 0);
 
 		model.addAttribute("listEvaluate", lstEvaluate);
 		model.addAttribute("id_freelancer", id_freelancer + "");

@@ -18,7 +18,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs =null;
 		try {
-			String sql="select username, password, fullname, image, star_average,about,email,phone, role from account where id=?";
+			String sql="select username, password, fullname, image, star_average,about,email,phone, role, name, major from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet=ps.executeQuery();
@@ -35,6 +35,8 @@ public class UtilDataBase {
 				rs.setEmail(rsSet.getString(7));
 				rs.setPhone(rsSet.getString(8));
 				rs.setRole(rsSet.getInt(9));
+				rs.setName(rsSet.getString(10));
+				rs.setMajor(rsSet.getString(11));
 //				System.out.println(rs.toString());
 				
 			}

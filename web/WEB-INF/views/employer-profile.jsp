@@ -15,16 +15,13 @@
 	<title>Job Stock - Responsive Job Portal Bootstrap Template</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
 	<!-- CSS
 	================================================== -->
 	<!-- CSS -->
 	<c:forEach var="css" items="${stylesheets}">
        <link rel="stylesheet" type="text/css" href="<c:url value="${css}"/>">
     </c:forEach>
-    <!-- Custom style -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
-    
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
 	</head>
 	<body>
 		<div class="Loader"></div>
@@ -35,7 +32,7 @@
 				<div class="container">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i
 							class="fa fa-bars"></i></button>
-					<div class="navbar-header"><a class="navbar-brand" href="index-6.jsp"><img src="${pageContext.request.contextPath}/resources/assets/img/logo.png"
+					<div class="navbar-header"><a class="navbar-brand" href="index-6.jsp"><img src="assets/img/logo.png"
                                                                                                class="logo logo-scrolled"
                                                                                                alt=""></a></div>
 					<div class="collapse navbar-collapse" id="navbar-menu">
@@ -63,7 +60,7 @@
 			<div class="clearfix"></div>
 			
 			<!-- Title Header Start -->
-			<section class="inner-header-title" style="background-image:url(${pageContext.request.contextPath}/resources/assets/img/banner-10.jpg);">
+			<section class="inner-header-title" style="background-image:url(assets/img/banner-10.jpg);">
 				<div class="container">
 					<h1></h1>
 				</div>
@@ -75,18 +72,18 @@
         <section class="detail-desc advance-detail-pr gray-bg">
             <div class="container white-shadow">
                 <div class="row">
-                    <div class="detail-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/rong.png" class="img" alt="" /><a href="#" class="detail-edit" title="edit"></a></div>
-                    <div class="detail-status"><span id="span-hire-freelancer">Đang tuyển dụng</span></div>
+                    <div class="detail-pic"><img src="assets/img/rong.png" class="img" alt="" /><a href="#" class="detail-edit" title="edit"></a></div>
+                    <div class="detail-status"><span id="span-hire">Đang tuyển dụng</span></div>
                 </div>
 				
                 <div class="row bottom-mrg">
                     <div class="col-md-12 col-sm-12">
                         <div class="advance-detail detail-desc-caption">
-                            <h4>${freelancer.name}</h4><span class="designation">${freelancer.major}</span>
+                            <h4>Rồng Vàng</h4><span class="designation">Công ty phát triển phần mềm</span>
                             <ul>
-                                <li><strong class="j-view">742</strong>Công việc đã nhận</li>
-                                <li><strong class="j-applied">570</strong>Công Việc Hoàn Thành</li>
-                                <li><strong class="j-shared rate-custom">${freelancer.starAverage}<i class="fa fa-star"></i></strong>Đánh Giá</li>
+                                <li><strong class="j-view">742</strong>Công việc đã đăng</li>
+                                <li><strong class="j-applied">570</strong>Đã tuyển dụng</li>
+                                <li><strong class="j-shared rate-custom">4,5 <i class="fa fa-star"></i></strong>Đánh Giá</li>
                             </ul>
                         </div>
                     </div>
@@ -116,9 +113,9 @@
                     <div class="full-card">
                       <div class="deatil-tab-employ tool-tab">
 							<ul class="nav simple nav-tabs" id="simple-design-tab">
-								<li class="active"><a href="#about">Thông Tin Cá Nhân</a></li>
+								<li class="active"><a href="#about">Thông Tin Công Ty</a></li>
 								<li><a href="#address">Địa Chỉ</a></li>
-								<li><a href="#post-job">Công Việc Đã Hoàn Thành</a></li>
+								<li><a href="#post-job">Công Việc Đã Đăng</a></li>
 								<li><a style="display: none;" href="#friends">Friends</a></li>
 								<li><a href="#rate">Đánh Giá <span class="info-bar">5</span></a></li>
 								<li><a href="#settings">Cài Đặt</a></li>
@@ -127,9 +124,10 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About ${freelancer.fullname}</h3>
-									<!-- About -->
-									${freelancer.about}
+									<h3>About Adam Declizer</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum sed diam ac fermentum. Mauris nec pellentesque neque. Cras nec diam euismod, congue sapien eu, fermentum libero. Vestibulum quis sem.</p>
 								</div>
 								<!-- End About Sec -->
 								
@@ -148,7 +146,192 @@
 								<!-- End Address Sec -->
 								
 								<!-- Start Job List -->
-								<tiles:insertAttribute name="job-list"/>
+								<div id="post-job" class="tab-pane fade">
+									<h3>You have 22 job post</h3>
+									<div class="row">
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-1.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Autodesk <span class="cmp-tagline">(Software Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+											<span class="tg-themetag tg-featuretag">Premium</span>
+										</article>
+										
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-2.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Google <span class="cmp-tagline">(Software Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+										</article>
+										
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-3.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Honda <span class="cmp-tagline">(Motor Agency)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+										</article>
+										
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-4.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Microsoft <span class="cmp-tagline">(Software Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+											<span class="tg-themetag tg-featuretag">Premium</span>
+										</article>
+										
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-5.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Skype <span class="cmp-tagline">(Software Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+										</article>
+										
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-6.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Virtue <span class="cmp-tagline">(Development Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+										</article>
+										
+										<article>
+											<div class="mng-company">
+												<div class="col-md-2 col-sm-2">
+													<div class="mng-company-pic"><img src="assets/img/com-7.jpg" class="img-responsive" alt=""></div>
+												</div>
+												
+												<div class="col-md-5 col-sm-5">
+													<div class="mng-company-name">
+														<h4>Twitter <span class="cmp-tagline">(Social Media Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div>
+												</div>
+												
+												<div class="col-md-4 col-sm-4">
+													<div class="mng-company-location">
+														<p><i class="fa fa-map-marker"></i> Street #210, Make New London</p>
+													</div>
+												</div>
+												
+												<div class="col-md-1 col-sm-1">
+													<div class="mng-company-action"><a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a></div>
+												</div>
+												
+											</div>
+											<span class="tg-themetag tg-featuretag">Premium</span>
+										</article>
+									</div>
+									<div class="row">
+										<ul class="pagination">
+											<li><a href="#">«</a></li>
+											<li class="active"><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li><a href="#">4</a></li>
+											<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
+											<li><a href="#">»</a></li>
+										</ul>
+									</div>
+								</div>
 								<!-- End Job List -->
 								
 								<!-- Start Friend List -->
@@ -158,7 +341,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status pending">Pending</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-1.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-1.png" class="img-responsive" alt=""></div>
 													<h4>Charles Hopman</h4><span>Web designer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -169,7 +352,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status available">Available</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-2.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-2.png" class="img-responsive" alt=""></div>
 													<h4>Ethan Marion</h4><span>IOS designer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -180,7 +363,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status pending">Pending</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-3.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-3.png" class="img-responsive" alt=""></div>
 													<h4>Zara Clow</h4><span>UI/UX designer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -191,7 +374,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status pending">Pending</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-4.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-4.png" class="img-responsive" alt=""></div>
 													<h4>Henry Crooks</h4><span>PHP Developer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -202,7 +385,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status available">Available</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-2.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-2.png" class="img-responsive" alt=""></div>
 													<h4>Joseph Macfarlan</h4><span>App Developer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -213,7 +396,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status pending">Pending</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-1.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-1.png" class="img-responsive" alt=""></div>
 													<h4>Zane Joyner</h4><span>Html Expert</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -224,7 +407,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status pending">Pending</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-3.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-3.png" class="img-responsive" alt=""></div>
 													<h4>Anna Hoysted</h4><span>UI/UX Designer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -235,7 +418,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status available">Available</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-4.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-4.png" class="img-responsive" alt=""></div>
 													<h4>Spencer Birdseye</h4><span>SEO Expert</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -246,7 +429,7 @@
 											<div class="manage-cndt">
 												<div class="cndt-status pending">Pending</div>
 												<div class="cndt-caption">
-													<div class="cndt-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/can-1.png" class="img-responsive" alt=""></div>
+													<div class="cndt-pic"><img src="assets/img/can-1.png" class="img-responsive" alt=""></div>
 													<h4>Eden Macaulay</h4><span>Web designer</span>
 													<p>Our analysis team at Megriosft use end to end innovation proces</p>
 												</div><a href="#" title="" class="cndt-profile-btn">View Profile</a>
@@ -269,11 +452,7 @@
 								<!-- End Friend List -->
 								
 								<!-- Start Message -->
-								<tiles:insertAttribute name="evaluate" />
-									
-								
-								
-								
+								<tiles:insertAttribute name="evaluate"/>
 								<!-- End Message -->
 								
 								<!-- Start Settings -->
@@ -282,17 +461,17 @@
 										<h3>Chỉnh Sửa Thông Tin</h3>
 										<div class="edit-pro">
 											<div class="col-md-4 col-sm-6">
-												<label>Tên Freelancer</label>
+												<label>Tên công ty</label>
 												<input type="text" class="form-control" placeholder="Disney">
 											</div>
 											<div class="col-md-4 col-sm-6">
-												<label>Chuyên ngành</label>
-												<input type="text" class="form-control" placeholder="Thiết kế logo">
+												<label>Chuyên ngành công ty</label>
+												<input type="text" class="form-control" placeholder="Phát Triền Phần Mềm">
 											</div>
 											<div class="col-md-4 col-sm-6">
 												<label id="label-hireable">Trạng Thái</label>
-												<input type="checkbox" class="form-control" value="true" name="" id="checkbox-active-freelancer" checked="true">
-												<p id="p-hireable-freelancer">Sẵn Sàng</p>
+												<input type="checkbox" class="form-control" value="true" name="" id="checkbox-active-job" checked="true">
+												<p id="p-hireable">Đang tuyển dụng</p>
 											</div>
 											<div class="col-md-4 col-sm-6">
 												<label>Email</label>
@@ -334,7 +513,7 @@
 											</div>
 											
 											<div class="col-md-4 col-sm-6">
-												<label>Giới thiệu bản thân</label>
+												<label>Thông tin công ty</label>
 												<textarea class="form-control" placeholder="Write Something"></textarea>
 											</div>
 											<div class="col-md-4 col-sm-6">
@@ -374,7 +553,7 @@
 				<div class="row lg-menu">
 					<div class="container">
 						<div class="col-md-4 col-sm-4">
-							<img src="${pageContext.request.contextPath}/resources/assets/img/footer-logo.png" class="img-responsive" alt="" /> 
+							<img src="assets/img/footer-logo.png" class="img-responsive" alt="" /> 
 						</div>
 						<div class="col-md-8 co-sm-8 pull-right">
 							<ul>
@@ -480,7 +659,7 @@
 							<!-- Tab panes -->
 							<div class="tab-content" id="myModalLabel2">
 								<div role="tabpanel" class="tab-pane fade in active" id="login">
-									<img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="img-responsive" alt="" />
+									<img src="assets/img/logo.png" class="img-responsive" alt="" />
 									<div class="subscribe wow fadeInUp">
 										<form class="form-inline" method="post">
 											<div class="col-sm-12">
@@ -497,7 +676,7 @@
 								</div>
 
 								<div role="tabpanel" class="tab-pane fade" id="register">
-								<img src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="img-responsive" alt="" />
+								<img src="assets/img/logo.png" class="img-responsive" alt="" />
 									<form class="form-inline" method="post">
 											<div class="col-sm-12">
 												<div class="form-group">
@@ -551,16 +730,12 @@
 				</ul>
 			</div>
 			
-			
 			<!-- Scripts
 			================================================== -->
 			<c:forEach var="script" items="${javascripts}">
 		        <script src="<c:url value="${script}"/>"></script>
 		    </c:forEach> 
-			
-			
-			
-			</div>
+		</div>
 	</body>
 
 <!-- employer-profile41:42-->

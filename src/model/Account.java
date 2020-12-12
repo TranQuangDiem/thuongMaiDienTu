@@ -11,6 +11,8 @@ public class Account {
 	private String email;
 	private String phone;
 	private int role;
+	private String name;
+	private String major;
 	
 	
 	
@@ -87,12 +89,25 @@ public class Account {
 	public void setRole(int role) {
 		this.role = role;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", fullname=" + fullname
 				+ ", image=" + image + ", starAverage=" + starAverage + ", about=" + about + ", email=" + email
-				+ ", phone=" + phone + ", role=" + role + "]";
+				+ ", phone=" + phone + ", role=" + role + ", name=" + name + ", major=" + major + "]";
 	}
+	
 	
 	
 	

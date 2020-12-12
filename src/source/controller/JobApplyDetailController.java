@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import database.FreeLancerPrefileDatabase;
+import database.FreeLancerProfileDatabase;
 import database.JobApplyDetailDatabase;
 import model.Evaluate;
 import model.Subscriber;
