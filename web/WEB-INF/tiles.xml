@@ -8,6 +8,7 @@
 		<put-attribute name="evaluate"
 			value="/evaluate" />
 		
+		
 		<put-list-attribute name="stylesheets">
 			<add-attribute value="/resources/assets/plugins/css/plugins.css" />
 			<add-attribute value="/resources/assets/css/style.css" />

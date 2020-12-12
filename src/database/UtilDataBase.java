@@ -1,19 +1,51 @@
 package database;
 
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Account;
-import model.Evaluate;
+
 import model.Job;
 import model.Pricing;
 import model.Subscriber;
 
 public class UtilDataBase {
 	public static Account getAccount(int id_account) {
+		Account rs =null;
+		try {
+			String sql="select username, password, fullname, image, star_average,about,email,phone, role from account where id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, id_account);
+			ResultSet rsSet=ps.executeQuery();
+			while(rsSet.next()) {
+				rs= new Account();
+				rs.setId(id_account);
+				rs.setUsername(rsSet.getString(1));
+				rs.setPassword(rsSet.getString(2));
+				rs.setFullname(rsSet.getString(3));
+				rs.setImage(rsSet.getString(4));
+				rs.setStarAverage(rsSet.getFloat(5));
+				rs.setAbout(rsSet.getString(6));
+//				rs.setAbout(getLargerString(rsSet, 6));
+				rs.setEmail(rsSet.getString(7));
+				rs.setPhone(rsSet.getString(8));
+				rs.setRole(rsSet.getInt(9));
+//				System.out.println(rs.toString());
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return rs;
+	}
+	public static Account getMinAccount(int id_account) {
 		Account rs =null;
 		try {
 			String sql="select username, password, fullname, image, star_average from account where id=?";
@@ -28,7 +60,7 @@ public class UtilDataBase {
 				rs.setFullname(rsSet.getString(3));
 				rs.setImage(rsSet.getString(4));
 				rs.setStarAverage(rsSet.getFloat(5));
-//				System.out.println(rs.toString());
+				
 				
 			}
 			
@@ -100,8 +132,31 @@ public class UtilDataBase {
 		
 		return subscriber;
 	}
+//	public static String getLargerString(ResultSet rs, int columnIndex) throws SQLException {
+//
+//	    InputStream in = null;
+//	    int BUFFER_SIZE = 1024;
+//	    try {
+//	      in = rs.getAsciiStream(columnIndex);
+//	      if (in == null) {
+//	        return "";
+//	      }
+//
+//	      byte[] arr = new byte[BUFFER_SIZE];
+//	      StringBuffer buffer = new StringBuffer();
+//	      int numRead = in.read(arr);
+//	      while (numRead != -1) {
+//	        buffer.append(new String(arr, 0, numRead));
+//	        numRead = in.read(arr);
+//	      }
+//	      return buffer.toString();
+//	    } catch (Exception e) {
+//	      e.printStackTrace();
+//	      throw new SQLException(e.getMessage());
+//	    }
+//	  }
 	public static void main(String[] args) {
-		System.out.println(getSubscriber(1));
+		System.out.println(getAccount(1));
 	}
 
 }

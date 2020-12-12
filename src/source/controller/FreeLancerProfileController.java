@@ -7,14 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import database.FreeLancerPrefileDatabase;
 import database.UtilDataBase;
 import model.Account;
@@ -26,9 +24,11 @@ public class FreeLancerProfileController {
 
 	// url: /freelancer-profile?id_freelancer=1
 	@RequestMapping("/freelancer-profile")
-	public String layout() {
-		
-		
+	public String layout(HttpServletRequest request,Model model) {
+		Account account = (Account) request.getSession().getAttribute("currentAccount");
+		Account currentAccount=UtilDataBase.getAccount(account.getId());
+		model.addAttribute("account", currentAccount);
+//		System.out.println(currentAccount);
 		return "freelancer-profile";
 	}
 

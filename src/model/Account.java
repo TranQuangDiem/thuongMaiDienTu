@@ -1,12 +1,17 @@
 package model;
 
 public class Account {
-	int id;
-	String username;
-	String password;
-	String fullname;
-	String image;
-	float starAverage;
+	private int id;
+	private String username;
+	private String password;
+	private String fullname;
+	private String image;
+	private float starAverage;
+	private String about;
+	private String email;
+	private String phone;
+	private int role;
+	
 	
 	
 	public Account() {
@@ -57,11 +62,39 @@ public class Account {
 	public void setStarAverage(float starAverage) {
 		this.starAverage = starAverage;
 	}
+	
+	public String getAbout() {
+		return about;
+	}
+	public void setAbout(String about) {
+		this.about = about;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
+	}
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", fullname=" + fullname
-				+ ", image=" + image + "]";
+				+ ", image=" + image + ", starAverage=" + starAverage + ", about=" + about + ", email=" + email
+				+ ", phone=" + phone + ", role=" + role + "]";
 	}
+	
+	
 	
 	
 

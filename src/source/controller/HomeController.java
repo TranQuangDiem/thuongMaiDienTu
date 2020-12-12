@@ -18,7 +18,7 @@ public class HomeController {
 	@RequestMapping({ "/index", "/" })
 	private String trangchu(HttpServletRequest request) {
 		
-		Account acount=UtilDataBase.getAccount(2);
+		Account acount=UtilDataBase.getMinAccount(1);
 		
 		//Login
 		request.getSession().setAttribute("currentAccount",acount);
