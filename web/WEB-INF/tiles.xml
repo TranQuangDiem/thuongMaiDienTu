@@ -109,7 +109,12 @@
 			
 		</put-list-attribute>
 	</definition>
-
+	<definition name="index-6" template="/WEB-INF/views/index-6.jsp">
+		<put-attribute name="title" value="Trang chủ"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
+	</definition>
+	
 
 
 
