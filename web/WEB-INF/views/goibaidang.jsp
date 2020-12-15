@@ -111,32 +111,6 @@
 				</c:forEach>
 			</c:if>
 
-			<div class="col-md-4 col-sm-4">
-				<div class="pr-table">
-					<div class="pr-header">
-						<div class="pr-plan">
-							<h4>Premium</h4>
-						</div>
-						<div class="pr-price">
-							<h3>
-								<sup>$</sup>15<sub>/Month</sub>
-							</h3>
-						</div>
-					</div>
-					<div class="pr-features">
-						<ul>
-							<li>Time : 1 months</li>
-							<li>Prioritize : <a style="color: #26a9e1">hight</a></li>
-							<li>Post limit : unlimited</li>
-							<li>You can purchase more than once</li>
-						</ul>
-					</div>
-					<div class="pr-buy-button">
-						<a href="#" class="pr-btn" title="Price Button">Get Started</a>
-					</div>
-				</div>
-			</div>
-
 		</div>
 		</section>
 		<!-- End Pricing Section -->

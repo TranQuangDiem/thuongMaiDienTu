@@ -1,6 +1,6 @@
 package source.controller;
 
-import java.util.Date;
+import java.util.Date; 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,13 +9,13 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import database.EmployerProfileDatabase;
 import database.FreeLancerProfileDatabase;
-import database.UtilDataBase;
 import model.Account;
 import model.Evaluate;
 
@@ -32,8 +32,16 @@ public class EmployerProfileController {
 //			model.addAttribute("currentAccount", currentAccount);
 			
 //			System.out.println(currentAccount);
+			model.addAttribute("taikhoan",EmployerProfileDatabase.information(id_employer));
+			model.addAttribute("listjob", EmployerProfileDatabase.listjobEmployer(id_employer));
 			return "employer-profile";
 		}
+		@RequestMapping(value="/employer-profile/update",params= {"id_employer"}, method= RequestMethod.POST)
+		public String update(HttpServletRequest request,@RequestParam(value = "id_employer") int id_employer, @ModelAttribute("Account") Account account) {
+			EmployerProfileDatabase.update(account,id_employer);
+			return "redirect:/employer-profile?id_employer="+account.getId();
+		}
+		
 		@RequestMapping(value = "/employer-evaluate", params = { "id_employer" }, method = RequestMethod.GET)
 		public String evaluate(Model model, @RequestParam(value = "id_employer") int id_employer) {
 			model.addAttribute("id_employer", id_employer + "");

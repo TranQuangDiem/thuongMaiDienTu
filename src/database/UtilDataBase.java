@@ -90,6 +90,22 @@ public class UtilDataBase {
 		}
 		return danhsachgoi;
 	}
+	public static List<Job> listJob() {
+		List<Job> danhsachcongviec = new ArrayList<Job>();
+		try {
+			String sql="select * from job limit 24";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6), rs.getInt(7),rs.getDate(8));
+				danhsachcongviec.add(j);
+			}
+			ConnectionDB.close(rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return danhsachcongviec;
+	}
 	public static Job getJob(int id_job) {
 		Job rs =null;
 		try {

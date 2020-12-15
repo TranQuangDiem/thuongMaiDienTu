@@ -23,11 +23,13 @@
 	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
 </head>
 <body>
+	<c:url value="/thanhtoan" var="urlThanhtoan" />
 	<div class="Loader"></div>
 	<div class="wrapper">
-		
-		<nav class="navbar navbar-default navbar-fixed navbar-light white bootsnav">
-			<tiles:insertAttribute name="header"></tiles:insertAttribute>		
+
+		<nav
+			class="navbar navbar-default navbar-fixed navbar-light white bootsnav">
+			<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		</nav>
 		<div class="clearfix"></div>
 		<div class="banner home-5"
@@ -89,48 +91,53 @@
 				</div>
 				<!-- Job List -->
 				<div class="row extra-mrg">
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
+					<c:if test="${not empty danhsachcongviec}">
+						<c:forEach var="listjob" items="${danhsachcongviec}">
+							<div class="col-md-3 col-sm-6">
 							<a
-								href="${pageContext.request.contextPath}/job-apply-detail?id_job=1">
-								<div class="brows-job-company-img">
-									<img
-										src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-										class="img-responsive" alt="" />
-								</div>
+										href="${pageContext.request.contextPath}/job-apply-detail?id_job=${listjob.id}">
+								<div class="grid-view brows-job-list">
+										<div class="brows-job-company-img">
+											<img style="max-width: 100%; border-radius: 100%"
+												src="${pageContext.request.contextPath}/${listjob.img}"
+												class="img-responsive" alt="" />
+										</div>
 
-								<div class="brows-job-position">
-									<h3>Design Logo</h3>
+										<div class="brows-job-position">
+											<h3>${listjob.tencongviec}</h3>
 
-									<p>
-										<span>Google</span>
-									</p>
-								</div>
-							</a>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
+											<p>
+												<span>Google</span>
+											</p>
+										</div>
+								
+									<div class="job-position">
+										<span class="job-num">${listjob.soluongtuyen} Position</span>
 									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
+									<div class="brows-job-type">
+										<span class="freelanc">Freelancer</span>
+									</div>
+									<ul class="grid-view-caption">
+										<li>
+											<div class="brows-job-location">
+												<p>
+													<i class="fa fa-map-marker"></i>NL University
+												</p>
+											</div>
+										</li>
+										<li>
+											<p>
+												<span class="brows-job-sallery"><i
+													class="fa fa-money"></i>${listjob.chiphi} VNĐ</span>
+											</p>
+										</li>
+									</ul>
+									<!-- <span class="tg-themetag tg-featuretag">UlTIMATE</span> -->
+								</div>
+								</a>
+							</div>
+						</c:forEach>
+					</c:if>
 					<div class="col-md-3 col-sm-6">
 						<div class="grid-view brows-job-list">
 							<div class="brows-job-company-img">
@@ -612,89 +619,44 @@
 						</h2>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-4">
-					<div class="pr-table">
-						<div class="pr-header">
-							<div class="pr-plan">
-								<h4>Try out</h4>
-							</div>
-							<div class="pr-price">
-								<h3>
-									Free<sub>/Week</sub>
-								</h3>
-							</div>
-						</div>
-						<div class="pr-features">
-							<ul>
-								<li>Time : 1 week</li>
-								<li>Prioritize : <a style="color: #11b719">normal</a></li>
-								<li>Post limit : 3 posts<sub>/Week</sub></li>
-								<li>You can only try it once</li>
-							</ul>
-						</div>
-						<div class="pr-buy-button">
-							<a href="#" class="pr-btn" title="Price Button">Get Started</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4">
-					<div class="pr-table">
-						<div class="pr-header active">
-							<div class="pr-plan">
-								<h4>Ultimate</h4>
-							</div>
-							<div class="pr-price">
-								<h3>
-									<sup>$</sup>50<sub>/6 Months</sub>
-								</h3>
+				<c:if test="${not empty danhsachgoi}">
+					<c:forEach var="goi" items="${danhsachgoi}">
+						<div class="col-md-4 col-sm-4">
+							<div class="pr-table">
+								<div class="pr-header active">
+									<div class="pr-plan">
+										<h4>${goi.tengoi}</h4>
+									</div>
+									<div class="pr-price">
+										<h3>
+											${goi.gia}<sub>VNĐ</sub>
+										</h3>
+									</div>
+								</div>
+								<div class="pr-features">
+									<ul>
+										<li>Thời hạn : ${goi.thoihan}</li>
+										<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
+										<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
+										<li>${goi.mota}</li>
+									</ul>
+								</div>
+								<div class="pr-buy-button">
+									<a href="${urlThanhtoan}/${goi.id}" class="pr-btn active"
+										title="Price Button">Get Started</a>
+								</div>
 							</div>
 						</div>
-						<div class="pr-features">
-							<ul>
-								<li>Time : 6 months</li>
-								<li>Prioritize : <a style="color: #ff526c">very hight</a></li>
-								<li>Post limit : unlimited</li>
-								<li>You can purchase more than once</li>
-							</ul>
-						</div>
-						<div class="pr-buy-button">
-							<a href="#" class="pr-btn active" title="Price Button">Get
-								Started</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4">
-					<div class="pr-table">
-						<div class="pr-header">
-							<div class="pr-plan">
-								<h4>Premium</h4>
-							</div>
-							<div class="pr-price">
-								<h3>
-									<sup>$</sup>15<sub>/Month</sub>
-								</h3>
-							</div>
-						</div>
-						<div class="pr-features">
-							<ul>
-								<li>Time : 1 months</li>
-								<li>Prioritize : <a style="color: #26a9e1">hight</a></li>
-								<li>Post limit : unlimited</li>
-								<li>You can purchase more than once</li>
-							</ul>
-						</div>
-						<div class="pr-buy-button">
-							<a href="#" class="pr-btn" title="Price Button">Get Started</a>
-						</div>
-					</div>
-				</div>
+					</c:forEach>
+				</c:if>
+
 			</div>
 		</section>
 
 		<div class="clearfix"></div>
-		
+
 		<div class="clearfix"></div>
-		
+
 		<footer class="footer">
 			<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 		</footer>
