@@ -1,4 +1,4 @@
-/*
+﻿/*
  Navicat Premium Data Transfer
 
  Source Server         : My SQL
@@ -20,7 +20,6 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for account
 -- ----------------------------
-DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account`  (
   `id` int(255) NOT NULL,
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -33,8 +32,9 @@ CREATE TABLE `account`  (
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `role` int(255) NULL DEFAULT NULL,
   `id_addresss` int(255) NULL DEFAULT NULL,
-  `major` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `major` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -82,22 +82,22 @@ INSERT INTO `evaluate` VALUES (31, 2, 1, '2020-12-10 23:53:33', 1, '<p>Rủ đi 
 -- ----------------------------
 DROP TABLE IF EXISTS `goibaidang`;
 CREATE TABLE `goibaidang`  (
-  `id` int(11) NOT NULL,
-  `tengoi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `gia` int(100) NULL DEFAULT NULL,
-  `soluongbaidang` int(10) NULL DEFAULT NULL,
-  `thoihan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `mota` varchar(7000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `doUuTien` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tengoi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `gia` decimal(65, 0) NULL DEFAULT NULL,
+  `soluongbaidang` int(255) NULL DEFAULT NULL,
+  `thoihan` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `mota` varchar(7000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `doUuTien` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goibaidang
 -- ----------------------------
-INSERT INTO `goibaidang` VALUES (1, 'BASIC', 0, 10, 'DÙNG THỬ 1 TUẦN', 'bạn có thể thoải mái trải nghiệm', 'thấp');
-INSERT INTO `goibaidang` VALUES (2, 'PREMIUM', 290000, 100, '1 THÁNG', 'gói phù hợp với nhà tuyển dụng', 'trung bình');
-INSERT INTO `goibaidang` VALUES (3, 'ULTIMATE', 59000, 200, '1 THÁNG', 'phù hợp với nhà tuyển dụng có nhiều công việc', 'cao');
+INSERT INTO `goibaidang` VALUES (1, 'Dùng thử', 0, 20, '1 tuần', 'bạn có thể thoải mái trải nghiệm', 'thấp');
+INSERT INTO `goibaidang` VALUES (2, 'Cơ bản', 190000, 90, '30 ngày', 'phù hợp với nhà tuyển dụng có kinh phí thấp', 'trung bình');
+INSERT INTO `goibaidang` VALUES (3, 'Nâng cao', 290000, 150, '30 ngày', 'phù hợp với hầu hết nhà tuyển dụng', 'khá');
 
 -- ----------------------------
 -- Table structure for job
@@ -105,13 +105,24 @@ INSERT INTO `goibaidang` VALUES (3, 'ULTIMATE', 59000, 200, '1 THÁNG', 'phù h�
 DROP TABLE IF EXISTS `job`;
 CREATE TABLE `job`  (
   `id` int(255) NOT NULL AUTO_INCREMENT,
+  `tencongviec` varchar(6000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `chitiet` varchar(6000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `chiphi` decimal(65, 0) NULL DEFAULT NULL,
+  `idAccount` int(255) NULL DEFAULT NULL,
+  `img` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `soluongtuyen` int(255) NULL DEFAULT NULL,
+  `ngaydang` date NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of job
 -- ----------------------------
-INSERT INTO `job` VALUES (1);
+INSERT INTO `job` VALUES (1, 'Thiết kế web bán đồ', NULL, 900000, 1, 'resources/assets/img/client-4.jpg', 2, '2020-12-12');
+INSERT INTO `job` VALUES (2, 'Thiết kế LOGO', NULL, 800000, 2, 'resources/assets/img/client-1.jpg', 1, '2020-12-14');
+INSERT INTO `job` VALUES (3, 'Thiết kế App', NULL, 1700000, 3, 'resources/assets/img/client-2.jpg', 3, '2020-12-15');
+INSERT INTO `job` VALUES (4, 'Thiết kế quảng cáo', NULL, 120000, 1, 'resources/assets/img/client-4.jpg', 1, '2020-12-13');
+
 
 -- ----------------------------
 -- Table structure for subscriber
