@@ -1,2 +1,7 @@
-/build/
+.classpath
+.project
+.settings/
+build/
+out/
+.gitignore
 
