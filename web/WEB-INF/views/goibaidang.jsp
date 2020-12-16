@@ -35,7 +35,7 @@
 			</button>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index-6.jsp"><img
-					src="assets/img/logo.png" class="logo logo-scrolled" alt=""></a>
+					src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="logo logo-scrolled" alt=""></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-menu">
 				<ul class="nav navbar-nav navbar-left" data-in="fadeInDown"
@@ -69,7 +69,7 @@
 
 		<!-- Title Header Start -->
 		<section class="inner-header-title"
-			style="background-image: url(assets/img/banner-10.jpg);">
+			style="background-image: url(${pageContext.request.contextPath}/resources/assets/img/banner-10.jpg);">
 		<div class="container">
 			<h1>Our Package</h1>
 		</div>
@@ -103,7 +103,7 @@
 								</ul>
 							</div>
 							<div class="pr-buy-button">
-								<a href="${urlThanhtoan}/${goi.id}" class="pr-btn active"
+								<a href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
 									title="Price Button">Get Started</a>
 							</div>
 						</div>

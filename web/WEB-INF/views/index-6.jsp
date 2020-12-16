@@ -94,9 +94,9 @@
 					<c:if test="${not empty danhsachcongviec}">
 						<c:forEach var="listjob" items="${danhsachcongviec}">
 							<div class="col-md-3 col-sm-6">
-							<a
-										href="${pageContext.request.contextPath}/job-apply-detail?id_job=${listjob.id}">
-								<div class="grid-view brows-job-list">
+								<a
+									href="${pageContext.request.contextPath}/job-apply-detail?id_job=${listjob.id}">
+									<div class="grid-view brows-job-list">
 										<div class="brows-job-company-img">
 											<img style="max-width: 100%; border-radius: 100%"
 												src="${pageContext.request.contextPath}/${listjob.img}"
@@ -110,30 +110,30 @@
 												<span>Google</span>
 											</p>
 										</div>
-								
-									<div class="job-position">
-										<span class="job-num">${listjob.soluongtuyen} Position</span>
-									</div>
-									<div class="brows-job-type">
-										<span class="freelanc">Freelancer</span>
-									</div>
-									<ul class="grid-view-caption">
-										<li>
-											<div class="brows-job-location">
+
+										<div class="job-position">
+											<span class="job-num">${listjob.soluongtuyen} Position</span>
+										</div>
+										<div class="brows-job-type">
+											<span class="freelanc">Freelancer</span>
+										</div>
+										<ul class="grid-view-caption">
+											<li>
+												<div class="brows-job-location">
+													<p>
+														<i class="fa fa-map-marker"></i>NL University
+													</p>
+												</div>
+											</li>
+											<li>
 												<p>
-													<i class="fa fa-map-marker"></i>NL University
+													<span class="brows-job-sallery"><i
+														class="fa fa-money"></i>${listjob.chiphi} VNĐ</span>
 												</p>
-											</div>
-										</li>
-										<li>
-											<p>
-												<span class="brows-job-sallery"><i
-													class="fa fa-money"></i>${listjob.chiphi} VNĐ</span>
-											</p>
-										</li>
-									</ul>
-									<!-- <span class="tg-themetag tg-featuretag">UlTIMATE</span> -->
-								</div>
+											</li>
+										</ul>
+										<!-- <span class="tg-themetag tg-featuretag">UlTIMATE</span> -->
+									</div>
 								</a>
 							</div>
 						</c:forEach>
@@ -642,7 +642,7 @@
 									</ul>
 								</div>
 								<div class="pr-buy-button">
-									<a href="${urlThanhtoan}/${goi.id}" class="pr-btn active"
+									<a href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
 										title="Price Button">Get Started</a>
 								</div>
 							</div>
