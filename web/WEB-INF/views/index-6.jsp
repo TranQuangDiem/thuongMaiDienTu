@@ -767,6 +767,7 @@
 				document.getElementById("rightMenu").style.display = "none";
 			}
 		</script>
+		<script src="${pageContext.request.contextPath}/resources/assets/js/formregisterandlogin.js"></script>
 	</div>
 </body>
 <!-- index-540:45-->

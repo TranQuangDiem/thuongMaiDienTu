@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ajaxreceiver.FormRegister;
 import database.UtilDataBase;
 import model.Account;
 
@@ -25,12 +24,7 @@ public class HomeController {
 		return "index-6";
 	}
 
-	@RequestMapping(value = "/register")
-	public String register(FormRegister form) {
-		String rs = "success";
-		return rs;
-	}
-
+	
 	@RequestMapping(value = "/pricing")
 	public String goiBaiDang(Model model) {
 		model.addAttribute("danhsachgoi", UtilDataBase.getPricing());
