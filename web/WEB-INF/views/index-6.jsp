@@ -21,6 +21,9 @@
 	rel="${pageContext.request.contextPath}/resources/stylesheet"
 	id="jssDefault"
 	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
+
 </head>
 <body>
 	<div class="Loader"></div>

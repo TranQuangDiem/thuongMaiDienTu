@@ -30,7 +30,8 @@
 					aria-hidden="true"></i>Payment</a></li>
 			<li><a href="signup.html"><i class="" aria-hidden="true"></i>Sign
 					Up Now</a></li>
-			<li class="left-br"><a href="javascript:void(0)"
+					<!-- href="javascript:void(0)" error cross platform-->
+			<li class="left-br"><a href=""
 				data-toggle="modal" data-target="#signup" class="signin">Sign In
 					Now</a></li>
 
@@ -107,3 +108,41 @@
 	onclick="openRightMenu()">
 	<i class="spin fa fa-cog" aria-hidden="true"></i>
 </button>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	//Add btn submit
+	$("#btn-login" ).click(function( event ) {
+		
+		  event.preventDefault();
+		  $.ajax({
+				type: "POST",
+				url: $("#form-login").attr('action'),
+				data : $('#form-login').serialize(),
+				success : function(data) {
+					console.log(data);
+					if(data=="Ok"){
+						//Success after login
+						location.reload();
+						switch(data){
+						case "Ok":
+							location.reload();
+						 	//$(location).attr('href','<%=request.getContextPath()%>');
+							break;
+						default:
+						
+									
+						break;
+						}
+					}
+					
+						
+					
+				}
+			});
+		  
+	});
+	
+});
+</script>
