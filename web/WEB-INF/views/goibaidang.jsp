@@ -35,7 +35,7 @@
 			</button>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index-6.jsp"><img
-					src="assets/img/logo.png" class="logo logo-scrolled" alt=""></a>
+					src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="logo logo-scrolled" alt=""></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-menu">
 				<ul class="nav navbar-nav navbar-left" data-in="fadeInDown"
@@ -69,7 +69,7 @@
 
 		<!-- Title Header Start -->
 		<section class="inner-header-title"
-			style="background-image: url(assets/img/banner-10.jpg);">
+			style="background-image: url(${pageContext.request.contextPath}/resources/assets/img/banner-10.jpg);">
 		<div class="container">
 			<h1>Our Package</h1>
 		</div>
@@ -103,39 +103,13 @@
 								</ul>
 							</div>
 							<div class="pr-buy-button">
-								<a href="${urlThanhtoan}/${goi.id}" class="pr-btn active"
+								<a href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
 									title="Price Button">Get Started</a>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
 			</c:if>
-
-			<div class="col-md-4 col-sm-4">
-				<div class="pr-table">
-					<div class="pr-header">
-						<div class="pr-plan">
-							<h4>Premium</h4>
-						</div>
-						<div class="pr-price">
-							<h3>
-								<sup>$</sup>15<sub>/Month</sub>
-							</h3>
-						</div>
-					</div>
-					<div class="pr-features">
-						<ul>
-							<li>Time : 1 months</li>
-							<li>Prioritize : <a style="color: #26a9e1">hight</a></li>
-							<li>Post limit : unlimited</li>
-							<li>You can purchase more than once</li>
-						</ul>
-					</div>
-					<div class="pr-buy-button">
-						<a href="#" class="pr-btn" title="Price Button">Get Started</a>
-					</div>
-				</div>
-			</div>
 
 		</div>
 		</section>

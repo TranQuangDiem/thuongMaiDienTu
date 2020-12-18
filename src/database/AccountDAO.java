@@ -19,40 +19,35 @@ public class AccountDAO {
 		return "";
 	}
 
-	public void boolean addAccountByRegister(String username, String password, String fullname) {
-
+	public boolean addAccountByRegister(String username, String password, String fullname) {
 		try {
 			String sql = "INSERT INTO account (account.username,account.`password`,account.fullname) VALUES (?, MD5(?), ?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ps.setString(3, fullname);
-			 
 			return ps.execute();
-		} catch  (SQLException | ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			return false;
 		}
-	
-		
-		
+
 	}
 
 	public static boolean isUsernameExists(String username) {
 		try {
 			String query = "SELECT username FROM account WHERE account.username=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
-			ps.setString(1,username );
-			ResultSet rs= ps.executeQuery();
-			boolean check=rs.next();
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			boolean check = rs.next();
 			ps.close();
 			return check;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
-	
 
 }

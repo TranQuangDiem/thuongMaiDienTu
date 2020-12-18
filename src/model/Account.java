@@ -17,9 +17,37 @@ public class Account {
 	private int role;
 	private String name;
 	private String major;
+	private int soluongbaidang;
+	private Address address;
+	private String addressString;
+	private String twitter;
+	private String facebook;
+	private String website;
+	private String background;
+	
 
 	public Account() {
 		super();
+	}
+
+	public Account(int id, String username, String password, String fullname, String image, float starAverage,
+			String about, String email, String phone, int role, String name, String major, int soluongbaidang,
+			Address address) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.fullname = fullname;
+		this.image = image;
+		this.starAverage = starAverage;
+		this.about = about;
+		this.email = email;
+		this.phone = phone;
+		this.role = role;
+		this.name = name;
+		this.major = major;
+		this.soluongbaidang = soluongbaidang;
+		this.address = address;
 	}
 
 	public Account(int id, String username, String password, String fullname, String image) {
@@ -29,6 +57,24 @@ public class Account {
 		this.password = password;
 		this.fullname = fullname;
 		this.image = image;
+	}
+
+	
+
+	public int getSoluongbaidang() {
+		return soluongbaidang;
+	}
+
+	public void setSoluongbaidang(int soluongbaidang) {
+		this.soluongbaidang = soluongbaidang;
+	}
+    
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public int getId() {
@@ -127,11 +173,54 @@ public class Account {
 		this.major = major;
 	}
 
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getBackground() {
+		return background;
+	}
+
+	public void setBackground(String background) {
+		this.background = background;
+	}
+	
+
+	public String getAddressString() {
+		return addressString;
+	}
+
+	public void setAddressString(String addressString) {
+		this.addressString = addressString;
+	}
+
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", fullname=" + fullname
 				+ ", image=" + image + ", starAverage=" + starAverage + ", about=" + about + ", email=" + email
-				+ ", phone=" + phone + ", role=" + role + ", name=" + name + ", major=" + major + "]";
+				+ ", phone=" + phone + ", role=" + role + ", name=" + name + ", major=" + major + ", soluongbaidang="
+				+ soluongbaidang + ", address=" + address + ", twitter=" + twitter + ", facebook=" + facebook
+				+ ", website=" + website + ", background=" + background + "]";
 	}
 
 	public static boolean validName(String name) {
