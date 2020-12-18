@@ -1,18 +1,18 @@
--- /*
- -- Navicat Premium Data Transfer
+/*
+ Navicat Premium Data Transfer
 
- -- Source Server         : My SQL
- -- Source Server Type    : MySQL
- -- Source Server Version : 100411
- -- Source Host           : localhost:3306
- -- Source Schema         : ecommerce
+ Source Server         : My SQL
+ Source Server Type    : MySQL
+ Source Server Version : 100411
+ Source Host           : localhost:3306
+ Source Schema         : ecommerce
 
- -- Target Server Type    : MySQL
- -- Target Server Version : 100411
- -- File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 100411
+ File Encoding         : 65001
 
- -- Date: 18/12/2020 17:04:57
--- */
+ Date: 19/12/2020 00:11:14
+*/
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -46,26 +46,26 @@ CREATE TABLE `account`  (
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES (1, 'hoang', '123', 'Nguyễn Văn A', '/resources/user/1/rong.png', 3.50, 'Công ty làm ăn rất tốt', 'yourmail@gmail.com', '039595500', 1, NULL, 'Công ty phát triển phần mềm', 'Rồng Vàng', NULL, NULL, NULL, NULL, 'Quận 1');
-INSERT INTO `account` VALUES (2, 'test1', '123', 'Daniel Duke', '/resources/user/2/can-2.png', 2.50, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum sed diam ac fermentum. Mauris nec pellentesque neque. Cras nec diam euismod, congue sapien eu, fermentum libero. Vestibulum quis sem.</p>\r\n								', 'mail@gmail.com', '03457989', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `account` VALUES (1, 'hoang', '123', 'Hoang Designer', '/resources/user/1/rong.png', 3.50, 'Vip ko bàn cãi haha', 'vippro@gmail.com', '0391151', 1, 1, 'Chuyên viên thiết kế', NULL, 'twitter/hoangit', 'facebook/hoangit', 'website/hoangit', NULL, NULL);
+INSERT INTO `account` VALUES (2, 'test1', '123', 'Daniel Duke', '/resources/user/2/can-2.png', 2.50, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum sed diam ac fermentum. Mauris nec pellentesque neque. Cras nec diam euismod, congue sapien eu, fermentum libero. Vestibulum quis sem.</p>\r\n								', 'mail@gmail.com', '03457989', 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for address
 -- ----------------------------
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address`  (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `id_account` int(255) NOT NULL,
   `tinh/thanhpho` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `quan/huyen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `xa/phuong` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `diachi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  `diachi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
 -- ----------------------------
 INSERT INTO `address` VALUES (1, 'TP HCM', 'Phu Nhuan', '3', '12');
+INSERT INTO `address` VALUES (2, '', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for evaluate

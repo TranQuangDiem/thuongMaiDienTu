@@ -9,6 +9,8 @@
 			value="/evaluate" />
 		<put-attribute name="job-list"
 			value="/job-list" />
+			<put-attribute name="settings"
+			value="/freelancer-profile-settings" />
 		
 		
 		<put-list-attribute name="stylesheets">

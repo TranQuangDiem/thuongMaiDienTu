@@ -82,7 +82,7 @@
                 <div class="row bottom-mrg">
                     <div class="col-md-12 col-sm-12">
                         <div class="advance-detail detail-desc-caption">
-                            <h4>${freelancer.name}</h4><span class="designation">${freelancer.major}</span>
+                            <h4>${freelancer.fullname}</h4><span class="designation">${freelancer.major}</span>
                             <ul>
                                 <li><strong class="j-view">742</strong>Công việc đã nhận</li>
                                 <li><strong class="j-applied">570</strong>Công Việc Hoàn Thành</li>
@@ -96,9 +96,9 @@
                     <div class="detail pannel-footer">
                         <div class="col-md-5 col-sm-5">
                             <ul class="detail-footer-social">
-								<li><a title="Trang Facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a title="Trang Twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a title="Trang Web" href="#"><i class="fa fa-globe"></i></i></a></li>
+								<li><a title="Trang Facebook" href="${freelancer.facebook}"><i class="fa fa-facebook"></i></a></li>
+								<li><a title="Trang Twitter" href="${freelancer.twitter}"><i class="fa fa-twitter"></i></a></li>
+								<li><a title="Trang Web" href="${freelancer.website}"><i class="fa fa-globe"></i></i></a></li>
                             </ul>
                         </div>
                         <div class="col-md-7 col-sm-7">
@@ -127,7 +127,7 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About ${freelancer.fullname}</h3>
+									<h3>About ${freelancer.major} ${freelancer.name}</h3>
 									<!-- About -->
 									${freelancer.about}
 								</div>
@@ -137,12 +137,12 @@
 								<div id="address" class="tab-pane fade">
 									<h3>Thông tin liên hệ</h3>
 									<ul class="job-detail-des">
-										<li><span>Tỉnh:</span>Đại học Nông Lâm</li>
-										<li><span>Tỉnh / Thành Phố:</span>Hồ Chí Minh</li>
-										<li><span>Quận / Huyện:</span>Thủ Đức</li>
-										<li><span>Phường / Xã:</span>Linh Trung</li>
-										<li><span>Điện Thoại:</span>+84 012 345 789</li>
-										<li><span>Email:</span>youremail@gmail.com</li>
+										<li><span>Địa chỉ:</span>${freelancer.address.diaChi}</li>
+										<li><span>Tỉnh / Thành Phố:</span>${freelancer.address.tinhThanhPho}</li>
+										<li><span>Quận / Huyện:</span>${freelancer.address.quanHuyen}</li>
+										<li><span>Phường / Xã:</span>${freelancer.address.xaPhuong}</li>
+										<li><span>Điện Thoại:</span>${freelancer.phone}</li>
+										<li><span>Email:</span>${freelancer.email}</li>
 									</ul>
 								</div>
 								<!-- End Address Sec -->
@@ -277,90 +277,7 @@
 								<!-- End Message -->
 								
 								<!-- Start Settings -->
-								<div id="settings" class="tab-pane fade">
-									<div class="row no-mrg">
-										<h3>Chỉnh Sửa Thông Tin</h3>
-										<div class="edit-pro">
-											<div class="col-md-4 col-sm-6">
-												<label>Tên Freelancer</label>
-												<input type="text" class="form-control" placeholder="Disney">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Chuyên ngành</label>
-												<input type="text" class="form-control" placeholder="Thiết kế logo">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label id="label-hireable">Trạng Thái</label>
-												<input type="checkbox" class="form-control" value="true" name="" id="checkbox-active-freelancer" checked="true">
-												<p id="p-hireable-freelancer">Sẵn Sàng</p>
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Email</label>
-												<input type="email" class="form-control" placeholder="youremail@gmail.com">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Điện thoại</label>
-												<input type="text" class="form-control" placeholder="+84012345678">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Tỉnh / Thành Phố</label>
-												<select name="ls_province" class="form-control"  id="tinh"></select>
-
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Quận / Huyện</label>
-												<select name="ls_district" class="form-control" id="huyen"></select>
-
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Xã Phường</label>
-												<select name="ls_ward" class="form-control" id="xa"></select>
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Địa Chỉ</label>
-												<input type="text" class="form-control" placeholder="123 Tên Đường">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Facebook</label>
-												<input type="text" class="form-control" placeholder="facebook.com/idfacebook">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Twitter</label>
-												<input type="text" class="form-control" placeholder="twitter.com/idtwitter">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Website</label>
-												<input type="text" class="form-control" placeholder="yourwebsite.com">
-											</div>
-											
-											<div class="col-md-4 col-sm-6">
-												<label>Giới thiệu bản thân</label>
-												<textarea class="form-control" placeholder="Write Something"></textarea>
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Tải hình đại diện</label>
-												<form action="http://codeminifier.com/upload-target" class="dropzone dz-clickable profile-pic">
-													<div class="dz-default dz-message">
-														<i class="fa fa-cloud-upload"></i>
-														<span>Drop files here to upload</span>
-													</div>
-												</form>
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Tải ảnh bìa</label>
-												<form action="http://codeminifier.com/upload-target" class="dropzone dz-clickable profile-cover">
-													<div class="dz-default dz-message">
-														<i class="fa fa-cloud-upload"></i>
-														<span>Drop files here to upload</span>
-													</div>
-												</form>
-											</div>
-											<div class="col-sm-12">
-												<button type="button" class="update-btn">Update Now</button>
-											</div>
-										</div>
-									</div>
-								</div>
+								<tiles:insertAttribute name="settings" />
 								<!-- End Settings -->
 							</div>
 							<!-- Start All Sec -->
