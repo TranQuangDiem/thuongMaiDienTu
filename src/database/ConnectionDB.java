@@ -35,10 +35,7 @@ public class ConnectionDB {
     }
     public static void close(ResultSet rs) {
     	try {
-    		
-    		
 			rs.getStatement().getConnection().close();
-			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			
