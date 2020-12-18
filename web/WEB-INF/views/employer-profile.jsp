@@ -426,7 +426,7 @@
 									<div class="row no-mrg">
 										<h3>Chỉnh Sửa Thông Tin</h3>
 										<div class="edit-pro">
-											<form action="${update}?id_employer=${taikhoan.id}" method="post"
+											<form action="${update}?id_employer=${taikhoan.id}" method="post" accept-charset="utf-8"
 												modelAttribute="Account">
 												<div class="col-md-4 col-sm-6">
 													<label>Tên công ty</label> <input type="text"
@@ -448,6 +448,9 @@
 														class="form-control" name="email"
 														value="${taikhoan.email}">
 												</div>
+												<input type="hidden"
+														class="form-control" name="id"
+														value="${taikhoan.id}" >
 												<div class="col-md-4 col-sm-6">
 													<label>Điện thoại</label> <input type="text"
 														class="form-control" name="phone"
@@ -469,7 +472,7 @@
 											</div> -->
 												<div class="col-md-4 col-sm-6">
 													<label>Địa Chỉ</label> <input type="text"
-														class="form-control" name="address"
+														class="form-control" name="addressString"
 														value="${taikhoan.addressString}">
 												</div>
 												<!-- <div class="col-md-4 col-sm-6">

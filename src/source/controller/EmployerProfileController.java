@@ -36,7 +36,7 @@ public class EmployerProfileController {
 			model.addAttribute("listjob", EmployerProfileDatabase.listjobEmployer(id_employer));
 			return "employer-profile";
 		}
-		@RequestMapping(value="/employer-profile/update",params= {"id_employer"}, method= RequestMethod.POST)
+		@RequestMapping(value="/employer-profile/update",params= {"id_employer"}, method= RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 		public String update(HttpServletRequest request,@RequestParam(value = "id_employer") int id_employer, @ModelAttribute("Account") Account account) {
 			EmployerProfileDatabase.update(account,id_employer);
 			return "redirect:/employer-profile?id_employer="+account.getId();

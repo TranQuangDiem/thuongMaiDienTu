@@ -1,18 +1,18 @@
-/*
- Navicat Premium Data Transfer
+-- /*
+ -- Navicat Premium Data Transfer
 
- Source Server         : My SQL
- Source Server Type    : MySQL
- Source Server Version : 100411
- Source Host           : localhost:3306
- Source Schema         : ecommerce
+ -- Source Server         : My SQL
+ -- Source Server Type    : MySQL
+ -- Source Server Version : 100411
+ -- Source Host           : localhost:3306
+ -- Source Schema         : ecommerce
 
- Target Server Type    : MySQL
- Target Server Version : 100411
- File Encoding         : 65001
+ -- Target Server Type    : MySQL
+ -- Target Server Version : 100411
+ -- File Encoding         : 65001
 
- Date: 18/12/2020 16:37:58
-*/
+ -- Date: 18/12/2020 17:04:57
+-- */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -46,7 +46,7 @@ CREATE TABLE `account`  (
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES (1, 'hoang', '123', 'Nguyễn Văn A', '/resources/user/1/rong.png', 3.50, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum sed diam ac fermentum. Mauris nec pellentesque neque. Cras nec diam euismod, congue sapien eu, fermentum libero. Vestibulum quis sem.</p>\r\n								', 'yourmail@gmail.com', '039595500', 1, NULL, 'Công ty phát triển phần mềm', 'Rồng Vàng', NULL, NULL, NULL, NULL, 'Quận 12');
+INSERT INTO `account` VALUES (1, 'hoang', '123', 'Nguyễn Văn A', '/resources/user/1/rong.png', 3.50, 'Công ty làm ăn rất tốt', 'yourmail@gmail.com', '039595500', 1, NULL, 'Công ty phát triển phần mềm', 'Rồng Vàng', NULL, NULL, NULL, NULL, 'Quận 1');
 INSERT INTO `account` VALUES (2, 'test1', '123', 'Daniel Duke', '/resources/user/2/can-2.png', 2.50, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla interdum sed diam ac fermentum. Mauris nec pellentesque neque. Cras nec diam euismod, congue sapien eu, fermentum libero. Vestibulum quis sem.</p>\r\n								', 'mail@gmail.com', '03457989', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
@@ -87,9 +87,9 @@ CREATE TABLE `evaluate`  (
 -- Records of evaluate
 -- ----------------------------
 INSERT INTO `evaluate` VALUES (1, 2, 1, '2020-12-06 14:46:49', 3, '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia volu');
-INSERT INTO `evaluate` VALUES (29, 2, 1, '2020-12-10 23:52:22', 3, '<p>12323</p>');
-INSERT INTO `evaluate` VALUES (30, 2, 1, '2020-12-10 23:52:31', 5, '<p>Hi</p>');
-INSERT INTO `evaluate` VALUES (31, 2, 1, '2020-12-10 23:53:33', 1, '<p>Rủ đi chơi</p>');
+INSERT INTO `evaluate` VALUES (2, 2, 1, '2020-12-10 23:52:22', 3, '<p>Anh này thiết kế rất đẹp</p>');
+INSERT INTO `evaluate` VALUES (3, 2, 1, '2020-12-10 23:52:31', 5, '<p>Rất tốt</p>');
+INSERT INTO `evaluate` VALUES (4, 2, 1, '2020-12-10 23:53:33', 1, '<p>Có trách nhiệm</p>');
 
 -- ----------------------------
 -- Table structure for goibaidang
