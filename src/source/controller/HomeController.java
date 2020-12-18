@@ -16,14 +16,10 @@ public class HomeController {
 
 	@RequestMapping({ "/index", "/" })
 	private String trangchu(HttpServletRequest request, Model model) {
-
-		Account acount = UtilDataBase.getMinAccount(1);
-
-		// Login
-		request.getSession().setAttribute("currentAccount", acount);
-		model.addAttribute("danhsachgoi", UtilDataBase.getPricing());
-		model.addAttribute("danhsachcongviec", UtilDataBase.listJob());
-
+//		Account acount = UtilDataBase.getMinAccount(1);
+//		request.getSession().setAttribute("currentAccount", acount);
+//		model.addAttribute("danhsachgoi", UtilDataBase.getPricing());
+//		model.addAttribute("danhsachcongviec", UtilDataBase.listJob());
 		return "index-6";
 	}
 

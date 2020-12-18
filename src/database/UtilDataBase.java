@@ -189,7 +189,6 @@ public class UtilDataBase {
 				address.setQuanHuyen(rsSet.getString(3));
 				address.setXaPhuong(rsSet.getString(4));
 				address.setDiaChi(rsSet.getString(5));
-				
 			}
 
 		} catch (Exception e) {

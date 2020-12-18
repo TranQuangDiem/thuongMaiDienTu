@@ -1,8 +1,7 @@
 package model;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.regex.Pattern;
+
 
 public class Account {
 	private int id;
@@ -24,7 +23,6 @@ public class Account {
 	private String facebook;
 	private String website;
 	private String background;
-	
 
 	public Account() {
 		super();
@@ -59,8 +57,6 @@ public class Account {
 		this.image = image;
 	}
 
-	
-
 	public int getSoluongbaidang() {
 		return soluongbaidang;
 	}
@@ -68,7 +64,7 @@ public class Account {
 	public void setSoluongbaidang(int soluongbaidang) {
 		this.soluongbaidang = soluongbaidang;
 	}
-    
+
 	public Address getAddress() {
 		return address;
 	}
@@ -204,7 +200,6 @@ public class Account {
 	public void setBackground(String background) {
 		this.background = background;
 	}
-	
 
 	public String getAddressString() {
 		return addressString;
@@ -227,25 +222,23 @@ public class Account {
 		String expression = "^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}";
 		return name.matches(expression);
 	}
-
-	public static String transToMD5(String password) {
-		try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			byte[] hashInBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
-			StringBuilder sb = new StringBuilder();
-			for (byte b : hashInBytes) {
-				sb.append(String.format("%02x", b));
-			}
-			return sb.toString();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-			return null;
-		}
+	public static boolean validPassword(String password) {
+		String expression = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+		return password.matches(expression) ;
 	}
 
-	public static boolean validPassword(String password) {
-		String expression="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
-		return password.matches(expression);
+	public static boolean validUsername(String username) {
+		return username.matches("^[a-zA-Z0-9._-]{8,}$");
+	}
+
+	public static boolean validEmail(String email) {
+		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z"
+				+ "A-Z]{2,7}$";
+
+		Pattern pat = Pattern.compile(emailRegex);
+		if (email == null)
+			return false;
+		return pat.matcher(email).matches();
 	}
 
 }

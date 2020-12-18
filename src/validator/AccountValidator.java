@@ -8,7 +8,6 @@ import model.Account;
 
 public class AccountValidator implements Validator {
 	 private final Validator addressValidator;
-
 	    public AccountValidator(Validator addressValidator) {
 	        if (addressValidator == null) {
 	            throw new IllegalArgumentException("The supplied [Validator] is " +
