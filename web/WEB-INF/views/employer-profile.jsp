@@ -170,7 +170,7 @@
 										<!-- 	<li><span>Tỉnh / Thành Phố:</span>Hồ Chí Minh</li>
 										<li><span>Quận / Huyện:</span>Thủ Đức</li>
 										<li><span>Phường / Xã:</span>Linh Trung</li> -->
-										<li><span>Địa chỉ:</span>${taikhoan.address}</li>
+										<li><span>Địa chỉ:</span>${taikhoan.addressString}</li>
 										<li><span>Điện Thoại:</span>+84 ${taikhoan.phone}</li>
 										<li><span>Email:</span>${taikhoan.email}</li>
 									</ul>
@@ -205,7 +205,7 @@
 														<div class="col-md-4 col-sm-4">
 															<div class="mng-company-location">
 																<p>
-																	<i class="fa fa-map-marker"></i> ${taikhoan.address}
+																	<i class="fa fa-map-marker"></i> ${taikhoan.addressString}
 																</p>
 															</div>
 														</div>
@@ -470,7 +470,7 @@
 												<div class="col-md-4 col-sm-6">
 													<label>Địa Chỉ</label> <input type="text"
 														class="form-control" name="address"
-														value="${taikhoan.address}">
+														value="${taikhoan.addressString}">
 												</div>
 												<!-- <div class="col-md-4 col-sm-6">
 												<label>Facebook</label> <input type="text"

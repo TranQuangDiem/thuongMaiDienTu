@@ -1,15 +1,15 @@
 package database;
 
-import java.io.InputStream;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Account;
-
+import model.Address;
 import model.Job;
 import model.Pricing;
 import model.Subscriber;
@@ -18,7 +18,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major from account where id=?";
+			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background, id_address from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -37,6 +37,11 @@ public class UtilDataBase {
 				rs.setRole(rsSet.getInt(9));
 				rs.setName(rsSet.getString(10));
 				rs.setMajor(rsSet.getString(11));
+				rs.setTwitter(rsSet.getString(12));
+				rs.setFacebook(rsSet.getString(13));
+				rs.setWebsite(rsSet.getString(14));
+				rs.setBackground(rsSet.getString(15));
+				rs.setAddress(getAddress(rsSet.getInt(16)));
 				// System.out.println(rs.toString());
 
 			}
@@ -169,6 +174,29 @@ public class UtilDataBase {
 		}
 
 		return subscriber;
+	}
+	public static Address getAddress(int id_address) {
+		Address address = null;
+		try {
+			String sql = "select id, `tinh/thanhpho`, `quan/huyen`, `xa/phuong`, diachi  from address where id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, id_address);
+			ResultSet rsSet = ps.executeQuery();
+			while (rsSet.next()) {
+				address = new Address();
+				address.setId(rsSet.getInt(1));
+				address.setTinhThanhPho(rsSet.getString(2));
+				address.setQuanHuyen(rsSet.getString(3));
+				address.setXaPhuong(rsSet.getString(4));
+				address.setDiaChi(rsSet.getString(5));
+				
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return address;
 	}
 
 	// public static String getLargerString(ResultSet rs, int columnIndex) throws
