@@ -32,22 +32,32 @@
 		<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
 			data-out="fadeOutUp">
 			<c:if test="${empty sessionScope.currentAccount}">
-				<li><a href="pricing.html" style="visibility: hidden"><i
-						class="fa fa-sign-in" aria-hidden="true"></i>Pricing</a></li>
-				<li><a href="e-wallet.html" style="visibility: hidden"><i
-						class="fa fa-dollar" aria-hidden="true"></i>Payment</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/lostpasswordpage">Quên
+						Mật Khẩu</a></li>
+				<li><a href="${pageContext.request.contextPath}/loginpage">Đăng
+						nhập</a></li>
+				<li class="left-br"><a
+					href="${pageContext.request.contextPath}/registerpage"
+					class="signin"> <c:out
+							value="${sessionScope.currentAccount.id}" /> Đăng Ký Ngay
+				</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.currentAccount}">
-				<li><a href="pricing.html" ><i
-						class="fa fa-sign-in" aria-hidden="true"></i>Pricing</a></li>
-				<li><a href="e-wallet.html"><i
-						class="fa fa-dollar" aria-hidden="true"></i>Payment</a></li>
+				<li><a href="pricing.html"><i class="fa fa-sign-in"
+						aria-hidden="true"></i>Pricing</a></li>
+				<li><a href="e-wallet.html"><i class="fa fa-dollar"
+						aria-hidden="true"></i>Payment</a></li>
+				<li class="dropdown"><a href="#"><i class="fa fa-user"></i><c:out value="${sessionScope.currentAccount.fullname}"></c:out></a>
+					<ul class="dropdown-menu"
+						style="border: none; width: auto; top: 30px; left: 0.3px">
+						<li><a href="#">Tài khoản của tôi</a></li>
+						<li><a href="#">Ví của tôi</a></li>
+						<li><a href="${pageContext.request.contextPath}/logout">Đăng xuất</a></li>
+					</ul>
+					</li>
 			</c:if>
-			<li class="left-br"><a href="" data-toggle="modal"
-				data-target="#signup" class="signin"> <c:out
-						value="${sessionScope.currentAccount.id}" /> Sign In Now
 
-			</a></li>
 
 		</ul>
 	</div>
@@ -127,101 +137,3 @@
 	onclick="openRightMenu()">
 	<i class="spin fa fa-cog" aria-hidden="true"></i>
 </button>
-<script type="text/javascript">
-$(document).ready(function () {
-	  var showErrorRegister = function (isErr, message) {
-	    const showerror = $("#show-error-register");
-	    if (showerror.hasClass("text-danger")) showerror.removeClass("text-danger");
-	    if (showerror.hasClass("text-success"))
-	      showerror.removeClass("text-success");
-	    if (isErr == true) showerror.addClass("text-danger");
-	    else showerror.addClass("text-success");
-	    showerror.hide().text(message).fadeIn("slow");
-	  };
-	  var showErrorLogin = function (isErr, message) {
-	    const showerror = $("#show-error-login");
-	    if (showerror.hasClass("text-danger")) showerror.removeClass("text-danger");
-	    if (showerror.hasClass("text-success"))
-	      showerror.removeClass("text-success");
-	    if (isErr == true) showerror.addClass("text-danger");
-	    else showerror.addClass("text-success");
-	    showerror.hide().text(message).fadeIn("slow");
-	  };
-	  var serializeForm = function (form) {
-	    var obj = {};
-	    var formData = new FormData(form);
-	    for (var key of formData.keys()) {
-	      obj[key] = formData.get(key);
-	    }
-	    return;
-	    obj;
-	  };
-	  $("#form-register").submit(function (e) {
-	    e.preventDefault();
-	    $.ajax({
-	      type: "POST",
-	      url: $("#form-register").attr("action"),
-	      data: $("#form-register").serialize(),
-	      success: function (res) {
-	        switch (res) {
-	          case "erremptyfield":
-	            showErrorRegister(true, "Không được để trống tất cả thông tin");
-	            break;
-	          case "errname":
-	            showErrorRegister(true, "Họ và tên của bạn không hợp lệ");
-	            break;
-	          case "errpass":
-	            showErrorRegister(
-	              true,
-	              "Mật khẩu phải nhiều hơn 8 ký tự,có ít nhất 1 ký thường,hoa,số,đặc biệt"
-	            );
-	            break;
-	          case "errusername":
-	            showErrorRegister(
-	              true,
-	              "Tên tài khoản có ít nhất 8 ký tự chỉ có số, chữ "
-	            );
-	            break;
-	          case "errusernameexit":
-	            showErrorRegister(true, "Tên tài khoản đã tồn tại");
-	            break;
-	          case "errmail":
-	            showErrorRegister(true, "Email của bạn không hợp lệ");
-	            break;
-	          case "error":
-	            showErrorRegister(true, "Đã có lỗi xảy ra với hệ thống");
-	            break;
-	          case "success":
-	            showErrorRegister(false, "Đăng ký thành công");
-	            $(location).attr("href", "${pageContext.request.contextPath}");
-	            break;
-	          default:
-	            showErrorRegister(true, "Đã có lỗi xảy ra");
-	            break;
-	        }
-	      },
-	    });
-	  });
-	  $("#form-login").submit(function (e) {
-	    e.preventDefault();
-	    $.ajax({
-	      type: "POST",
-	      url: $("#form-login").attr("action"),
-	      data: $("#form-login").serialize(),
-	      success: function (res) {
-	    	  switch (res) {
-			case "error":
-				showErrorLogin(true,"Bạn đã sai tài khoản hoặc mật khẩu");
-				break;
-			case "success":
-				 $(location).attr("href", "${pageContext.request.contextPath}");
-				break;
-			default:
-				showErrorLogin(true,"Đã có lỗi xảy ra");
-				break;
-			}
-	      },
-	    });
-	  });
-	});
-</script>

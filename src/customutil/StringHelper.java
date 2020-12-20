@@ -13,5 +13,5 @@ public class StringHelper {
 	public static boolean isStringNull(String toCheck) {
 		return toCheck.trim().equals("") || toCheck == null || toCheck.trim().isEmpty();
 	}
-
+	
 }

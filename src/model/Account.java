@@ -240,5 +240,6 @@ public class Account {
 			return false;
 		return pat.matcher(email).matches();
 	}
+	
 
 }

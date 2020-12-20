@@ -1,34 +1,4 @@
-/**
- *
- */
 $(document).ready(function () {
-  var showErrorRegister = function (isErr, message) {
-    const showerror = $("#show-error-register");
-    if (showerror.hasClass("text-danger")) showerror.removeClass("text-danger");
-    if (showerror.hasClass("text-success"))
-      showerror.removeClass("text-success");
-    if (isErr == true) showerror.addClass("text-danger");
-    else showerror.addClass("text-success");
-    showerror.hide().text(message).fadeIn("slow");
-  };
-  var showErrorLogin = function (isErr, message) {
-    const showerror = $("#show-error-login");
-    if (showerror.hasClass("text-danger")) showerror.removeClass("text-danger");
-    if (showerror.hasClass("text-success"))
-      showerror.removeClass("text-success");
-    if (isErr == true) showerror.addClass("text-danger");
-    else showerror.addClass("text-success");
-    showerror.hide().text(message).fadeIn("slow");
-  };
-  var serializeForm = function (form) {
-    var obj = {};
-    var formData = new FormData(form);
-    for (var key of formData.keys()) {
-      obj[key] = formData.get(key);
-    }
-    return;
-    obj;
-  };
   $("#form-register").submit(function (e) {
     e.preventDefault();
     $.ajax({
@@ -66,22 +36,13 @@ $(document).ready(function () {
             break;
           case "success":
             showErrorRegister(false, "Đăng ký thành công");
-            $(location).attr("href", "${ pageContext.request.contextPath }");
+            $(location).attr("href", "${pageContext.request.contextPath}");
             break;
           default:
             showErrorRegister(true, "Đã có lỗi xảy ra");
             break;
         }
       },
-    });
-  });
-  $("#form-login").submit(function (e) {
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: $("#form-login").attr("action"),
-      data: $("#form-login").serialize(),
-      success: function (res) {},
     });
   });
 });

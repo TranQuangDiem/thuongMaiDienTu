@@ -23,7 +23,11 @@ public class HomeController {
 		return "index-6";
 	}
 
-	
+	@RequestMapping("/logout")
+	public String logout (HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:index"; 
+	}
 	@RequestMapping(value = "/pricing")
 	public String goiBaiDang(Model model) {
 		model.addAttribute("danhsachgoi", UtilDataBase.getPricing());

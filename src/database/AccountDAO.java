@@ -11,6 +11,22 @@ public class AccountDAO {
 	public static boolean loginDAO(String username, String password) {
 		return false;
 	}
+
+	public static boolean isEmailExists(String email) {
+		try {
+			String query = "SELECT email FROM account WHERE account.email=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			boolean check = rs.next();
+			ps.close();
+			return check;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return true;
+		}
+	}
+
 	public static int getIdAccByUsername(String username) {
 		try {
 			String query = "SELECT account.id FROM account WHERE account.username=?";
@@ -24,20 +40,23 @@ public class AccountDAO {
 		}
 		return 0;
 	}
-	public static boolean addAccountByRegister(String username, String password, String fullname, String email) {
+
+	public static boolean addAccountByRegister(String username, String password, String fullname, String emailnew,int rolenew) {
 		try {
-			String sql = "INSERT INTO account (account.username,account.`password`,account.fullname,account.email) VALUES (?,MD5(?),?,?)";
+			String sql = "INSERT INTO account (account.username,account.`password`,account.fullname,account.email,account.role) VALUES (?,MD5(?),?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setString(1, username);
 			ps.setString(2, password);
 			ps.setString(3, fullname);
-			ps.setString(4, email);
+			ps.setString(4, emailnew);
+			ps.setInt(5, rolenew);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+
 	public static boolean isUsernameExists(String username) {
 		try {
 			String query = "SELECT username FROM account WHERE account.username=?";
@@ -52,6 +71,7 @@ public class AccountDAO {
 			return true;
 		}
 	}
+
 	public static boolean checkLogin(String username, String password) {
 		try {
 			String query = "SELECT account.id FROM account WHERE account.username=? AND account.`password`=MD5(?)";
@@ -65,6 +85,7 @@ public class AccountDAO {
 			return false;
 		}
 	}
+
 	public static Account getUserById(int id) {
 		Account rs = null;
 		try {

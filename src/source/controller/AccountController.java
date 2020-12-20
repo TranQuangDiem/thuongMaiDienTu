@@ -19,6 +19,21 @@ import model.Account;
 @Controller
 public class AccountController {
 
+	@RequestMapping(value = "/loginpage")
+	public String loginPage() {
+		return "login";
+	}
+
+	@RequestMapping(value = "/registerpage")
+	public String registerPage() {
+		return "signup";
+	}
+
+	@RequestMapping(value = "/lostpasswordpage")
+	public String lostpasswordPage() {
+		return "lost-password";
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST, params = { "username", "password" })
 	@ResponseBody
 	public String login(HttpServletRequest request, @RequestParam("username") String username,
@@ -28,7 +43,6 @@ public class AccountController {
 		} else {
 			int id = AccountDAO.getIdAccByUsername(username);
 			Account acc = AccountDAO.getUserById(id);
-			System.out.println(acc.getId());
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
 			return "success";
 		}
@@ -39,12 +53,13 @@ public class AccountController {
 	@ResponseBody
 	public String register(HttpServletRequest request, @RequestParam("fullnamenew") String fullnamenew,
 			@RequestParam("emailnew") String emailnew, @RequestParam("usernamenew") String usernamenew,
-			@RequestParam("passwordnew") String passwordnew) {
+			@RequestParam("passwordnew") String passwordnew,@RequestParam("role-new") String rolenew) {
 		List<String> toCheck = new ArrayList<>();
 		toCheck.add(fullnamenew);
 		toCheck.add(emailnew);
 		toCheck.add(usernamenew);
 		toCheck.add(passwordnew);
+		toCheck.add(rolenew);
 		if (request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT) != null) {
 			return "manbo";
 		} else if (StringHelper.isListStringNull(toCheck)) {
@@ -59,7 +74,9 @@ public class AccountController {
 			return "errusernameexit";
 		} else if (!Account.validEmail(emailnew)) {
 			return "errmail";
-		} else if (!AccountDAO.addAccountByRegister(usernamenew, passwordnew, fullnamenew, emailnew)) {
+		} else if (AccountDAO.isEmailExists(emailnew)) {
+			return "errmailexist";
+		} else if (!AccountDAO.addAccountByRegister(usernamenew, passwordnew, fullnamenew, emailnew,Integer.parseInt(rolenew))) {
 			return "error";
 		} else {
 			Account account = new Account();

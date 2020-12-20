@@ -21,6 +21,7 @@
 	rel="${pageContext.request.contextPath}/resources/stylesheet"
 	id="jssDefault"
 	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/css-header.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
 
@@ -29,7 +30,6 @@
 	<c:url value="/thanhtoan" var="urlThanhtoan" />
 	<div class="Loader"></div>
 	<div class="wrapper">
-
 		<nav
 			class="navbar navbar-default navbar-fixed navbar-light white bootsnav">
 			<tiles:insertAttribute name="header"></tiles:insertAttribute>
