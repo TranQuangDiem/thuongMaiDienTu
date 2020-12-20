@@ -10,6 +10,7 @@ import org.springframework.beans.BeanWrapperImpl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,14 +26,27 @@ public class FreeLancerProfileController {
 	// url: /freelancer-profile?id_freelancer=1
 	@RequestMapping(value="/freelancer-profile", params = { "id_freelancer" })
 	public String layout(HttpServletRequest request,Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
-		Account account = (Account) request.getSession().getAttribute("currentAccount");
-		Account currentAccount=UtilDataBase.getAccount(account.getId());
+		//Account account = (Account) request.getSession().getAttribute("currentAccount");
+		Account currentAccount=UtilDataBase.getAccount(1);
 		Account freelancer=UtilDataBase.getAccount(id_freelancer);
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
 		
 //		System.out.println(currentAccount);
 		return "freelancer-profile";
+	}
+	
+	@RequestMapping(value = "/freelancer-profile/settings/update", method = RequestMethod.POST)
+	public String submitSettings(@ModelAttribute("Account")Account  account ) {
+		System.out.println(account);
+		FreeLancerProfileDatabase.update(account);
+		return "redirect:/freelancer-profile?id_freelancer="+account.getId();
+	}
+	
+	@RequestMapping(value = "/freelancer-profile-settings", params = { "id_freelancer" }, method = RequestMethod.GET)
+	public String settings(Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
+		model.addAttribute("id_freelancer", id_freelancer + "");
+		return "freelancer-profile/settings";
 	}
 
 	@RequestMapping(value = "/evaluate", params = { "id_freelancer" }, method = RequestMethod.GET)

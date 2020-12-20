@@ -11,6 +11,7 @@ import model.Evaluate;
 import model.Job;
 
 public class EmployerProfileDatabase {
+	// url /employer-profile?id_employer=1 // Để url để test chứ có nhớ đâu
 	
 	public static Account information(int id_employer) {
 		Account taikhoan = null;
