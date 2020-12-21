@@ -1,7 +1,9 @@
 package database;
 
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,9 +86,12 @@ public class FreeLancerProfileDatabase {
 		return rs;
 	}
 	public static void update(Account account) {
+		String sql ;
+		PreparedStatement ps =null;
+		//Start update regular field
 		try {
-			String sql = "update account set fullname=?,major=?,email=?,phone=?,address=?,about=?, email=?, facebook=?, website=?, twitter=? where id=?";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			sql = "update account set fullname=?,major=?,email=?,phone=?,address=?,about=?, email=?, facebook=?, website=?, twitter=? where id=?";
+			ps = ConnectionDB.prepareStatement(sql);
 			ps.setString(1, account.getFullname());
 			ps.setString(2, account.getMajor());
 			ps.setString(3, account.getEmail());
@@ -100,6 +105,39 @@ public class FreeLancerProfileDatabase {
 			ps.setInt(11,account.getId()); 
 			ps.executeUpdate();
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		//Start update image
+		if(account.getImage()!=null)
+		try {
+			sql = "update account set image=? where id=?";
+			ps = ConnectionDB.prepareStatement(sql);
+			
+			ps.setBlob(1, UtilImage.covertInputStream(account.getImage()));
+			
+			ps.setInt(2, account.getId());
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		//Start update background
+		if(account.getBackground()!=null)
+		try {
+			sql = "update account set background=? where id=?";
+			ps = ConnectionDB.prepareStatement(sql);
+			
+			ps.setBlob(1, UtilImage.covertInputStream(account.getBackground()));
+			
+			ps.setInt(2, account.getId());
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			ps.getConnection().close();
+		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 	}

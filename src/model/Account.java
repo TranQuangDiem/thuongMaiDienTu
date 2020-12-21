@@ -1,6 +1,16 @@
 package model;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.regex.Pattern;
+
+import javax.imageio.ImageIO;
+
+import database.UtilImage;
+
+
 
 
 public class Account {
@@ -8,7 +18,7 @@ public class Account {
 	private String username;
 	private String password;
 	private String fullname;
-	private String image;
+	private BufferedImage image;
 	private float starAverage;
 	private String about;
 	private String email;
@@ -22,41 +32,17 @@ public class Account {
 	private String twitter;
 	private String facebook;
 	private String website;
-	private String background;
+	private BufferedImage background;
 
 	public Account() {
 		super();
 	}
 
-	public Account(int id, String username, String password, String fullname, String image, float starAverage,
-			String about, String email, String phone, int role, String name, String major, int soluongbaidang,
-			Address address) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.fullname = fullname;
-		this.image = image;
-		this.starAverage = starAverage;
-		this.about = about;
-		this.email = email;
-		this.phone = phone;
-		this.role = role;
-		this.name = name;
-		this.major = major;
-		this.soluongbaidang = soluongbaidang;
-		this.address = address;
-	}
+	
+	
+	
 
-	public Account(int id, String username, String password, String fullname, String image) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.fullname = fullname;
-		this.image = image;
-	}
-
+	
 	public int getSoluongbaidang() {
 		return soluongbaidang;
 	}
@@ -104,14 +90,49 @@ public class Account {
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
-
-	public String getImage() {
+	
+	public BufferedImage getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+
+
+
+
+
+	public void setBackground(BufferedImage background) {
+		this.background = background;
+	}
+
+
+
+
+
+
+	public String getImageBase64() {
+		String rs="";
+		try {
+			rs= UtilImage.covertBase64(image);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return rs;
+	}
+
+	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
+	public void setImage(Blob image) {
+		
+		
+		try {
+			this.image = ImageIO.read(image.getBinaryStream());
+		} catch (IOException | SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+
 
 	public float getStarAverage() {
 		return starAverage;
@@ -193,12 +214,28 @@ public class Account {
 		this.website = website;
 	}
 
-	public String getBackground() {
+	public BufferedImage getBackground() {
 		return background;
 	}
+	public String getBackgroundBase64() {
+		String rs="";
+		try {
+			rs= UtilImage.covertBase64(background);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return rs;
+	}
 
-	public void setBackground(String background) {
-		this.background = background;
+	
+	public void setBackground(Blob background) {
+
+		try {
+			this.background = ImageIO.read(background.getBinaryStream());
+		} catch (IOException | SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 	public String getAddressString() {

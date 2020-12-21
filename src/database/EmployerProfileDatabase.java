@@ -27,7 +27,7 @@ public class EmployerProfileDatabase {
 				taikhoan.setUsername(rs.getString(1));
 				taikhoan.setPassword(rs.getString(2));
 				taikhoan.setFullname(rs.getString(3));
-				taikhoan.setImage(rs.getString(4));
+				taikhoan.setImage(rs.getBlob(4));
 				taikhoan.setStarAverage(rs.getFloat(5));
 				taikhoan.setAbout(rs.getString(6));
 				// taikhoan.setAbout(getLargerString(rsSet, 6));
@@ -39,7 +39,7 @@ public class EmployerProfileDatabase {
 				taikhoan.setTwitter(rs.getString(12));
 				taikhoan.setFacebook(rs.getString(13));
 				taikhoan.setWebsite(rs.getString(14));
-				taikhoan.setBackground(rs.getString(15));
+				taikhoan.setBackground(rs.getBlob(15));
 				//taikhoan.setAddress(UtilDataBase.getAddress(rs.getInt(16)));
 				taikhoan.setAddressString(rs.getString(17));
 			}

@@ -28,7 +28,7 @@ public class UtilDataBase {
 				rs.setUsername(rsSet.getString(1));
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
-				rs.setImage(rsSet.getString(4));
+				rs.setImage(rsSet.getBlob(4));
 				rs.setStarAverage(rsSet.getFloat(5));
 				rs.setAbout(rsSet.getString(6));
 				// rs.setAbout(getLargerString(rsSet, 6));
@@ -40,7 +40,7 @@ public class UtilDataBase {
 				rs.setTwitter(rsSet.getString(12));
 				rs.setFacebook(rsSet.getString(13));
 				rs.setWebsite(rsSet.getString(14));
-				rs.setBackground(rsSet.getString(15));
+				rs.setBackground(rsSet.getBlob(15));
 				rs.setAddress(getAddress(id_account));
 				// System.out.println(rs.toString());
 
@@ -66,7 +66,7 @@ public class UtilDataBase {
 				rs.setUsername(rsSet.getString(1));
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
-				rs.setImage(rsSet.getString(4));
+				rs.setImage(rsSet.getBlob(4));
 				rs.setStarAverage(rsSet.getFloat(5));
 
 			}
@@ -178,7 +178,7 @@ public class UtilDataBase {
 	public static Address getAddress(int id_address) {
 		Address address = null;
 		try {
-			String sql = "select id_account, `tinh/thanhpho`, `quan/huyen`, `xa/phuong`, diachi  from address where id_account=?";
+			String sql = "select id, `tinh/thanhpho`, `quan/huyen`, `xa/phuong`, diachi  from address where id_account=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_address);
 			ResultSet rsSet = ps.executeQuery();

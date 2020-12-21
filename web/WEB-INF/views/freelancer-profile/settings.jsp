@@ -10,9 +10,9 @@
 		<div class="edit-pro">
 		<form accept-charset="UTF-8"
 								action="${pageContext.request.contextPath}/freelancer-profile/settings/update"
-								id="form-settings"
+								id="form-settings" enctype="multipart/form-data"
 								method="post">
-								<input type="hidden" name="id" class="form-control" value="${currentAccount.id}">
+								<input type="hidden" name="idAccount" class="form-control" value="${freelancer.id}">
 			<div class="col-md-4 col-sm-6">
 				<label>Tên Freelancer</label>
 				<input type="text" name="fullname" class="form-control" value="${freelancer.fullname}">
@@ -36,6 +36,7 @@
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Tỉnh / Thành Phố</label>
+				<input type="hidden" name="address.tinhThanhPho" class="form-control" value="${freelancer.address.tinhThanhPho}">
 				<select name="ls_province" class="form-control"  id="tinh"></select>
 
 			</div>
@@ -73,13 +74,13 @@
 			
 			<div class="col-md-4 col-sm-6">
 				<label>Tải hình đại diện</label>
-				<img id="img-avatar" src="#" alt="your image" />
+				<img id="img-avatar" src="data:image/png;base64,${freelancer.imageBase64}" alt="your image" />
 				<input id="input-avatar" name="image" type="file" class="form-control" value="Chọn ảnh">
 			</div>
 			
 			<div class="col-md-4 col-sm-6">
 				<label>Tải ảnh bìa</label>
-				<img id="img-background" src="#" alt="your image" />
+				<img id="img-background" src="data:image/png;base64,${freelancer.backgroundBase64}" alt="your image" />
 				<input id="input-background" name="background" type="file" class="form-control" value="Chọn ảnh">
 			</div>
 			<div class="col-sm-12">

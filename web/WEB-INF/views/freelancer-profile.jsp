@@ -63,7 +63,7 @@
 			<div class="clearfix"></div>
 			
 			<!-- Title Header Start -->
-			<section class="inner-header-title" style="background-image:url(${pageContext.request.contextPath}/resources/assets/img/banner-10.jpg);">
+			<section class="inner-header-title" style="background-image:url('data:image/png;base64,${freelancer.backgroundBase64}');">
 				<div class="container">
 					<h1></h1>
 				</div>
@@ -75,7 +75,7 @@
         <section class="detail-desc advance-detail-pr gray-bg">
             <div class="container white-shadow">
                 <div class="row">
-                    <div class="detail-pic"><img src="${pageContext.request.contextPath}/resources/assets/img/rong.png" class="img" alt="" /><a href="#" class="detail-edit" title="edit"></a></div>
+                    <div class="detail-pic"><img src="data:image/png;base64,${freelancer.imageBase64}" class="img" alt="" /><a href="#" class="detail-edit" title="edit"></a></div>
                     <div class="detail-status"><span id="span-hire-freelancer">Đang tuyển dụng</span></div>
                 </div>
 				

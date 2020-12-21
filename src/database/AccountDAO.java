@@ -99,7 +99,7 @@ public class AccountDAO {
 				rs.setUsername(rsSet.getString(1));
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
-				rs.setImage(rsSet.getString(4));
+				rs.setImage(rsSet.getBlob(4));
 				rs.setStarAverage(rsSet.getFloat(5));
 				rs.setAbout(rsSet.getString(6));
 				rs.setEmail(rsSet.getString(7));
@@ -110,7 +110,7 @@ public class AccountDAO {
 				rs.setTwitter(rsSet.getString(12));
 				rs.setFacebook(rsSet.getString(13));
 				rs.setWebsite(rsSet.getString(14));
-				rs.setBackground(rsSet.getString(15));
+				rs.setBackground(rsSet.getBlob(15));
 				rs.setAddress(UtilDataBase.getAddress(rsSet.getInt(16)));
 			}
 		} catch (Exception e) {

@@ -1,5 +1,6 @@
 package source.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import database.FreeLancerProfileDatabase;
 import database.UtilDataBase;
+import dataform.FormSettingsFreelancer;
 import model.Account;
 import model.Evaluate;
 
@@ -37,10 +39,12 @@ public class FreeLancerProfileController {
 	}
 	
 	@RequestMapping(value = "/freelancer-profile/settings/update", method = RequestMethod.POST)
-	public String submitSettings(@ModelAttribute("Account")Account  account ) {
-		System.out.println(account);
-		FreeLancerProfileDatabase.update(account);
-		return "redirect:/freelancer-profile?id_freelancer="+account.getId();
+	public String submitSettings(@ModelAttribute("FormSettingsFreelancer")FormSettingsFreelancer  formSettingsFreelancer ) {
+		System.out.println(formSettingsFreelancer);
+		
+			FreeLancerProfileDatabase.update(formSettingsFreelancer.toAccount());
+		
+		return "redirect:/freelancer-profile?id_freelancer="+formSettingsFreelancer.getIdAccount();
 	}
 	
 	@RequestMapping(value = "/freelancer-profile-settings", params = { "id_freelancer" }, method = RequestMethod.GET)

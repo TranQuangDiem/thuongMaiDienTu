@@ -74,7 +74,7 @@
 
 		<!-- Title Header Start -->
 		<section class="inner-header-title"
-			style="background-image: url(assets/img/banner-10.jpg);">
+			style="background-image: url('data:image/png;base64,${taikhoan.backgroundBase64}');">
 			<div class="container">
 				<h1></h1>
 			</div>
@@ -87,7 +87,7 @@
 			<div class="container white-shadow">
 				<div class="row">
 					<div class="detail-pic">
-						<img src="${pageContext.request.contextPath}/${taikhoan.image}"
+						<img src="data:image/png;base64,${taikhoan.imageBase64}"
 							class="img" alt="" /><a href="#" class="detail-edit"
 							title="edit"></a>
 					</div>

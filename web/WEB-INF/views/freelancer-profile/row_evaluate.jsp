@@ -15,7 +15,7 @@
 			aria-expanded="false">
 			<div class="card-title flexbox">
 				<img class="img-responsive img-circle avatar"
-					src="${pageContext.request.contextPath}${evaluate.account.image}"
+					src="data:image/png;base64,${evaluate.account.imageBase64}"
 					alt="...">
 				<div>
 					<h6>${evaluate.account.fullname}</h6>
