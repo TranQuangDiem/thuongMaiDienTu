@@ -8,8 +8,34 @@ import model.Account;
 import model.Evaluate;
 
 public class AccountDAO {
-	public static boolean loginDAO(String username, String password) {
-		return false;
+	
+	public static boolean updatePassword(String newpassword, int id) {
+		try {
+			String query = "UPDATE account SET account.`password`=MD5(?) WHERE account.id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setString(1, newpassword);
+			ps.setInt(2, id);
+			int row = ps.executeUpdate();
+			ps.close();
+			return row == 1;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public static int getIdByEmail(String email) {
+		try {
+			String query = "SELECT account.id FROM account WHERE account.email=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int result = rs.getInt(1);
+			ps.close();
+			return result;
+		} catch (Exception e) {
+			return -1;
+		}
 	}
 
 	public static boolean isEmailExists(String email) {
@@ -41,7 +67,8 @@ public class AccountDAO {
 		return 0;
 	}
 
-	public static boolean addAccountByRegister(String username, String password, String fullname, String emailnew,int rolenew) {
+	public static boolean addAccountByRegister(String username, String password, String fullname, String emailnew,
+			int rolenew) {
 		try {
 			String sql = "INSERT INTO account (account.username,account.`password`,account.fullname,account.email,account.role) VALUES (?,MD5(?),?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
