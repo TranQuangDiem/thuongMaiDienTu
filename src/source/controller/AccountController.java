@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,13 +38,14 @@ public class AccountController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST, params = { "username", "password" })
 	@ResponseBody
 	public String login(HttpServletRequest request, @RequestParam("username") String username,
-			@RequestParam("password") String password) {
+			@RequestParam("password") String password, HttpSession session) {
 		if (!AccountDAO.checkLogin(username, password)) {
 			return "error";
 		} else {
 			int id = AccountDAO.getIdAccByUsername(username);
 			Account acc = AccountDAO.getUserById(id);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
+			session.setAttribute("taikhoan", acc);
 			return "success";
 		}
 	}

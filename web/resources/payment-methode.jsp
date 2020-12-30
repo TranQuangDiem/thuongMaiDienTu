@@ -1,10 +1,15 @@
-
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<c:if test="${empty sessionScope.currentAccount}">
+	<%
+		response.sendRedirect("http://localhost:8080/thuongMaiDienTu/loginpage");
+	%>
+</c:if>
+<c:if test="${not empty sessionScope.currentAccount}">
+	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Job Stock - Responsive Job Portal Bootstrap Template</title>
@@ -21,7 +26,7 @@
 	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
 </head>
 <body>
-	<c:url value="/hoadon" var="urlThanhtoan" />
+	<c:url value="/pricing" var="urlPricing" />
 	<div class="Loader"></div>
 	<div class="wrapper">
 
@@ -35,7 +40,8 @@
 			</button>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index-6.jsp"><img
-					src="${pageContext.request.contextPath}/resources/assets/img/logo.png" class="logo logo-scrolled" alt=""></a>
+					src="${pageContext.request.contextPath}/resources/assets/img/logo.png"
+					class="logo logo-scrolled" alt=""></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-menu">
 				<ul class="nav navbar-nav navbar-left" data-in="fadeInDown"
@@ -66,24 +72,35 @@
 		</nav>
 		<!-- End Navigation -->
 		<div class="clearfix"></div>
-
 		<!-- Title Header Start -->
 		<section class="inner-header-title"
 			style="background-image: url(${pageContext.request.contextPath}/resources/assets/img/banner-10.jpg);">
 		<div class="container">
-			<h1>Our Package</h1>
+			<h1>Thanh toán</h1>
 		</div>
 		</section>
 		<div class="clearfix"></div>
 		<!-- Title Header End -->
 
-		<!-- pricing Section Start -->
-		<section class="pricing">
+		<section class="pricing" style="padding:20px">
 		<div class="container">
-			<c:if test="${not empty danhsachgoi}">
-				<c:forEach var="goi" items="${danhsachgoi}">
+			<div class="row">
+				<div class="main-heading">
+					<h2>Gói Đã Chọn</h2>
+				</div>
+			</div>
+
+		</div>
+		</section>
+		<!-- End Pricing Section -->
+		<!-- Accordion Design Start -->
+
+		<section class="accordion" style="padding:20px">
+		<div class="container">
+			<form action="" method="post" modelAttribute="">
+				<div class="row">
 					<div class="col-md-4 col-sm-4">
-						<div class="pr-table">
+						<div class="pr-table" style="padding-bottom: 0px">
 							<div class="pr-header active">
 								<div class="pr-plan">
 									<h4>${goi.tengoi}</h4>
@@ -95,32 +112,153 @@
 								</div>
 							</div>
 							<div class="pr-features">
-								<ul>
-									<li>Thời hạn : ${goi.thoihan} ngày</li>
+								<ul style="padding: 0px">
+									<li>Thời hạn : ${goi.thoihan}</li>
 									<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
 									<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
 									<li>${goi.mota}</li>
 								</ul>
 							</div>
 							<div class="pr-buy-button">
-								<a onclick="thongbao()" href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
-									title="Price Button">Mua</a>
+								<a href="${urlPricing}" class="pr-btn active"
+									title="Price Button">Thay Đổi</a>
 							</div>
 						</div>
 					</div>
-				</c:forEach>
-			</c:if>
+					<!-- Billing Address -->
+					<div class="col-md-4 col-sm-4">
+						<div class="sidebar-wrapper">
 
+							<div class="sidebar-box-header bb-1">
+								<h4>Thông tin thanh toán</h4>
+							</div>
+
+							<div class="billing-form">
+								<div class="row">
+									<div class="col-xs-12">
+										<label>Full Name</label> <input name="fullname" type="text"
+											class="form-control" value="${sessionScope.currentAccount.fullname}" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<label>Address</label> <input name="address" type="text"
+											class="form-control" value="${sessionScope.currentAccount.address.toString()}"/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<label>Email</label> <input name="email" type="email"
+											class="form-control" value="${sessionScope.currentAccount.email}" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<label>Phone: </label> <input name="phone" type="number"
+											class="form-control" value="${sessionScope.currentAccount.phone}"/>
+									</div>
+									<!--  
+									<div class="col-xs-6">
+										<label>State</label> <select class="form-control input-lg">
+											<option>State</option>
+											<option>Punjab</option>
+											<option>Haryana</option>
+											<option>Madhya Pradesh</option>
+										</select>
+									</div>
+									<div class="col-xs-6">
+										<label>Zip Code</label> <input type="text"
+											class="form-control" />
+									</div>
+									-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Payment Detail -->
+					<div class="col-md-4 col-sm-4">
+						<div class="sidebar-wrapper">
+
+							<div class="sidebar-box-header bb-1">
+								<h4>Credit Card Information</h4>
+							</div>
+
+							<div class="billing-form">
+								<div class="row">
+									<div class="col-xs-12">
+										<label>Nmae Of Card</label> <input type="text"
+											class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-8">
+										<label>Card Number</label> <input type="text"
+											class="form-control" />
+									</div>
+									<div class="col-xs-4">
+										<img
+											src="${pageContext.request.contextPath}/resources/assets/img/debit.png"
+											class="img-responsive payment-img" alt="">
+									</div>
+								</div>
+								<div class="row">
+									<!-- <div class="col-sm-8">
+										<label>Expiration Date</label>
+										<div class="row">
+											<div class="col-xs-6">
+												<select class="form-control input-lg">
+													<option>January</option>
+													<option>February</option>
+													<option>March</option>
+													<option>April</option>
+												</select>
+											</div>
+											<div class="col-xs-6">
+												<select class="form-control input-lg">
+													<option>2020</option>
+													<option>2021</option>
+													<option>2022</option>
+													<option>2023</option>
+												</select>
+											</div>
+										</div>
+									</div> -->
+									<div class="col-sm-12">
+										<label>CVC/CVV</label> <input type="text" class="form-control" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<label>Coupon Code(If Available)</label> <input type="text"
+											class="form-control" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<input class="btn btn-success" type="submit" value="Proceed...">
+						<a href="${urlPricing}" class="btn btn-default">Cancel...</a>
+					</div>
+				</div>
+			</form>
 		</div>
 		</section>
-		<!-- End Pricing Section -->
+		<!-- Accordion Design End -->
 
 		<!-- Footer Section Start -->
 		<footer class="footer">
 		<div class="row lg-menu">
 			<div class="container">
 				<div class="col-md-4 col-sm-4">
-					<img src="assets/img/footer-logo.png" class="img-responsive" alt="" />
+					<img
+						src="${pageContext.request.contextPath}/resources/assets/img/footer-logo.png"
+						class="img-responsive" alt="" />
 				</div>
 				<div class="col-md-8 co-sm-8 pull-right">
 					<ul>
@@ -271,7 +409,9 @@
 								</div>
 
 								<div role="tabpanel" class="tab-pane fade" id="register">
-									<img src="assets/img/logo.png" class="img-responsive" alt="" />
+									<img
+										src="${pageContext.request.contextPath}/resources/assets/img/logo.png"
+										class="img-responsive" alt="" />
 									<form class="form-inline" method="post">
 										<div class="col-sm-12">
 											<div class="form-group">
@@ -366,10 +506,8 @@
 			function closeRightMenu() {
 				document.getElementById("rightMenu").style.display = "none";
 			}
-			function thongbao() {
-				 confirm("Bạn chắc chắn muốn mua gói bài đăng này");
-			}
 		</script>
 	</div>
 </body>
-</html>
+	</html>
+</c:if>
