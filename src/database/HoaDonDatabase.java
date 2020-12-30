@@ -42,16 +42,16 @@ public class HoaDonDatabase {
 			}
 			ConnectionDB.close(rs);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return hoadon; 
 	}
 	public static List<HoaDon> findByIdAccount(int idAccount) {
 		List<HoaDon> hoadon = new ArrayList<HoaDon>();
 		try {
-			String sql="select * from hoadon where idAccount=?";
+			String sql="select * from hoadon where idAccount="+idAccount;
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, idAccount);
+//			ps.setInt(1, idAccount);
 			ResultSet rs = ps.executeQuery(sql);
 			while(rs.next()) {
 				HoaDon h = new HoaDon(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getInt(4), rs.getDate(5), rs.getDate(6), rs.getDouble(7));
@@ -59,18 +59,18 @@ public class HoaDonDatabase {
 			}
 			ConnectionDB.close(rs);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return hoadon; 
 	}
 	public void delete(int id) {
 		try {
-		String sql = "DELETE FROM hoadon where id=?";
+		String sql = "DELETE FROM hoadon where id="+id;
 		PreparedStatement ps= ConnectionDB.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.executeQuery(sql);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 	}
 }

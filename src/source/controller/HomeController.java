@@ -34,9 +34,8 @@ public class HomeController {
 		return "goibaidang";
 	}
 
-//	@RequestMapping(value = "/thanhtoan", params = { "id" })
-//	public String thanhtoan(Model model, HttpServletRequest request, @RequestParam(value = "id") int id) {
-//		model.addAttribute("goi", UtilDataBase.findPricingById(id));
-//		return "payment-methode";
-//	}
+	@RequestMapping(value = "/thanhtoan")
+	public String thanhtoan() {
+		return "payment-methode";
+	}
 }

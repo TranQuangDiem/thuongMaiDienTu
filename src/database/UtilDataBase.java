@@ -111,6 +111,7 @@ public class UtilDataBase {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return danhsachgoi;
 	}
@@ -127,6 +128,7 @@ public class UtilDataBase {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return p;
 	}

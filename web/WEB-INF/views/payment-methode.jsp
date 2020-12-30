@@ -13,15 +13,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-	================================================== -->
-	<link rel="stylesheet" href="assets/plugins/css/plugins.css">
-    
-    <!-- Custom style -->
-    <link href="assets/css/style.css" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" id="jssDefault" href="assets/css/colors/green-style.css">
-    
-	</head>
+<!-- CSS==================================================-->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/assets/plugins/css/plugins.css">
+<link
+	href="${pageContext.request.contextPath}/resources/assets/css/style.css"
+	rel="stylesheet">
+<link type="text/css"
+	rel="${pageContext.request.contextPath}/resources/stylesheet"
+	id="jssDefault"
+	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
+</head>
 	<body>
 		<div class="Loader"></div>
 		<div class="wrapper">  
@@ -186,7 +188,7 @@
 					<div class="row">
 						<div class="col-md-12 text-center">
 							<a href="#" class="btn btn-success">Proceed...</a>
-							<a href="e-wallet.html" class="btn btn-default">Cancel...</a>
+							<a href="<c:url value="/vitien"/>" class="btn btn-default">Cancel...</a>
 						</div>
 					</div>
 				</div>

@@ -3,9 +3,9 @@ package model;
 public class ViTien {
 	int id;
 	int idAccount;
-	double tongTien;
+	int tongTien;
 	
-	public ViTien(int id, int idAccount, double tongTien) {
+	public ViTien(int id, int idAccount, int tongTien) {
 		super();
 		this.id = id;
 		this.idAccount = idAccount;
@@ -27,11 +27,12 @@ public class ViTien {
 	public void setIdAccount(int idAccount) {
 		this.idAccount = idAccount;
 	}
-	public double getTongTien() {
+	public int getTongTien() {
 		return tongTien;
 	}
-	public void setTongTien(double tongTien) {
+	public void setTongTien(int tongTien) {
 		this.tongTien = tongTien;
 	}
+
 
 }

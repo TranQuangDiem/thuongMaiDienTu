@@ -95,7 +95,7 @@
 						<span class="designation"></span>
 						<ul>
 							<li><strong class="j-view"></strong></li>
-							<li><strong class="j-applied">${vitien.tongtien}</strong>Balance</li>
+							<li><strong class="j-applied">${vitien.tongTien}</strong>Balance</li>
 							<li><strong class="j-shared"></strong></li>
 						</ul>
 					</div>
@@ -115,7 +115,7 @@
 					</div>
 					<div class="col-md-7 col-sm-7">
 						<div class="detail-pannel-footer-btn pull-right">
-							<a href="payment-methode.html" class="footer-btn grn-btn"
+							<a href="<c:url value="/thanhtoan"/>" class="footer-btn grn-btn"
 								title="">Recharge</a>
 						</div>
 						<!-- data-toggle="modal" data-target="#apply-job" -->
@@ -147,7 +147,7 @@
 													aria-expanded="false">
 												<div class="card-title flexbox">
 													<img class="img-responsive img-circle avatar"
-														src="assets/img/check.png" alt="...">
+														src="${pageContext.request.contextPath}/resources/assets/img/check.png" alt="...">
 													<div>
 														<h6>${hoadon.tengoi}</h6>
 														<small>${hoadon.ngayMua}</small> <small><a
@@ -157,7 +157,7 @@
 														<div class="no-collapsing cursor-text collapse"
 															id="detail-view" aria-expanded="false"
 															style="height: 0px;">
-															<small class="d-inline-block">From:</small> <small>${taikhoan.fullname}</small>
+															<small class="d-inline-block">From:</small> <small>${sessionScope.taikhoan.fullname}</small>
 															<br> <small class="d-inline-block">To:</small> <small>Web
 																site</small>
 														</div>
@@ -168,13 +168,13 @@
 													aria-expanded="false" style="height: 0px;">
 													<div class="card-body">
 
-														<p style="color: red">${hoadon.giaTri}</p>
+														<p style="color: red">-${hoadon.giaTri}</p>
 													</div>
 												</div>
 											</div>
 										</c:forEach>
 									</c:if>
-									<div class="mail-card unread">
+								<!-- 	<div class="mail-card unread">
 										<header class="card-header cursor-pointer collapsed"
 											data-toggle="collapse" data-target="#meaages-2"
 											aria-expanded="false">
@@ -237,7 +237,7 @@
 											</div>
 										</div>
 									</div>
-
+ -->
 
 									<!-- End Message -->
 
@@ -469,29 +469,29 @@
 
 	<!-- Scripts
 			================================================== -->
-	<script type="text/javascript" src="assets/plugins/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
 	<script type="text/javascript"
-		src="assets/plugins/js/viewportchecker.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/bootsnav.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/select2.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/viewportchecker.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootsnav.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/select2.min.js"></script>
 	<script type="text/javascript"
-		src="assets/plugins/js/wysihtml5-0.3.0.js"></script>
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/wysihtml5-0.3.0.js"></script>
 	<script type="text/javascript"
-		src="assets/plugins/js/bootstrap-wysihtml5.js"></script>
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootstrap-wysihtml5.js"></script>
 	<script type="text/javascript"
-		src="assets/plugins/js/datedropper.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/dropzone.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/loader.js"></script>
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/datedropper.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/dropzone.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/loader.js"></script>
 	<script type="text/javascript"
-		src="assets/plugins/js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/slick.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/js/gmap3.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/slick.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/assets/plugins/js/gmap3.min.js"></script>
 	<script type="text/javascript"
-		src="assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
 	<!-- Custom Js -->
-	<script src="assets/js/custom.js"></script>
-	<script src="assets/js/jQuery.style.switcher.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/custom.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jQuery.style.switcher.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#styleOptions').styleSwitcher();
