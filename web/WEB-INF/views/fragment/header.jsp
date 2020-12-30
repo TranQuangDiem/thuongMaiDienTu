@@ -22,7 +22,8 @@
 						Job</a></li>
 				<li><a href="blog.html" style="visibility: hidden">Blog</a></li>
 			</c:if>
-			<c:if test="${not empty sessionScope.currentAccount}">
+			<c:if
+				test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role ==1}">
 				<li class="dropdown megamenu-fw ">
 				<li><a href="search-new.html">Jobs</a></li>
 				<li><a href="create-job.html">Creata Job</a></li>
@@ -44,18 +45,34 @@
 				</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.currentAccount}">
+<<<<<<< HEAD
 				<li><a href="<c:url value="/pricing"/>"><i class="fa fa-sign-in"
 						aria-hidden="true"></i>Gói bài đăng</a></li>
 				<li><a href="thanhtoan"><i class="fa fa-dollar"
+=======
+				<c:if test="${sessionScope.currentAccount.role==1}">
+					<li><a href="pricing.html"><i class="fa fa-sign-in"
+							aria-hidden="true"></i>Gói Bài Đăng</a></li>
+				</c:if>
+				<li><a href="e-wallet.html"><i class="fa fa-dollar"
+>>>>>>> f69b02f1e1bad78a25e1a965418558fcc32e05a4
 						aria-hidden="true"></i>Payment</a></li>
-				<li class="dropdown"><a href="#"><i class="fa fa-user"></i><c:out value="${sessionScope.currentAccount.fullname}"></c:out></a>
+				<li class="dropdown"><a href="#"><i class="fa fa-user"></i>
+						<c:out value="${sessionScope.currentAccount.fullname}"></c:out></a>
 					<ul class="dropdown-menu"
 						style="border: none; width: auto; top: 30px; left: 0.3px">
 						<li><a href="#">Tài khoản của tôi</a></li>
+<<<<<<< HEAD
 						<li><a href="<c:url value="/vitien"/>">Ví của tôi</a></li>
 						<li><a href="${pageContext.request.contextPath}/logout">Đăng xuất</a></li>
 					</ul>
 					</li>
+=======
+						<li><a href="#">Ví của tôi</a></li>
+						<li><a href="${pageContext.request.contextPath}/logout">Đăng
+								xuất</a></li>
+					</ul></li>
+>>>>>>> f69b02f1e1bad78a25e1a965418558fcc32e05a4
 			</c:if>
 
 

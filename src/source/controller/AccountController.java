@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import config.CommonConst;
+import customutil.MailHandler;
 import customutil.StringHelper;
 import database.AccountDAO;
+import database.ForgotPasswordDAO;
 import model.Account;
 
 @Controller
@@ -55,7 +57,7 @@ public class AccountController {
 	@ResponseBody
 	public String register(HttpServletRequest request, @RequestParam("fullnamenew") String fullnamenew,
 			@RequestParam("emailnew") String emailnew, @RequestParam("usernamenew") String usernamenew,
-			@RequestParam("passwordnew") String passwordnew,@RequestParam("role-new") String rolenew) {
+			@RequestParam("passwordnew") String passwordnew, @RequestParam("role-new") String rolenew) {
 		List<String> toCheck = new ArrayList<>();
 		toCheck.add(fullnamenew);
 		toCheck.add(emailnew);
@@ -78,7 +80,8 @@ public class AccountController {
 			return "errmail";
 		} else if (AccountDAO.isEmailExists(emailnew)) {
 			return "errmailexist";
-		} else if (!AccountDAO.addAccountByRegister(usernamenew, passwordnew, fullnamenew, emailnew,Integer.parseInt(rolenew))) {
+		} else if (!AccountDAO.addAccountByRegister(usernamenew, passwordnew, fullnamenew, emailnew,
+				Integer.parseInt(rolenew))) {
 			return "error";
 		} else {
 			Account account = new Account();
@@ -89,6 +92,31 @@ public class AccountController {
 			account.setId(AccountDAO.getIdAccByUsername(usernamenew));
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, account);
 			return "success";
+		}
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/getlostpassword")
+	@ResponseBody
+	public String getLostPassword(@RequestParam String email) {
+		if (!AccountDAO.isEmailExists(email)) {
+			return "notexists";
+		} else {
+			try {
+				int id=AccountDAO.getIdByEmail(email);
+				StringBuilder sb = new StringBuilder(ForgotPasswordDAO.insert(id));
+				String key=sb.toString();
+				if (key.equals("")) {
+					return "fail";
+				} else {
+					String content = "Mật khẩu hiện tại của bạn là: " + key;
+					MailHandler.sendEmail(email, "Quên Mật Khẩu", content);
+					AccountDAO.updatePassword(key,id );
+					return "ok";
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "fail";
+			}
 		}
 	}
 
