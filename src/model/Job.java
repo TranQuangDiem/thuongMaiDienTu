@@ -17,9 +17,18 @@ public class Job {
 	public static final int STATUS_OPEN=1;
 	public static final int STATUS_CLOSE=0;
 	private int id;
-	private	String tencongviec;
-	private String chitiet;
+	private	String jobTitle;
+	private String jobDescription;
+	private int idAcc;
 	private String img;
 	private int soluongtuyen;
-	private Date ngaydang;
+	private Date createday;
+	private Date finishday;
+	private int view;
+	private String major;
+	private String language;
+	private String exp;
+	private String education;
+	private String status;
+	private String city;
 }

@@ -32,7 +32,13 @@ import model.Account;
 public class JobController {
 
 	@RequestMapping(value = "/create-job")
-	public ModelAndView createJobPage() {
+	public ModelAndView createJobPage(HttpServletRequest request ) {
+		Account account=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+		if(account==null) {
+			return new ModelAndView("redirect:loginpage");
+		}else if(account.getRole()==CommonConst.LEVEL_FREELANCER) {
+			return new ModelAndView("redirect:index");
+		}
 		ModelAndView model = new ModelAndView("create-job");
 		model.addObject("listMajors", MajorDAO.getAll());
 		return model;
