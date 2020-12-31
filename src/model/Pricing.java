@@ -5,16 +5,14 @@ public class Pricing {
 	String tengoi;
 	int gia;
 	int soluongbaidang;
-	String thoihan;
+	int thoihan;
 	String mota;
 	String doUuTien;
 	
 	public Pricing() {
 	}
 
-	
-	public Pricing(int id, String tengoi, int gia, int soluongbaidang, String thoihan, String mota,
-			String doUuTien) {
+	public Pricing(int id, String tengoi, int gia, int soluongbaidang, int thoihan, String mota, String doUuTien) {
 		super();
 		this.id = id;
 		this.tengoi = tengoi;
@@ -68,11 +66,11 @@ public class Pricing {
 		this.soluongbaidang = soluongbaidang;
 	}
 
-	public String getThoihan() {
+	public int getThoihan() {
 		return thoihan;
 	}
 
-	public void setThoihan(String thoihan) {
+	public void setThoihan(int thoihan) {
 		this.thoihan = thoihan;
 	}
 

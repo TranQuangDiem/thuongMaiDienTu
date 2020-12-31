@@ -21,7 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/assets/css/colors/green-style.css">
 </head>
 <body>
-	<c:url value="/thanhtoan" var="urlThanhtoan" />
+	<c:url value="/hoadon" var="urlThanhtoan" />
 	<div class="Loader"></div>
 	<div class="wrapper">
 
@@ -96,15 +96,15 @@
 							</div>
 							<div class="pr-features">
 								<ul>
-									<li>Thời hạn : ${goi.thoihan}</li>
+									<li>Thời hạn : ${goi.thoihan} ngày</li>
 									<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
 									<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
 									<li>${goi.mota}</li>
 								</ul>
 							</div>
 							<div class="pr-buy-button">
-								<a href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
-									title="Price Button">Get Started</a>
+								<a onclick="thongbao()" href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
+									title="Price Button">Mua</a>
 							</div>
 						</div>
 					</div>
@@ -365,6 +365,9 @@
 
 			function closeRightMenu() {
 				document.getElementById("rightMenu").style.display = "none";
+			}
+			function thongbao() {
+				 confirm("Bạn chắc chắn muốn mua gói bài đăng này");
 			}
 		</script>
 	</div>

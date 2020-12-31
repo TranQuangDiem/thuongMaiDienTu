@@ -18,8 +18,8 @@ public class HomeController {
 	private String trangchu(HttpServletRequest request, Model model) {
 //		Account acount = UtilDataBase.getMinAccount(1);
 //		request.getSession().setAttribute("currentAccount", acount);
-//		model.addAttribute("danhsachgoi", UtilDataBase.getPricing());
-//		model.addAttribute("danhsachcongviec", UtilDataBase.listJob());
+		model.addAttribute("danhsachgoi", UtilDataBase.getPricingLimit(3));
+		model.addAttribute("danhsachcongviec", UtilDataBase.listJob());
 		return "index-6";
 	}
 
@@ -34,9 +34,8 @@ public class HomeController {
 		return "goibaidang";
 	}
 
-	@RequestMapping(value = "/thanhtoan", params = { "id" })
-	public String thanhtoan(Model model, HttpServletRequest request, @RequestParam(value = "id") int id) {
-		model.addAttribute("goi", UtilDataBase.findPricingById(id));
+	@RequestMapping(value = "/thanhtoan")
+	public String thanhtoan() {
 		return "payment-methode";
 	}
 }

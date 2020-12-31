@@ -1,4 +1,4 @@
-/*
+﻿/*
  Navicat Premium Data Transfer
 
  Source Server         : My SQL
@@ -161,5 +161,42 @@ CREATE TABLE `subscriber`  (
 -- ----------------------------
 INSERT INTO `subscriber` VALUES (1, 2, 1, 3, '2020-12-11 17:23:15');
 INSERT INTO `subscriber` VALUES (2, 1, 1, 2, '2020-12-24 18:04:05');
+
+SET FOREIGN_KEY_CHECKS = 1;
+-- ----------------------------
+-- Table structure for hoadon
+-- ----------------------------
+DROP TABLE IF EXISTS `hoadon`;
+CREATE TABLE `hoadon`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idAccount` int(255) NULL DEFAULT NULL,
+  `tenGoi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `soLuongBaiDang` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ngayMua` date NULL DEFAULT NULL,
+  `ngayHetHan` date NULL DEFAULT NULL,
+  `giaTri` decimal(65, 0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of hoadon
+-- ----------------------------
+INSERT INTO `hoadon` VALUES (4, 1, 'Nâng cao', '150', '2020-12-30', '2021-01-29', 290000);
+INSERT INTO `hoadon` VALUES (5, 3, 'Dùng thử', '20', '2020-12-30', '2021-01-06', 0);
+-- ----------------------------
+-- Table structure for vitien
+-- ----------------------------
+DROP TABLE IF EXISTS `vitien`;
+CREATE TABLE `vitien`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idAccount` int(255) NULL DEFAULT NULL,
+  `tongtien` int(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of vitien
+-- ----------------------------
+INSERT INTO `vitien` VALUES (1, 3, 300000);
 
 SET FOREIGN_KEY_CHECKS = 1;

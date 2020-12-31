@@ -50,6 +50,9 @@
 				</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.currentAccount}">
+				<li><a href="<c:url value="/pricing"/>"><i
+						class="fa fa-sign-in" aria-hidden="true"></i>Gói bài đăng</a></li>
+				 	<!-- <li><a href="thanhtoan"><i class="fa fa-dollar"></i>Nạp tiền</a></li> -->
 				<c:if test="${sessionScope.currentAccount.role==1}">
 					<li><a href="pricing.html"><i class="fa fa-sign-in"
 							aria-hidden="true"></i>Gói Bài Đăng</a></li>
@@ -61,11 +64,16 @@
 					<ul class="dropdown-menu"
 						style="border: none; width: auto; top: 30px; left: 0.3px">
 						<li><a href="#">Tài khoản của tôi</a></li>
-						<li><a href="#">Ví của tôi</a></li>
+						<li><a href="<c:url value="/vitien"/>">Ví của tôi</a></li>
 						<li><a href="${pageContext.request.contextPath}/logout">Đăng
 								xuất</a></li>
 					</ul></li>
-			</c:if>
+			<!-- <li><a href="#">Ví của tôi</a></li>
+				<li><a href="${pageContext.request.contextPath}/logout">Đăng
+						xuất</a></li> -->
+		</ul>
+		</li>
+		</c:if>
 
 
 		</ul>

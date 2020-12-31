@@ -35,6 +35,17 @@ public class Account {
 		super();
 	}
 
+	
+	public Account(int id, String fullname, String email, String phone, int soluongbaidang) {
+		super();
+		this.id = id;
+		this.fullname = fullname;
+		this.email = email;
+		this.phone = phone;
+		this.soluongbaidang = soluongbaidang;
+	}
+
+
 	public int getSoluongbaidang() {
 		return soluongbaidang;
 	}
