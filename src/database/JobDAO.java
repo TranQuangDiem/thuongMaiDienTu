@@ -7,12 +7,24 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 import customutil.IntegerHelper;
 import dataform.FormCreateJob;
 import model.Job;
 
 public class JobDAO {
+	public static List<Job> listJobAll(){
+		try {
+			String query="";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			
+			return null;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public static boolean insert(FormCreateJob form, int idAcc) {
 		try {
 			
