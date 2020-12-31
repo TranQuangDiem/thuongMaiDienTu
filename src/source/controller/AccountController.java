@@ -96,19 +96,21 @@ public class AccountController {
 	@RequestMapping(method = RequestMethod.POST, value = "/getlostpassword")
 	@ResponseBody
 	public String getLostPassword(@RequestParam String email) {
-		if (!AccountDAO.isEmailExists(email)) {
+		if (StringHelper.isStringNull(email)) {
+			return "empty";
+		} else if (!AccountDAO.isEmailExists(email)) {
 			return "notexists";
 		} else {
 			try {
-				int id=AccountDAO.getIdByEmail(email);
+				int id = AccountDAO.getIdByEmail(email);
 				StringBuilder sb = new StringBuilder(ForgotPasswordDAO.insert(id));
-				String key=sb.toString();
+				String key = sb.toString();
 				if (key.equals("")) {
 					return "fail";
 				} else {
 					String content = "Mật khẩu hiện tại của bạn là: " + key;
 					MailHandler.sendEmail(email, "Quên Mật Khẩu", content);
-					AccountDAO.updatePassword(key,id );
+					AccountDAO.updatePassword(key, id);
 					return "ok";
 				}
 			} catch (Exception e) {

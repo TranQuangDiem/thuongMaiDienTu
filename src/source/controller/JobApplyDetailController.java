@@ -48,7 +48,6 @@ public class JobApplyDetailController{
 	@ResponseBody
 	@RequestMapping(value="/change-status-subscriber", params= {"freelancer_id", "id_job", "status"}, method=RequestMethod.POST)
 	public String changeStatusSubscriber(@RequestParam(value="freelancer_id") int freelancer_id, @RequestParam(value = "id_job") int id_job, @RequestParam(value = "status") String status) {
-		
 		return (JobApplyDetailDatabase.changeStatusFreeLancer(freelancer_id,id_job, Subscriber.Status.valueOf(status)))?"Ok":"Error";
 	}
 	

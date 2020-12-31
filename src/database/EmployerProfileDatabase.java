@@ -58,8 +58,9 @@ public class EmployerProfileDatabase {
 			ps.setInt(1, id_employer);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6), rs.getInt(7),rs.getDate(8));
-				danhsachcongviec.add(j);
+				/** Load Job */
+//				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6), rs.getInt(7),rs.getDate(8));
+//				danhsachcongviec.add(j);
 			}
 			ConnectionDB.close(rs);
 		} catch (Exception e) {

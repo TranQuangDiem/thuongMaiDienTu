@@ -8,7 +8,7 @@ import model.Account;
 import model.Evaluate;
 
 public class AccountDAO {
-	
+
 	public static boolean updatePassword(String newpassword, int id) {
 		try {
 			String query = "UPDATE account SET account.`password`=MD5(?) WHERE account.id=?";
@@ -114,19 +114,19 @@ public class AccountDAO {
 	}
 
 	public static Account getUserById(int id) {
-		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background, id_address from account where id=?";
+			Account rs = null;
+			String sql = "select username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, major, twitter, facebook, website, background, id_address,linkedin,balance from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rsSet = ps.executeQuery();
-			while (rsSet.next()) {
+			if (rsSet.next()) {
 				rs = new Account();
 				rs.setId(id);
 				rs.setUsername(rsSet.getString(1));
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
-				rs.setImage(rsSet.getBlob(4));
+				rs.setImage(rsSet.getBlob(4)==null?null:rsSet.getBlob(4));
 				rs.setStarAverage(rsSet.getFloat(5));
 				rs.setAbout(rsSet.getString(6));
 				rs.setEmail(rsSet.getString(7));
@@ -137,14 +137,16 @@ public class AccountDAO {
 				rs.setTwitter(rsSet.getString(12));
 				rs.setFacebook(rsSet.getString(13));
 				rs.setWebsite(rsSet.getString(14));
-				rs.setBackground(rsSet.getBlob(15));
+				rs.setBackground(rsSet.getBlob(4)==null?null:rsSet.getBlob(4));
 				rs.setAddress(UtilDataBase.getAddress(rsSet.getInt(16)));
+				rs.setLinkedin(rsSet.getString(17));
 			}
+			return rs;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			return null;
 		}
-
-		return rs;
+		
 	}
 
 }

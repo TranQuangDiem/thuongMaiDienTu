@@ -10,9 +10,6 @@ import javax.imageio.ImageIO;
 
 import database.UtilImage;
 
-
-
-
 public class Account {
 	private int id;
 	private String username;
@@ -33,16 +30,11 @@ public class Account {
 	private String facebook;
 	private String website;
 	private BufferedImage background;
-
+	private String linkedin;
 	public Account() {
 		super();
 	}
 
-	
-	
-	
-
-	
 	public int getSoluongbaidang() {
 		return soluongbaidang;
 	}
@@ -57,6 +49,14 @@ public class Account {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
 	}
 
 	public int getId() {
@@ -90,29 +90,19 @@ public class Account {
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
-	
+
 	public BufferedImage getImage() {
 		return image;
 	}
-
-
-
-
-
 
 	public void setBackground(BufferedImage background) {
 		this.background = background;
 	}
 
-
-
-
-
-
 	public String getImageBase64() {
-		String rs="";
+		String rs = "";
 		try {
-			rs= UtilImage.covertBase64(image);
+			rs = UtilImage.covertBase64(image);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -122,17 +112,19 @@ public class Account {
 	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
+
 	public void setImage(Blob image) {
-		
-		
+
 		try {
-			this.image = ImageIO.read(image.getBinaryStream());
+			if (image != null) {
+				this.image = ImageIO.read(image.getBinaryStream());
+			} else {
+				this.image = null;
+			}
 		} catch (IOException | SQLException e) {
-			
 			e.printStackTrace();
 		}
 	}
-
 
 	public float getStarAverage() {
 		return starAverage;
@@ -217,23 +209,26 @@ public class Account {
 	public BufferedImage getBackground() {
 		return background;
 	}
+
 	public String getBackgroundBase64() {
-		String rs="";
+		String rs = "";
 		try {
-			rs= UtilImage.covertBase64(background);
+
+			rs = UtilImage.covertBase64(background);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 		return rs;
 	}
 
-	
 	public void setBackground(Blob background) {
 
 		try {
+			if(background!=null)
 			this.background = ImageIO.read(background.getBinaryStream());
+			else this.background=null;
 		} catch (IOException | SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -259,9 +254,10 @@ public class Account {
 		String expression = "^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}";
 		return name.matches(expression);
 	}
+
 	public static boolean validPassword(String password) {
 		String expression = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
-		return password.matches(expression) ;
+		return password.matches(expression);
 	}
 
 	public static boolean validUsername(String username) {
@@ -277,6 +273,5 @@ public class Account {
 			return false;
 		return pat.matcher(email).matches();
 	}
-	
 
 }

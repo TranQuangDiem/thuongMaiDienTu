@@ -2,88 +2,24 @@ package model;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
+@ToString
 public class Job {
-	int id;
-	String tencongviec;
-	String chitiet;
-	int chiphi;
-	String img;
-	int soluongtuyen;
-	Date ngaydang;
-
-	public Job() {
-		super();
-	}
-
-	
-
-	public Job(int id, String tencongviec, String chitiet, int chiphi, String img, int soluongtuyen, Date ngaydang) {
-		super();
-		this.id = id;
-		this.tencongviec = tencongviec;
-		this.chitiet = chitiet;
-		this.chiphi = chiphi;
-		this.img = img;
-		this.soluongtuyen = soluongtuyen;
-		this.ngaydang = ngaydang;
-	}
-
-
-
-	public Date getNgaydang() {
-		return ngaydang;
-	}
-
-	public void setNgaydang(Date ngaydang) {
-		this.ngaydang = ngaydang;
-	}
-
-	public int getSoluongtuyen() {
-		return soluongtuyen;
-	}
-
-	public void setSoluongtuyen(int soluongtuyen) {
-		this.soluongtuyen = soluongtuyen;
-	}
-
-	public String getTencongviec() {
-		return tencongviec;
-	}
-
-	public void setTencongviec(String tencongviec) {
-		this.tencongviec = tencongviec;
-	}
-
-	public String getChitiet() {
-		return chitiet;
-	}
-
-	public void setChitiet(String chitiet) {
-		this.chitiet = chitiet;
-	}
-
-	public int getChiphi() {
-		return chiphi;
-	}
-
-	public void setChiphi(int chiphi) {
-		this.chiphi = chiphi;
-	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	public static final int STATUS_OPEN=1;
+	public static final int STATUS_CLOSE=0;
+	private int id;
+	private	String tencongviec;
+	private String chitiet;
+	private String img;
+	private int soluongtuyen;
+	private Date ngaydang;
 }
