@@ -67,7 +67,7 @@ public class HoaDonDatabase {
 		try {
 		String sql = "DELETE FROM hoadon where id="+id;
 		PreparedStatement ps= ConnectionDB.prepareStatement(sql);
-		ps.setInt(1, id);
+//		ps.setInt(1, id);
 		ps.executeQuery(sql);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

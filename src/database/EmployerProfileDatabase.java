@@ -12,6 +12,32 @@ import model.Job;
 
 public class EmployerProfileDatabase {
 	// url /employer-profile?id_employer=1 // Để url để test chứ có nhớ đâu
+	public static void delete(int id) {
+		try {
+			String sql= "delete from account where id="+id;
+			PreparedStatement ps =ConnectionDB.prepareStatement(sql);
+			ps.executeUpdate(sql);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static List<Account> findAllEmployer(){
+		List<Account> account = new ArrayList<Account>();
+		try {
+			String sql = "select * from account where role=1";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ResultSet rs =ps.executeQuery(sql);
+			while (rs.next()) {
+				Account a  = new Account(rs.getInt(1), rs.getString(4), rs.getString(8), rs.getString(9), countJob(rs.getInt(1)));
+			account.add(a);
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return account;
+	}
 	
 	public static Account information(int id_employer) {
 		Account taikhoan = null;
