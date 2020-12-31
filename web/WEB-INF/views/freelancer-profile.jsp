@@ -137,10 +137,10 @@
 								<div id="address" class="tab-pane fade">
 									<h3>Thông tin liên hệ</h3>
 									<ul class="job-detail-des">
-										<li><span>Địa chỉ:</span>${freelancer.address.diaChi}</li>
-										<li><span>Tỉnh / Thành Phố:</span>${freelancer.address.tinhThanhPho}</li>
-										<li><span>Quận / Huyện:</span>${freelancer.address.quanHuyen}</li>
-										<li><span>Phường / Xã:</span>${freelancer.address.xaPhuong}</li>
+										<li><span>Địa chỉ:</span>${freelancer.address.detailAddress}</li>
+										<li><span>Tỉnh / Thành Phố:</span>${freelancer.address.province}</li>
+										<li><span>Quận / Huyện:</span>${freelancer.address.district}</li>
+										<li><span>Phường / Xã:</span>${freelancer.address.ward}</li>
 										<li><span>Điện Thoại:</span>${freelancer.phone}</li>
 										<li><span>Email:</span>${freelancer.email}</li>
 									</ul>
@@ -475,10 +475,16 @@
 		        <script src="<c:url value="${script}"/>"></script>
 		    </c:forEach> 
 			
-			
+			<script type="text/javascript">
+			$(document).ready(function(){
+				
+				
+			});
+			</script>
 			
 			</div>
 	</body>
+	
 
 <!-- employer-profile41:42-->
 </html>

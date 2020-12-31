@@ -111,6 +111,7 @@ public class Account {
 	}
 
 	public String getImageBase64() {
+		if(image==null)return null;
 		String rs = "";
 		try {
 			rs = UtilImage.covertBase64(image);
@@ -222,6 +223,7 @@ public class Account {
 	}
 
 	public String getBackgroundBase64() {
+		if(background==null)return null;
 		String rs = "";
 		try {
 

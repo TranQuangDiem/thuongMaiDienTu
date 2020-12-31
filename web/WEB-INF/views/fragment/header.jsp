@@ -63,7 +63,7 @@
 						<c:out value="${sessionScope.currentAccount.fullname}"></c:out></a>
 					<ul class="dropdown-menu"
 						style="border: none; width: auto; top: 30px; left: 0.3px">
-						<li><a href="#">Tài khoản của tôi</a></li>
+						<li><a href="${pageContext.request.contextPath}/freelancer-profile?id_freelancer=${sessionScope.currentAccount.id}">Tài khoản của tôi</a></li>
 						<li><a href="<c:url value="/vitien"/>">Ví của tôi</a></li>
 						<li><a href="${pageContext.request.contextPath}/logout">Đăng
 								xuất</a></li>

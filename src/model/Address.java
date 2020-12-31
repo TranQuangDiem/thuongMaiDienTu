@@ -2,45 +2,47 @@ package model;
 
 public class Address {
 	private int id;
-	private String tinhThanhPho;
-	private String quanHuyen;
-	private String xaPhuong;
-	private String diaChi;
+	private String province;
+	private String district;
+	private String ward;
+	private String detailAddress;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getTinhThanhPho() {
-		return tinhThanhPho;
+	
+	public String getProvince() {
+		return province;
 	}
-	public void setTinhThanhPho(String tinhThanhPho) {
-		this.tinhThanhPho = tinhThanhPho;
+	public void setProvince(String province) {
+		this.province = province;
 	}
-	public String getQuanHuyen() {
-		return quanHuyen;
+	public String getDistrict() {
+		return district;
 	}
-	public void setQuanHuyen(String quanHuyen) {
-		this.quanHuyen = quanHuyen;
+	public void setDistrict(String district) {
+		this.district = district;
 	}
-	public String getXaPhuong() {
-		return xaPhuong;
+	public String getWard() {
+		return ward;
 	}
-	public void setXaPhuong(String xaPhuong) {
-		this.xaPhuong = xaPhuong;
+	public void setWard(String ward) {
+		this.ward = ward;
 	}
-	public String getDiaChi() {
-		return diaChi;
+	public String getDetailAddress() {
+		return detailAddress;
 	}
-	public void setDiaChi(String diaChi) {
-		this.diaChi = diaChi;
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", tinhThanhPho=" + tinhThanhPho + ", quanHuyen=" + quanHuyen + ", xaPhuong="
-				+ xaPhuong + ", diaChi=" + diaChi + "]";
+		return "Address [id=" + id + ", province=" + province + ", district=" + district + ", ward=" + ward
+				+ ", detailAddress=" + detailAddress + "]";
 	}
+	
 	
 
 }
