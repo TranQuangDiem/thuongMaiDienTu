@@ -46,7 +46,6 @@ public class JobController {
 	@RequestMapping (value="/jobs")
 	public ModelAndView listJobPage() {
 		ModelAndView model = new ModelAndView("jobs");
-
 		return model;
 	}
 	

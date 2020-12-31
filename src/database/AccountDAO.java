@@ -137,7 +137,7 @@ public class AccountDAO {
 				rs.setTwitter(rsSet.getString(12));
 				rs.setFacebook(rsSet.getString(13));
 				rs.setWebsite(rsSet.getString(14));
-				rs.setBackground(rsSet.getBlob(4)==null?null:rsSet.getBlob(4));
+				rs.setBackground(rsSet.getBlob(15)==null?null:rsSet.getBlob(15));
 				rs.setAddress(UtilDataBase.getAddress(rsSet.getInt(16)));
 				rs.setLinkedin(rsSet.getString(17));
 			}
