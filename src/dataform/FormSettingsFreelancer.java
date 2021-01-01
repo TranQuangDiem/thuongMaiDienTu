@@ -18,6 +18,7 @@ public class FormSettingsFreelancer {
 	private String twitter;
 	private String facebook;
 	private String website;
+	private boolean ready;
 	private MultipartFile background;
 	private Address address;
 	private String about;
@@ -96,12 +97,12 @@ public class FormSettingsFreelancer {
 	public void setIdAccount(int idAccount) {
 		this.idAccount = idAccount;
 	}
-	@Override
-	public String toString() {
-		return "FormSettingsFreelancer [idAccount=" + idAccount + ", fullname=" + fullname + ", image=" + image
-				+ ", twitter=" + twitter + ", facebook=" + facebook + ", website=" + website + ", background="
-				+ background + ", address=" + address + ", about=" + about + ", email=" + email + ", phone=" + phone
-				+ ", major=" + major + "]";
+	
+	public boolean isReady() {
+		return ready;
+	}
+	public void setReady(boolean ready) {
+		this.ready = ready;
 	}
 	public Account toAccount() {
 		Account account= new Account();
@@ -115,6 +116,7 @@ public class FormSettingsFreelancer {
 		account.setEmail(email);
 		account.setTwitter(twitter);
 		account.setWebsite(website);
+		account.setReady(ready);
 		try {
 			account.setImage(ImageIO.read(image.getInputStream()));
 		} catch (IOException e) {
@@ -127,6 +129,38 @@ public class FormSettingsFreelancer {
 		}
 		
 		return account;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("FormSettingsFreelancer [idAccount=");
+		builder.append(idAccount);
+		builder.append(", fullname=");
+		builder.append(fullname);
+		builder.append(", image=");
+		builder.append(image);
+		builder.append(", twitter=");
+		builder.append(twitter);
+		builder.append(", facebook=");
+		builder.append(facebook);
+		builder.append(", website=");
+		builder.append(website);
+		builder.append(", ready=");
+		builder.append(ready);
+		builder.append(", background=");
+		builder.append(background);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", about=");
+		builder.append(about);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", major=");
+		builder.append(major);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	

@@ -31,6 +31,7 @@ public class Account {
 	private String website;
 	private BufferedImage background;
 	private String linkedin;
+	private boolean ready;
 	public Account() {
 		super();
 	}
@@ -253,15 +254,68 @@ public class Account {
 	public void setAddressString(String addressString) {
 		this.addressString = addressString;
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", username=" + username + ", password=" + password + ", fullname=" + fullname
-				+ ", image=" + image + ", starAverage=" + starAverage + ", about=" + about + ", email=" + email
-				+ ", phone=" + phone + ", role=" + role + ", name=" + name + ", major=" + major + ", soluongbaidang="
-				+ soluongbaidang + ", address=" + address + ", twitter=" + twitter + ", facebook=" + facebook
-				+ ", website=" + website + ", background=" + background + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Account [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", fullname=");
+		builder.append(fullname);
+		builder.append(", image=");
+		builder.append(image);
+		builder.append(", starAverage=");
+		builder.append(starAverage);
+		builder.append(", about=");
+		builder.append(about);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", major=");
+		builder.append(major);
+		builder.append(", soluongbaidang=");
+		builder.append(soluongbaidang);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append(", addressString=");
+		builder.append(addressString);
+		builder.append(", twitter=");
+		builder.append(twitter);
+		builder.append(", facebook=");
+		builder.append(facebook);
+		builder.append(", website=");
+		builder.append(website);
+		builder.append(", background=");
+		builder.append(background);
+		builder.append(", linkedin=");
+		builder.append(linkedin);
+		builder.append(", ready=");
+		builder.append(ready);
+		builder.append("]");
+		return builder.toString();
 	}
+
+
+	public boolean isReady() {
+		return ready;
+	}
+
+
+	public void setReady(boolean ready) {
+		this.ready = ready;
+	}
+
 
 	public static boolean validName(String name) {
 		String expression = "^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}";

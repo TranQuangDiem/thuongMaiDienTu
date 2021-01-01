@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import database.FreeLancerProfileDatabase;
+import database.MajorDAO;
 import database.UtilDataBase;
 import dataform.FormSettingsFreelancer;
 import model.Account;
 import model.Evaluate;
+import model.Major;
 
 
 @Controller
@@ -31,6 +33,8 @@ public class FreeLancerProfileController {
 		//Account account = (Account) request.getSession().getAttribute("currentAccount");
 		Account currentAccount=UtilDataBase.getAccount(1);
 		Account freelancer=UtilDataBase.getAccount(id_freelancer);
+		List<Major> lstMajor=MajorDAO.getAll();
+		model.addAttribute("lstMajor", lstMajor);
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
 		

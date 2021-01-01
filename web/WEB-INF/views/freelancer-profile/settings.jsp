@@ -19,11 +19,20 @@
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Chuyên ngành</label>
-				<input name="major" type="text" class="form-control" value="${freelancer.major}">
+				<select name="major" class="form-control">
+					<c:if test="${freelancer.role==2}">
+					<c:forEach var="itemMajor" items="${lstMajor}"
+						varStatus="tagStatus">
+						<option value="${itemMajor.name}">${itemMajor.name}</option>
+					</c:forEach>
+						
+					</c:if>
+				</select>
+				
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label id="label-hireable">Trạng Thái</label>
-				<input type="checkbox" class="form-control" value="true" name="" id="checkbox-active-freelancer" checked="true">
+				<input type="checkbox" class="form-control" value="true" name="ready" id="checkbox-active-freelancer" checked="true">
 				<p id="p-hireable-freelancer">Sẵn Sàng</p>
 			</div>
 			<div class="col-md-4 col-sm-6">
@@ -117,7 +126,11 @@
 	});
 	function updateAddress(){
 		$(document).ready(function(){
-			$("select[name='address.province']").val('');
+			$("select[name='major']").val('${freelancer.major}');
+			$("input[name='ready']").prop('checked', ${freelancer.ready});
+			$("input[name='ready']").val('${freelancer.ready}');
+			
+			$("input[name='ready']").change();
 			$("select[name='address.province']").val("${freelancer.address.province}").change();
 			$("select[name='address.province']")[0].dispatchEvent(new Event('change'));
 			$("select[name='address.district']").val("${freelancer.address.district}").change();

@@ -1,12 +1,24 @@
 $(document).ready(function () {
+ 	/*$('#checkbox-active-job').click(function (e){
+     	
+     	 var checkboxHire = $('#checkbox-active-job');
+     	 if(checkboxHire.val()!='true'){
+     	 	checkboxHire.val('true').change();
+     	 } else{
+     	 	checkboxHire.val('false').change();
+     	 }
+     	 
+     	 
+    });*/
     $('#checkbox-active-job').change(function (e) { 
         e.preventDefault();
-        var checkboxHire = $('#checkbox-active-job:checked');
+        var checkboxHire = $('#checkbox-active-job');
         if(checkboxHire.val()!='true'){
             $('#p-hireable').css('color', "#7f8c8d");
             $('#p-hireable').text("Không tuyển dụng");
             $('#span-hire').text("Không tuyển dụng");
             $('#span-hire').css('color', "#7f8c8d");
+            
         }else{
             $('#p-hireable').css('color', "#2ecc71");
             $('#p-hireable').text("Đang tuyển dụng");
@@ -14,9 +26,21 @@ $(document).ready(function () {
             $('#span-hire').css('color', "#2ecc71");
         }
     });
+    $('#checkbox-active-freelancer').click(function (e){
+     	
+     	 var checkboxHire = $('#checkbox-active-freelancer');
+     	 if(checkboxHire.val()!='true'){
+     	 	checkboxHire.val('true').change();
+     	 } else{
+     	 	checkboxHire.val('false').change();
+     	 }
+     	 
+     	 
+    });
     $('#checkbox-active-freelancer').change(function (e) { 
       e.preventDefault();
-      var checkboxHire = $('#checkbox-active-freelancer:checked');
+      var checkboxHire = $('#checkbox-active-freelancer');
+     
       if(checkboxHire.val()!='true'){
           $('#p-hireable-freelancer').css('color', "#7f8c8d");
           $('#p-hireable-freelancer').text("Không sẵn sàng");

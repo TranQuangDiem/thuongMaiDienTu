@@ -99,7 +99,15 @@
             });
         }
         window.addEventListener('load', init);
-        window.addEventListener('load', updateAddress);
+        try{
+                
+               
+                window.addEventListener('load', updateAddress);
+            }
+            catch(e){
+                return console.error(`Not function: `+e);
+            }
+       
       
     };
 

@@ -18,7 +18,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background from account where id=?";
+			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background, ready from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -42,6 +42,7 @@ public class UtilDataBase {
 				rs.setWebsite(rsSet.getString(14));
 				rs.setBackground(rsSet.getBlob(15));
 				rs.setAddress(getAddress(id_account));
+				rs.setReady(rsSet.getInt(16)==1);
 				// System.out.println(rs.toString());
 
 			}
@@ -196,12 +197,12 @@ public class UtilDataBase {
 
 		return subscriber;
 	}
-	public static Address getAddress(int id_address) {
+	public static Address getAddress(int id_account) {
 		Address address = new Address();
 		try {
 			String sql = "select id, `province`, `district`, `ward`, detail_address  from address where id_account=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, id_address);
+			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
 			while (rsSet.next()) {
 				

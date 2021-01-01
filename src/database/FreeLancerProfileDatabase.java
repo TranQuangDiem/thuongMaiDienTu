@@ -91,7 +91,7 @@ public class FreeLancerProfileDatabase {
 		PreparedStatement ps =null;
 		//Start update regular field
 		try {
-			sql = "update account set fullname=?,major=?,email=?,phone=?,address=?,about=?, email=?, facebook=?, website=?, twitter=? where id=?";
+			sql = "update account set fullname=?,major=?,email=?,phone=?,address=?,about=?, email=?, facebook=?, website=?, twitter=?, ready=? where id=?";
 			ps = ConnectionDB.prepareStatement(sql);
 			ps.setString(1, account.getFullname());
 			ps.setString(2, account.getMajor());
@@ -103,7 +103,8 @@ public class FreeLancerProfileDatabase {
 			ps.setString(8, account.getFacebook());
 			ps.setString(9, account.getWebsite());
 			ps.setString(10, account.getTwitter());
-			ps.setInt(11,account.getId()); 
+			ps.setInt(11, (account.isReady())?1:0);
+			ps.setInt(12,account.getId()); 
 			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
