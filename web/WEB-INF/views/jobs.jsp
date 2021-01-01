@@ -64,16 +64,16 @@
 							placeholder="Tên Công Việc">
 					</div>
 					<div hidden="true" class="col-md-4 col-sm-6">
-						<label>Quận / Huyện</label> <select name="ls_district"
+						<label>Quận / Huyện</label> <select name="address.district"
 							class="form-control" id="huyen"></select>
 
 					</div>
 					<div hidden="true" class="col-md-4 col-sm-6">
-						<label>Xã Phường</label> <select name="ls_ward"
+						<label>Xã Phường</label> <select name="address.ward"
 							class="form-control" id="xa"></select>
 					</div>
 					<div class="col-md-3 col-sm-6">
-						<select name="ls_province" class="form-control" id="tinh"></select>
+						<select name="address.province" class="form-control" id="tinh"></select>
 					</div>
 
 					<div class="col-md-3 col-sm-6">

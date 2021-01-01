@@ -103,15 +103,15 @@
 							</div>
 							<div class="col-md-12 col-sm-12">
 
-								<select name="ls_province" class="form-control" id="tinh"></select>
+								<select name="address.province" class="form-control" id="tinh"></select>
 							</div>
 							<div hidden="true" class="col-md-4 col-sm-6">
-								<label>Quận / Huyện</label> <select name="ls_district"
+								<label>Quận / Huyện</label> <select name="address.district"
 									class="form-control" id="huyen"></select>
 
 							</div>
 							<div hidden="true" class="col-md-4 col-sm-6">
-								<label>Xã Phường</label> <select name="ls_ward"
+								<label>Xã Phường</label> <select name="address.ward"
 									class="form-control" id="xa"></select>
 							</div>
 							<div class="col-md-12 col-sm-12">
@@ -233,6 +233,7 @@
 
 		<!-- Scripts
 			================================================== -->
+
 		<script type="text/javascript"
 			src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
 		<script type="text/javascript"
@@ -261,7 +262,12 @@
 			src="${pageContext.request.contextPath}/resources/assets/plugins/js/gmap3.min.js"></script>
 		<script type="text/javascript"
 			src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
-
+		<script>
+											function updateAddress() {
+												
+	
+											}
+										</script>
 		<!-- Date dropper js-->
 
 		<script src="${pageContext.request.contextPath}/resources/#"></script>
@@ -273,89 +279,86 @@
 		<script
 			src="${pageContext.request.contextPath}/resources/assets/js/js-custom.js"></script>
 		<script>
-			$('#company-dob').dateDropper();
-		</script>
+										$('#company-dob').dateDropper();
+									</script>
 		<script
 			src="${pageContext.request.contextPath}/resources/assets/js/jQuery.style.switcher.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#styleOptions').styleSwitcher();
-			});
-		</script>
+										$(document).ready(function () {
+											$('#styleOptions').styleSwitcher();
+										});
+									</script>
 		<script>
-			function openRightMenu() {
-				document.getElementById("rightMenu").style.display = "block";
-			}
+										function openRightMenu() {
+											document.getElementById("rightMenu").style.display = "block";
+										}
 
-			function closeRightMenu() {
-				document.getElementById("rightMenu").style.display = "none";
-			}
-		</script>
+										function closeRightMenu() {
+											document.getElementById("rightMenu").style.display = "none";
+										}
+									</script>
 		<script>
-			$(document)
-					.ready(
-							function() {
-								var showResult = function(isErr, message) {
-									const showerror = $("#show-result");
-									if (showerror.hasClass("text-danger"))
-										showerror.removeClass("text-danger");
-									if (showerror.hasClass("text-success"))
-										showerror.removeClass("text-success");
-									if (isErr == true)
-										showerror.addClass("text-danger");
-									else
-										showerror.addClass("text-success");
-									showerror.hide().text(message).fadeIn(
-											"slow");
-								};
-								$('#form-createjob')
-										.submit(
-												function(e) {
-													var formData = new FormData(
+										$(document).ready(
+											function () {
+												var showResult = function (isErr, message) {
+													const showerror = $("#show-result");
+													if (showerror.hasClass("text-danger"))
+														showerror.removeClass("text-danger");
+													if (showerror.hasClass("text-success"))
+														showerror.removeClass("text-success");
+													if (isErr == true)
+														showerror.addClass("text-danger");
+													else
+														showerror.addClass("text-success");
+													showerror.hide().text(message).fadeIn(
+														"slow");
+												};
+												$('#form-createjob').submit(
+													function (e) {
+														e.preventDefault();
+
+														var formData = new FormData(
 															$('#form-createjob')[0]);
+														formData.append('ls_province', formData.get('address.province'));
+														formData.delete('address.province');
 
-													e.preventDefault();
-													showResult(false,
+														showResult(false,
 															'Đang xử lý ...');
-													$
-															.ajax({
-																type : "POST",
-																url : $(
-																		"#form-createjob")
-																		.attr(
-																				"action"),
-																data : formData,
-																enctype : 'multipart/form-data',
-																contentType : false,
-																processData : false,
-																cache : false,
-																success : function(
-																		res) {
-																	switch (res) {
+														$.ajax({
+															type: "POST",
+															url: $("#form-createjob").attr("action"),
+															data: formData,
+															enctype: 'multipart/form-data',
+															contentType: false,
+															processData: false,
+															cache: false,
+															success: function (
+																res) {
+																switch (res) {
 																	case 'empty':
 																		showResult(
-																				true,
-																				"Bạn phải điền đầy đủ các trường form và upload hình ảnh");
+																			true,
+																			"Bạn phải điền đầy đủ các trường form và upload hình ảnh");
 																		break;
 																	case 'fail':
 																		showResult(
-																				true,
-																				"Hệ thống xảy ra lỗi");
+																			true,
+																			"Hệ thống xảy ra lỗi");
 																		break;
 																	case 'ok':
 																		window.location.href = "${pageContext.request.contextPath}/create-job";
 																		break;
 																	default:
 																		showResult(
-																				true,
-																				'Có lỗi xảy ra hoặc bạn đã để trống các trường bắt buộc');
+																			true,
+																			'Có lỗi xảy ra hoặc bạn đã để trống các trường bắt buộc');
 																		break;
-																	}
 																}
-															});
-												});
-							});
-		</script>
+															}
+														});
+													});
+											});
+									</script>
 	</div>
 </body>
 

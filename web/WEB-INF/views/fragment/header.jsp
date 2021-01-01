@@ -15,25 +15,15 @@
 	<div class="collapse navbar-collapse" id="navbar-menu">
 		<ul class="nav navbar-nav navbar-left" data-in="fadeInDown"
 			data-out="fadeOutUp">
-			<c:if test="${empty sessionScope.currentAccount}">
-				<li class="dropdown megamenu-fw " style="visibility: hidden">
-				<li><a href="${pageContext.request.contextPath}/jobs" >Công Việc</a></li>
-				<li><a href="create-job.html" style="visibility: hidden">Creata
-						Job</a></li>
-				<li><a href="blog.html" style="visibility: hidden">Blog</a></li>
-			</c:if>
+			<li><a href="${pageContext.request.contextPath}/jobs" >Công Việc</a></li>
+			
 			<c:if
 				test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 1}">
 				<li class="dropdown megamenu-fw ">
-				<li><a href="${pageContext.request.contextPath}/jobs">Công Việc</a></li>
+				
 				<li><a href="${pageContext.request.contextPath}/create-job">Đăng tin</a></li>
 			</c:if>
-			<c:if
-				test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 2}">
-				<li class="dropdown megamenu-fw ">
-				<li><a href="${pageContext.request.contextPath}/jobs">Công Việc	<c:out value="${sessionScope.currentAccount.role}"></c:out></a></li>
 			
-			</c:if>
 			
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
