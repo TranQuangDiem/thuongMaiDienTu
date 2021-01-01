@@ -36,14 +36,20 @@
                     s = 'n';
             }
             try{
-                let es = param => param.replace(/^#|\.+/i, ''),
-                ps = es(province),
-                ds = es(district),
-                ws = es(ward);
-                p = document.querySelector(`select.${ps}`) || document.querySelector(`select#${ps}`) || document.querySelector(`select[name="${ps}"]`) ;
-                d = document.querySelector(`select.${ds}`) || document.querySelector(`select#${ds}`) || document.querySelector(`select[name="${ds}"]`) ;
-                w = document.querySelector(`select.${ws}`) || document.querySelector(`select#${ws}`) || document.querySelector(`select[name="${ws}"]`);
-                if(p === null || d === null || w === null) return console.error(`One or more selectors cannot be found`);
+                
+               
+                p =
+				document.querySelector(`select[name="${province}"]`) ;
+                d = 
+				document.querySelector(`select[name="${district}"]`) ;
+                w = 
+				document.querySelector(`select[name="${ward}"]`);
+                if(p === null )
+				return console.error(`${province}`);
+				if(d === null )
+				return console.error(`${district}`);
+				if( w === null) 
+				return console.error(`${ward}`);
             }
             catch(e){
                 return console.error(`One or more selectors cannot be found at `+e);
@@ -73,7 +79,7 @@
                     if(levelAsAttribute) o.setAttribute(levelAttributeName,data[l].c[i].t);
                     d.add(o);
                 }
-            });
+            },true);
             d.addEventListener("change",function(){
                 w.innerHTML = "";
                 let l = d.selectedIndex-1;
@@ -93,6 +99,8 @@
             });
         }
         window.addEventListener('load', init);
+        window.addEventListener('load', updateAddress);
+      
     };
 
 

@@ -197,19 +197,19 @@ public class UtilDataBase {
 		return subscriber;
 	}
 	public static Address getAddress(int id_address) {
-		Address address = null;
+		Address address = new Address();
 		try {
-			String sql = "select id, `tinh/thanhpho`, `quan/huyen`, `xa/phuong`, diachi  from address where id_account=?";
+			String sql = "select id, `province`, `district`, `ward`, detail_address  from address where id_account=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_address);
 			ResultSet rsSet = ps.executeQuery();
 			while (rsSet.next()) {
-				address = new Address();
+				
 				address.setId(rsSet.getInt(1));
-				address.setTinhThanhPho(rsSet.getString(2));
-				address.setQuanHuyen(rsSet.getString(3));
-				address.setXaPhuong(rsSet.getString(4));
-				address.setDiaChi(rsSet.getString(5));
+				address.setProvince(rsSet.getString(2));
+				address.setDistrict(rsSet.getString(3));
+				address.setWard(rsSet.getString(4));
+				address.setDetailAddress(rsSet.getString(5));
 			}
 
 		} catch (Exception e) {

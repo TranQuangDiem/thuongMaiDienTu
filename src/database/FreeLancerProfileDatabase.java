@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Account;
+import model.Address;
 import model.Evaluate;
 
 public class FreeLancerProfileDatabase {
@@ -104,6 +105,37 @@ public class FreeLancerProfileDatabase {
 			ps.setString(10, account.getTwitter());
 			ps.setInt(11,account.getId()); 
 			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Start update address
+		try {
+			Address address= account.getAddress();
+			//Check address
+			if(address.getId()==0) {
+				sql = "insert into address(province, district, ward,detail_address, id_account) values (?,?,?,?,?)";
+				ps = ConnectionDB.prepareStatement(sql);
+				
+				ps.setString(1, address.getProvince());
+				ps.setString(2, address.getDistrict());
+				ps.setString(3, address.getWard());
+				ps.setString(4, address.getDetailAddress());
+				ps.setInt(5,account.getId()); 
+				ps.executeUpdate();
+				
+			}else {
+				sql = "update address set province=?, district=?, ward=?,detail_address=? where id=?";
+				ps = ConnectionDB.prepareStatement(sql);
+				
+				ps.setString(1, address.getProvince());
+				ps.setString(2, address.getDistrict());
+				ps.setString(3, address.getWard());
+				ps.setString(4, address.getDetailAddress());
+				ps.setInt(5,address.getId()); 
+				ps.executeUpdate();
+				
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

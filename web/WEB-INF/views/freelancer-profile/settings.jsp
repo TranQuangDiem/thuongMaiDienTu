@@ -36,22 +36,22 @@
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Tỉnh / Thành Phố</label>
-				<input type="hidden" name="address.tinhThanhPho" class="form-control" value="${freelancer.address.tinhThanhPho}">
-				<select name="ls_province" class="form-control"  id="tinh"></select>
+				<input name="address.id" type="hidden"  class="form-control" value="${freelancer.address.id}">
+				<select name="address.province" class="form-control"  id="tinh"></select>
 
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Quận / Huyện</label>
-				<select name="ls_district" class="form-control" id="huyen"></select>
+				<select name="address.district" class="form-control" id="huyen"></select>
 
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Xã Phường</label>
-				<select name="ls_ward" class="form-control" id="xa"></select>
+				<select name="address.ward" class="form-control" id="xa"></select>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Địa Chỉ</label>
-				<input type="text" class="form-control" value="123 Tên Đường">
+				<input name="address.detailAddress" type="text" class="form-control" value="${freelancer.address.detailAddress}">
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Facebook</label>
@@ -111,6 +111,20 @@
 		$("#input-background").change(function() {
 			  readURL(this, $("#img-background"));
 		});
+		
+		
+			
 	});
+	function updateAddress(){
+		$(document).ready(function(){
+			$("select[name='address.province']").val('');
+			$("select[name='address.province']").val("${freelancer.address.province}").change();
+			$("select[name='address.province']")[0].dispatchEvent(new Event('change'));
+			$("select[name='address.district']").val("${freelancer.address.district}").change();
+			$("select[name='address.district']")[0].dispatchEvent(new Event('change'));
+			$("select[name='address.ward']").val("${freelancer.address.ward}");
+		});
+		
+	}
 	
 </script>

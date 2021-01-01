@@ -31,9 +31,9 @@ $(document).ready(function () {
   });
 
 var localpicker = new LocalPicker({
-  province: "ls_province",
-  district: "ls_district",
-  ward: "ls_ward"
+  province: "address.province",
+  district: "address.district",
+  ward: "address.ward"
     });
       var options = {
       /*
@@ -41,9 +41,9 @@ var localpicker = new LocalPicker({
           It will automatically detect exist elements for you.
           Example: 'myIdOrClass','#myId', '.myClass', 'myName'
           */
-          province: 'ls_province',	
-          district: 'ls_district',	
-          ward: 'ls_ward',			
+          province: 'address.province',	
+          district: 'address.district',	
+          ward: 'address.ward',			
                     
           /*
           Define value for option tag. Valid option: id|name           
