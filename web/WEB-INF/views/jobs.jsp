@@ -16,7 +16,8 @@
 
 <!-- CSS
 	================================================== -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/plugins/css/plugins.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/assets/plugins/css/plugins.css">
 
 <!-- Custom style -->
 <link
@@ -43,7 +44,8 @@
 			style="background-image:url(${pageContext.request.contextPath}/resources/assets/img/banner-10.jpg);">
 			<div class="container">
 				<h2>
-					<span>Job Stock</span> Trang Freelancer cho Designer hàng đầu Việt Nam
+					<span>Job Stock</span> Trang Freelancer cho Designer hàng đầu Việt
+					Nam
 				</h2>
 				<p>
 					<span>704</span> new job in the last <span>7</span> days.
@@ -58,23 +60,34 @@
 			<div class="container-fluid">
 				<form class="bt-form">
 					<div class="col-md-3 col-sm-6">
-						<input type="text" class="form-control"
-							placeholder="Skills, Designations, Keyword">
+						<input type="text" class="form-control" name="jobtitle"
+							placeholder="Tên Công Việc">
+					</div>
+					<div hidden="true" class="col-md-4 col-sm-6">
+						<label>Quận / Huyện</label> <select name="ls_district"
+							class="form-control" id="huyen"></select>
+
+					</div>
+					<div hidden="true" class="col-md-4 col-sm-6">
+						<label>Xã Phường</label> <select name="ls_ward"
+							class="form-control" id="xa"></select>
 					</div>
 					<div class="col-md-3 col-sm-6">
-						<input type="text" class="form-control"
-							placeholder="Searc By location">
+						<select name="ls_province" class="form-control" id="tinh"></select>
 					</div>
+
 					<div class="col-md-3 col-sm-6">
-						<select class="form-control">
-							<option>By Category</option>
-							<option>Information Technology</option>
-							<option>Mechanical</option>
-							<option>Hardware</option>
+						<select name="major" class="form-control">
+							<option value="" disabled selected hidden>Chọn Lĩnh Vực</option>
+							<c:forEach var="major" items="${listMajors}">
+								<option value='<c:out value="${major.id}"></c:out>'>
+									<c:out value="${major.name}"></c:out>
+								</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="col-md-3 col-sm-6">
-						<button type="submit" class="btn btn-primary">Search Job</button>
+						<button type="submit" class="btn btn-primary">Tìm Kiếm</button>
 					</div>
 				</form>
 			</div>
@@ -89,14 +102,23 @@
 					<div class="sidebar right-sidebar">
 
 						<div class="side-widget">
-							<h2 class="side-widget-title">Job Alert</h2>
+							<h2 class="side-widget-title">Sắp xếp</h2>
 							<div class="job-alert">
 								<div class="widget-text">
 									<form>
-										<input type="text" name="keyword" class="form-control"
-											placeholder="Job Keyword"> <input type="email"
-											name="email" class="form-control" placeholder="Email ID">
-										<button type="submit" class="btn btn-alrt">Add Alert</button>
+										<select class="form-control">
+											<option value="" disabled selected hidden>Sắp xếp
+												theo</option>
+											<option value="1">Theo lượt xem</option>
+											<option value="2">Theo ngày đăng</option>
+											<option value="3">Theo ngày kết thúc</option>
+										</select> <select name="sortorder" class="form-control">
+											<option value="" disabled selected hidden>Theo thứ
+												tự</option>
+											<option value="1">Tăng dần</option>
+											<option value="2">Giảm dần</option>
+										</select>
+										<button type="submit" class="btn btn-alrt">Sắp xếp</button>
 									</form>
 								</div>
 							</div>
@@ -106,8 +128,7 @@
 							<h2 class="side-widget-title">Advertisment</h2>
 							<div class="widget-text padd-0">
 								<div class="ad-banner">
-									<img
-										src="${pageContext.request.contextPath}/resources/http://via.placeholder.com/320x285"
+									<img src="http://via.placeholder.com/320x285"
 										class="img-responsive" alt="">
 								</div>
 							</div>
@@ -204,7 +225,6 @@
 				<!-- Sidebar End -->
 				<div class="col-md-9 col-sm-12">
 					<div class="full-card">
-
 						<div class="card-header">
 							<div class="row mrg-0">
 								<div class="col-md-4 col-sm-4">
@@ -236,37 +256,38 @@
 						</div>
 
 						<div class="card-body">
-
-							<article class="advance-search-job">
-								<div class="row no-mrg">
-									<div class="col-md-6 col-sm-6">
-										<a href="new-job-detail.html" title="job Detail">
-											<div class="advance-search-img-box">
-												<img
-													src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-													class="img-responsive" alt="">
+							<c:forEach var="job" items="${listJobs}">
+								<article class="advance-search-job">
+									<div class="row no-mrg">
+										<div class="col-md-6 col-sm-6">
+											<a href="new-job-detail.html" title="job Detail">
+												<div class="advance-search-img-box">
+													<img src='data:image/jpge;base64,<c:out value="${job.img}"></c:out>'
+														class="img-responsive" alt="">
+												</div>
+											</a>
+											<div class="advance-search-caption">
+												<a href="new-job-detail.html" title="Job Dtail"><h4><c:out value="${job.jobTitle }"></c:out></h4></a> <span>Google Ltd</span>
 											</div>
-										</a>
-										<div class="advance-search-caption">
-											<a href="new-job-detail.html" title="Job Dtail"><h4>Product
-													Designer</h4></a> <span>Google Ltd</span>
 										</div>
-									</div>
-									<div class="col-md-4 col-sm-4">
-										<div class="advance-search-job-locat">
-											<p>
-												<i class="fa fa-map-marker"></i>NL University
-											</p>
+										<div class="col-md-4 col-sm-4">
+											<div class="advance-search-job-locat">
+												<p>
+													<i class="fa fa-map-marker"></i>
+													<c:out value="${job.city }"></c:out>
+												</p>
+											</div>
 										</div>
+										<div class="col-md-2 col-sm-2">
+											<a href="javascript:void(0)" data-toggle="modal"
+												data-target="#apply-job" class="btn advance-search"
+												title="apply">Ứng Tuyển</a>
+<!-- 												<a href="#" class="btn applied advance-search" title="applied"><i class="fa fa-check" aria-hidden="true"></i>Đã Ứng Tuyển</a>
+ -->										</div>
 									</div>
-									<div class="col-md-2 col-sm-2">
-										<a href="javascript:void(0)" data-toggle="modal"
-											data-target="#apply-job" class="btn advance-search"
-											title="apply">Apply</a>
-									</div>
-								</div>
-								<span class="tg-themetag tg-featuretag">Ultimate</span>
-							</article>
+									<!-- <span class="tg-themetag tg-featuretag">Ultimate</span> -->
+								</article>
+							</c:forEach>
 						</div>
 					</div>
 
@@ -285,8 +306,7 @@
 					<!-- Ad banner -->
 					<div class="row">
 						<div class="ad-banner">
-							<img
-								src="${pageContext.request.contextPath}/resources/http://via.placeholder.com/728x90"
+							<img src="http://via.placeholder.com/728x90"
 								class="img-responsive" alt="">
 						</div>
 					</div>
@@ -304,7 +324,39 @@
 		</footer>
 		<div class="clearfix"></div>
 		<!-- Footer Section End -->
-
+		<!-- Apply Form Code -->
+			<div class="modal fade" id="apply-job" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="apply-job-box">
+								<img src="assets/img/com-1.jpg" class="img-responsive" alt="">
+								<h4>Product Designer</h4>
+								<p>Google Pvt.</p>
+							</div>
+							<div class="apply-job-form">
+								<form class="form-inline" method="post">
+									<div class="col-sm-12">
+										<div class="form-group">
+											<input type="text"  name="name" class="form-control" placeholder="Your Name" required="">
+											<input type="email"  name="email" class="form-control" placeholder="Your Email" required="">
+											<textarea class="form-control" placeholder="About You / Paste your CV"></textarea>
+											<div class="fileUpload">
+												<span>Upload CV</span>
+												<input type="file" class="upload" />
+											</div>
+											<div class="center">
+											<button type="submit" id="subscribe" class="submit-btn"> Apply Now </button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>   
+			<!-- End Apply Form -->
 
 		<!-- End Apply Form -->
 		<button class="w3-button w3-teal w3-xlarge w3-right"
@@ -365,12 +417,16 @@
 			src="${pageContext.request.contextPath}/resources/assets/plugins/js/gmap3.min.js"></script>
 		<script type="text/javascript"
 			src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
+		<script type="text/javascript"
+			src="${pageContext.request.contextPath}/resources/assets/js/vietnamlocalselector.js"></script>
 
 		<!-- Custom Js -->
 		<script
 			src="${pageContext.request.contextPath}/resources/assets/js/custom.js"></script>
 		<script
 			src="${pageContext.request.contextPath}/resources/assets/js/jQuery.style.switcher.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/assets/js/js-custom.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#styleOptions').styleSwitcher();
@@ -384,6 +440,9 @@
 			function closeRightMenu() {
 				document.getElementById("rightMenu").style.display = "none";
 			}
+		</script>
+		<script type="text/javascript">
+			
 		</script>
 
 	</div>

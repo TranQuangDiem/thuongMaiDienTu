@@ -180,6 +180,13 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
 	</definition>
+	<definition name="create-job" template="/WEB-INF/views/create-job.jsp">
+		<put-attribute name="title" value="Đăng Việc Làm"></put-attribute>
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
+	</definition>
 	<definition name="jobs" template="/WEB-INF/views/jobs.jsp">
 		<put-attribute name="title" value="Việc làm Freelancer"></put-attribute>
 		<put-attribute name="header"

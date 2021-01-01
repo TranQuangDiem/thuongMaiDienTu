@@ -29,6 +29,6 @@ public class Job {
 	private String language;
 	private String exp;
 	private String education;
-	private String status;
+	private int status;
 	private String city;
 }

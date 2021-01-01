@@ -315,6 +315,8 @@
 															$('#form-createjob')[0]);
 
 													e.preventDefault();
+													showResult(false,
+															'Đang xử lý ...');
 													$
 															.ajax({
 																type : "POST",
@@ -341,7 +343,12 @@
 																				"Hệ thống xảy ra lỗi");
 																		break;
 																	case 'ok':
-																		window.location.href = "${pageContext.request.contextPath}";
+																		window.location.href = "${pageContext.request.contextPath}/create-job";
+																		break;
+																	default:
+																		showResult(
+																				true,
+																				'Có lỗi xảy ra hoặc bạn đã để trống các trường bắt buộc');
 																		break;
 																	}
 																}

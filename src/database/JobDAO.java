@@ -2,29 +2,66 @@ package database;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+import customutil.FileHelper;
 import customutil.IntegerHelper;
 import dataform.FormCreateJob;
 import model.Job;
 
 public class JobDAO {
-	public static List<Job> listJobAll(){
+	
+	public static int numberJobIsOpen() {
 		try {
-			String query="";
+			String query="SELECT COUNT(*) FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE())";
 			PreparedStatement ps=ConnectionDB.prepareStatement(query);
-			
-			return null;
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		}catch(Exception e){
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	public static List<Job> getAllJob() {
+		try {
+			List<Job> listJobs=new ArrayList<Job>();
+			String query="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city	FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE())";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				Job job= new Job();
+				job.setId(rs.getInt(1));
+				job.setJobTitle(rs.getString(2));
+				job.setJobDescription(rs.getString(3));
+				job.setIdAcc(rs.getInt(4));
+				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				job.setSoluongtuyen(rs.getInt(6));
+				job.setCreateday(rs.getDate(7));
+				job.setFinishday(rs.getDate(8));
+				job.setView(rs.getInt(9));
+				job.setMajor(rs.getString(10));
+				job.setLanguage(rs.getString(11));
+				job.setExp(rs.getString(12));
+				job.setEducation(rs.getString(13));
+				job.setStatus(rs.getInt(14));
+				job.setCity(rs.getString(15));
+				listJobs.add(job);
+			}
+			return listJobs;
 		}catch(Exception e){
 			e.printStackTrace();
 			return null;
 		}
 	}
+	
 	public static boolean insert(FormCreateJob form, int idAcc) {
 		try {
 			

@@ -12,7 +12,7 @@ public class StringHelper {
 	}
 
 	public static boolean isStringNull(String toCheck) {
-		return toCheck.trim().equals("") || toCheck == null || toCheck.trim().isEmpty();
+		return toCheck.equals("") || toCheck.trim().equals("") || toCheck == null || toCheck.trim().isEmpty()|| toCheck.isEmpty();
 	}
 
 	public static String getAlphaNumericString(int n) {

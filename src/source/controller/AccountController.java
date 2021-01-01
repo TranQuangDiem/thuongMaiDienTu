@@ -89,6 +89,7 @@ public class AccountController {
 			account.setUsername(usernamenew);
 			account.setPassword(passwordnew);
 			account.setEmail(emailnew);
+			account.setRole(Integer.parseInt(rolenew));
 			account.setId(AccountDAO.getIdAccByUsername(usernamenew));
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, account);
 			return "success";

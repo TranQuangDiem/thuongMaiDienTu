@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,8 +45,10 @@ public class JobController {
 		return model;
 	}
 	@RequestMapping (value="/jobs")
-	public ModelAndView listJobPage() {
+	public ModelAndView listJobPage( ) {
 		ModelAndView model = new ModelAndView("jobs");
+		model.addObject("listMajors", MajorDAO.getAll());
+		model.addObject("listJobs",JobDAO.getAllJob());
 		return model;
 	}
 	

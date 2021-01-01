@@ -14,31 +14,32 @@ public class EmployerProfileDatabase {
 	// url /employer-profile?id_employer=1 // Để url để test chứ có nhớ đâu
 	public static void delete(int id) {
 		try {
-			String sql= "delete from account where id="+id;
-			PreparedStatement ps =ConnectionDB.prepareStatement(sql);
+			String sql = "delete from account where id=" + id;
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.executeUpdate(sql);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	public static List<Account> findAllEmployer(){
+
+	public static List<Account> findAllEmployer() {
 		List<Account> account = new ArrayList<Account>();
 		try {
 			String sql = "select * from account where role=1";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ResultSet rs =ps.executeQuery(sql);
+			ResultSet rs = ps.executeQuery(sql);
 			while (rs.next()) {
-				Account a  = new Account(rs.getInt(1), rs.getString(4), rs.getString(8), rs.getString(9), countJob(rs.getInt(1)));
-			account.add(a);
+				Account a = new Account(rs.getInt(1), rs.getString(4), rs.getString(8), rs.getString(9),
+						countJob(rs.getInt(1)));
+				account.add(a);
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return account;
 	}
-	
+
 	public static Account information(int id_employer) {
 		Account taikhoan = null;
 		int count = countJob(id_employer);
@@ -47,7 +48,7 @@ public class EmployerProfileDatabase {
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_employer);
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				taikhoan = new Account();
 				taikhoan.setId(id_employer);
 				taikhoan.setUsername(rs.getString(1));
@@ -66,7 +67,7 @@ public class EmployerProfileDatabase {
 				taikhoan.setFacebook(rs.getString(13));
 				taikhoan.setWebsite(rs.getString(14));
 				taikhoan.setBackground(rs.getBlob(15));
-				//taikhoan.setAddress(UtilDataBase.getAddress(rs.getInt(16)));
+				// taikhoan.setAddress(UtilDataBase.getAddress(rs.getInt(16)));
 				taikhoan.setAddressString(rs.getString(17));
 			}
 			ConnectionDB.close(rs);
@@ -74,12 +75,13 @@ public class EmployerProfileDatabase {
 			// TODO: handle exception
 		}
 		return taikhoan;
-		
+
 	}
+
 	public static List<Job> listjobEmployer(int id_employer) {
 		List<Job> danhsachcongviec = new ArrayList<Job>();
 		try {
-			String sql="select * from job where idAccount=?";
+			String sql = "select * from job where idAccount=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_employer);
 			ResultSet rs = ps.executeQuery();
@@ -93,24 +95,26 @@ public class EmployerProfileDatabase {
 			// TODO: handle exception
 		}
 		return danhsachcongviec;
-		
+
 	}
+
 	public static int countJob(int id_employer) {
-		int count =0;
+		int count = 0;
 		try {
 			String sql = "SELECT COUNT(*) from job WHERE idAccount=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_employer);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			count=rs.getInt(1);
-		}catch (Exception e) {
+			count = rs.getInt(1);
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return count;
 	}
-	//update
-	public static void update(Account account,int id_employer) {
+
+	// update
+	public static void update(Account account, int id_employer) {
 		try {
 			String sql = "update account set name=?,major=?,email=?,phone=?,address=?,about=? where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
@@ -120,13 +124,14 @@ public class EmployerProfileDatabase {
 			ps.setString(4, account.getPhone());
 			ps.setString(5, account.getAddressString());
 			ps.setString(6, account.getAbout());
-			ps.setInt(7,id_employer); 
+			ps.setInt(7, id_employer);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
-	//đánh giá
+
+	// đánh giá
 	public static List<Evaluate> getEvaluate(int id_freelancer) {
 		List<Evaluate> rs = new ArrayList<Evaluate>();
 		try {
@@ -200,8 +205,14 @@ public class EmployerProfileDatabase {
 		return rs;
 	}
 
-	public static void main(String[] args) {
-		getEvaluate(1);
+	public static boolean isEnoughInfo(int id) {
+		try {
+			
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

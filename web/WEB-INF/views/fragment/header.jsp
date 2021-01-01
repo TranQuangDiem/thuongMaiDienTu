@@ -7,7 +7,7 @@
 		<i class="fa fa-bars"></i>
 	</button>
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index-6.jsp"><img
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
 			src="${pageContext.request.contextPath}/resources/assets/img/logo.png"
 			class="logo logo-scrolled" alt=""></a>
 	</div>
@@ -31,7 +31,8 @@
 			<c:if
 				test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 2}">
 				<li class="dropdown megamenu-fw ">
-				<li><a href="${pageContext.request.contextPath}/jobs">Công Việc</a></li>
+				<li><a href="${pageContext.request.contextPath}/jobs">Công Việc	<c:out value="${sessionScope.currentAccount.role}"></c:out></a></li>
+			
 			</c:if>
 			
 		</ul>
@@ -50,8 +51,8 @@
 				</a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.currentAccount}">
-				<li><a href="<c:url value="/pricing"/>"><i
-						class="fa fa-sign-in" aria-hidden="true"></i>Gói bài đăng</a></li>
+			<%-- 	<li><a href="<c:url value="/pricing"/>"><i
+						class="fa fa-sign-in" aria-hidden="true"></i>Gói bài đăng</a></li> --%>
 				 	<!-- <li><a href="thanhtoan"><i class="fa fa-dollar"></i>Nạp tiền</a></li> -->
 				<c:if test="${sessionScope.currentAccount.role==1}">
 					<li><a href="pricing.html"><i class="fa fa-sign-in"
