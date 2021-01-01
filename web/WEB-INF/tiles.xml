@@ -5,6 +5,10 @@
 <tiles-definitions>
 	<definition name="freelancer-profile"
 		template="/WEB-INF/views/freelancer-profile.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
+		<put-attribute name="footer"
+		value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
 		<put-attribute name="evaluate" value="/evaluate" />
 		<put-attribute name="job-list" value="/job-list" />
 		<put-attribute name="settings"

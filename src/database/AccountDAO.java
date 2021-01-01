@@ -116,7 +116,7 @@ public class AccountDAO {
 	public static Account getUserById(int id) {
 		try {
 			Account rs = null;
-			String sql = "select username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, major, twitter, facebook, website, background, id_address,linkedin,balance from account where id=?";
+			String sql = "select username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,balance from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rsSet = ps.executeQuery();
@@ -138,7 +138,7 @@ public class AccountDAO {
 				rs.setFacebook(rsSet.getString(13));
 				rs.setWebsite(rsSet.getString(14));
 				rs.setBackground(rsSet.getBlob(15)==null?null:rsSet.getBlob(15));
-				rs.setAddress(UtilDataBase.getAddress(rsSet.getInt(16)));
+				rs.setAddress(UtilDataBase.getAddress(id));
 				rs.setLinkedin(rsSet.getString(17));
 			}
 			return rs;
