@@ -33,41 +33,7 @@
 		<!-- Start Navigation -->
 		<nav
 			class="navbar navbar-default navbar-fixed navbar-light white bootsnav">
-			<div class="container">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-menu">
-					<i class="fa fa-bars"></i>
-				</button>
-				<div class="navbar-header">
-					<a class="navbar-brand" href="index-6.jsp"><img
-						src="assets/img/logo.png" class="logo logo-scrolled" alt=""></a>
-				</div>
-				<div class="collapse navbar-collapse" id="navbar-menu">
-					<ul class="nav navbar-nav navbar-left" data-in="fadeInDown"
-						data-out="fadeOutUp">
-
-						<li class="dropdown megamenu-fw">
-						<li><a href="search-new.html">Jobs</a></li>
-						<li><a href="create-job.html">Creata Job</a></li>
-						<li><a href="blog.html">Blog</a></li>
-
-					</ul>
-					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown"
-						data-out="fadeOutUp">
-
-						<li><a href="pricing.html"><i class="fa fa-sign-in"
-								aria-hidden="true"></i>Pricing</a></li>
-						<li><a href="payment-methode.html"><i
-								class="fa fa-dollar" aria-hidden="true"></i>Payment</a></li>
-						<li><a href="signup.html"><i class="" aria-hidden="true"></i>Sign
-								Up Now</a></li>
-						<li class="left-br"><a href="javascript:void(0)"
-							data-toggle="modal" data-target="#signup" class="signin">Sign
-								In Now</a></li>
-
-					</ul>
-				</div>
-			</div>
+			<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		</nav>
 		<!-- End Navigation -->
 		<div class="clearfix"></div>
@@ -438,8 +404,9 @@
 														value="${taikhoan.major}">
 												</div>
 												<div class="col-md-4 col-sm-6">
-													<label id="label-hireable">Trạng Thái</label> <input
-														type="checkbox" class="form-control" value="true" name=""
+													<label id="label-hireable">Trạng Thái</label> 
+													<input
+														type="checkbox" class="form-control" value="true" name="ready"
 														id="checkbox-active-job" checked="true">
 													<p id="p-hireable">Đang tuyển dụng</p>
 												</div>
@@ -534,122 +501,7 @@
 		</section>
 		<!-- Footer Section Start -->
 		<footer class="footer">
-			<div class="row lg-menu">
-				<div class="container">
-					<div class="col-md-4 col-sm-4">
-						<img src="assets/img/footer-logo.png" class="img-responsive"
-							alt="" />
-					</div>
-					<div class="col-md-8 co-sm-8 pull-right">
-						<ul>
-							<li><a href="index-2.html" title="">Home</a></li>
-							<li><a href="blog.html" title="">Blog</a></li>
-							<li><a href="404.html" title="">404</a></li>
-							<li><a href="faq.html" title="">FAQ</a></li>
-							<li><a href="contact.html" title="">Contact Us</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row no-padding">
-				<div class="container">
-					<div class="col-md-3 col-sm-12">
-						<div class="footer-widget">
-							<h3 class="widgettitle widget-title">About Job Stock</h3>
-							<div class="textwidget">
-								<p>Sed ut perspiciatis unde omnis iste natus error sit
-									voluptatem.</p>
-								<p>
-									7860 North Park Place<br> San Francisco, CA 94120
-								</p>
-								<p>
-									<strong>Email:</strong> Support@careerdesk
-								</p>
-								<p>
-									<strong>Call:</strong> <a href="tel:+15555555555">555-555-1234</a>
-								</p>
-								<ul class="footer-social">
-									<li><a title="Trang Facebook" href="#"><i
-											class="fa fa-facebook"></i></a></li>
-									<li><a title="Trang Twitter" href="#"><i
-											class="fa fa-twitter"></i></a></li>
-									<li><a title="Trang Web" href="#"><i
-											class="fa fa-globe"></i></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-4">
-						<div class="footer-widget">
-							<h3 class="widgettitle widget-title">All Navigation</h3>
-							<div class="textwidget">
-								<div class="textwidget">
-									<ul class="footer-navigation">
-										<li><a href="manage-company.html" title="">Front-end
-												Design</a></li>
-										<li><a href="manage-company.html" title="">Android
-												Developer</a></li>
-										<li><a href="manage-company.html" title="">CMS
-												Development</a></li>
-										<li><a href="manage-company.html" title="">PHP
-												Development</a></li>
-										<li><a href="manage-company.html" title="">IOS
-												Developer</a></li>
-										<li><a href="manage-company.html" title="">Iphone
-												Developer</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-4">
-						<div class="footer-widget">
-							<h3 class="widgettitle widget-title">All Categories</h3>
-							<div class="textwidget">
-								<ul class="footer-navigation">
-									<li><a href="manage-company.html" title="">Front-end
-											Design</a></li>
-									<li><a href="manage-company.html" title="">Android
-											Developer</a></li>
-									<li><a href="manage-company.html" title="">CMS
-											Development</a></li>
-									<li><a href="manage-company.html" title="">PHP
-											Development</a></li>
-									<li><a href="manage-company.html" title="">IOS
-											Developer</a></li>
-									<li><a href="manage-company.html" title="">Iphone
-											Developer</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-4">
-						<div class="footer-widget">
-							<h3 class="widgettitle widget-title">Connect Us</h3>
-							<div class="textwidget">
-								<form class="footer-form">
-									<input type="text" class="form-control" placeholder="Your Name">
-									<input type="text" class="form-control" placeholder="Email">
-									<textarea class="form-control" placeholder="Message"></textarea>
-									<button type="submit" class="btn btn-primary">Login</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row copyright">
-				<div class="container">
-					<p>
-						<a target="_blank" href="https://www.templateshub.net">Templates
-							Hub</a>
-					</p>
-				</div>
-			</div>
+			<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 		</footer>
 		<div class="clearfix"></div>
 		<!-- Footer Section End -->
@@ -752,6 +604,21 @@
 		<c:forEach var="script" items="${javascripts}">
 			<script src="<c:url value="${script}"/>"></script>
 		</c:forEach>
+		
+		<script type="text/javascript">
+	
+	function updateAddress(){
+		$(document).ready(function(){
+			$("select[name='major']").val('${taikhoan.major}');
+			$("input[name='ready']").prop('checked', ${taikhoan.ready});
+			$("input[name='ready']").val('${taikhoan.ready}').change();
+			
+			
+		});
+		
+	}
+	
+</script>
 	</div>
 </body>
 
