@@ -89,13 +89,13 @@ public class EmployerProfileController {
 			evaluateBean.setPropertyValue("content", comment);
 			evaluateBean.setPropertyValue("star", rating);
 			evaluateBean.setPropertyValue("time", new Date());
-			evaluateBean.setPropertyValue("account", currentAccount);
+			evaluateBean.setPropertyValue("guest", currentAccount);
 			
 			Evaluate evaluate= new Evaluate();
 			evaluate.setContent(comment);
 			evaluate.setStar(rating);
 			evaluate.setTime(new Date());
-			evaluate.setAccount(currentAccount);
+			evaluate.setGuest(currentAccount);
 			FreeLancerProfileDatabase.insertEvaluate(id_employer, evaluate);
 			
 			List<Evaluate> lstEvaluate = EmployerProfileDatabase.getEvaluate(id_employer, 0);

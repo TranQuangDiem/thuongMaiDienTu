@@ -64,6 +64,8 @@
 
 <script type="text/javascript">
 countI=0;
+star=parseInt(${employer.star});
+count_evaluate=parseInt(${employer.countEvaluate});
 $(document).ready(function(){
 	//Init row
 	$.ajax({
@@ -112,17 +114,27 @@ $(document).ready(function(){
 				url: '${pageContext.request.contextPath}/submit-evaluate-employer',
 				data : $('#form-submit-evaluate').serialize(),
 				success : function(data) {
+					console.log(data);
 					$('#evaluate-inbox-boy').children().slice(1).detach();
 					
 					$('#evaluate-inbox-boy').append(data);
 					countI=0;
 					$('#close-review-box').click();
 					$('#new-review').val('');
-				  	$('#ratings-hidden').val(0);
+				  
 				  	var stars = $("#stars").children('li.star');
 				  	for (i = 0; i < stars.length; i++) {
 				        $(stars[i]).removeClass('selected');
 				    }
+				  	star=star+parseInt($('#form-submit-evaluate').find("input[name='rating']").val());
+				  	console.log(star);
+				  	count_evaluate=count_evaluate+1;
+				  	console.log(count_evaluate);
+				  	starAverage= star/count_evaluate;
+				  	  
+				  	$('#starAverage').html(starAverage.toFixed(2));
+				  	$('#starAverage').append('<i class="fa fa-star"></i>');
+				  	$('#ratings-hidden').val(0);
 					
 						
 					

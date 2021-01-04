@@ -38,7 +38,7 @@ public class EvaluateValidator implements Validator {
 		Evaluate evaluate= (Evaluate)object;
 		try {
 			errors.pushNestedPath("account");
-			ValidationUtils.invokeValidator(this.addressValidator, evaluate.getAccount(), errors);
+			ValidationUtils.invokeValidator(this.addressValidator, evaluate.getGuest(), errors);
 		}finally {
 			errors.popNestedPath();
 			

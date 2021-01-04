@@ -27,7 +27,7 @@ public class AccountDAO {
 
 	public static Account getByUsername(String username) {
 		try {
-			String query = "select id,username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,ready from account where username=?";
+			String query = "select id,username, account.`password`, fullname, image, star,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where username=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
@@ -38,7 +38,7 @@ public class AccountDAO {
 				acc.setPassword(rs.getString(3));
 				acc.setFullname(rs.getString(4));
 				acc.setImage(rs.getBlob(5) == null ? null : rs.getBlob(4));
-				acc.setStarAverage(rs.getFloat(6));
+				acc.setStar(rs.getInt(6));
 				acc.setAbout(rs.getString(7));
 				acc.setEmail(rs.getString(8));
 				acc.setPhone(rs.getString(9));
@@ -52,6 +52,8 @@ public class AccountDAO {
 				acc.setAddress(UtilDataBase.getAddress(rs.getInt(1)));
 				acc.setLinkedin(rs.getString(16));
 				acc.setReady(rs.getInt(17) == 1);
+				acc.setCountJob(rs.getInt(18));
+				acc.setCountJob(rs.getInt(19));
 				return acc;
 			} else {
 				return null;
@@ -176,7 +178,7 @@ public class AccountDAO {
 	public static Account getUserById(int id) {
 		try {
 			Account rs = null;
-			String sql = "select username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,ready from account where id=?";
+			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rsSet = ps.executeQuery();
@@ -187,7 +189,7 @@ public class AccountDAO {
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
 				rs.setImage(rsSet.getBlob(4) == null ? null : rsSet.getBlob(4));
-				rs.setStarAverage(rsSet.getFloat(5));
+				rs.setStar(rsSet.getInt(5));
 				rs.setAbout(rsSet.getString(6));
 				rs.setEmail(rsSet.getString(7));
 				rs.setPhone(rsSet.getString(8));
@@ -201,6 +203,8 @@ public class AccountDAO {
 				rs.setAddress(UtilDataBase.getAddress(id));
 				rs.setLinkedin(rsSet.getString(16));
 				rs.setReady(rsSet.getInt(17) == 1);
+				rs.setCountJob(rsSet.getInt(18));
+				rs.setCountEvaluate(rsSet.getInt(19));
 			}
 			return rs;
 		} catch (Exception e) {

@@ -71,7 +71,7 @@
 								<li><strong class="j-view">${employer.soluongbaidang}</strong>Công
 									việc đã đăng</li>
 								<li><strong class="j-applied">570</strong>Đã tuyển dụng</li>
-								<li><strong class="j-shared rate-custom">${employer.starAverage}
+								<li><strong id="starAverage" class="j-shared rate-custom">${employer.starAverage}
 										<i class="fa fa-star"></i>
 								</strong>Đánh Giá</li>
 							</ul>

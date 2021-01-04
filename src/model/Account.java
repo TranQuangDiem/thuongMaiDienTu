@@ -16,7 +16,9 @@ public class Account {
 	private String password;
 	private String fullname;
 	private BufferedImage image;
-	private float starAverage;
+	private int star;
+	private int countJob;
+	private int countEvaluate;
 	private String about;
 	private String email;
 	private String phone;
@@ -140,13 +142,7 @@ public class Account {
 		}
 	}
 
-	public float getStarAverage() {
-		return starAverage;
-	}
 
-	public void setStarAverage(float starAverage) {
-		this.starAverage = starAverage;
-	}
 
 	public String getAbout() {
 		return about;
@@ -271,8 +267,12 @@ public class Account {
 		builder.append(fullname);
 		builder.append(", image=");
 		builder.append(image);
-		builder.append(", starAverage=");
-		builder.append(starAverage);
+		builder.append(", star=");
+		builder.append(star);
+		builder.append(", countJob=");
+		builder.append(countJob);
+		builder.append(", countEvalute=");
+		builder.append(countEvaluate);
 		builder.append(", about=");
 		builder.append(about);
 		builder.append(", email=");
@@ -308,6 +308,39 @@ public class Account {
 	}
 
 
+	public int getStar() {
+		return star;
+	}
+
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+
+	public int getCountJob() {
+		return countJob;
+	}
+
+
+	public void setCountJob(int countJob) {
+		this.countJob = countJob;
+	}
+
+
+	
+
+
+	public int getCountEvaluate() {
+		return countEvaluate;
+	}
+
+
+	public void setCountEvaluate(int countEvaluate) {
+		this.countEvaluate = countEvaluate;
+	}
+
+
 	public boolean isReady() {
 		return ready;
 	}
@@ -340,6 +373,10 @@ public class Account {
 		if (email == null)
 			return false;
 		return pat.matcher(email).matches();
+	}
+	public double getStarAverage() {
+		if(countEvaluate<=0)return 0;
+		return (double)star/(double) countEvaluate;
 	}
 
 }

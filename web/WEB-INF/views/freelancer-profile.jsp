@@ -61,7 +61,7 @@
                             <ul>
                                 <li><strong class="j-view">742</strong>Công việc đã nhận</li>
                                 <li><strong class="j-applied">570</strong>Công Việc Hoàn Thành</li>
-                                <li><strong class="j-shared rate-custom">${freelancer.starAverage}<i class="fa fa-star"></i></strong>Đánh Giá</li>
+                                <li><strong id="starAverage" class="j-shared rate-custom">${freelancer.starAverage}<i class="fa fa-star"></i></strong>Đánh Giá</li>
                             </ul>
                         </div>
                     </div>
