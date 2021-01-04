@@ -44,10 +44,8 @@ public class AccountController {
 		if (!AccountDAO.checkLogin(username, password)) {
 			return "error";
 		} else {
-			int id = AccountDAO.getIdAccByUsername(username);
-			Account acc = AccountDAO.getUserById(id);
+			Account acc = AccountDAO.getByUsername(username);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
-			session.setAttribute("taikhoan", acc);
 			return "success";
 		}
 	}
@@ -84,13 +82,7 @@ public class AccountController {
 				Integer.parseInt(rolenew))) {
 			return "error";
 		} else {
-			Account account = new Account();
-			account.setFullname(fullnamenew);
-			account.setUsername(usernamenew);
-			account.setPassword(passwordnew);
-			account.setEmail(emailnew);
-			account.setRole(Integer.parseInt(rolenew));
-			account.setId(AccountDAO.getIdAccByUsername(usernamenew));
+			Account account = AccountDAO.getByUsername(usernamenew);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, account);
 			return "success";
 		}

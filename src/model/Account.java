@@ -31,6 +31,7 @@ public class Account {
 	private String website;
 	private BufferedImage background;
 	private String linkedin;
+	
 	private boolean ready;
 	public Account() {
 		super();

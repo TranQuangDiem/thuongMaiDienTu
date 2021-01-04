@@ -83,8 +83,10 @@
 									<select name="jobtype" class="form-control input-lg">
 										<option value="" disabled selected hidden>Hình thức
 											làm việc</option>
-										<option value="1">Làm Việc Online</option>
-										<option value="2">Làm Việc Offline</option>
+										<option value="1">Làm Việc Theo Dự Án</option>
+										<option value="2">Làm Việc Bán Thời Gian</option>
+										<option value="3">Làm Việc Toàn Thời Gian</option>
+										<option value="4">Cuộc Thi Thiết Kế</option>
 									</select>
 								</div>
 							</div>

@@ -58,14 +58,11 @@ public class MailHandler {
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-				
 				message.setTo(to);
 				message.setFrom(mailSender.getUsername());
 				message.setSubject(subject);
 				message.setBcc(mailSender.getUsername());
 				message.setText(content, true);
-			
-				
 			}
 		};
 		mailSender.send(preparator);
