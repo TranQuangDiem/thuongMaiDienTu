@@ -71,10 +71,12 @@
 			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
 		<put-attribute name="footer"
 		value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
+		<put-attribute name="job-list" value="/WEB-INF/views/employer-profile/job-list.jsp" />
 		<put-attribute name="evaluate"
 			value="/employer-evaluate" />
-		<put-attribute name="job-list" value="/job-list" />
-
+		
+		<put-attribute name="settings"
+			value="/employer-profile-settings" />
 
 		<put-list-attribute name="stylesheets">
 			<add-attribute
@@ -86,6 +88,8 @@
 				value="/resources/assets/css/custom-style.css" />
 			<add-attribute
 				value="/resources/assets/css/css-header.css" />
+			<add-attribute
+				value="/resources/assets/css/css-report.css" />
 		</put-list-attribute>
 		<put-list-attribute name="javascripts">
 			<add-attribute
@@ -123,6 +127,8 @@
 			<add-attribute value="/resources/assets/js/custom.js" />
 			<add-attribute
 				value="/resources/assets/js/js-custom.js" />
+			<add-attribute
+				value="/resources/assets/js/js-report.js" />
 
 		</put-list-attribute>
 	</definition>

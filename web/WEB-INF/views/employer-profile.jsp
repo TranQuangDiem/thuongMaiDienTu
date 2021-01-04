@@ -40,7 +40,7 @@
 
 		<!-- Title Header Start -->
 		<section class="inner-header-title"
-			style="background-image: url('data:image/png;base64,${taikhoan.backgroundBase64}');">
+			style="background-image: url('data:image/png;base64,${employer.backgroundBase64}');">
 			<div class="container">
 				<h1></h1>
 			</div>
@@ -53,7 +53,7 @@
 			<div class="container white-shadow">
 				<div class="row">
 					<div class="detail-pic">
-						<img src="data:image/png;base64,${taikhoan.imageBase64}"
+						<img src="data:image/png;base64,${employer.imageBase64}"
 							class="img" alt="" /><a href="#" class="detail-edit"
 							title="edit"></a>
 					</div>
@@ -65,13 +65,13 @@
 				<div class="row bottom-mrg">
 					<div class="col-md-12 col-sm-12">
 						<div class="advance-detail detail-desc-caption">
-							<h4>${taikhoan.name}</h4>
-							<span class="designation">${taikhoan.major}</span>
+							<h4>${employer.name}</h4>
+							<span class="designation">${employer.major}</span>
 							<ul>
-								<li><strong class="j-view">${taikhoan.soluongbaidang}</strong>Công
+								<li><strong class="j-view">${employer.soluongbaidang}</strong>Công
 									việc đã đăng</li>
 								<li><strong class="j-applied">570</strong>Đã tuyển dụng</li>
-								<li><strong class="j-shared rate-custom">${taikhoan.starAverage}
+								<li><strong class="j-shared rate-custom">${employer.starAverage}
 										<i class="fa fa-star"></i>
 								</strong>Đánh Giá</li>
 							</ul>
@@ -118,13 +118,14 @@
 								<li><a style="display: none;" href="#friends">Friends</a></li>
 								<li><a href="#rate">Đánh Giá <span class="info-bar">5</span></a></li>
 								<li><a href="#settings">Cài Đặt</a></li>
+								<li><a class="report-tabname" href="#report"><i class="fa fa-exclamation-triangle"></i> Báo Cáo</a></li>
 							</ul>
 							<!-- Start All Sec -->
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About ${taikhoan.major} ${taikhoan.name}</h3>
-									${taikhoan.about}
+									<h3>About Company ${employer.name}</h3>
+									${employer.about}
 								</div>
 								<!-- End About Sec -->
 
@@ -132,76 +133,21 @@
 								<div id="address" class="tab-pane fade">
 									<h3>Thông tin liên hệ</h3>
 									<ul class="job-detail-des">
-										<li><span>Tên:</span>${taikhoan.major} ${taikhoan.name}</li>
-										<!-- 	<li><span>Tỉnh / Thành Phố:</span>Hồ Chí Minh</li>
-										<li><span>Quận / Huyện:</span>Thủ Đức</li>
-										<li><span>Phường / Xã:</span>Linh Trung</li> -->
-										<li><span>Địa chỉ:</span>${taikhoan.addressString}</li>
-										<li><span>Điện Thoại:</span>+84 ${taikhoan.phone}</li>
-										<li><span>Email:</span>${taikhoan.email}</li>
+										<li><span>Tên công ty:</span>${employer.name}</li>
+										<li><span>Tỉnh / Thành Phố:</span>${employer.address.province}</li>
+										<li><span>Quận / Huyện:</span>${employer.address.district}</li>
+										<li><span>Phường / Xã:</span>${employer.address.ward}</li> 
+										<li><span>Địa chỉ:</span>${employer.address.detailAddress}</li>
+										<li><span>Điện Thoại:</span>+84 ${employer.phone}</li>
+										<li><span>Email:</span>${employer.email}</li>
 									</ul>
 								</div>
 								<!-- End Address Sec -->
 
 								<!-- Start Job List -->
-								<div id="post-job" class="tab-pane fade">
-									<h3>You have ${taikhoan.soluongbaidang} job post</h3>
-									<div class="row">
-										<c:if test="${not empty listjob}">
-											<c:forEach var="job" items="${listjob}">
-												<article>
-													<div class="mng-company">
-														<div class="col-md-2 col-sm-2">
-															<div class="mng-company-pic">
-																<img src="${pageContext.request.contextPath}/${job.img}"
-																	class="img-responsive" alt="">
-															</div>
-														</div>
-
-														<div class="col-md-5 col-sm-5">
-															<div class="mng-company-name">
-																<h4>
-																	${job.tencongviec} <span class="cmp-tagline">(Software
-																		Company)</span>
-																</h4>
-																<span class="cmp-time">Ngày đăng: ${job.ngaydang}</span>
-															</div>
-														</div>
-
-														<div class="col-md-4 col-sm-4">
-															<div class="mng-company-location">
-																<p>
-																	<i class="fa fa-map-marker"></i> ${taikhoan.addressString}
-																</p>
-															</div>
-														</div>
-
-														<div class="col-md-1 col-sm-1">
-															<div class="mng-company-action">
-																<a href="#"><i class="fa fa-edit"></i></a><a href="#"><i
-																	class="fa fa-trash-o"></i></a>
-															</div>
-														</div>
-
-													</div>
-													<span class="tg-themetag tg-featuretag">Premium</span>
-												</article>
-											</c:forEach>
-										</c:if>
-									</div>
-									<div class="row">
-										<ul class="pagination">
-											<li><a href="#">«</a></li>
-											<li class="active"><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
-											<li><a href="#">»</a></li>
-										</ul>
-									</div>
-								</div>
+								<tiles:insertAttribute name="job-list"/>
 								<!-- End Job List -->
+								
 
 								<!-- Start Friend List -->
 								<div id="friends" class="tab-pane fade">
@@ -386,112 +332,85 @@
 								<!-- Start Message -->
 								<tiles:insertAttribute name="evaluate" />
 								<!-- End Message -->
-
 								<!-- Start Settings -->
-								<div id="settings" class="tab-pane fade">
-									<div class="row no-mrg">
-										<h3>Chỉnh Sửa Thông Tin</h3>
-										<div class="edit-pro">
-											<form action="${update}?id_employer=${taikhoan.id}" method="post" accept-charset="utf-8"
-												modelAttribute="Account">
-												<div class="col-md-4 col-sm-6">
-													<label>Tên công ty</label> <input type="text"
-														class="form-control" name="name" value="${taikhoan.name}">
-												</div>
-												<div class="col-md-4 col-sm-6">
-													<label>Chuyên ngành công ty</label> <input type="text"
-														class="form-control" name="major"
-														value="${taikhoan.major}">
-												</div>
-												<div class="col-md-4 col-sm-6">
-													<label id="label-hireable">Trạng Thái</label> 
-													<input
-														type="checkbox" class="form-control" value="true" name="ready"
-														id="checkbox-active-job" checked="true">
-													<p id="p-hireable">Đang tuyển dụng</p>
-												</div>
-												<div class="col-md-4 col-sm-6">
-													<label>Email</label> <input type="email"
-														class="form-control" name="email"
-														value="${taikhoan.email}">
-												</div>
-												<input type="hidden"
-														class="form-control" name="id"
-														value="${taikhoan.id}" >
-												<div class="col-md-4 col-sm-6">
-													<label>Điện thoại</label> <input type="text"
-														class="form-control" name="phone"
-														value="${taikhoan.phone}">
-												</div>
-												<!-- 	<div class="col-md-4 col-sm-6">
-												<label>Tỉnh / Thành Phố</label> <select
-													name="ls_province" class="form-control" id="tinh"></select>
-
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Quận / Huyện</label> <select name="ls_district"
-													class="form-control" id="huyen"></select>
-
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Xã Phường</label> <select name="ls_ward"
-													class="form-control" id="xa"></select>
-											</div> -->
-												<div class="col-md-4 col-sm-6">
-													<label>Địa Chỉ</label> <input type="text"
-														class="form-control" name="addressString"
-														value="${taikhoan.addressString}">
-												</div>
-												<!-- <div class="col-md-4 col-sm-6">
-												<label>Facebook</label> <input type="text"
-													class="form-control" placeholder="facebook.com/idfacebook">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Twitter</label> <input type="text"
-													class="form-control" placeholder="twitter.com/idtwitter">
-											</div>
-											<div class="col-md-4 col-sm-6">
-												<label>Website</label> <input type="text"
-													class="form-control" placeholder="yourwebsite.com">
-											</div>
- -->
-												<div class="col-md-4 col-sm-6">
-													<label>Thông tin công ty</label>
-													<textarea class="form-control" name="about"
-														placeholder="Write Something"></textarea>
-												</div>
-												<!-- 		<div class="col-md-4 col-sm-6">
-												<label>Tải hình đại diện</label>
-												<form action="http://codeminifier.com/upload-target"
-													class="dropzone dz-clickable profile-pic">
-													<div class="dz-default dz-message">
-														<i class="fa fa-cloud-upload"></i> <span>Drop files
-															here to upload</span>
-													</div>
-												</form>
-											</div>
-
-											<!-- 		<div class="col-md-4 col-sm-6">
-												<label>Tải ảnh bìa</label>
-												<form action="http://codeminifier.com/upload-target"
-													class="dropzone dz-clickable profile-cover">
-													<div class="dz-default dz-message">
-														<i class="fa fa-cloud-upload"></i> <span>Drop files
-															here to upload</span>
-													</div>
-												</form>
-											</div>
-											 -->
-												<div class="col-sm-12">
-													<input
-														style="background: #11b719; border: none; display: table; color: #fff; border-radius: 4px; text-transform: capitalize; font-size: 16px; padding: 15px 40px; min-width: 180px; margin: 15px auto;"
-														type="submit" class="update-btn" value="Update Now">
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
+								<tiles:insertAttribute name="settings" />
 								<!-- End Settings -->
+								
+								<!-- Start Report -->
+<div id="report" class="tab-pane fade">
+	<div class="row no-mrg">
+		<h3 style="margin-bottom: 30px;">Báo cáo</h3>
+		<div class="edit-pro">
+			<form>
+				<input class="form-control" id="input-title" type="text" placeholder="Tiêu đề báo cáo">
+				<textarea class="form-control" placeholder="nội dung chi tiết báo cáo"></textarea>
+				<div class="row" style="margin-bottom: 45px;">
+					<div class="col-sm-2">
+						<div class="image-upload-wrap" id="image-upload-wrap1">
+						<input class="file-upload-input" id="file-upload-input1" type='file' onchange="readURL(this,'image1','image-upload-wrap1','file-upload-content1','image-title1');" accept="image/*" />
+						<div class="drag-text">
+						  <h6>Drag and drop a file or select add Image</h6>
+						</div>
+					  </div>
+					  <div class="file-upload-content" id="file-upload-content1">
+						<img class="file-upload-image"  id="image1" src="#" alt="your image" />
+						<div class="image-title-wrap">
+						  <button type="button" onclick="removeUpload('file-upload-input1','image-upload-wrap1','file-upload-content1')" class="remove-image">Remove <span id="image-title1" class="image-title">Uploaded Image</span></button>
+						</div>
+					  </div>
+					</div>
+					<div class="col-sm-2">
+						<div class="image-upload-wrap" id="image-upload-wrap2">
+						<input class="file-upload-input" id="file-upload-input2" type='file' onchange="readURL(this,'image2','image-upload-wrap2','file-upload-content2','image-title2');" accept="image/*" />
+						<div class="drag-text">
+						  <h6>Drag and drop a file or select add Image</h6>
+						</div>
+					  </div>
+					  <div class="file-upload-content" id="file-upload-content2">
+						<img class="file-upload-image" id="image2" src="#" alt="your image" />
+						<div class="image-title-wrap">
+						  <button type="button" onclick="removeUpload('file-upload-input2','image-upload-wrap2','file-upload-content2')" class="remove-image">Remove <span id="image-title2" class="image-title">Uploaded Image</span></button>
+						</div>
+					  </div>
+					</div>
+					<div class="col-sm-2">
+						<div class="image-upload-wrap" id="image-upload-wrap3">
+						<input class="file-upload-input" id="file-upload-input3" type='file' onchange="readURL(this,'image3','image-upload-wrap3','file-upload-content3','image-title3');" accept="image/*" />
+						<div class="drag-text">
+						  <h6>Drag and drop a file or select add Image</h6>
+						</div>
+					  </div>
+					  <div class="file-upload-content" id="file-upload-content3">
+						<img class="file-upload-image" id="image3" src="#" alt="your image" />
+						<div class="image-title-wrap">
+						  <button type="button" onclick="removeUpload('file-upload-input3','image-upload-wrap3','file-upload-content3')" class="remove-image">Remove <span id="image-title3" class="image-title">Uploaded Image</span></button>
+						</div>
+					  </div>
+					</div>
+				</div>
+					<button type="button" class="update-btn btn-report" data-toggle="modal" data-target="#modal-report" >Gửi</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-report" role="dialog">
+	<div class="modal-dialog modal-lg">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="modal-title title-modal-report">Thành Công</h4>
+		</div>
+		<div class="modal-body">
+			<img id="img-success-report" src="assets/img/success.png" alt="success.png">
+		  <p>Báo cáo của bạn đã được báo cáo thành công gửi thành công</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+<!-- End Report -->
 							</div>
 							<!-- Start All Sec -->
 						</div>
@@ -609,9 +528,9 @@
 	
 	function updateAddress(){
 		$(document).ready(function(){
-			$("select[name='major']").val('${taikhoan.major}');
-			$("input[name='ready']").prop('checked', ${taikhoan.ready});
-			$("input[name='ready']").val('${taikhoan.ready}').change();
+			$("select[name='major']").val('${employer.major}');
+			$("input[name='ready']").prop('checked', ${employer.ready});
+			$("input[name='ready']").val('${employer.ready}').change();
 			
 			
 		});

@@ -21,7 +21,7 @@
 								id="form-submit-evaluate"
 								method="post">
 								<input id="ratings-hidden" name="rating" type="hidden" value="0">
-								<input  name="id_freelancer" type="hidden" value="${id_freelancer}">
+								<input  name="id_employer" type="hidden" value="${id_employer}">
 								<textarea class="form-control animated" cols="50"
 									id="new-review" name="comment"
 									placeholder="Enter your review here..." rows="5"></textarea>

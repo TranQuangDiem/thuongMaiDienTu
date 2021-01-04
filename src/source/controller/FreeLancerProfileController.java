@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import config.CommonConst;
 import database.FreeLancerProfileDatabase;
 import database.MajorDAO;
 import database.UtilDataBase;
@@ -30,8 +32,8 @@ public class FreeLancerProfileController {
 	// url: /freelancer-profile?id_freelancer=1
 	@RequestMapping(value="/freelancer-profile", params = { "id_freelancer" })
 	public String layout(HttpServletRequest request,Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
-		//Account account = (Account) request.getSession().getAttribute("currentAccount");
-		Account currentAccount=UtilDataBase.getAccount(1);
+		
+		Account currentAccount=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		Account freelancer=UtilDataBase.getAccount(id_freelancer);
 		List<Major> lstMajor=MajorDAO.getAll();
 		model.addAttribute("lstMajor", lstMajor);

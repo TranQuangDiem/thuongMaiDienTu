@@ -102,7 +102,7 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About ${freelancer.major} ${freelancer.name}</h3>
+									<h3>About Freelancer ${freelancer.name}</h3>
 									<!-- About -->
 									${freelancer.about}
 								</div>
