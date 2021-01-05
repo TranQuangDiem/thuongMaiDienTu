@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
-public class MailHandler {
+public class MyMailHandler {
 
 	public static void sendEmail(String to, String subject, String content) throws Exception {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

@@ -85,7 +85,7 @@ public class JobDAO {
 				job.setId(rs.getInt(1));
 				job.setJobTitle(rs.getString(2));
 				job.setJobDescription(rs.getString(3));
-
+				//4
 				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
 				job.setSoluongtuyen(rs.getInt(6));
 				job.setCreateday(rs.getDate(7));
@@ -131,7 +131,11 @@ public class JobDAO {
 			return null;
 		}
 	}
-
+	public static int createId() {
+		int rs=IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
+		while(isIdExists(rs)) rs=IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
+		return rs;
+	}
 	public static List<Job> getAllJobIsOpen() {
 		try {
 			List<Job> listJobs = new ArrayList<Job>();
@@ -144,7 +148,6 @@ public class JobDAO {
 				job.setId(rs.getInt(1));
 				job.setJobTitle(rs.getString(2));
 				job.setJobDescription(rs.getString(3));
-
 				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
 				job.setSoluongtuyen(rs.getInt(6));
 				job.setCreateday(rs.getDate(7));
@@ -187,13 +190,14 @@ public class JobDAO {
 		}
 	}
 
-	public static boolean insert(FormCreateJob form, int idAcc) {
+	public static int insert(FormCreateJob form, int idAcc) {
 		try {
 
-			String query = "INSERT INTO job (job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO job (job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,job.id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			// set
 			Date finday = new SimpleDateFormat("MM/dd/yyyy").parse(form.getFinishday());
+			int id=createId();
 			ps.setString(1, form.getJobname());
 			ps.setString(2, form.getJobdescription());
 			ps.setInt(3, idAcc);
@@ -209,12 +213,18 @@ public class JobDAO {
 			ps.setInt(13, Job.STATUS_OPEN);
 			ps.setString(14, form.getLs_province());
 			ps.setInt(15, form.getJobtype());
+			ps.setInt(16, id);
 			//
 			int row = ps.executeUpdate();
-			return row == 1;
+			if(row!=1) {
+				return -1;
+			}else {
+				return id;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 

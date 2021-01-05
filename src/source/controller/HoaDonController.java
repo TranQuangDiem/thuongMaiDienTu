@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import config.CommonConst;
 import database.HoaDonDatabase;
 import database.UtilDataBase;
 import database.ViTienDatabase;
@@ -32,7 +33,7 @@ public class HoaDonController {
 	public String luuHoaDon(@RequestParam("id") int id, HttpSession session) {
 		long millis = System.currentTimeMillis();
 		java.sql.Date date = new java.sql.Date(millis);
-		Account acc = (Account) session.getAttribute("taikhoan");
+		Account acc = (Account) session.getAttribute(CommonConst.SESSION_ACCOUNT);
 		if (acc!=null) {
 		Pricing pricing = UtilDataBase.findPricingById(id);
 		ViTien viTien = ViTienDatabase.findIdAccount(acc.getId());

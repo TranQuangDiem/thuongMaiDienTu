@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import config.CommonConst;
-import customutil.MailHandler;
+import customutil.MyMailHandler;
 import customutil.StringHelper;
 import database.AccountDAO;
 import database.ForgotPasswordDAO;
@@ -104,7 +104,7 @@ public class AccountController {
 					return "fail";
 				} else {
 					String content = "Mật khẩu hiện tại của bạn là: " + key;
-					MailHandler.sendEmail(email, "Quên Mật Khẩu", content);
+					MyMailHandler.sendEmail(email, "Quên Mật Khẩu", content);
 					AccountDAO.updatePassword(key, id);
 					return "ok";
 				}

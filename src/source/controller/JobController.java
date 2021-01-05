@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,8 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.mail.util.logging.MailHandler;
+
 import config.CommonConst;
+import customutil.MyMailHandler;
 import customutil.StringHelper;
+import database.AccountDAO;
 import database.JobDAO;
 import database.MajorDAO;
 import dataform.FormCreateJob;
@@ -160,9 +163,13 @@ public class JobController {
 				|| img.isEmpty()) {
 			return "empty";
 		} else {
-			if (!JobDAO.insert(formCreateJob, acc.getId())) {
+			int rs=JobDAO.insert(formCreateJob, acc.getId());
+			if (rs<0) {
 				return "fail";
 			} else {
+				String urlDetailJob=request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath()+"/job-apply-detail?id_job="+rs;
+				String nameMajor=MajorDAO.getById(formCreateJob.getMajor()).getName();
+				MyMailHandler.sendMailMultiRecipients(AccountDAO.getEmailsByMajor(nameMajor),"Có 1 công việc mới đang chờ bạn trên JobStock",StringHelper.htmlEmailWelJob(rs,urlDetailJob));
 				return "ok";
 			}
 		}

@@ -30,6 +30,7 @@ public class HoaDonDatabase {
 		}
 		
 	}
+	
 	public static List<HoaDon> finAll(){
 		List<HoaDon> hoadon = new ArrayList<HoaDon>();
 		try {
