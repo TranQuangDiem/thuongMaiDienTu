@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.Blob;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,71 +15,111 @@ import model.Evaluate;
 
 public class FreeLancerProfileDatabase {
 
-	public static List<Evaluate> getEvaluate(int id_freelancer) {
-		List<Evaluate> rs = new ArrayList<Evaluate>();
-		try {
-			String sql = "select id, id_account, time, star, content from evaluate where id_freelancer=? ";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, id_freelancer);
-			ResultSet rsSet = ps.executeQuery();
-			while (rsSet.next()) {
-				int id_account = rsSet.getInt(2);
-				Account account = UtilDataBase.getAccount(id_account);
-				Evaluate e = new Evaluate(rsSet.getInt(1), account, rsSet.getTimestamp(3), rsSet.getInt(4),
-						rsSet.getString(5));
-				rs.add(e);
-//				 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-//				System.out.println(formatter.format(e.getTime()));
+	// đánh giá
+		public static List<Evaluate> getEvaluate(int id_account) {
+			List<Evaluate> rs = new ArrayList<Evaluate>();
+			try {
+				String sql = "select id, id_guest, time, star, content from evaluate where id_account=? ";
+				PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+				ps.setInt(1, id_account);
+				ResultSet rsSet = ps.executeQuery();
+				while (rsSet.next()) {
+					int id_guest = rsSet.getInt(2);
+					Account guest = UtilDataBase.getAccount(id_guest);
+					Evaluate e = new Evaluate();
+					e.setId(rsSet.getInt(1));
+					e.setGuest(guest); 
+					e.setTime(rsSet.getTimestamp(3));
+					e.setStar(rsSet.getInt(4));
+					e.setContent(rsSet.getString(5));
+					rs.add(e);
+					
+//					 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+//					System.out.println(formatter.format(e.getTime()));
 
+				}
+				ConnectionDB.close(rsSet);
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
-			ConnectionDB.close(rsSet);
 
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			return rs;
 		}
 
-		return rs;
-	}
+		public static List<Evaluate> getEvaluate(int id_account, int numberPage) {
+			List<Evaluate> rs = new ArrayList<Evaluate>();
+			try {
+				String sql = "select id, id_guest, time, star, content from evaluate where id_account=? order by time desc limit ?,?";
+				PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+				ps.setInt(1, id_account);
+				ps.setInt(2, numberPage * 5);
+				ps.setInt(3, (numberPage + 1) * 5);
+				ResultSet rsSet = ps.executeQuery();
+				while (rsSet.next()) {
+					int id_guest = rsSet.getInt(2);
+					Account guest = UtilDataBase.getAccount(id_guest);
+					Evaluate e = new Evaluate();
+					e.setId(rsSet.getInt(1));
+					e.setGuest(guest); 
+					e.setTime(rsSet.getTimestamp(3));
+					e.setStar(rsSet.getInt(4));
+					e.setContent(rsSet.getString(5));
+							
+					rs.add(e);
+//					 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+//					System.out.println(formatter.format(e.getTime()));
 
-	public static List<Evaluate> getEvaluate(int id_freelancer, int numberPage) {
-		List<Evaluate> rs = new ArrayList<Evaluate>();
-		try {
-			String sql = "select id, id_account, time, star, content from evaluate where id_freelancer=? order by time desc limit ?,?";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, id_freelancer);
-			ps.setInt(2, numberPage * 5);
-			ps.setInt(3, (numberPage + 1) * 5);
-			ResultSet rsSet = ps.executeQuery();
-			while (rsSet.next()) {
-				int id_account = rsSet.getInt(2);
-				Account account = UtilDataBase.getAccount(id_account);
-				Evaluate e = new Evaluate(rsSet.getInt(1), account, rsSet.getTimestamp(3), rsSet.getInt(4),
-						rsSet.getString(5));
-				rs.add(e);
-//				 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-//				System.out.println(formatter.format(e.getTime()));
+				}
+				ConnectionDB.close(rsSet);
 
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
-			ConnectionDB.close(rsSet);
 
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			return rs;
 		}
 
-		return rs;
-	}
 
-	public static int insertEvaluate(int id_freelancer, Evaluate evaluate) {
-		int rs = 0;
+	public static boolean insertEvaluate(int id_account, Evaluate evaluate) {
+		boolean rs = false;
+		String sql;
+		PreparedStatement ps;
+		Connection con;
+		Account account= UtilDataBase.getAccount(id_account);
 		try {
-			String sql = "insert  into evaluate(id_account,id_freelancer,time,star,content)" + " values(?,?,?,?,?);";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, evaluate.getAccount().getId());
-			ps.setInt(2, id_freelancer);
+			sql = "insert  into evaluate(id_account, id_guest,time,star,content)" + " values(?,?,?,?,?);";
+			ps = ConnectionDB.prepareStatement(sql);
+			con = ps.getConnection();
+			con.setAutoCommit(false);
+			//insert
+			ps.setInt(2, evaluate.getGuest().getId());
+			ps.setInt(1, id_account);
 			ps.setTimestamp(3, new Timestamp(evaluate.getTime().getTime()));
 			ps.setInt(4, evaluate.getStar());
 			ps.setString(5, evaluate.getContent());
-			rs = ps.executeUpdate();
+			rs = (ps.executeUpdate()==1);
+			
+			//update count
+			if(rs) {
+				sql="update account set star=?, count_evaluate=? where star=? and count_evaluate=? and id=?";
+				ps = ConnectionDB.prepareStatement(sql);
+				ps.setInt(1, account.getStar()+evaluate.getStar());
+				ps.setInt(2, account.getCountEvaluate()+1);
+				ps.setInt(3, account.getStar());
+				ps.setInt(4, account.getCountEvaluate());
+				ps.setInt(5, account.getId());
+				
+				rs = (ps.executeUpdate()==1);
+				if(!rs) {
+					con.rollback();
+				}
+				
+			}else {
+				con.rollback();
+				
+			}
+			con.setAutoCommit(true);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

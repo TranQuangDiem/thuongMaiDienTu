@@ -1,6 +1,6 @@
 $(document).ready(function () {
- 	/*$('#checkbox-active-job').click(function (e){
-     	
+ 	$('#checkbox-active-job').click(function (e){
+     	 
      	 var checkboxHire = $('#checkbox-active-job');
      	 if(checkboxHire.val()!='true'){
      	 	checkboxHire.val('true').change();
@@ -9,7 +9,7 @@ $(document).ready(function () {
      	 }
      	 
      	 
-    });*/
+    });
     $('#checkbox-active-job').change(function (e) { 
         e.preventDefault();
         var checkboxHire = $('#checkbox-active-job');

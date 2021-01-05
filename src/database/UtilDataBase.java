@@ -18,7 +18,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background, ready from account where id=?";
+			String sql = "select username, password, fullname, image, star,about,email,phone, role, name, major, twitter, facebook, website, background, ready,count_job,count_evaluate from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -29,7 +29,7 @@ public class UtilDataBase {
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
 				rs.setImage(rsSet.getBlob(4));
-				rs.setStarAverage(rsSet.getFloat(5));
+				rs.setStar(rsSet.getInt(5));
 				rs.setAbout(rsSet.getString(6));
 				// rs.setAbout(getLargerString(rsSet, 6));
 				rs.setEmail(rsSet.getString(7));
@@ -43,6 +43,8 @@ public class UtilDataBase {
 				rs.setBackground(rsSet.getBlob(15));
 				rs.setAddress(getAddress(id_account));
 				rs.setReady(rsSet.getInt(16)==1);
+				rs.setCountJob(rsSet.getInt(17));
+				rs.setCountEvaluate(rsSet.getInt(18));
 				// System.out.println(rs.toString());
 
 			}
@@ -57,7 +59,7 @@ public class UtilDataBase {
 	public static Account getMinAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average from account where id=?";
+			String sql = "select username, password, fullname, image, star from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -68,7 +70,7 @@ public class UtilDataBase {
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
 				rs.setImage(rsSet.getBlob(4));
-				rs.setStarAverage(rsSet.getFloat(5));
+				rs.setStar(rsSet.getInt(5));
 
 			}
 

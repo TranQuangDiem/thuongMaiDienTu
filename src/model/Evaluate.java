@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Evaluate {
 	int id;
-	Account account;
+	Account guest;
 	Date time;
 	int star;
 	String content;
@@ -15,18 +15,6 @@ public class Evaluate {
 	
 	public Evaluate() {
 		super();
-	}
-
-
-
-
-	public Evaluate(int id, Account account, Date time, int star, String content) {
-		super();
-		this.id = id;
-		this.account = account;
-		this.time = time;
-		this.star = star;
-		this.content = content;
 	}
 
 
@@ -46,15 +34,15 @@ public class Evaluate {
 
 
 
-	public Account getAccount() {
-		return account;
+	public Account getGuest() {
+		return guest;
 	}
 
 
 
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setGuest(Account guest) {
+		this.guest = guest;
 	}
 
 
@@ -99,6 +87,10 @@ public class Evaluate {
 		this.content = content;
 	}
 
+
+
+
+	
 
 	
 

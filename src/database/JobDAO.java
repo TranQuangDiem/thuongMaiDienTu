@@ -104,7 +104,7 @@ public class JobDAO {
 				acc.setPassword(rs.getString(18));
 				acc.setFullname(rs.getString(19));
 				acc.setImage(rs.getBlob(20) == null ? null : rs.getBlob(20));
-				acc.setStarAverage(rs.getFloat(21));
+				acc.setStar(rs.getInt(21));
 				acc.setAbout(rs.getString(22));
 				acc.setEmail(rs.getString(23));
 				acc.setPhone(rs.getString(24));
@@ -166,7 +166,7 @@ public class JobDAO {
 				acc.setPassword(rs.getString(18));
 				acc.setFullname(rs.getString(19));
 				acc.setImage(rs.getBlob(20) == null ? null : rs.getBlob(20));
-				acc.setStarAverage(rs.getFloat(21));
+				acc.setStar(rs.getInt(21));
 				acc.setAbout(rs.getString(22));
 				acc.setEmail(rs.getString(23));
 				acc.setPhone(rs.getString(24));
