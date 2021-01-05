@@ -30,7 +30,30 @@ public class HoaDonDatabase {
 		}
 		
 	}
-	
+	public static HoaDon findLatestEBill(int idAcc) {
+		try {
+			String query="SELECT h.id,h.idAccount,h.tenGoi,h.soLuongBaiDang,h.ngayMua,h.ngayHetHan,h.giaTri FROM hoadon AS h WHERE h.idAccount=? AND h.ngayHetHan IN (SELECT MAX(h2.ngayHetHan) FROM hoadon h2 WHERE h2.idAccount=?)";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ps.setInt(1,idAcc);
+			ps.setInt(2,idAcc);
+			ResultSet rs=ps.executeQuery();
+			boolean row= rs.next();
+			if(row==false)return null;
+			HoaDon bill=new HoaDon();
+			bill.setId(rs.getInt(1));
+			bill.setIdAccount(rs.getInt(2));
+			bill.setTengoi(rs.getString(3));
+			bill.setSoluongbaidang(rs.getInt(4));
+			bill.setNgayMua(rs.getDate(5));
+			bill.setNgayHetHan(rs.getDate(6));
+			bill.setGiaTri(rs.getDouble(7));
+			System.out.println(bill);
+			return bill;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public static List<HoaDon> finAll(){
 		List<HoaDon> hoadon = new ArrayList<HoaDon>();
 		try {

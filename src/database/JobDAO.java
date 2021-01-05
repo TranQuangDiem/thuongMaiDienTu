@@ -1,25 +1,49 @@
 package database;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
-
+import customutil.DateHelper;
 import customutil.FileHelper;
 import customutil.IntegerHelper;
 import customutil.StringHelper;
 import dataform.FormCreateJob;
 import model.Account;
+import model.HoaDon;
 import model.Job;
 
 public class JobDAO {
-
+	public static boolean canPostJob(int idAcc) {
+		HoaDon bill=HoaDonDatabase.findLatestEBill(idAcc);
+		Date today=DateHelper.getDateWithoutTimeUsingCalendar();
+		if (bill==null) return false;
+		else if((today.compareTo(bill.getNgayHetHan()))>0)  
+			return false;
+		else if((bill.getSoluongbaidang()-getNumberJobWhen(bill.getNgayMua(), idAcc))<0) {
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
+	public static int getNumberJobWhen(Date date,int idAcc) {
+		try {
+			String query="SELECT COUNT(*) FROM job WHERE job.idAccount=? AND job.ngaydang>=?";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ps.setInt(1, idAcc);
+			ps.setDate(2, new java.sql.Date(date.getTime()));
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			int result=rs.getInt(1);
+			ps.close();
+			return result;
+		}catch (Exception e) {
+			return -1;
+		}
+	}
 	public static int numberJobIsOpen() {
 		try {
 			String query = "SELECT COUNT(*) FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE())";

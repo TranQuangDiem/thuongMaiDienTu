@@ -66,12 +66,12 @@ public class JobController {
 		StringBuilder queryORDER = new StringBuilder("");
 		if (!StringHelper.isStringNull(province)) {
 			queryWHERE.append(" ");
-			queryWHERE.append("AND job.city='" + province+"'");
+			queryWHERE.append("AND job.city='" + province + "'");
 			queryWHERE.append(" ");
 		}
 		if (major != 0) {
 			queryWHERE.append(" ");
-			queryWHERE.append("AND job.major='" + MajorDAO.getById(major).getName()+"'");
+			queryWHERE.append("AND job.major='" + MajorDAO.getById(major).getName() + "'");
 			queryWHERE.append(" ");
 		}
 		if (!StringHelper.isStringNull(jobtitle)) {
@@ -99,16 +99,14 @@ public class JobController {
 		/** GET RECORDS */
 
 		int totalRecords = JobDAO.getTotalRecords(queryWHERE.toString(), jobtitle);
-		
+
 		/** CREATE LIST */
-		String query=querySELECT.toString()+queryWHERE.toString()+queryORDER.toString()+" LIMIT ?,? ";
+		String query = querySELECT.toString() + queryWHERE.toString() + queryORDER.toString() + " LIMIT ?,? ";
 		ModelAndView model = new ModelAndView("jobs");
 		model.addObject("listMajors", MajorDAO.getAll());
-		model.addObject("listJobs", JobDAO.getAllJobIsOpenWithPage(page, itemInOnePage,query,jobtitle));
+		model.addObject("listJobs", JobDAO.getAllJobIsOpenWithPage(page, itemInOnePage, query, jobtitle));
 		model.addObject("numberJobIsOpen", JobDAO.numberJobIsOpen());
 		/** HANDLE PAGE */
-		
-
 		int totalPages = (int) Math.ceil((double) totalRecords / itemInOnePage);
 		int pageIndex = page;
 		int maxPage = 5;
@@ -124,11 +122,11 @@ public class JobController {
 		model.addObject("previousPage", pageIndex == 1 ? -1 : pageIndex - 1);
 		model.addObject("startPageIndex", startPageIndex);
 		model.addObject("endPageIndex", endPageIndex);
-		model.addObject("jobtitle",StringHelper.isStringNull(jobtitle)?"":jobtitle);
-		model.addObject("province",StringHelper.isStringNull(province)?"":province);
-		model.addObject("major",major==0?"":major);
-		model.addObject("sortby",sortby==0?"":sortby);
-		model.addObject("sortorder",sortorder==0?"":sortorder);
+		model.addObject("jobtitle", StringHelper.isStringNull(jobtitle) ? "" : jobtitle);
+		model.addObject("province", StringHelper.isStringNull(province) ? "" : province);
+		model.addObject("major", major == 0 ? "" : major);
+		model.addObject("sortby", sortby == 0 ? "" : sortby);
+		model.addObject("sortorder", sortorder == 0 ? "" : sortorder);
 		/** DEBUG */
 //		System.out.println(totalRecords);
 //		System.out.println(query);
@@ -160,17 +158,28 @@ public class JobController {
 		toCheckNull.add(education);
 		toCheckNull.add(exp);
 		toCheckNull.add(language);
-		if (StringHelper.isListStringNull(toCheckNull) || major == 0 || quantity == 0 || jobtype == 0 || img == null
-				|| img.isEmpty()) {
+		if (acc == null) {
+			return "user";
+		} else if (StringHelper.isListStringNull(toCheckNull) || major == 0 || quantity == 0 || jobtype == 0
+				|| img == null || img.isEmpty()) {
 			return "empty";
+		} else if (!JobDAO.canPostJob(acc.getId())) {
+			return "money";
 		} else {
-			int rs=JobDAO.insert(formCreateJob, acc.getId());
-			if (rs<0) {
+			int rs = JobDAO.insert(formCreateJob, acc.getId());
+			if (rs < 0) {
 				return "fail";
 			} else {
-				String urlDetailJob=request.getServerName()+":"+request.getServerPort()+"/"+request.getContextPath()+"/job-apply-detail?id_job="+rs;
-				String nameMajor=MajorDAO.getById(formCreateJob.getMajor()).getName();
-				MyMailHandler.sendMailMultiRecipients(AccountDAO.getEmailsByMajor(nameMajor),"Có 1 công việc mới đang chờ bạn trên JobStock",StringHelper.htmlEmailWelJob(rs,urlDetailJob));
+				String urlDetailJob = "http://"+request.getServerName() + ":" + request.getServerPort()
+						+ request.getContextPath() + "/job-apply-detail?id_job=" + rs;
+				String nameMajor = MajorDAO.getById(formCreateJob.getMajor()).getName();
+				String[] to=AccountDAO.getEmailsByMajor(nameMajor);
+				if (to!=null ||to[0]!=null ) {
+					MyMailHandler.sendMailMultiRecipients(to,
+							"Có 1 công việc mới đang chờ bạn trên JobStock",
+							StringHelper.htmlEmailWelJob(rs, urlDetailJob));
+				}
+				
 				return "ok";
 			}
 		}
