@@ -60,7 +60,7 @@ public class JobController {
 		int itemInOnePage = 10;
 		/** CREATE QUERY */
 		StringBuilder querySELECT = new StringBuilder(
-				"SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, account.major, twitter, facebook, website, background,linkedin,ready FROM job JOIN account ON job.idAccount=account.id ");
+				"SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`  FROM job JOIN account ON job.idAccount=account.id ");
 		/** SEARCH */
 		StringBuilder queryWHERE = new StringBuilder("WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE())");
 		StringBuilder queryORDER = new StringBuilder("");
@@ -129,8 +129,9 @@ public class JobController {
 		model.addObject("major",major==0?"":major);
 		model.addObject("sortby",sortby==0?"":sortby);
 		model.addObject("sortorder",sortorder==0?"":sortorder);
-		System.out.println(totalRecords);
-		System.out.println(query);
+		/** DEBUG */
+//		System.out.println(totalRecords);
+//		System.out.println(query);
 		return model;
 
 	}

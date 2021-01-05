@@ -53,7 +53,7 @@ public class AccountDAO {
 				acc.setLinkedin(rs.getString(16));
 				acc.setReady(rs.getInt(17) == 1);
 				acc.setCountJob(rs.getInt(18));
-				acc.setCountJob(rs.getInt(19));
+				acc.setCountEvaluate(rs.getInt(19));
 				return acc;
 			} else {
 				return null;
@@ -77,7 +77,10 @@ public class AccountDAO {
 				arrString.add(rs.getString(1));
 			}
 			ps.close();
-			return arrString.toArray(new String[0]);
+			if(arrString.size()==0) {
+				return null;
+			}
+			return arrString.toArray(new String[arrString.size()]);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

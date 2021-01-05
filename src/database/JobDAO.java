@@ -100,24 +100,8 @@ public class JobDAO {
 				job.setJobType(rs.getInt(16));
 				// Account
 				acc.setId(rs.getInt(4));
-				acc.setUsername(rs.getString(17));
-				acc.setPassword(rs.getString(18));
-				acc.setFullname(rs.getString(19));
-				acc.setImage(rs.getBlob(20) == null ? null : rs.getBlob(20));
-				acc.setStar(rs.getInt(21));
-				acc.setAbout(rs.getString(22));
-				acc.setEmail(rs.getString(23));
-				acc.setPhone(rs.getString(24));
-				acc.setRole(rs.getInt(25));
-				acc.setName(rs.getString(26));
-				acc.setMajor(rs.getString(27));
-				acc.setTwitter(rs.getString(28));
-				acc.setFacebook(rs.getString(29));
-				acc.setWebsite(rs.getString(30));
-				acc.setBackground(rs.getBlob(31) == null ? null : rs.getBlob(31));
-				acc.setAddress(UtilDataBase.getAddress(rs.getInt(4)));
-				acc.setLinkedin(rs.getString(32));
-				acc.setReady(rs.getInt(33) == 1);
+				acc.setFullname(rs.getString(17));
+				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
 				listJobs.add(job);
 			}
@@ -139,7 +123,7 @@ public class JobDAO {
 	public static List<Job> getAllJobIsOpen() {
 		try {
 			List<Job> listJobs = new ArrayList<Job>();
-			String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, account.major, twitter, facebook, website, background,linkedin,ready FROM job JOIN account ON job.idAccount=account.id WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE())";
+			String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`  FROM job JOIN account ON job.idAccount=account.id WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE())";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -162,24 +146,9 @@ public class JobDAO {
 				job.setJobType(rs.getInt(16));
 				// Account
 				acc.setId(rs.getInt(4));
-				acc.setUsername(rs.getString(17));
-				acc.setPassword(rs.getString(18));
-				acc.setFullname(rs.getString(19));
-				acc.setImage(rs.getBlob(20) == null ? null : rs.getBlob(20));
-				acc.setStar(rs.getInt(21));
-				acc.setAbout(rs.getString(22));
-				acc.setEmail(rs.getString(23));
-				acc.setPhone(rs.getString(24));
-				acc.setRole(rs.getInt(25));
-				acc.setName(rs.getString(26));
-				acc.setMajor(rs.getString(27));
-				acc.setTwitter(rs.getString(28));
-				acc.setFacebook(rs.getString(29));
-				acc.setWebsite(rs.getString(30));
-				acc.setBackground(rs.getBlob(31) == null ? null : rs.getBlob(31));
-				acc.setAddress(UtilDataBase.getAddress(rs.getInt(4)));
-				acc.setLinkedin(rs.getString(32));
-				acc.setReady(rs.getInt(33) == 1);
+				acc.setFullname(rs.getString(17));
+				acc.setName(rs.getString(18));
+			
 				job.setOfAccount(acc);
 				listJobs.add(job);
 			}
