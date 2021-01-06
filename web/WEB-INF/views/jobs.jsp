@@ -273,14 +273,14 @@
 												<article class="advance-search-job">
 													<div class="row no-mrg">
 														<div class="col-md-6 col-sm-6">
-															<a href="new-job-detail.html" title="job Detail">
+															<a href="${pageContext.request.contextPath}/job-apply-detail?id_job=${job.id}" title="job Detail">
 																<div class="advance-search-img-box">
 																	<img src='data:image/jpge;base64,<c:out value="${job.img}"></c:out>'
 																		class="img-responsive" alt="">
 																</div>
 															</a>
 															<div class="advance-search-caption">
-																<a href="new-job-detail.html" title="Job Dtail">
+																<a href="${pageContext.request.contextPath}/job-apply-detail?id_job=${job.id}" title="Job Dtail">
 																	<h4>
 																		<c:out value="${job.jobTitle }"></c:out>
 																	</h4>

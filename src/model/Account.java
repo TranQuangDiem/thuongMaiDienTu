@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -18,6 +20,7 @@ public class Account {
 	private BufferedImage image;
 	private int star;
 	private int countJob;
+	private int countJobFinish;
 	private int countEvaluate;
 	private String about;
 	private String email;
@@ -344,6 +347,16 @@ public class Account {
 	public boolean isReady() {
 		return ready;
 	}
+	
+
+	public int getCountJobFinish() {
+		return countJobFinish;
+	}
+
+
+	public void setCountJobFinish(int countJobFinish) {
+		this.countJobFinish = countJobFinish;
+	}
 
 
 	public void setReady(boolean ready) {
@@ -374,9 +387,11 @@ public class Account {
 			return false;
 		return pat.matcher(email).matches();
 	}
-	public double getStarAverage() {
-		if(countEvaluate<=0)return 0;
-		return (double)star/(double) countEvaluate;
+	public String getStarAverage() {
+		if(countEvaluate<=0)return "0";
+		double rs=(double)star/(double) countEvaluate;
+		NumberFormat formatter = new DecimalFormat("#0.00");     
+		return formatter.format(rs);
 	}
 
 }
