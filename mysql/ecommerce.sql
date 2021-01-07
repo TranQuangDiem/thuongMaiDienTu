@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 06/01/2021 17:36:13
+ Date: 07/01/2021 17:16:14
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,6 @@ CREATE TABLE `account`  (
   `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `background` mediumblob NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `linkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `balance` int(11) NULL DEFAULT NULL,
   `ready` int(11) NULL DEFAULT NULL,

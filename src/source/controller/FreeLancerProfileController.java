@@ -40,7 +40,7 @@ public class FreeLancerProfileController {
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
 		
-//		System.out.println(currentAccount);
+		System.out.println(freelancer);
 		return "freelancer-profile";
 	}
 	

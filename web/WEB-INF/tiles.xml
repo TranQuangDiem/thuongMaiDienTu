@@ -61,7 +61,7 @@
 				value="/resources/assets/js/vietnamlocalselector.js" />
 			<add-attribute value="/resources/assets/js/custom.js" />
 			<add-attribute
-				value="/resources/assets/js/js-custom.js" />
+				value="/resources/assets/js/js-custom-setting.js" />
 
 		</put-list-attribute>
 	</definition>
@@ -126,7 +126,7 @@
 				value="/resources/assets/js/vietnamlocalselector.js" />
 			<add-attribute value="/resources/assets/js/custom.js" />
 			<add-attribute
-				value="/resources/assets/js/js-custom.js" />
+				value="/resources/assets/js/js-custom-setting.js" />
 			<add-attribute
 				value="/resources/assets/js/js-report.js" />
 

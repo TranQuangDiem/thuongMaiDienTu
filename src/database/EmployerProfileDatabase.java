@@ -84,20 +84,20 @@ public class EmployerProfileDatabase {
 		PreparedStatement ps = null;
 		// Start update regular field
 		try {
-			sql = "update account set fullname=?,major=?,email=?,phone=?,address=?,about=?, email=?, facebook=?, website=?, twitter=?, ready=? where id=?";
+			sql = "update account set fullname=?,major=?,email=?,phone=?,about=?, email=?, facebook=?, website=?, twitter=?, ready=? where id=?";
 			ps = ConnectionDB.prepareStatement(sql);
 			ps.setString(1, account.getFullname());
 			ps.setString(2, account.getMajor());
 			ps.setString(3, account.getEmail());
 			ps.setString(4, account.getPhone());
-			ps.setString(5, account.getAddressString());
-			ps.setString(6, account.getAbout());
-			ps.setString(7, account.getEmail());
-			ps.setString(8, account.getFacebook());
-			ps.setString(9, account.getWebsite());
-			ps.setString(10, account.getTwitter());
-			ps.setInt(11, (account.isReady()) ? 1 : 0);
-			ps.setInt(12, account.getId());
+			
+			ps.setString(5, account.getAbout());
+			ps.setString(6, account.getEmail());
+			ps.setString(7, account.getFacebook());
+			ps.setString(8, account.getWebsite());
+			ps.setString(9, account.getTwitter());
+			ps.setInt(10, (account.isReady()) ? 1 : 0);
+			ps.setInt(11, account.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

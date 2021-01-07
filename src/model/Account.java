@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
+import customutil.AccessHelper;
 import database.UtilImage;
 
 public class Account {
@@ -30,12 +31,13 @@ public class Account {
 	private String major;
 	private int soluongbaidang;
 	private Address address;
-	private String addressString;
+	
 	private String twitter;
 	private String facebook;
 	private String website;
 	private BufferedImage background;
 	private String linkedin;
+	private int access;
 	
 	private boolean ready;
 	public Account() {
@@ -176,6 +178,7 @@ public class Account {
 	}
 
 	public void setRole(int role) {
+		this.access=AccessHelper.takeAccess(role);
 		this.role = role;
 	}
 
@@ -247,69 +250,18 @@ public class Account {
 		}
 	}
 
-	public String getAddressString() {
-		return addressString;
-	}
-
-	public void setAddressString(String addressString) {
-		this.addressString = addressString;
-	}
 	
 	
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Account [id=");
-		builder.append(id);
-		builder.append(", username=");
-		builder.append(username);
-		builder.append(", password=");
-		builder.append(password);
-		builder.append(", fullname=");
-		builder.append(fullname);
-		builder.append(", image=");
-		builder.append(image);
-		builder.append(", star=");
-		builder.append(star);
-		builder.append(", countJob=");
-		builder.append(countJob);
-		builder.append(", countEvalute=");
-		builder.append(countEvaluate);
-		builder.append(", about=");
-		builder.append(about);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", phone=");
-		builder.append(phone);
-		builder.append(", role=");
-		builder.append(role);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", major=");
-		builder.append(major);
-		builder.append(", soluongbaidang=");
-		builder.append(soluongbaidang);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append(", addressString=");
-		builder.append(addressString);
-		builder.append(", twitter=");
-		builder.append(twitter);
-		builder.append(", facebook=");
-		builder.append(facebook);
-		builder.append(", website=");
-		builder.append(website);
-		builder.append(", background=");
-		builder.append(background);
-		builder.append(", linkedin=");
-		builder.append(linkedin);
-		builder.append(", ready=");
-		builder.append(ready);
-		builder.append("]");
-		return builder.toString();
+	
+
+
+	public int getAccess() {
+		return access;
 	}
 
+
+	
 
 	public int getStar() {
 		return star;
@@ -332,6 +284,63 @@ public class Account {
 
 
 	
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Account [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", fullname=");
+		builder.append(fullname);
+		builder.append(", image=");
+		builder.append(image);
+		builder.append(", star=");
+		builder.append(star);
+		builder.append(", countJob=");
+		builder.append(countJob);
+		builder.append(", countJobFinish=");
+		builder.append(countJobFinish);
+		builder.append(", countEvaluate=");
+		builder.append(countEvaluate);
+		builder.append(", about=");
+		builder.append(about);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", major=");
+		builder.append(major);
+		builder.append(", soluongbaidang=");
+		builder.append(soluongbaidang);
+		builder.append(", address=");
+		builder.append(address);
+	
+		builder.append(", twitter=");
+		builder.append(twitter);
+		builder.append(", facebook=");
+		builder.append(facebook);
+		builder.append(", website=");
+		builder.append(website);
+		builder.append(", background=");
+		builder.append(background);
+		builder.append(", linkedin=");
+		builder.append(linkedin);
+		builder.append(", access=");
+		builder.append(access);
+		builder.append(", ready=");
+		builder.append(ready);
+		builder.append("]");
+		return builder.toString();
+	}
 
 
 	public int getCountEvaluate() {

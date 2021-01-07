@@ -1,20 +1,17 @@
 package source.controller;
 
-import java.io.File;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sun.mail.util.logging.MailHandler;
 
 import config.CommonConst;
+import customutil.AccessHelper;
 import customutil.MyMailHandler;
 import customutil.StringHelper;
 import database.AccountDAO;
 import database.JobDAO;
 import database.MajorDAO;
+import dataform.FormApplyJob;
 import dataform.FormCreateJob;
 import model.Account;
 import model.Job;
@@ -183,6 +182,31 @@ public class JobController {
 				return "ok";
 			}
 		}
+	}
+	@RequestMapping(value = "/applyjob", method = RequestMethod.POST)
+	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, HttpServletRequest request) {
+		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+		System.out.println(formApplyJob);
+		
+		AccessHelper.accessApplyJobAccess(acc, AccessHelper.APPLY_JOB_ACCESS, new Runnable() {
+			
+			@Override
+			public void run() {
+				// Accept
+				System.out.println("Accept");
+			}
+		}, new Runnable() {
+			
+			@Override
+			public void run() {
+				// Deny
+				System.out.println("Deny");
+				
+			}
+		});
+		return "redirect:/job-apply-detail?id_job="+formApplyJob.getIdJob();
+		
+		
 	}
 
 }

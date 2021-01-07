@@ -25,7 +25,7 @@
 					<link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
 					<link type="text/css" rel="stylesheet" id="jssDefault"
 						href="${pageContext.request.contextPath}/resources//assets/css/colors/green-style.css">
-
+					<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/css-header.css">
 				</head>
 
 				<body>
@@ -298,7 +298,7 @@
 															</div>
 														</div>
 														<div class="col-md-2 col-sm-2">
-															<a href="javascript:void(0)" data-toggle="modal"
+															<a data-idjob="${job.id}" href="" data-toggle="modal"
 																data-target="#apply-job" class="btn advance-search"
 																title="apply">Ứng Tuyển</a>
 															<!-- 												<a href="#" class="btn applied advance-search" title="applied"><i class="fa fa-check" aria-hidden="true"></i>Đã Ứng Tuyển</a>-->
@@ -413,9 +413,9 @@
 						<div class="clearfix"></div>
 						<!-- Footer Section End -->
 						<!-- Apply Form Code -->
-						<div class="modal fade" id="apply-job" tabindex="-1" role="dialog"
+						<div  class="modal fade" id="apply-job" tabindex="-1" role="dialog"
 							aria-labelledby="myModalLabel2" aria-hidden="true">
-							<div class="modal-dialog">
+							<div  class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-body">
 										<div class="apply-job-box">
@@ -424,17 +424,19 @@
 											<p>Google Pvt.</p>
 										</div>
 										<div class="apply-job-form">
-											<form class="form-inline" method="post">
+											<form class="form-inline"  accept-charset="UTF-8"
+								action="${pageContext.request.contextPath}/applyjob" enctype="multipart/form-data" method="post">
 												<div class="col-sm-12">
 													<div class="form-group">
-														<input type="text" name="name" class="form-control"
+														<input type="hidden" value="${job.id}" name="idJob"/>
+														<input type="text" name="fullname" class="form-control"
 															placeholder="Your Name" required=""> <input type="email"
 															name="email" class="form-control" placeholder="Your Email"
 															required="">
-														<textarea class="form-control"
+														<textarea class="form-control" name="about"
 															placeholder="About You / Paste your CV"></textarea>
 														<div class="fileUpload">
-															<span>Upload CV</span> <input type="file" class="upload" />
+															<span>Upload CV</span> <input type="file" name="cv" class="upload" />
 														</div>
 														<div class="center">
 															<button type="submit" id="subscribe" class="submit-btn">
@@ -602,6 +604,14 @@
 									if (!isZero(sortby) && !isZero(sortorder)) {
 										location.search = createURLForFormSort().toString();
 									}
+								});
+								
+								//form setting apply job
+								$('#apply-job').on('show.bs.modal', function (e) {
+								    var id_job = $(e.relatedTarget).data('idjob');
+								    
+								    $("input[name='idJob']").val(id_job);
+								    
 								});
 
 							});

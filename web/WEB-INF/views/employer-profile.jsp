@@ -526,16 +526,7 @@
 		
 		<script type="text/javascript">
 	
-	function updateAddress(){
-		$(document).ready(function(){
-			$("select[name='major']").val('${employer.major}');
-			$("input[name='ready']").prop('checked', ${employer.ready});
-			$("input[name='ready']").val('${employer.ready}').change();
-			
-			
-		});
-		
-	}
+	
 	
 </script>
 	</div>

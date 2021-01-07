@@ -126,24 +126,24 @@
 	});
 	function updateAddress(){
 		$(document).ready(function(){
-			<c:if test="not empty ${employer.major}">
+			<c:if test="${not empty employer.major}">
 				$("select[name='major']").val('${employer.major}');
 			</c:if>
-			<c:if test="not empty ${employer.ready}">
+			<c:if test="${not empty employer.ready}">
 				$("input[name='ready']").prop('checked', ${employer.ready});
 				$("input[name='ready']").val('${employer.ready}');
 				$("input[name='ready']").change();
 			</c:if>
 			
 			
-			<c:if test="not empty ${employer.address.province}">
+			<c:if test="${not empty employer.address.province}">
 				$("select[name='address.province']").val("${employer.address.province}").change();
 				$("select[name='address.province']")[0].dispatchEvent(new Event('change'));
-				<c:if test="not empty ${employer.address.province}">
+				<c:if test="${not empty employer.address.province}">
 				$("select[name='address.district']").val("${employer.address.district}").change();
 				$("select[name='address.district']")[0].dispatchEvent(new Event('change'));
 				</c:if>
-				<c:if test="not empty ${employer.address.province}">
+				<c:if test="${not empty employer.address.province}">
 				$("select[name='address.ward']").val("${employer.address.ward}");
 				$("select[name='address.ward']")[0].dispatchEvent(new Event('change'));
 				</c:if>
