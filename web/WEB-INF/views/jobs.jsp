@@ -523,7 +523,7 @@
 						<script src="${pageContext.request.contextPath}/resources/assets/js/custom.js"></script>
 						<script
 							src="${pageContext.request.contextPath}/resources/assets/js/jQuery.style.switcher.js"></script>
-						<script src="${pageContext.request.contextPath}/resources/assets/js/js-custom.js"></script>
+						<script src="${pageContext.request.contextPath}/resources/assets/js/js-custom-setting.js"></script>
 						<script type="text/javascript">
 							$(document).ready(function () {
 								$('#styleOptions').styleSwitcher();

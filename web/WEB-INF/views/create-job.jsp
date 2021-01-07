@@ -271,7 +271,6 @@
 										}
 									</script>
 									<!-- Date dropper js-->
-
 									<script src="${pageContext.request.contextPath}/resources/#"></script>
 									<script type="text/javascript"
 										src="${pageContext.request.contextPath}/resources/assets/js/vietnamlocalselector.js"></script>
@@ -279,7 +278,7 @@
 									<script
 										src="${pageContext.request.contextPath}/resources/assets/js/custom.js"></script>
 									<script
-										src="${pageContext.request.contextPath}/resources/assets/js/js-custom.js"></script>
+										src="${pageContext.request.contextPath}/resources/assets/js/js-custom-setting.js"></script>
 									<script>
 										$('#company-dob').dateDropper();
 									</script>
