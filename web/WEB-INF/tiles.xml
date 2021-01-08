@@ -217,6 +217,13 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
 	</definition>
+	<definition name="e-wallet" template="/WEB-INF/views/e-wallet.jsp">
+		
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
+	</definition>
 
 
 </tiles-definitions>  

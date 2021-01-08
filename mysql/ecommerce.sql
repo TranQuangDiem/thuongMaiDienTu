@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 07/01/2021 17:16:14
+ Date: 08/01/2021 17:20:05
 */
 
 SET NAMES utf8mb4;
@@ -109,23 +109,15 @@ CREATE TABLE `goibaidang`  (
 DROP TABLE IF EXISTS `hoadon`;
 CREATE TABLE `hoadon`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-<<<<<<< HEAD
-  `idAccount` int(255) NULL DEFAULT NULL,
-=======
   `idAccount` int(11) NULL DEFAULT NULL,
->>>>>>> d2c7ba9bd91c3743e28b21b62d346a284c5bc903
   `tenGoi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `soLuongBaiDang` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `ngayMua` date NULL DEFAULT NULL,
   `ngayHetHan` date NULL DEFAULT NULL,
   `giaTri` decimal(65, 0) NULL DEFAULT NULL,
-  `active` int(255) NULL DEFAULT NULL,
+  `active` int(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-<<<<<<< HEAD
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-=======
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
->>>>>>> d2c7ba9bd91c3743e28b21b62d346a284c5bc903
 
 -- ----------------------------
 -- Table structure for job
@@ -166,17 +158,9 @@ CREATE TABLE `major`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `savejob`;
 CREATE TABLE `savejob`  (
-<<<<<<< HEAD
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idAccount` int(255) NULL DEFAULT NULL,
-  `idjob` int(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-=======
   `idaccount` int(11) NULL DEFAULT NULL,
   `idjob` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
->>>>>>> d2c7ba9bd91c3743e28b21b62d346a284c5bc903
 
 -- ----------------------------
 -- Table structure for subscriber

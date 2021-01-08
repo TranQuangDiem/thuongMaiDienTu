@@ -24,7 +24,8 @@ public class HoaDonDatabase {
 		}
 		
 	}
-<<<<<<< HEAD
+
+
 	public static void update(int idAccount ) {
 		try {
 			String sql = "update hoadon set active=0 where active=1 and idAccount="+idAccount;
@@ -56,7 +57,7 @@ public class HoaDonDatabase {
 		}
 		return kiemtra;
 		
-=======
+	}
 	public static HoaDon findLatestEBill(int idAcc) {
 		try {
 			String query="SELECT h.id,h.idAccount,h.tenGoi,h.soLuongBaiDang,h.ngayMua,h.ngayHetHan,h.giaTri FROM hoadon AS h WHERE h.idAccount=? AND h.ngayHetHan IN (SELECT MAX(h2.ngayHetHan) FROM hoadon h2 WHERE h2.idAccount=?)";
@@ -80,7 +81,7 @@ public class HoaDonDatabase {
 			e.printStackTrace();
 			return null;
 		}
->>>>>>> d2c7ba9bd91c3743e28b21b62d346a284c5bc903
+
 	}
 	public static List<HoaDon> finAll(){
 		List<HoaDon> hoadon = new ArrayList<HoaDon>();

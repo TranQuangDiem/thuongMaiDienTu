@@ -512,8 +512,10 @@
 							src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.easy-autocomplete.min.js"></script>
 						<script type="text/javascript">
 							function updateAddress() {
+								<c:if test="${not empty province}">
 								$("select[name='address.province']").val("${province}").change();
 								$("select[name='address.province']")[0].dispatchEvent(new Event('change'));
+								</c:if>
 							}
 						</script>
 						<script type="text/javascript"
