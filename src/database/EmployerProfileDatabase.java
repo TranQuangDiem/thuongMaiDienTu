@@ -233,7 +233,7 @@ public class EmployerProfileDatabase {
 		return rs;
 	}
 
-	public static boolean insertEvaluate(int id_account, Evaluate evaluate) {
+	public static synchronized boolean insertEvaluate(int id_account, Evaluate evaluate) {
 		boolean rs = false;
 		String sql;
 		PreparedStatement ps;
