@@ -1,0 +1,15 @@
+.align-items-right{
+    text-align: right;
+}
+.card.card-statistic .card-title{
+    max-width: 150px;
+}
+.height100{
+    height: 100px;
+}
+.color-blue {
+    background-color: #3498db !important;
+}
+.color-purple {
+    background-color: #8e44ad !important;
+}

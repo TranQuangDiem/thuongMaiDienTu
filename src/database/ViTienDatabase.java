@@ -1,20 +1,27 @@
 package database;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+
 
 import model.ViTien;
 
 public class ViTienDatabase {
 	public static ViTien findIdAccount(int idAccount) {
-		ViTien v = null;
+		ViTien v = new ViTien();
 		try {
-			String sql = "select * from vitien where idAccount="+idAccount;
+			String sql = "select id, idAccount, tongtien from vitien where idAccount=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-//			ps.setInt(1, idAccount);
-			ResultSet rs = ps.executeQuery(sql);
+			System.out.println(idAccount);
+			ps.setInt(1, idAccount);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				v = new ViTien(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+				
+				v.setId(rs.getInt(1));
+				v.setIdAccount(rs.getInt(2));
+				v.setTongTien(rs.getInt(3));
 			}
 
 		} catch (Exception e) {
@@ -45,6 +52,10 @@ public class ViTienDatabase {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	public static void main(String[] args) {
+		
+		System.out.println(findIdAccount(1));
 	}
 
 }
