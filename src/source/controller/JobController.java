@@ -206,7 +206,6 @@ public class JobController {
 			}
 		});
 		return "redirect:/job-apply-detail?id_job=" + formApplyJob.getIdJob();
-
 	}
 
 }
