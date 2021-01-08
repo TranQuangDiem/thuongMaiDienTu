@@ -24,6 +24,18 @@ public class AccountDAO {
 			return false;
 		}
 	}
+	public static boolean increaseCountJob(int id) {
+		try {
+			String query="UPDATE account SET account.count_job=account.count_job+1 WHERE account.id=?";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ps.setInt(1, id);
+			int row=ps.executeUpdate();
+			return row==1;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	public static Account getByUsername(String username) {
 		try {
@@ -80,6 +92,7 @@ public class AccountDAO {
 			if(arrString.size()==0) {
 				return null;
 			}
+			
 			return arrString.toArray(new String[arrString.size()]);
 		} catch (Exception e) {
 			e.printStackTrace();

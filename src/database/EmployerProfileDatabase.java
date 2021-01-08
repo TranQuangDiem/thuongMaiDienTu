@@ -19,7 +19,7 @@ public class EmployerProfileDatabase {
 		try {
 			String sql = "delete from account where id=" + id;
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.executeUpdate(sql);
+			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -1,13 +1,9 @@
 package source.controller;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.servlet.http.HttpServletRequest;
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -169,44 +165,48 @@ public class JobController {
 			if (rs < 0) {
 				return "fail";
 			} else {
-				String urlDetailJob = "http://"+request.getServerName() + ":" + request.getServerPort()
+				String urlDetailJob = "http://" + request.getServerName() + ":" + request.getServerPort()
 						+ request.getContextPath() + "/job-apply-detail?id_job=" + rs;
 				String nameMajor = MajorDAO.getById(formCreateJob.getMajor()).getName();
-				String[] to=AccountDAO.getEmailsByMajor(nameMajor);
-				if (to!=null ||to[0]!=null ) {
-					MyMailHandler.sendMailMultiRecipients(to,
-							"Có 1 công việc mới đang chờ bạn trên JobStock",
+				String[] to = AccountDAO.getEmailsByMajor(nameMajor);
+				if (to != null) {
+					MyMailHandler.sendMailMultiRecipients(to, "Có 1 công việc mới đang chờ bạn trên JobStock",
 							StringHelper.htmlEmailWelJob(rs, urlDetailJob));
 				}
-				
-				return "ok";
+				if (!AccountDAO.increaseCountJob(acc.getId())) {
+					return "fail";
+				} else {
+					acc.setCountJob(acc.getCountJob() + 1);
+					request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
+					return "ok";
+				}
 			}
 		}
 	}
+
 	@RequestMapping(value = "/applyjob", method = RequestMethod.POST)
 	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, HttpServletRequest request) {
 		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		System.out.println(formApplyJob);
-		
+
 		AccessHelper.accessApplyJobAccess(acc, AccessHelper.APPLY_JOB_ACCESS, new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// Accept
 				System.out.println("Accept");
 			}
 		}, new Runnable() {
-			
+
 			@Override
 			public void run() {
 				// Deny
 				System.out.println("Deny");
-				
+
 			}
 		});
-		return "redirect:/job-apply-detail?id_job="+formApplyJob.getIdJob();
-		
-		
+		return "redirect:/job-apply-detail?id_job=" + formApplyJob.getIdJob();
+
 	}
 
 }
