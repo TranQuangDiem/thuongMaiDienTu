@@ -17,6 +17,7 @@ import customutil.MailHandler;
 import customutil.StringHelper;
 import database.AccountDAO;
 import database.ForgotPasswordDAO;
+import database.ViTienDatabase;
 import model.Account;
 
 @Controller
@@ -46,6 +47,7 @@ public class AccountController {
 		} else {
 			Account acc = AccountDAO.getByUsername(username);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
+			session.setAttribute("taikhoan", acc);//cua thg diem
 			return "success";
 		}
 	}
@@ -53,7 +55,7 @@ public class AccountController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = { "fullnamenew", "emailnew",
 			"usernamenew", "passwordnew" })
 	@ResponseBody
-	public String register(HttpServletRequest request, @RequestParam("fullnamenew") String fullnamenew,
+	public String register(HttpServletRequest request,HttpSession session, @RequestParam("fullnamenew") String fullnamenew,
 			@RequestParam("emailnew") String emailnew, @RequestParam("usernamenew") String usernamenew,
 			@RequestParam("passwordnew") String passwordnew, @RequestParam("role-new") String rolenew) {
 		List<String> toCheck = new ArrayList<>();
@@ -84,6 +86,9 @@ public class AccountController {
 		} else {
 			Account account = AccountDAO.getByUsername(usernamenew);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, account);
+			//tạo ví tiền khi đăng ký tài khoản
+			ViTienDatabase.save(account.getId());
+			session.setAttribute("taikhoan", account);//cua thg diem
 			return "success";
 		}
 	}

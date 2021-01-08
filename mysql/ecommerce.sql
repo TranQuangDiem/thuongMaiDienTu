@@ -107,15 +107,16 @@ CREATE TABLE `goibaidang`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `hoadon`;
 CREATE TABLE `hoadon`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idAccount` int NULL DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idAccount` int(255) NULL DEFAULT NULL,
   `tenGoi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `soLuongBaiDang` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `ngayMua` date NULL DEFAULT NULL,
   `ngayHetHan` date NULL DEFAULT NULL,
   `giaTri` decimal(65, 0) NULL DEFAULT NULL,
+  `active` int(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for job
@@ -155,9 +156,11 @@ CREATE TABLE `major`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `savejob`;
 CREATE TABLE `savejob`  (
-  `idaccount` int NULL DEFAULT NULL,
-  `idjob` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idAccount` int(255) NULL DEFAULT NULL,
+  `idjob` int(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for subscriber

@@ -229,5 +229,26 @@ public class JobDAO {
 			return false;
 		}
 	}
+	//save job
+	public static void luuJob(int idAccount, int idjob) {
+		try {
+			String sql = "insert into savejob (idAccount,idjob) value ("+idAccount+","+idjob+")";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.executeUpdate(sql);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	//tim jod da luu theo idAccount
+	private static List<Job> findJobSave(int idAccount) {
+		List<Job> list = new ArrayList<Job>();
+		try {
+//			String sql = "se"
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
+		
+	}
 
 }

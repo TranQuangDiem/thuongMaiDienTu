@@ -79,9 +79,10 @@ public class UtilDataBase {
 		return rs;
 	}
 
-	public static List<Pricing> getPricing() {
+	public static List<Pricing> getPricing(boolean kiemtra) {
 		List<Pricing> danhsachgoi = new ArrayList<Pricing>();
 		try {
+			if (kiemtra==false) {
 			String sql = "select * from goibaidang ";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -91,15 +92,27 @@ public class UtilDataBase {
 				danhsachgoi.add(p);
 			}
 			ConnectionDB.close(rs);
+			}else {
+				String sql = "select * from goibaidang where gia>0";
+				PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+							rs.getString(6), rs.getString(7));
+					danhsachgoi.add(p);
+				}
+				ConnectionDB.close(rs);
+			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return danhsachgoi;
 	}
-	public static List<Pricing> getPricingLimit(int limit) {
+	public static List<Pricing> getPricingLimit(int limit,boolean kiemtra) {
 		List<Pricing> danhsachgoi = new ArrayList<Pricing>();
 		try {
+			if(kiemtra==false) {
 			String sql = "select * from goibaidang limit "+limit;
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -109,6 +122,17 @@ public class UtilDataBase {
 				danhsachgoi.add(p);
 			}
 			ConnectionDB.close(rs);
+			}else {
+				String sql = "select * from goibaidang where gia>0 ";
+				PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+							rs.getString(6), rs.getString(7));
+					danhsachgoi.add(p);
+				}
+				ConnectionDB.close(rs);
+			}
 
 		} catch (Exception e) {
 			// TODO: handle exception

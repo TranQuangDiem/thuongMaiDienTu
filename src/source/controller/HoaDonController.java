@@ -39,6 +39,7 @@ public class HoaDonController {
 		HoaDon hoaDon = new HoaDon(acc.getId(), pricing.getTengoi(), pricing.getSoluongbaidang(), date, date,
 				pricing.getGia());
 		if (viTien.getTongTien() > pricing.getGia()) {
+			HoaDonDatabase.update(acc.getId());
 			HoaDonDatabase.save(hoaDon, pricing.getThoihan());
 			ViTienDatabase.Update(acc.getId(), viTien.getTongTien() - pricing.getGia());
 			return "redirect:/";

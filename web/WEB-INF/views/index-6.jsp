@@ -28,6 +28,7 @@
 </head>
 <body>
 	<c:url value="/hoadon" var="urlThanhtoan" />
+	<c:url value="/job-detail" var="urljob-detail"/>
 	<div class="Loader"></div>
 	<div class="wrapper">
 		<nav
@@ -150,7 +151,7 @@
 							</div>
 							<div class="brows-job-position">
 								<h3>
-									<a href="job-detail.html">Design Logo</a>
+									<a href="<c:url value="/job-detail"/>">Design Logo</a>
 								</h3>
 
 								<p>

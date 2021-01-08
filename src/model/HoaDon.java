@@ -8,6 +8,7 @@ public class HoaDon {
 	Date ngayMua;
 	Date ngayHetHan;
 	double giaTri;
+	int active;
 	public HoaDon() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -22,9 +23,20 @@ public class HoaDon {
 		this.ngayHetHan = ngayHetHan;
 		this.giaTri = giaTri;
 	}
+	public HoaDon(int idAccount, String tengoi, int soluongbaidang, Date ngayMua, Date ngayHetHan,
+			double giaTri,int active) {
+		super();
+		this.idAccount = idAccount;
+		this.tengoi = tengoi;
+		this.soluongbaidang = soluongbaidang;
+		this.ngayMua = ngayMua;
+		this.ngayHetHan = ngayHetHan;
+		this.giaTri = giaTri;
+		this.active=active;
+	}
 	
 	public HoaDon(int id, int idAccount, String tengoi, int soluongbaidang, Date ngayMua, Date ngayHetHan,
-			double giaTri) {
+			double giaTri,int active) {
 		super();
 		this.id = id;
 		this.idAccount = idAccount;
@@ -33,6 +45,7 @@ public class HoaDon {
 		this.ngayMua = ngayMua;
 		this.ngayHetHan = ngayHetHan;
 		this.giaTri = giaTri;
+		this.active=active;
 	}
 	public int getId() {
 		return id;
@@ -75,6 +88,12 @@ public class HoaDon {
 	}
 	public void setGiaTri(double giaTri) {
 		this.giaTri = giaTri;
+	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
 	}
 	
 }

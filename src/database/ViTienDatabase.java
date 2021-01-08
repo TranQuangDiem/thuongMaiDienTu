@@ -38,8 +38,9 @@ public class ViTienDatabase {
 
 	public static void save(int idAccount) {
 		try {
-			String sql = "insert into vitien (idAccount,tongtien) value=("+idAccount+",0)";
+			String sql = "insert into vitien (idAccount,tongtien) value("+idAccount+",0)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.executeUpdate(sql);
 //			ps.setInt(1, idAccount);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
