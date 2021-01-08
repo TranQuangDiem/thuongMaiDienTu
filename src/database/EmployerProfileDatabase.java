@@ -1,12 +1,15 @@
 package database;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Account;
+import model.Address;
 import model.Evaluate;
 import model.Job;
 
@@ -38,44 +41,6 @@ public class EmployerProfileDatabase {
 			System.out.println(e.getMessage());
 		}
 		return account;
-	}
-
-	public static Account information(int id_employer) {
-		Account taikhoan = null;
-		int count = countJob(id_employer);
-		try {
-			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background, id_address, address from account where id=? and role=1";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, id_employer);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				taikhoan = new Account();
-				taikhoan.setId(id_employer);
-				taikhoan.setUsername(rs.getString(1));
-				taikhoan.setPassword(rs.getString(2));
-				taikhoan.setFullname(rs.getString(3));
-				taikhoan.setImage(rs.getBlob(4));
-				taikhoan.setStarAverage(rs.getFloat(5));
-				taikhoan.setAbout(rs.getString(6));
-				// taikhoan.setAbout(getLargerString(rsSet, 6));
-				taikhoan.setEmail(rs.getString(7));
-				taikhoan.setPhone(rs.getString(8));
-				taikhoan.setRole(rs.getInt(9));
-				taikhoan.setName(rs.getString(10));
-				taikhoan.setMajor(rs.getString(11));
-				taikhoan.setTwitter(rs.getString(12));
-				taikhoan.setFacebook(rs.getString(13));
-				taikhoan.setWebsite(rs.getString(14));
-				taikhoan.setBackground(rs.getBlob(15));
-				// taikhoan.setAddress(UtilDataBase.getAddress(rs.getInt(16)));
-				taikhoan.setAddressString(rs.getString(17));
-			}
-			ConnectionDB.close(rs);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return taikhoan;
-
 	}
 
 	public static List<Job> listjobEmployer(int id_employer) {
@@ -114,39 +79,116 @@ public class EmployerProfileDatabase {
 	}
 
 	// update
-	public static void update(Account account, int id_employer) {
+	public static void update(Account account) {
+		String sql;
+		PreparedStatement ps = null;
+		// Start update regular field
 		try {
-			String sql = "update account set name=?,major=?,email=?,phone=?,address=?,about=? where id=?";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setString(1, account.getName());
+			sql = "update account set fullname=?,major=?,email=?,phone=?,about=?, email=?, facebook=?, website=?, twitter=?, ready=? where id=?";
+			ps = ConnectionDB.prepareStatement(sql);
+			ps.setString(1, account.getFullname());
 			ps.setString(2, account.getMajor());
 			ps.setString(3, account.getEmail());
 			ps.setString(4, account.getPhone());
-			ps.setString(5, account.getAddressString());
-			ps.setString(6, account.getAbout());
-			ps.setInt(7, id_employer);
+			
+			ps.setString(5, account.getAbout());
+			ps.setString(6, account.getEmail());
+			ps.setString(7, account.getFacebook());
+			ps.setString(8, account.getWebsite());
+			ps.setString(9, account.getTwitter());
+			ps.setInt(10, (account.isReady()) ? 1 : 0);
+			ps.setInt(11, account.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+
+		// Start update address
+		try {
+			Address address = account.getAddress();
+			// Check address
+			if (address.getId() == 0) {
+				sql = "insert into address(province, district, ward,detail_address, id_account) values (?,?,?,?,?)";
+				ps = ConnectionDB.prepareStatement(sql);
+
+				ps.setString(1, address.getProvince());
+				ps.setString(2, address.getDistrict());
+				ps.setString(3, address.getWard());
+				ps.setString(4, address.getDetailAddress());
+				ps.setInt(5, account.getId());
+				ps.executeUpdate();
+
+			} else {
+				sql = "update address set province=?, district=?, ward=?,detail_address=? where id=?";
+				ps = ConnectionDB.prepareStatement(sql);
+
+				ps.setString(1, address.getProvince());
+				ps.setString(2, address.getDistrict());
+				ps.setString(3, address.getWard());
+				ps.setString(4, address.getDetailAddress());
+				ps.setInt(5, address.getId());
+				ps.executeUpdate();
+
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		// Start update image
+		if (account.getImage() != null)
+			try {
+				sql = "update account set image=? where id=?";
+				ps = ConnectionDB.prepareStatement(sql);
+
+				ps.setBlob(1, UtilImage.covertInputStream(account.getImage()));
+
+				ps.setInt(2, account.getId());
+
+				ps.executeUpdate();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		// Start update background
+		if (account.getBackground() != null)
+			try {
+				sql = "update account set background=? where id=?";
+				ps = ConnectionDB.prepareStatement(sql);
+
+				ps.setBlob(1, UtilImage.covertInputStream(account.getBackground()));
+
+				ps.setInt(2, account.getId());
+
+				ps.executeUpdate();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		try {
+			ps.getConnection().close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
 	// đánh giá
-	public static List<Evaluate> getEvaluate(int id_freelancer) {
+	public static List<Evaluate> getEvaluate(int id_account) {
 		List<Evaluate> rs = new ArrayList<Evaluate>();
 		try {
-			String sql = "select id, id_account, time, star, content from evaluate where id_freelancer=? ";
+			String sql = "select id, id_guest, time, star, content from evaluate where id_account=? ";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, id_freelancer);
+			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
 			while (rsSet.next()) {
-				int id_account = rsSet.getInt(2);
-				Account account = UtilDataBase.getAccount(id_account);
-				Evaluate e = new Evaluate(rsSet.getInt(1), account, rsSet.getTimestamp(3), rsSet.getInt(4),
-						rsSet.getString(5));
+				int id_guest = rsSet.getInt(2);
+				Account guest = UtilDataBase.getAccount(id_guest);
+				Evaluate e = new Evaluate();
+				e.setId(rsSet.getInt(1));
+				e.setGuest(guest);
+				e.setTime(rsSet.getTimestamp(3));
+				e.setStar(rsSet.getInt(4));
+				e.setContent(rsSet.getString(5));
 				rs.add(e);
-//				 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-//				System.out.println(formatter.format(e.getTime()));
+
+//						 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+//						System.out.println(formatter.format(e.getTime()));
 
 			}
 			ConnectionDB.close(rsSet);
@@ -158,23 +200,28 @@ public class EmployerProfileDatabase {
 		return rs;
 	}
 
-	public static List<Evaluate> getEvaluate(int id_employer, int numberPage) {
+	public static List<Evaluate> getEvaluate(int id_account, int numberPage) {
 		List<Evaluate> rs = new ArrayList<Evaluate>();
 		try {
-			String sql = "select id, id_account, time, star, content from evaluate where id_freelancer=? order by time desc limit ?,?";
+			String sql = "select id, id_guest, time, star, content from evaluate where id_account=? order by time desc limit ?,?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, id_employer);
+			ps.setInt(1, id_account);
 			ps.setInt(2, numberPage * 5);
 			ps.setInt(3, (numberPage + 1) * 5);
 			ResultSet rsSet = ps.executeQuery();
 			while (rsSet.next()) {
-				int id_account = rsSet.getInt(2);
-				Account account = UtilDataBase.getAccount(id_account);
-				Evaluate e = new Evaluate(rsSet.getInt(1), account, rsSet.getTimestamp(3), rsSet.getInt(4),
-						rsSet.getString(5));
+				int id_guest = rsSet.getInt(2);
+				Account guest = UtilDataBase.getAccount(id_guest);
+				Evaluate e = new Evaluate();
+				e.setId(rsSet.getInt(1));
+				e.setGuest(guest);
+				e.setTime(rsSet.getTimestamp(3));
+				e.setStar(rsSet.getInt(4));
+				e.setContent(rsSet.getString(5));
+
 				rs.add(e);
-//				 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-//				System.out.println(formatter.format(e.getTime()));
+//						 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+//						System.out.println(formatter.format(e.getTime()));
 
 			}
 			ConnectionDB.close(rsSet);
@@ -186,17 +233,45 @@ public class EmployerProfileDatabase {
 		return rs;
 	}
 
-	public static int insertEvaluate(int id_employer, Evaluate evaluate) {
-		int rs = 0;
+	public static boolean insertEvaluate(int id_account, Evaluate evaluate) {
+		boolean rs = false;
+		String sql;
+		PreparedStatement ps;
+		Connection con;
+		Account account = UtilDataBase.getAccount(id_account);
 		try {
-			String sql = "insert  into evaluate(id_account,id_freelancer,time,star,content)" + " values(?,?,?,?,?);";
-			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			ps.setInt(1, evaluate.getAccount().getId());
-			ps.setInt(2, id_employer);
+			sql = "insert  into evaluate(id_account, id_guest,time,star,content)" + " values(?,?,?,?,?);";
+			ps = ConnectionDB.prepareStatement(sql);
+			con = ps.getConnection();
+			con.setAutoCommit(false);
+			// insert
+			ps.setInt(2, evaluate.getGuest().getId());
+			ps.setInt(1, id_account);
 			ps.setTimestamp(3, new Timestamp(evaluate.getTime().getTime()));
 			ps.setInt(4, evaluate.getStar());
 			ps.setString(5, evaluate.getContent());
-			rs = ps.executeUpdate();
+			rs = (ps.executeUpdate() == 1);
+
+			// update count
+			if (rs) {
+				sql = "update account set star=?, count_evaluate=? where star=? and count_evaluate=? and id=?";
+				ps = ConnectionDB.prepareStatement(sql);
+				ps.setInt(1, account.getStar() + evaluate.getStar());
+				ps.setInt(2, account.getCountEvaluate() + 1);
+				ps.setInt(3, account.getStar());
+				ps.setInt(4, account.getCountEvaluate());
+				ps.setInt(5, account.getId());
+
+				rs = (ps.executeUpdate() == 1);
+				if (!rs) {
+					con.rollback();
+				}
+
+			} else {
+				con.rollback();
+
+			}
+			con.setAutoCommit(true);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -207,7 +282,7 @@ public class EmployerProfileDatabase {
 
 	public static boolean isEnoughInfo(int id) {
 		try {
-			
+
 			return false;
 		} catch (Exception e) {
 			e.printStackTrace();

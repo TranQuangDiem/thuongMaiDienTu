@@ -23,6 +23,8 @@
 				value="/resources/assets/css/colors/green-style.css" />
 			<add-attribute
 				value="/resources/assets/css/custom-style.css" />
+			<add-attribute
+				value="/resources/assets/css/css-header.css" />
 		</put-list-attribute>
 		<put-list-attribute name="javascripts">
 			<add-attribute
@@ -59,16 +61,22 @@
 				value="/resources/assets/js/vietnamlocalselector.js" />
 			<add-attribute value="/resources/assets/js/custom.js" />
 			<add-attribute
-				value="/resources/assets/js/js-custom.js" />
+				value="/resources/assets/js/js-custom-setting.js" />
 
 		</put-list-attribute>
 	</definition>
 	<definition name="employer-profile"
 		template="/WEB-INF/views/employer-profile.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
+		<put-attribute name="footer"
+		value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
+		<put-attribute name="job-list" value="/WEB-INF/views/employer-profile/job-list.jsp" />
 		<put-attribute name="evaluate"
 			value="/employer-evaluate" />
-		<put-attribute name="job-list" value="/job-list" />
-
+		
+		<put-attribute name="settings"
+			value="/employer-profile-settings" />
 
 		<put-list-attribute name="stylesheets">
 			<add-attribute
@@ -78,6 +86,10 @@
 				value="/resources/assets/css/colors/green-style.css" />
 			<add-attribute
 				value="/resources/assets/css/custom-style.css" />
+			<add-attribute
+				value="/resources/assets/css/css-header.css" />
+			<add-attribute
+				value="/resources/assets/css/css-report.css" />
 		</put-list-attribute>
 		<put-list-attribute name="javascripts">
 			<add-attribute
@@ -114,14 +126,19 @@
 				value="/resources/assets/js/vietnamlocalselector.js" />
 			<add-attribute value="/resources/assets/js/custom.js" />
 			<add-attribute
-				value="/resources/assets/js/js-custom.js" />
+				value="/resources/assets/js/js-custom-setting.js" />
+			<add-attribute
+				value="/resources/assets/js/js-report.js" />
 
 		</put-list-attribute>
 	</definition>
 	<definition name="job-apply-detail"
 		template="/WEB-INF/views/job-apply-detail.jsp">
 		<put-attribute name="subscribers" value="/subscribers" />
-
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
+		<put-attribute name="footer"
+		value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
 		<put-list-attribute name="stylesheets">
 			<add-attribute
 				value="/resources/assets/plugins/css/plugins.css" />
@@ -129,6 +146,8 @@
 			<add-attribute
 				value="/resources/assets/css/colors/green-style.css" />
 			<add-attribute value="/resources/assets/css/style1.css" />
+			<add-attribute
+				value="/resources/assets/css/css-header.css" />
 		</put-list-attribute>
 		<put-list-attribute name="javascripts">
 			<add-attribute

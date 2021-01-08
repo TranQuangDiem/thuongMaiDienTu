@@ -9,18 +9,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import database.FreeLancerProfileDatabase;
+
 import database.JobApplyDetailDatabase;
-import model.Evaluate;
+import database.UtilDataBase;
+
+import model.Job;
 import model.Subscriber;
 @Controller
 public class JobApplyDetailController{
 	// url: /job-apply-detail?id_job=1
-	@RequestMapping("/job-apply-detail")
-	public String layout() {
+	@RequestMapping(value="/job-apply-detail", params = { "id_job" }, method = RequestMethod.GET)
+	public String layout(Model model,@RequestParam(value = "id_job") int id_job) {
+		Job job = UtilDataBase.getJob(id_job);
+		model.addAttribute("job", job);
+		
 		return "job-apply-detail";
 	}
-	@RequestMapping(value = "/subscribers", params = {  }, method = RequestMethod.GET)
+	@RequestMapping(value = "/subscribers", params = { "id_job" }, method = RequestMethod.GET)
 	public String subscribers(Model model,@RequestParam(value = "id_job") int id_job) {
 
 		model.addAttribute("id_job", id_job + "");

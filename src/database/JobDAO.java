@@ -1,25 +1,49 @@
 package database;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
-
+import customutil.DateHelper;
 import customutil.FileHelper;
 import customutil.IntegerHelper;
 import customutil.StringHelper;
 import dataform.FormCreateJob;
 import model.Account;
+import model.HoaDon;
 import model.Job;
 
 public class JobDAO {
-
+	public static boolean canPostJob(int idAcc) {
+		HoaDon bill=HoaDonDatabase.findLatestEBill(idAcc);
+		Date today=DateHelper.getDateWithoutTimeUsingCalendar();
+		if (bill==null) return false;
+		else if((today.compareTo(bill.getNgayHetHan()))>0)  
+			return false;
+		else if((bill.getSoluongbaidang()-getNumberJobWhen(bill.getNgayMua(), idAcc))<0) {
+			return false;
+		}else {
+			return true;
+		}
+		
+	}
+	public static int getNumberJobWhen(Date date,int idAcc) {
+		try {
+			String query="SELECT COUNT(*) FROM job WHERE job.idAccount=? AND job.ngaydang>=?";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ps.setInt(1, idAcc);
+			ps.setDate(2, new java.sql.Date(date.getTime()));
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			int result=rs.getInt(1);
+			ps.close();
+			return result;
+		}catch (Exception e) {
+			return -1;
+		}
+	}
 	public static int numberJobIsOpen() {
 		try {
 			String query = "SELECT COUNT(*) FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE())";
@@ -85,7 +109,7 @@ public class JobDAO {
 				job.setId(rs.getInt(1));
 				job.setJobTitle(rs.getString(2));
 				job.setJobDescription(rs.getString(3));
-
+				//4
 				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
 				job.setSoluongtuyen(rs.getInt(6));
 				job.setCreateday(rs.getDate(7));
@@ -100,24 +124,8 @@ public class JobDAO {
 				job.setJobType(rs.getInt(16));
 				// Account
 				acc.setId(rs.getInt(4));
-				acc.setUsername(rs.getString(17));
-				acc.setPassword(rs.getString(18));
-				acc.setFullname(rs.getString(19));
-				acc.setImage(rs.getBlob(20) == null ? null : rs.getBlob(20));
-				acc.setStarAverage(rs.getFloat(21));
-				acc.setAbout(rs.getString(22));
-				acc.setEmail(rs.getString(23));
-				acc.setPhone(rs.getString(24));
-				acc.setRole(rs.getInt(25));
-				acc.setName(rs.getString(26));
-				acc.setMajor(rs.getString(27));
-				acc.setTwitter(rs.getString(28));
-				acc.setFacebook(rs.getString(29));
-				acc.setWebsite(rs.getString(30));
-				acc.setBackground(rs.getBlob(31) == null ? null : rs.getBlob(31));
-				acc.setAddress(UtilDataBase.getAddress(rs.getInt(4)));
-				acc.setLinkedin(rs.getString(32));
-				acc.setReady(rs.getInt(33) == 1);
+				acc.setFullname(rs.getString(17));
+				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
 				listJobs.add(job);
 			}
@@ -131,11 +139,15 @@ public class JobDAO {
 			return null;
 		}
 	}
-
+	public static int createId() {
+		int rs=IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
+		while(isIdExists(rs)) rs=IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
+		return rs;
+	}
 	public static List<Job> getAllJobIsOpen() {
 		try {
 			List<Job> listJobs = new ArrayList<Job>();
-			String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, username, account.`password`, fullname, image, star_average,about,email,phone, role, account.`name`, account.major, twitter, facebook, website, background,linkedin,ready FROM job JOIN account ON job.idAccount=account.id WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE())";
+			String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`  FROM job JOIN account ON job.idAccount=account.id WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE())";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -144,7 +156,6 @@ public class JobDAO {
 				job.setId(rs.getInt(1));
 				job.setJobTitle(rs.getString(2));
 				job.setJobDescription(rs.getString(3));
-
 				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
 				job.setSoluongtuyen(rs.getInt(6));
 				job.setCreateday(rs.getDate(7));
@@ -159,24 +170,9 @@ public class JobDAO {
 				job.setJobType(rs.getInt(16));
 				// Account
 				acc.setId(rs.getInt(4));
-				acc.setUsername(rs.getString(17));
-				acc.setPassword(rs.getString(18));
-				acc.setFullname(rs.getString(19));
-				acc.setImage(rs.getBlob(20) == null ? null : rs.getBlob(20));
-				acc.setStarAverage(rs.getFloat(21));
-				acc.setAbout(rs.getString(22));
-				acc.setEmail(rs.getString(23));
-				acc.setPhone(rs.getString(24));
-				acc.setRole(rs.getInt(25));
-				acc.setName(rs.getString(26));
-				acc.setMajor(rs.getString(27));
-				acc.setTwitter(rs.getString(28));
-				acc.setFacebook(rs.getString(29));
-				acc.setWebsite(rs.getString(30));
-				acc.setBackground(rs.getBlob(31) == null ? null : rs.getBlob(31));
-				acc.setAddress(UtilDataBase.getAddress(rs.getInt(4)));
-				acc.setLinkedin(rs.getString(32));
-				acc.setReady(rs.getInt(33) == 1);
+				acc.setFullname(rs.getString(17));
+				acc.setName(rs.getString(18));
+			
 				job.setOfAccount(acc);
 				listJobs.add(job);
 			}
@@ -187,13 +183,14 @@ public class JobDAO {
 		}
 	}
 
-	public static boolean insert(FormCreateJob form, int idAcc) {
+	public static int insert(FormCreateJob form, int idAcc) {
 		try {
 
-			String query = "INSERT INTO job (job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO job (job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,job.id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			// set
 			Date finday = new SimpleDateFormat("MM/dd/yyyy").parse(form.getFinishday());
+			int id=createId();
 			ps.setString(1, form.getJobname());
 			ps.setString(2, form.getJobdescription());
 			ps.setInt(3, idAcc);
@@ -209,12 +206,18 @@ public class JobDAO {
 			ps.setInt(13, Job.STATUS_OPEN);
 			ps.setString(14, form.getLs_province());
 			ps.setInt(15, form.getJobtype());
+			ps.setInt(16, id);
 			//
 			int row = ps.executeUpdate();
-			return row == 1;
+			if(row!=1) {
+				return -1;
+			}else {
+				return id;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 

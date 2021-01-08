@@ -126,16 +126,29 @@
 	});
 	function updateAddress(){
 		$(document).ready(function(){
-			$("select[name='major']").val('${freelancer.major}');
-			$("input[name='ready']").prop('checked', ${freelancer.ready});
-			$("input[name='ready']").val('${freelancer.ready}');
+			<c:if test="${not empty freelancer.major}">
+				$("select[name='major']").val('${freelancer.major}');
+			</c:if>
+			<c:if test="${not empty freelancer.ready}">
+				$("input[name='ready']").prop('checked', ${freelancer.ready});
+				$("input[name='ready']").val('${freelancer.ready}');
+				$("input[name='ready']").change();
+			</c:if>
 			
-			$("input[name='ready']").change();
-			$("select[name='address.province']").val("${freelancer.address.province}").change();
-			$("select[name='address.province']")[0].dispatchEvent(new Event('change'));
-			$("select[name='address.district']").val("${freelancer.address.district}").change();
-			$("select[name='address.district']")[0].dispatchEvent(new Event('change'));
-			$("select[name='address.ward']").val("${freelancer.address.ward}");
+			
+			<c:if test="${not empty freelancer.address.province}">
+				$("select[name='address.province']").val("${freelancer.address.province}").change();
+				$("select[name='address.province']")[0].dispatchEvent(new Event('change'));
+				<c:if test="${not empty freelancer.address.province}">
+				$("select[name='address.district']").val("${freelancer.address.district}").change();
+				$("select[name='address.district']")[0].dispatchEvent(new Event('change'));
+				</c:if>
+				<c:if test="${not empty freelancer.address.province}">
+				$("select[name='address.ward']").val("${freelancer.address.ward}");
+				$("select[name='address.ward']")[0].dispatchEvent(new Event('change'));
+				</c:if>
+			</c:if>
+			
 		});
 		
 	}

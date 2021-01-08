@@ -59,9 +59,9 @@
                         <div class="advance-detail detail-desc-caption">
                             <h4>${freelancer.fullname}</h4><span class="designation">${freelancer.major}</span>
                             <ul>
-                                <li><strong class="j-view">742</strong>Công việc đã nhận</li>
-                                <li><strong class="j-applied">570</strong>Công Việc Hoàn Thành</li>
-                                <li><strong class="j-shared rate-custom">${freelancer.starAverage}<i class="fa fa-star"></i></strong>Đánh Giá</li>
+                                <li><strong class="j-view">${freelancer.countJob}</strong>Công việc đã nhận</li>
+                                <li><strong class="j-applied">${freelancer.countJobFinish}</strong>Công Việc Hoàn Thành</li>
+                                <li><strong id="starAverage" class="j-shared rate-custom">${freelancer.starAverage}<i class="fa fa-star"></i></strong>Đánh Giá</li>
                             </ul>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About ${freelancer.major} ${freelancer.name}</h3>
+									<h3>About Freelancer ${freelancer.name}</h3>
 									<!-- About -->
 									${freelancer.about}
 								</div>

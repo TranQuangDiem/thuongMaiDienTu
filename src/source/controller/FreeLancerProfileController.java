@@ -1,6 +1,6 @@
 package source.controller;
 
-import java.io.IOException;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import config.CommonConst;
 import database.FreeLancerProfileDatabase;
 import database.MajorDAO;
 import database.UtilDataBase;
@@ -30,15 +32,15 @@ public class FreeLancerProfileController {
 	// url: /freelancer-profile?id_freelancer=1
 	@RequestMapping(value="/freelancer-profile", params = { "id_freelancer" })
 	public String layout(HttpServletRequest request,Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
-		//Account account = (Account) request.getSession().getAttribute("currentAccount");
-		Account currentAccount=UtilDataBase.getAccount(1);
+		
+		Account currentAccount=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		Account freelancer=UtilDataBase.getAccount(id_freelancer);
 		List<Major> lstMajor=MajorDAO.getAll();
 		model.addAttribute("lstMajor", lstMajor);
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
 		
-//		System.out.println(currentAccount);
+		System.out.println(freelancer);
 		return "freelancer-profile";
 	}
 	
@@ -83,7 +85,7 @@ public class FreeLancerProfileController {
 	public String submitReview(HttpServletRequest request,Model model, @RequestParam(value = "rating") int rating,
 			@RequestParam(value = "comment") String comment, @RequestParam(value = "id_freelancer") int id_freelancer) {
 //		System.out.println(currentAccount.getUsername());
-		Account account = (Account) request.getSession().getAttribute("currentAccount");
+		Account currentAccount = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		
 		String []comments = comment.split("^[\\n\\r]$");
 		comment="";
@@ -97,13 +99,13 @@ public class FreeLancerProfileController {
 		evaluateBean.setPropertyValue("content", comment);
 		evaluateBean.setPropertyValue("star", rating);
 		evaluateBean.setPropertyValue("time", new Date());
-		evaluateBean.setPropertyValue("account", account);
+		evaluateBean.setPropertyValue("guest", currentAccount);
 		
 		Evaluate evaluate= new Evaluate();
 		evaluate.setContent(comment);
 		evaluate.setStar(rating);
 		evaluate.setTime(new Date());
-		evaluate.setAccount(account);
+		evaluate.setGuest(currentAccount);
 		FreeLancerProfileDatabase.insertEvaluate(id_freelancer, evaluate);
 		
 		List<Evaluate> lstEvaluate = FreeLancerProfileDatabase.getEvaluate(id_freelancer, 0);

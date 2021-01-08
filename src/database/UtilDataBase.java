@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import customutil.FileHelper;
 import model.Account;
 import model.Address;
 import model.Job;
@@ -18,7 +19,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average,about,email,phone, role, name, major, twitter, facebook, website, background, ready from account where id=?";
+			String sql = "select username, password, fullname, image, star,about,email,phone, role, name, major, twitter, facebook, website, background, ready,count_job,count_evaluate,count_job_finish from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -29,7 +30,7 @@ public class UtilDataBase {
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
 				rs.setImage(rsSet.getBlob(4));
-				rs.setStarAverage(rsSet.getFloat(5));
+				rs.setStar(rsSet.getInt(5));
 				rs.setAbout(rsSet.getString(6));
 				// rs.setAbout(getLargerString(rsSet, 6));
 				rs.setEmail(rsSet.getString(7));
@@ -43,6 +44,9 @@ public class UtilDataBase {
 				rs.setBackground(rsSet.getBlob(15));
 				rs.setAddress(getAddress(id_account));
 				rs.setReady(rsSet.getInt(16)==1);
+				rs.setCountJob(rsSet.getInt(17));
+				rs.setCountEvaluate(rsSet.getInt(18));
+				rs.setCountJobFinish(rsSet.getInt(19));
 				// System.out.println(rs.toString());
 
 			}
@@ -57,7 +61,7 @@ public class UtilDataBase {
 	public static Account getMinAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star_average from account where id=?";
+			String sql = "select username, password, fullname, image, star from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -68,7 +72,7 @@ public class UtilDataBase {
 				rs.setPassword(rsSet.getString(2));
 				rs.setFullname(rsSet.getString(3));
 				rs.setImage(rsSet.getBlob(4));
-				rs.setStarAverage(rsSet.getFloat(5));
+				rs.setStar(rsSet.getInt(5));
 
 			}
 
@@ -181,13 +185,31 @@ public class UtilDataBase {
 	public static Job getJob(int id_job) {
 		Job rs = null;
 		try {
-			String sql = "select id  from job where id=?";
+			String sql = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, job.idAccount  FROM job "
+					+ " where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_job);
 			ResultSet rsSet = ps.executeQuery();
 			while (rsSet.next()) {
 				rs = new Job();
+				Job job = new Job();
 				rs.setId(rsSet.getInt(1));
+				rs.setJobTitle(rsSet.getString(2));
+				rs.setJobDescription(rsSet.getString(3));
+				//4
+				rs.setImg(FileHelper.convertImgToString(rsSet.getBlob(5)));
+				rs.setSoluongtuyen(rsSet.getInt(6));
+				rs.setCreateday(rsSet.getDate(7));
+				rs.setFinishday(rsSet.getDate(8));
+				rs.setView(rsSet.getInt(9));
+				rs.setMajor(rsSet.getString(10));
+				rs.setLanguage(rsSet.getString(11));
+				rs.setExp(rsSet.getString(12));
+				rs.setEducation(rsSet.getString(13));
+				rs.setStatus(rsSet.getInt(14));
+				rs.setCity(rsSet.getString(15));
+				rs.setJobType(rsSet.getInt(16));
+				rs.setOfAccount(getAccount(rsSet.getInt(17)));
 
 			}
 
@@ -269,6 +291,7 @@ public class UtilDataBase {
 	// }
 	// }
 	public static void main(String[] args) {
+		System.out.println("Run");
 		System.out.println(getAccount(1));
 	}
 

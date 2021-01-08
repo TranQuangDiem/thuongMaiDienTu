@@ -4,10 +4,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
+import customutil.AccessHelper;
 import database.UtilImage;
 
 public class Account {
@@ -16,7 +19,10 @@ public class Account {
 	private String password;
 	private String fullname;
 	private BufferedImage image;
-	private float starAverage;
+	private int star;
+	private int countJob;
+	private int countJobFinish;
+	private int countEvaluate;
 	private String about;
 	private String email;
 	private String phone;
@@ -25,12 +31,13 @@ public class Account {
 	private String major;
 	private int soluongbaidang;
 	private Address address;
-	private String addressString;
+	
 	private String twitter;
 	private String facebook;
 	private String website;
 	private BufferedImage background;
 	private String linkedin;
+	private int access;
 	
 	private boolean ready;
 	public Account() {
@@ -140,13 +147,7 @@ public class Account {
 		}
 	}
 
-	public float getStarAverage() {
-		return starAverage;
-	}
 
-	public void setStarAverage(float starAverage) {
-		this.starAverage = starAverage;
-	}
 
 	public String getAbout() {
 		return about;
@@ -177,6 +178,7 @@ public class Account {
 	}
 
 	public void setRole(int role) {
+		this.access=AccessHelper.takeAccess(role);
 		this.role = role;
 	}
 
@@ -248,15 +250,41 @@ public class Account {
 		}
 	}
 
-	public String getAddressString() {
-		return addressString;
+	
+	
+
+	
+
+
+	public int getAccess() {
+		return access;
 	}
 
-	public void setAddressString(String addressString) {
-		this.addressString = addressString;
+
+	
+
+	public int getStar() {
+		return star;
 	}
+
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+
+	public int getCountJob() {
+		return countJob;
+	}
+
+
+	public void setCountJob(int countJob) {
+		this.countJob = countJob;
+	}
+
+
 	
-	
+
 
 	@Override
 	public String toString() {
@@ -271,8 +299,14 @@ public class Account {
 		builder.append(fullname);
 		builder.append(", image=");
 		builder.append(image);
-		builder.append(", starAverage=");
-		builder.append(starAverage);
+		builder.append(", star=");
+		builder.append(star);
+		builder.append(", countJob=");
+		builder.append(countJob);
+		builder.append(", countJobFinish=");
+		builder.append(countJobFinish);
+		builder.append(", countEvaluate=");
+		builder.append(countEvaluate);
 		builder.append(", about=");
 		builder.append(about);
 		builder.append(", email=");
@@ -289,8 +323,7 @@ public class Account {
 		builder.append(soluongbaidang);
 		builder.append(", address=");
 		builder.append(address);
-		builder.append(", addressString=");
-		builder.append(addressString);
+	
 		builder.append(", twitter=");
 		builder.append(twitter);
 		builder.append(", facebook=");
@@ -301,6 +334,8 @@ public class Account {
 		builder.append(background);
 		builder.append(", linkedin=");
 		builder.append(linkedin);
+		builder.append(", access=");
+		builder.append(access);
 		builder.append(", ready=");
 		builder.append(ready);
 		builder.append("]");
@@ -308,8 +343,28 @@ public class Account {
 	}
 
 
+	public int getCountEvaluate() {
+		return countEvaluate;
+	}
+
+
+	public void setCountEvaluate(int countEvaluate) {
+		this.countEvaluate = countEvaluate;
+	}
+
+
 	public boolean isReady() {
 		return ready;
+	}
+	
+
+	public int getCountJobFinish() {
+		return countJobFinish;
+	}
+
+
+	public void setCountJobFinish(int countJobFinish) {
+		this.countJobFinish = countJobFinish;
 	}
 
 
@@ -340,6 +395,12 @@ public class Account {
 		if (email == null)
 			return false;
 		return pat.matcher(email).matches();
+	}
+	public String getStarAverage() {
+		if(countEvaluate<=0)return "0";
+		double rs=(double)star/(double) countEvaluate;
+		NumberFormat formatter = new DecimalFormat("#0.00");     
+		return formatter.format(rs);
 	}
 
 }

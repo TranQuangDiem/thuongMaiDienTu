@@ -15,10 +15,10 @@
 			aria-expanded="false">
 			<div class="card-title flexbox">
 				<img class="img-responsive img-circle avatar"
-					src="data:image/png;base64,${evaluate.account.imageBase64}"
+					src="data:image/png;base64,${evaluate.guest.imageBase64}"
 					alt="...">
 				<div>
-					<h6>${evaluate.account.fullname}</h6>
+					<h6>${evaluate.guest.fullname}</h6>
 					<small><fmt:formatDate
 							pattern="EEEE, d MMM yyyy hh:mm aaa" value="${evaluate.time}" /></small>
 				</div>
