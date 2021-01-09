@@ -423,7 +423,7 @@
 											<h4>Product Designer</h4>
 											<p>Google Pvt.</p>
 										</div>
-										<div class="apply-job-form">
+										<div class="apply-job-form" >
 											<form class="form-inline"  accept-charset="UTF-8"
 								action="${pageContext.request.contextPath}/applyjob" enctype="multipart/form-data" method="post">
 												<div class="col-sm-12">

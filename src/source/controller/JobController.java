@@ -22,6 +22,7 @@ import customutil.AccessHelper;
 import customutil.MyMailHandler;
 import customutil.StringHelper;
 import database.AccountDAO;
+import database.JobApplyDatabase;
 import database.JobDAO;
 import database.MajorDAO;
 import dataform.FormApplyJob;
@@ -184,27 +185,15 @@ public class JobController {
 		}
 	}
 
-	@RequestMapping(value = "/applyjob", method = RequestMethod.POST)
-	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, HttpServletRequest request) {
-		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+	@RequestMapping(value = "/applyjob" ,params = {"id"},method = RequestMethod.POST)
+	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob , @RequestParam("id") int id, HttpServletRequest request) {
+		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);		
 		System.out.println(formApplyJob);
+		String fullname = formApplyJob.getFullname();
+		String email = formApplyJob.getEmail();
+		int id_jod = formApplyJob.getIdJob();
+	    JobApplyDatabase.insert(formApplyJob, id );
 
-		AccessHelper.accessApplyJobAccess(acc, AccessHelper.APPLY_JOB_ACCESS, new Runnable() {
-
-			@Override
-			public void run() {
-				// Accept
-				System.out.println("Accept");
-			}
-		}, new Runnable() {
-
-			@Override
-			public void run() {
-				// Deny
-				System.out.println("Deny");
-
-			}
-		});
 		return "redirect:/job-apply-detail?id_job=" + formApplyJob.getIdJob();
 	}
 
