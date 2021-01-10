@@ -1,6 +1,9 @@
 package source.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,7 @@ import com.sun.mail.util.logging.MailHandler;
 
 import config.CommonConst;
 import customutil.AccessHelper;
+import customutil.DateHelper;
 import customutil.MyMailHandler;
 import customutil.StringHelper;
 import database.AccountDAO;
@@ -154,11 +158,20 @@ public class JobController {
 		toCheckNull.add(education);
 		toCheckNull.add(exp);
 		toCheckNull.add(language);
+		Date finday;
+		try {
+			finday = new SimpleDateFormat("MM/dd/yyyy").parse(formCreateJob.getFinishday());
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return "day";
+		}
 		if (acc == null) {
 			return "user";
 		} else if (StringHelper.isListStringNull(toCheckNull) || major == 0 || quantity == 0 || jobtype == 0
 				|| img == null || img.isEmpty()) {
 			return "empty";
+		} else if (DateHelper.isBeforeToday(finday)) {
+			return "day";
 		} else if (!JobDAO.canPostJob(acc.getId())) {
 			return "money";
 		} else {
@@ -185,15 +198,15 @@ public class JobController {
 		}
 	}
 
-	@RequestMapping(value = "/applyjob" ,params = {"id"},method = RequestMethod.POST)
-	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob , @RequestParam("id") int id, HttpServletRequest request) {
-		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);		
+	@RequestMapping(value = "/applyjob", params = { "id" }, method = RequestMethod.POST)
+	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, @RequestParam("id") int id,
+			HttpServletRequest request) {
+		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		System.out.println(formApplyJob);
 		String fullname = formApplyJob.getFullname();
 		String email = formApplyJob.getEmail();
 		int id_jod = formApplyJob.getIdJob();
-	    JobApplyDatabase.insert(formApplyJob, id );
-
+		JobApplyDatabase.insert(formApplyJob, id);
 		return "redirect:/job-apply-detail?id_job=" + formApplyJob.getIdJob();
 	}
 

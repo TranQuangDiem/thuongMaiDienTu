@@ -16,6 +16,7 @@ import model.HoaDon;
 import model.Job;
 
 public class JobDAO {
+	
 	public static boolean canPostJob(int idAcc) {
 		HoaDon bill=HoaDonDatabase.findLatestEBill(idAcc);
 		Date today=DateHelper.getDateWithoutTimeUsingCalendar();

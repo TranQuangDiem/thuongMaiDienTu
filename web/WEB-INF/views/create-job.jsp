@@ -339,6 +339,9 @@
 																	case 'user':
 																		window.location.href = "${pageContext.request.contextPath}/loginpage";
 																		break;
+																	case 'day':
+																		showResult(true, "Ngày kết thúc phải ít nhất bằng hoặc lớn hơn ngày hôm nay");
+																		break;
 																	case 'empty':
 																		showResult(true, "Bạn phải điền đầy đủ các trường form và upload hình ảnh");
 																		break;
