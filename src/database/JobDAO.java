@@ -28,8 +28,8 @@ public class JobDAO {
 		}else {
 			return true;
 		}
-		
 	}
+	
 	public static int getNumberJobWhen(Date date,int idAcc) {
 		try {
 			String query="SELECT COUNT(*) FROM job WHERE job.idAccount=? AND job.ngaydang>=?";

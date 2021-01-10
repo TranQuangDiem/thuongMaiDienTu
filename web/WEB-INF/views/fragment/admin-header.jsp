@@ -1,7 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <a class="sidebar-toggler" href="#"><span
 	class="navbar-toggler-icon"></span></a>
 <button class="btn navbar-toggler" type="button" data-toggle="collapse"
@@ -19,7 +18,7 @@
 				</div>
 		</a>
 			<div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
-				<h6 class='py-2 px-4'>Notifications</h6>
+				<h6 class='py-2 px-4'>Thông báo</h6>
 				<ul class="list-group rounded-none">
 					<li class="list-group-item border-0 align-items-start">
 						<div class="avatar bg-success mr-3">
@@ -44,27 +43,27 @@
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item" href="#"><i data-feather="user"></i>
 					Account</a> <a class="dropdown-item active" href="#"><i
-					data-feather="mail"></i> Messages</a> <a class="dropdown-item" href="#"><i
-					data-feather="settings"></i> Settings</a>
+					data-feather="mail"></i> Tin nhắn</a> <a class="dropdown-item" href="#"><i
+					data-feather="settings"></i> Cài đặt</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#"><i data-feather="log-out"></i>
-					Logout</a>
+					Đăng xuất</a>
 			</div></li>
 		<li class="dropdown"><a href="#" data-toggle="dropdown"
 			class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 				<div class="avatar mr-1">
 					<img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">
 				</div>
-				<div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+				<div class="d-none d-md-block d-lg-inline-block">Chào, ..</div>
 		</a>
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item" href="#"><i data-feather="user"></i>
 					Account</a> <a class="dropdown-item active" href="#"><i
-					data-feather="mail"></i> Messages</a> <a class="dropdown-item" href="#"><i
-					data-feather="settings"></i> Settings</a>
+					data-feather="mail"></i> Tin nhắn</a> <a class="dropdown-item" href="#"><i
+					data-feather="settings"></i> Cài đặt</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#"><i data-feather="log-out"></i>
-					Logout</a>
+					Đăng xuất</a>
 			</div></li>
 	</ul>
 </div>

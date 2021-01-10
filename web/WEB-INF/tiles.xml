@@ -218,11 +218,22 @@
 			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
 	</definition>
 	<definition name="e-wallet" template="/WEB-INF/views/e-wallet.jsp">
-		
 		<put-attribute name="header"
 			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
 		<put-attribute name="footer"
 			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
+	</definition>
+	<definition name="admin/admin-list-job-post" template="/WEB-INF/views/admin/admin-list-job-post.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/admin-header.jsp"></put-attribute>
+	</definition>
+	<definition name="admin/admin-detail-job-post" template="/WEB-INF/views/admin/admin-detail-job-post.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/admin-header.jsp"></put-attribute>
+	</definition>
+	<definition name="admin/admin-list-major" template="/WEB-INF/views/admin/admin-list-major.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/views/fragment/admin-header.jsp"></put-attribute>
 	</definition>
 
 

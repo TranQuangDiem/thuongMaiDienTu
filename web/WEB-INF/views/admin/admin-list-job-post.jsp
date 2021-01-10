@@ -43,7 +43,7 @@
 
 						<li class="sidebar-item "><a href="index.html"
 							class='sidebar-link'> <i data-feather="home" width="20"></i>
-								<span>Trang chá»§</span>
+								<span>Trang chủ</span>
 						</a></li>
 
 
@@ -51,7 +51,7 @@
 
 						<li class="sidebar-item  has-sub"><a href="#"
 							class='sidebar-link'> <i data-feather="triangle" width="20"></i>
-								<span>Quáº£n LÃ½ TÃ i Khoáº£n</span>
+								<span>Quản Lý Tài Khoản</span>
 						</a>
 
 							<ul class="submenu ">
@@ -66,19 +66,19 @@
 
 						<li class="sidebar-item  has-sub active"><a href="#"
 							class='sidebar-link'> <i data-feather="briefcase" width="20"></i>
-								<span>Quáº£n LÃ½ GÃ³i</span>
+								<span>Quản Lý Gói</span>
 						</a>
 
 							<ul class="submenu ">
 
-								<li><a href="quanLyBaiDang.html">BÃ i ÄÄng</a></li>
+								<li><a href="quanLyBaiDang.html">Bài Đăng</a></li>
 
-								<li><a href="quanLyGoiBaiDang.html">GÃ³i BÃ i ÄÄng</a></li>
+								<li><a href="quanLyGoiBaiDang.html">Gói Bài Đăng</a></li>
 
 							</ul></li>
 						<li class="sidebar-item  "><a href="quanLyChuyenMon.html"
 							class='sidebar-link'> <i data-feather="grid" width="20"></i>
-								<span>Quáº£n LÃ½ ChuyÃªn MÃ´n</span>
+								<span>Quản Lý Chuyên Môn</span>
 						</a></li>
 
 
@@ -86,12 +86,12 @@
 
 						<li class="sidebar-item  "><a href="quanLyDanhGia.html"
 							class='sidebar-link'> <i data-feather="layers" width="20"></i>
-								<span>Quáº£n LÃ½ ÄÃ¡nh GiÃ¡</span>
+								<span>Quản Lý Đánh Giá</span>
 						</a></li>
 
 						<li class="sidebar-item"><a href="quanLyReport.html"
 							class='sidebar-link'> <i data-feather="alert-circle"
-								width="20"></i> <span>Quáº£n LÃ½ Reports</span>
+								width="20"></i> <span>Quản Lý Reports</span>
 						</a></li>
 
 
@@ -105,26 +105,26 @@
 			</div>
 		</div>
 		<div id="main">
-			<nav class="navbar navbar-header navbar-expand navbar-light"></nav>
-
+			<nav class="navbar navbar-header navbar-expand navbar-light">
+				<tiles:insertAttribute name="header"></tiles:insertAttribute>
+			</nav>
 			<div class="main-content container-fluid">
 				<div class="page-title">
 					<div class="row">
 						<div class="col-12 col-md-6 order-md-1 order-last">
-							<h3>BÃ i ÄÄng</h3>
+							<h3>Bài Đăng</h3>
 						</div>
 						<div class="col-12 col-md-6 order-md-2 order-first">
 							<nav aria-label="breadcrumb" class='breadcrumb-header'>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Trang
-											chá»§</a></li>
-									<li class="breadcrumb-item active" aria-current="page">BÃ i
-										ÄÄng</li>
+											chủ</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Bài
+										đăng</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
-
 				</div>
 
 
@@ -133,7 +133,7 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BÃ i ÄÄng</h4>
+								<h4 class="card-title">Bài đăng</h4>
 							</div>
 							<div class="card-content">
 								<!-- table hover -->
@@ -142,13 +142,13 @@
 										<thead>
 											<tr>
 												<th>id</th>
-												<th>NgÆ°á»i ÄÄng</th>
-												<th>TÃªn cÃ´ng viá»c</th>
-												<th>LÆ°á»£t xem</th>
-												<th>NgÃ y ÄÄng</th>
-												<th>NgÃ y káº¿t thÃºc</th>
-												<th>Tráº¡ng thÃ¡i</th>
-												<th>Xem thÃªm</th>
+												<th>Người đăng</th>
+												<th>Tên công việc</th>
+												<th>Lượt xem</th>
+												<th>Ngày đăng</th>
+												<th>Ngày kết thúc</th>
+												<th>Trạng thái</th>
+												<th>Xem thêm</th>
 
 											</tr>
 										</thead>
@@ -156,12 +156,12 @@
 
 											<tr>
 												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyá»n VÄn A</td>
-												<td class="text-bold">Chá»nh sá»­a video</td>
+												<td class="text-bold">Nguyễn Văn A</td>
+												<td class="text-bold">Chỉnh sửa video</td>
 												<td class="text-bold">35</td>
 												<td class="text-bold">1/1/2021</td>
 												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-success">Hiá»n</span></td>
+												<td><span class="badge bg-success">Hiện</span></td>
 												<td class="text-bold"><a
 													href="chiTietQuanLyBaiDang.html"
 													class="btn green mr0 btn-search-text-single btnSearchMore">
@@ -171,12 +171,12 @@
 
 											<tr>
 												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyá»n VÄn A</td>
-												<td class="text-bold">Chá»nh sá»­a video</td>
+												<td class="text-bold">Nguyễn Văn A</td>
+												<td class="text-bold">Chỉnh sửa video</td>
 												<td class="text-bold">35</td>
 												<td class="text-bold">1/1/2021</td>
 												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-danger">áº¨n</span></td>
+												<td><span class="badge bg-danger">Ẩn</span></td>
 												<td class="text-bold"><a
 													href="chiTietQuanLyBaiDang.html"
 													class="btn green mr0 btn-search-text-single btnSearchMore">
@@ -186,12 +186,12 @@
 
 											<tr>
 												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyá»n VÄn A</td>
-												<td class="text-bold">Chá»nh sá»­a video</td>
+												<td class="text-bold">Nguyễn Văn A</td>
+												<td class="text-bold">Chỉnh sửa video</td>
 												<td class="text-bold">35</td>
 												<td class="text-bold">1/1/2021</td>
 												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-success">Hiá»n</span></td>
+												<td><span class="badge bg-success">Hiện</span></td>
 												<td class="text-bold"><a
 													href="chiTietQuanLyBaiDang.html"
 													class="btn green mr0 btn-search-text-single btnSearchMore">
@@ -201,19 +201,18 @@
 
 											<tr>
 												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyá»n VÄn A</td>
-												<td class="text-bold">Chá»nh sá»­a video</td>
+												<td class="text-bold">Nguyễn Văn A</td>
+												<td class="text-bold">Chỉnh sửa video</td>
 												<td class="text-bold">35</td>
 												<td class="text-bold">1/1/2021</td>
 												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-danger">áº¨n</span></td>
+												<td><span class="badge bg-danger">Ẩn</span></td>
 												<td class="text-bold"><a
 													href="chiTietQuanLyBaiDang.html"
 													class="btn green mr0 btn-search-text-single btnSearchMore">
 														<i class="fa fa-ellipsis-h"></i>
 												</a></td>
 											</tr>
-
 											</tr>
 
 

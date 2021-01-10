@@ -47,7 +47,7 @@ public class AccountController {
 		} else {
 			Account acc = AccountDAO.getByUsername(username);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
-			session.setAttribute("taikhoan", acc);//cua thg diem
+			session.setAttribute("taikhoan", acc);//cua thg diem 
 			return "success";
 		}
 	}
