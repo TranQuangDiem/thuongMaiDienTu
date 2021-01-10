@@ -1,25 +1,51 @@
 
 var chartColors = {
-  red: 'rgb(255, 99, 132)',
-  orange: 'rgb(255, 159, 64)',
-  yellow: 'rgb(255, 205, 86)',
-  green: 'rgb(75, 192, 192)',
+  red: '#e74c3c',
+  orange: '#e67e22',
+  yellow: '#f1c40f',
+  green: '#2ecc71',
   info: '#41B1F9',
-  blue: '#3245D1',
-  purple: 'rgb(153, 102, 255)',
-  grey: '#EBEFF6'
+  blue: '#3498db',
+  purple: '#9b59b6',
+  grey: '#7f8c8d'
 };
+//config1
+var input11 = $('#index-input1-1').val().substring(1,$('#index-input1-1').val().length-1).split`,`.map(x=>+x);
+var input12 = $('#index-input1-2').val().substring(1,$('#index-input1-2').val().length-1).split`,`;
+var input13 = $('#index-input1-3').val();
+//config2
+var input21 = $('#index-input2-1').val().substring(1,$('#index-input2-1').val().length-1).split`,`.map(x=>+x);
+var input22 = $('#index-input2-2').val().substring(1,$('#index-input2-2').val().length-1).split`,`;
+var input23 = $('#index-input2-3').val();
+//config3
+var input31 = $('#index-input3-1').val().substring(1,$('#index-input3-1').val().length-1).split`,`.map(x=>+x);
+var input32 = $('#index-input3-2').val().substring(1,$('#index-input3-2').val().length-1).split`,`;
+var input33 = $('#index-input3-3').val();
+//config4
+var input41 = $('#index-input4-1').val().substring(1,$('#index-input4-1').val().length-1).split`,`.map(x=>+x);
+var input42 = $('#index-input4-2').val().substring(1,$('#index-input4-2').val().length-1).split`,`;
+var input43 = $('#index-input4-3').val();
+//ctxBar
+var bar1 =  $('#bar1').val().substring(1,$('#bar1').val().length-1).split`,`;
+var bar2 =  $('#bar2').val().substring(1,$('#bar2').val().length-1).split`,`;
+var bar3 =  $('#bar3').val().substring(1,$('#bar3').val().length-1).split`,`;
+var bar4 =  $('#bar4').val().substring(1,$('#bar4').val().length-1).split`,`.map(x=>+x);
+//doughnut
+var doughnut1 = $('#doughnut1').val().substring(1,$('#doughnut1').val().length-1).split`,`;
+var doughnut2 = $('#doughnut2').val().substring(1,$('#doughnut2').val().length-1).split`,`;
+var doughnut3 = $('#doughnut3').val().substring(1,$('#doughnut3').val().length-1).split`,`.map(x=>+x);
+var doughnut4 = $('#doughnut4').val();
 
 var config1 = {
   type: "line",
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: input12,
     datasets: [
       {
-        label: "Balance",
+        label: input13,
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 40, 20, 70, 10, 50, 20],
+        data: input11,
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -81,13 +107,13 @@ var config1 = {
 var config2 = {
   type: "line",
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: input22,
     datasets: [
       {
-        label: "Revenue",
+        label: input23,
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 800, 300, 400, 10, 50, 20],
+        data: input21,
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -149,13 +175,13 @@ var config2 = {
 var config3 = {
   type: "line",
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: input32,
     datasets: [
       {
-        label: "Orders",
+        label: input33,
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 40, 20, 200, 10, 540, 723],
+        data: input31,
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -218,13 +244,13 @@ var config3 = {
 var config4 = {
   type: "line",
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: input42,
     datasets: [
       {
-        label: "My First dataset",
+        label: input43,
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 40, 20, 70, 10, 5, 23],
+        data: input41,
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -397,19 +423,11 @@ var ctxBar = document.getElementById("bar").getContext("2d");
 var myBar = new Chart(ctxBar, {
   type: 'bar',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    labels: bar1,
     datasets: [{
-      label: 'Students',
-      backgroundColor: [chartColors.grey, chartColors.grey, chartColors.grey, chartColors.grey, chartColors.info, chartColors.blue, chartColors.grey],
-      data: [
-        5, 
-        10, 
-        30, 
-        40, 
-        35, 
-        55, 
-        15, 
-      ]
+      label: bar2,
+      backgroundColor: bar3,
+      data: bar4
     }]
   },
   options: {
@@ -442,49 +460,27 @@ var myBar = new Chart(ctxBar, {
     }
   }
 });
-var radialBarsOptions = {
-  series: [44, 80, 67],
-  chart: {
-    height: 350,
-    type: "radialBar",
+var doughnut = new Chart(document.getElementById("doughnut-chart"), {
+  type: 'doughnut',
+  data: {
+    labels: doughnut1,
+    datasets: [
+      {
+        backgroundColor: doughnut2,
+        data: doughnut3
+      }
+    ]
   },
-  theme: {
-    mode: "light",
-    palette: "palette1",
-    monochrome: {
-      enabled: true,
-      color: "#3245D1",
-      shadeTo: "light",
-      shadeIntensity: 0.65,
-    },
-  },
-  plotOptions: {
-    radialBar: {
-      dataLabels: {
-        name: {
-          offsetY: -15,
-          fontSize: "22px",
-        },
-        value: {
-          fontSize: "2.5rem",
-        },
-        total: {
-          show: true,
-          label: "Earnings",
-          color: "#25A6F1",
-          fontSize: "16px",
-          formatter: function(w) {
-            // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-            return "$4,124";
-          },
-        },
-      },
-    },
-  },
-  labels: ["Apples", "Oranges", "Bananas", "Berries"],
-};
-var radialBars = new ApexCharts(document.querySelector("#radialBars"), radialBarsOptions);
-radialBars.render();
+  options: {
+    title: {
+      fontSize:20,
+      padding:20,
+      display: true,
+      text: doughnut4
+    }
+  }
+});
+doughnut.render();
 let ctx1 = document.getElementById("canvas1").getContext("2d");
 let ctx2 = document.getElementById("canvas2").getContext("2d");
 let ctx3 = document.getElementById("canvas3").getContext("2d");
