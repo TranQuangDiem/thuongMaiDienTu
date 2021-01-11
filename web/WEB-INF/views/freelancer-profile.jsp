@@ -97,6 +97,7 @@
 								<li><a style="display: none;" href="#friends">Friends</a></li>
 								<li><a href="#rate">Đánh Giá <span class="info-bar">5</span></a></li>
 								<li><a href="#settings">Cài Đặt</a></li>
+								<li><a href="#save-job">Công Việc Đã lưu</a></li>
 							</ul>
 							<!-- Start All Sec -->
 							<div class="tab-content">
@@ -254,6 +255,56 @@
 								<!-- Start Settings -->
 								<tiles:insertAttribute name="settings" />
 								<!-- End Settings -->
+								<!-- Công việc Đã lưu -->
+								<div id="save-job" class="tab-pane fade">
+	<!-- <h3>You have 22 job post</h3> -->
+	<div id="jobsave" class="row">
+	<c:if test="${not empty savejob}">
+									<c:forEach var="listjob1" items="${savejob}">
+		<article>
+			<div class="mng-company">
+			<a href="${pageContext.request.contextPath}/job-detail?id_job=${listjob1.id}">
+				<div class="col-md-2 col-sm-2">
+					<div class="mng-company-pic"><img src='data:image/jpge;base64,${listjob1.img}' class="img-responsive" alt=""></div>
+				</div>
+				
+				<div class="col-md-5 col-sm-5">
+					<div class="mng-company-name">
+						<!-- <h4>Autodesk <span class="cmp-tagline">(Software Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div> -->
+						<h4>${listjob1.jobTitle}</h4>
+						</div>
+				</div>
+				</a>
+				<div class="col-md-4 col-sm-4">
+					<div class="mng-company-location">
+						<p><i class="fa fa-map-marker"></i> ${listjob1.city}</p>
+					</div>
+				</div>
+				
+				<div class="col-md-1 col-sm-1">
+					<div class="mng-company-action"><a href="<c:url value="/deletejob"/>?id_job=${listjob1.id}&idAccount=${freelancer.id}"><i class="fa fa-trash-o"></i></a></div>
+				</div>
+				
+			</div>
+			<span class="tg-themetag tg-featuretag">Premium</span>
+		</article>
+		</c:forEach>
+								</c:if>
+		
+	</div>
+	<div class="row">
+		<ul class="pagination">
+			<li><a href="#">«</a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
+			<li><a href="#">»</a></li>
+		</ul>
+	</div>
+</div>
+								<!-- End công việc đã lưu -->
 							</div>
 							<!-- Start All Sec -->
 						</div>  
@@ -365,6 +416,47 @@
 				
 				
 			});
+		<!--	function deletejob(idjob,idAccount){
+			var	url ="<c:url value="/deletejob"/>?id_job="+idjob+ "&idAccount="+idAccount;
+			var result='';
+			$.ajax({url,function (data){
+				if(data!=null){
+					for(var i =0 ; i < data.length ; i++){
+						result+='<article>'+
+							'<div class="mng-company">'+
+						'<a href="${pageContext.request.contextPath}/job-detail?id_job='+data[i].id+'">'+
+							'<div class="col-md-2 col-sm-2">'+
+								'<div class="mng-company-pic"><img src="data:image/jpge;base64,'+data[i].img+'" class="img-responsive" alt=""></div>'+
+							'</div>'+
+							
+							'<div class="col-md-5 col-sm-5">'+
+								'<div class="mng-company-name">'+
+									'<h4>'+data[i].jobTitle+'</h4>'+
+									'</div>'+
+							'</div>'+
+							'</a>'+
+							'<div class="col-md-4 col-sm-4">'+
+								'<div class="mng-company-location">'+
+									'<p><i class="fa fa-map-marker"></i> '+data[i].city+'</p>'+
+								'</div>'+
+							'</div>'+
+							
+							'<div class="col-md-1 col-sm-1">'+
+								'<div class="mng-company-action"><button onclick="deletejob('+data[i].id+','+idAccount+')"><i class="fa fa-trash-o"></i></button></div>'+
+							'</div>'+
+							
+						'</div>'+
+						'<span class="tg-themetag tg-featuretag">Premium</span>'+
+					'</article>';
+					
+					}
+					$('#jobsave').html(result);
+				}else{
+					$('#jobsave').html("Chưa có công việc được lưu")
+				}
+			}
+			});
+			}-->
 			</script>
 			
 			</div>

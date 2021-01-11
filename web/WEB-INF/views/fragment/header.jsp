@@ -48,8 +48,8 @@
 					<li><a href="pricing.html"><i class="fa fa-sign-in"
 							aria-hidden="true"></i>Gói Bài Đăng</a></li>
 				</c:if>
-				<li><a href="e-wallet.html"><i class="fa fa-dollar"
-						aria-hidden="true"></i>Payment</a></li>
+				<!-- <li><a href="e-wallet.html"><i class="fa fa-dollar"
+						aria-hidden="true"></i>Payment</a></li> -->
 				<li class="dropdown"><a href="#"><i class="fa fa-user"></i>
 						<c:out value="${sessionScope.currentAccount.fullname}"></c:out></a>
 					<ul class="dropdown-menu"

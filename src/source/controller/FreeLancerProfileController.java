@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import config.CommonConst;
 import database.FreeLancerProfileDatabase;
+import database.JobDAO;
 import database.MajorDAO;
 import database.UtilDataBase;
 import dataform.FormSettingsFreelancer;
@@ -39,6 +40,7 @@ public class FreeLancerProfileController {
 		model.addAttribute("lstMajor", lstMajor);
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
+		model.addAttribute("savejob", JobDAO.findJobSave(id_freelancer));
 		
 		System.out.println(freelancer);
 		return "freelancer-profile";
