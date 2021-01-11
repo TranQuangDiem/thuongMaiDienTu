@@ -99,19 +99,19 @@
 						<c:forEach var="listjob" items="${danhsachcongviec}">
 							<div class="col-md-3 col-sm-6">
 								<a
-									href="${pageContext.request.contextPath}/job-apply-detail?id_job=${listjob.id}">
+									href="${pageContext.request.contextPath}/job-detail?id_job=${listjob.id}">
 									<div class="grid-view brows-job-list">
 										<div class="brows-job-company-img">
 											<img style="max-width: 100%; border-radius: 100%"
-												src="${pageContext.request.contextPath}/${listjob.img}"
+												src='data:image/jpge;base64,${listjob.img}'
 												class="img-responsive" alt="" />
 										</div>
 
 										<div class="brows-job-position">
-											<h3>${listjob.tencongviec}</h3>
+											<h3>${listjob.jobTitle}</h3>
 
 											<p>
-												<span>Google</span>
+												<span>Exp:${listjob.exp}</span>
 											</p>
 										</div>
 
@@ -125,15 +125,15 @@
 											<li>
 												<div class="brows-job-location">
 													<p>
-														<i class="fa fa-map-marker"></i>NL University
+														<i class="fa fa-map-marker"></i>${listjob.city}
 													</p>
 												</div>
 											</li>
 											<li>
-												<p>
+												<!-- <p>
 													<span class="brows-job-sallery"><i
-														class="fa fa-money"></i>${listjob.chiphi} VNĐ</span>
-												</p>
+														class="fa fa-money"></i> VNĐ</span>
+												</p> -->
 											</li>
 										</ul>
 										<!-- <span class="tg-themetag tg-featuretag">UlTIMATE</span> -->
@@ -142,286 +142,7 @@
 							</div>
 						</c:forEach>
 					</c:if>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="<c:url value="/job-detail"/>">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="job-detail.html">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="job-detail.html">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="job-detail.html">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="job-detail.html">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="job-detail.html">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="grid-view brows-job-list">
-							<div class="brows-job-company-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg"
-									class="img-responsive" alt="" />
-							</div>
-							<div class="brows-job-position">
-								<h3>
-									<a href="job-detail.html">Design Logo</a>
-								</h3>
-
-								<p>
-									<span>Google</span>
-								</p>
-							</div>
-							<div class="job-position">
-								<span class="job-num">5 Position</span>
-							</div>
-							<div class="brows-job-type">
-								<span class="freelanc">Freelancer</span>
-							</div>
-							<ul class="grid-view-caption">
-								<li>
-									<div class="brows-job-location">
-										<p>
-											<i class="fa fa-map-marker"></i>NL University
-										</p>
-									</div>
-								</li>
-								<li>
-									<p>
-										<span class="brows-job-sallery"><i class="fa fa-money"></i>$110
-											- 200</span>
-									</p>
-								</li>
-							</ul>
-							<span class="tg-themetag tg-featuretag">UlTIMATE</span>
-						</div>
-					</div>
+					
 				</div>
 				<div class="row">
 					<div class="main-heading">
@@ -612,6 +333,7 @@
 				</div>
 			</div>
 		</section>
+		<c:if test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 1}">
 		<section class="pricing">
 			<div class="container">
 				<div class="row">
@@ -640,14 +362,13 @@
 								<div class="pr-features">
 									<ul>
 										<li>Thời hạn : ${goi.thoihan} ngày</li>
-										<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
-										<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
+										<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài</li>
 										<li>${goi.mota}</li>
 									</ul>
 								</div>
 								<div class="pr-buy-button">
 									<a href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
-										title="Price Button">Get Started</a>
+										title="Price Button">Mua</a>
 								</div>
 							</div>
 						</div>
@@ -656,7 +377,7 @@
 
 			</div>
 		</section>
-
+</c:if>
 		<div class="clearfix"></div>
 
 		<div class="clearfix"></div>

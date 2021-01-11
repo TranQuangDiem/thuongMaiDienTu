@@ -1,5 +1,8 @@
 package source.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +21,16 @@ import model.ViTien;
 @Controller
 public class HoaDonController {
 	@RequestMapping(value="/vitien")
-	public String vitien(Model model,HttpSession session) {
-		Account acc = (Account) session.getAttribute("taikhoan");
-		if (acc!=null) {
-			model.addAttribute("vitien", ViTienDatabase.findIdAccount(acc.getId()));
-			model.addAttribute("hoadon", HoaDonDatabase.findByIdAccount(acc.getId()));
+	public String vitien(Model model,HttpServletRequest request) {
+		Account currentAccount=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+		if (currentAccount!=null) {
+			Account freelancer=UtilDataBase.getAccount(currentAccount.getId());
+			model.addAttribute("vitien", ViTienDatabase.findIdAccount(currentAccount.getId()));
+			List<HoaDon> list=HoaDonDatabase.findByIdAccount(currentAccount.getId());
+			model.addAttribute("hoadon", list);
+			model.addAttribute("freelancer", freelancer);
+			model.addAttribute("soluonggiaodich", list.size());
+			
 			return "e-wallet"; 
 		}else {
 			return "redirect:/loginpage";
@@ -39,7 +47,7 @@ public class HoaDonController {
 		ViTien viTien = ViTienDatabase.findIdAccount(acc.getId());
 		HoaDon hoaDon = new HoaDon(acc.getId(), pricing.getTengoi(), pricing.getSoluongbaidang(), date, date,
 				pricing.getGia());
-		if (viTien.getTongTien() > pricing.getGia()) {
+		if (viTien.getTongTien() >= pricing.getGia()) {
 			HoaDonDatabase.update(acc.getId());
 			HoaDonDatabase.save(hoaDon, pricing.getThoihan());
 			ViTienDatabase.Update(acc.getId(), viTien.getTongTien() - pricing.getGia());

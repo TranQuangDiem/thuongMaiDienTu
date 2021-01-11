@@ -49,8 +49,8 @@
 			<div class="row">
 				<!--User Avatar -->
 				<div class="detail-pic">
-					<img src="assets/img/avatar.png" class="img" alt="" /><a href="#"
-						class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a>
+					<img src="data:image/png;base64,${freelancer.imageBase64}" class="img" alt="" />
+					
 				</div>
 				<!--   <div class="detail-status"><span>Active Now</span></div> -->
 			</div>
@@ -58,11 +58,11 @@
 			<div class="row bottom-mrg">
 				<div class="col-md-12 col-sm-12">
 					<div class="advance-detail detail-desc-caption">
-						<h4>${sessionScope.taikhoan.fullname}</h4>
+						<h4>${freelancer.fullname}</h4>
 						<span class="designation"></span>
 						<ul>
 							<li><strong class="j-view"></strong></li>
-							<li><strong class="j-applied">${vitien.tongTien}</strong>Balance</li>
+							<li><strong style="color:red" class="j-applied">${vitien.tongTien}</strong><span>VNĐ</span></li>
 							<li><strong class="j-shared"></strong></li>
 						</ul>
 					</div>
@@ -73,9 +73,9 @@
 				<div class="detail pannel-footer">
 					<div class="col-md-5 col-sm-5">
 						<ul class="detail-footer-social">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a title="Trang Facebook" href="${freelancer.facebook}"><i class="fa fa-facebook"></i></a></li>
+								<li><a title="Trang Twitter" href="${freelancer.twitter}"><i class="fa fa-twitter"></i></a></li>
+								<li><a title="Trang Web" href="${freelancer.website}"><i class="fa fa-globe"></i></i></a></li>
 							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 						</ul>
@@ -83,7 +83,7 @@
 					<div class="col-md-7 col-sm-7">
 						<div class="detail-pannel-footer-btn pull-right">
 							<a href="<c:url value="/thanhtoan"/>" class="footer-btn grn-btn"
-								title="">Recharge</a>
+								title="">Nạp tiền</a>
 						</div>
 						<!-- data-toggle="modal" data-target="#apply-job" -->
 					</div>
@@ -97,7 +97,7 @@
 				<div class="full-card">
 					<div class="deatil-tab-employ tool-tab">
 						<ul class="nav simple nav-tabs" id="simple-design-tab">
-							<li><a href="#messages">History <span class="info-bar">3</span></a></li>
+							<li><a href="#messages">Lịch sử giao dịch <span class="info-bar">${soluonggiaodich}</span></a></li>
 						</ul>
 						<!-- Start All Sec -->
 						<div class="tab-content">
@@ -110,7 +110,7 @@
 										<c:forEach var="hoadon" items="${hoadon}">
 											<div class="mail-card">
 												<header class="card-header cursor-pointer collapsed"
-													data-toggle="collapse" data-target="#full-message"
+													data-toggle="collapse" data-target="#full-message${hoadon.id}"
 													aria-expanded="false">
 												<div class="card-title flexbox">
 													<img class="img-responsive img-circle avatar"
@@ -118,24 +118,24 @@
 													<div>
 														<h6>${hoadon.tengoi}</h6>
 														<small>${hoadon.ngayMua}</small> <small><a
-															class="text-info collapsed" href="#detail-view"
+															class="text-info collapsed" href="#detail-view${hoadon.id}"
 															data-toggle="collapse" aria-expanded="false">xem chi tiết</a></small>
 
 														<div class="no-collapsing cursor-text collapse"
-															id="detail-view" aria-expanded="false"
+															id="detail-view${hoadon.id}" aria-expanded="false"
 															style="height: 0px;">
-															<small class="d-inline-block">From:</small> <small>${sessionScope.taikhoan.fullname}</small>
-															<br> <small class="d-inline-block">To:</small> <small>Web
+															<small class="d-inline-block">Từ:</small> <small>${sessionScope.taikhoan.fullname}</small>
+															<br> <small class="d-inline-block">Đến:</small> <small>Web
 																site</small>
 														</div>
 													</div>
 												</div>
 												</header>
-												<div class="collapse" id="full-message"
+												<div class="collapse" id="full-message${hoadon.id}"
 													aria-expanded="false" style="height: 0px;">
 													<div class="card-body">
 
-														<p style="color: red">-${hoadon.giaTri}</p>
+														<p style="color: red">-${hoadon.giaTri} VNĐ</p>
 													</div>
 												</div>
 											</div>

@@ -2,6 +2,7 @@ package database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -84,6 +85,9 @@ public class JobDAO {
 			return -1;
 		}
 	}
+
+
+	
 
 	public static int getNumberJobWhen(Date date, int idAcc) {
 		try {
@@ -303,12 +307,57 @@ public class JobDAO {
 			System.out.println(e.getMessage());
 		}
 	}
+	//kiem tra job đã lưu chưa idjob
+	public static boolean kiemtrajobSave(int idjob,int idAccount) throws ClassNotFoundException, SQLException {
+			String sql = "select * from savejob where idjob=? and idAccount=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, idjob);
+			ps.setInt(2, idAccount);
+			ResultSet rs =ps.executeQuery();
+			return rs.next();
+		
+	}
+	//xóa job đã lưu
+	public static void deleteJobSave(int idJob,int idAccount) {
+		try {
+			String sql= "DELETE FROM savejob where idjob=? and idAccount=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, idJob);
+			ps.setInt(2, idAccount);
+			ps.executeUpdate();
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 	// tim jod da luu theo idAccount
-	private static List<Job> findJobSave(int idAccount) {
+	public static List<Job> findJobSave(int idAccount) {
 		List<Job> list = new ArrayList<Job>();
 		try {
-//			String sql = "se"
+			 String sql = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype FROM job join savejob on job.id=savejob.idjob where savejob.idaccount=?";
+		PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+		ps.setInt(1, idAccount);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			Job job = new Job();
+			job.setId(rs.getInt(1));
+			job.setJobTitle(rs.getString(2));
+			job.setJobDescription(rs.getString(3));
+			job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+			job.setSoluongtuyen(rs.getInt(6));
+			job.setCreateday(rs.getDate(7));
+			job.setFinishday(rs.getDate(8));
+			job.setView(rs.getInt(9));
+			job.setMajor(rs.getString(10));
+			job.setLanguage(rs.getString(11));
+			job.setExp(rs.getString(12));
+			job.setEducation(rs.getString(13));
+			job.setStatus(rs.getInt(14));
+			job.setCity(rs.getString(15));
+			job.setJobType(rs.getInt(16));
+			list.add(job);
+		}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

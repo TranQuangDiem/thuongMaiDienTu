@@ -92,7 +92,7 @@ public class UtilDataBase {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7));
+						rs.getString(6));
 				danhsachgoi.add(p);
 			}
 			ConnectionDB.close(rs);
@@ -102,7 +102,7 @@ public class UtilDataBase {
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-							rs.getString(6), rs.getString(7));
+							rs.getString(6));
 					danhsachgoi.add(p);
 				}
 				ConnectionDB.close(rs);
@@ -122,7 +122,7 @@ public class UtilDataBase {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7));
+						rs.getString(6));
 				danhsachgoi.add(p);
 			}
 			ConnectionDB.close(rs);
@@ -132,7 +132,7 @@ public class UtilDataBase {
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-							rs.getString(6), rs.getString(7));
+							rs.getString(6));
 					danhsachgoi.add(p);
 				}
 				ConnectionDB.close(rs);
@@ -153,7 +153,7 @@ public class UtilDataBase {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7));
+						rs.getString(6));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -165,15 +165,106 @@ public class UtilDataBase {
 	public static List<Job> listJob() {
 		List<Job> danhsachcongviec = new ArrayList<Job>();
 		try {
-			String sql = "select * from job limit 24";
+			String sql = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, job.idAccount  FROM job limit 24";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				/** Load Job */
-				
+				Job j = new Job();
+				j.setId(rs.getInt(1));
+				j.setJobTitle(rs.getString(2));
+				j.setJobDescription(rs.getString(3));
+				//4
+				j.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				j.setSoluongtuyen(rs.getInt(6));
+				j.setCreateday(rs.getDate(7));
+				j.setFinishday(rs.getDate(8));
+				j.setView(rs.getInt(9));
+				j.setMajor(rs.getString(10));
+				j.setLanguage(rs.getString(11));
+				j.setExp(rs.getString(12));
+				j.setEducation(rs.getString(13));
+				j.setStatus(rs.getInt(14));
+				j.setCity(rs.getString(15));
+				j.setJobType(rs.getInt(16));
+				j.setOfAccount(getAccount(rs.getInt(17)));
 //				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6),
 //						rs.getInt(7), rs.getDate(8));
-//				danhsachcongviec.add(j);
+				danhsachcongviec.add(j);
+			}
+			ConnectionDB.close(rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return danhsachcongviec;
+	}
+	public static Job listJobLimit(int limit) {
+		Job j = new Job();
+		try {
+			String sql = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, job.idAccount  FROM job limit ?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, limit);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				/** Load Job */
+				
+				j.setId(rs.getInt(1));
+				j.setJobTitle(rs.getString(2));
+				j.setJobDescription(rs.getString(3));
+				//4
+				j.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				j.setSoluongtuyen(rs.getInt(6));
+				j.setCreateday(rs.getDate(7));
+				j.setFinishday(rs.getDate(8));
+				j.setView(rs.getInt(9));
+				j.setMajor(rs.getString(10));
+				j.setLanguage(rs.getString(11));
+				j.setExp(rs.getString(12));
+				j.setEducation(rs.getString(13));
+				j.setStatus(rs.getInt(14));
+				j.setCity(rs.getString(15));
+				j.setJobType(rs.getInt(16));
+				j.setOfAccount(getAccount(rs.getInt(17)));
+//				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6),
+//						rs.getInt(7), rs.getDate(8));
+
+			}
+			ConnectionDB.close(rs);
+		} catch (Exception e) {
+			
+		}
+		return j;
+	}
+	public static List<Job> listJobType(int jobtype) {
+		List<Job> danhsachcongviec = new ArrayList<Job>();
+		try {
+			String sql = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype, job.idAccount  FROM job where jobtype=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, jobtype);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				/** Load Job */
+				Job j = new Job();
+				j.setId(rs.getInt(1));
+				j.setJobTitle(rs.getString(2));
+				j.setJobDescription(rs.getString(3));
+				//4
+				j.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				j.setSoluongtuyen(rs.getInt(6));
+				j.setCreateday(rs.getDate(7));
+				j.setFinishday(rs.getDate(8));
+				j.setView(rs.getInt(9));
+				j.setMajor(rs.getString(10));
+				j.setLanguage(rs.getString(11));
+				j.setExp(rs.getString(12));
+				j.setEducation(rs.getString(13));
+				j.setStatus(rs.getInt(14));
+				j.setCity(rs.getString(15));
+				j.setJobType(rs.getInt(16));
+				j.setOfAccount(getAccount(rs.getInt(17)));
+//				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6),
+//						rs.getInt(7), rs.getDate(8));
+				danhsachcongviec.add(j);
 			}
 			ConnectionDB.close(rs);
 		} catch (Exception e) {

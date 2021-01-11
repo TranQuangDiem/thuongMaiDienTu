@@ -97,8 +97,7 @@
 							<div class="pr-features">
 								<ul>
 									<li>Thời hạn : ${goi.thoihan} ngày</li>
-									<li>Độ ưu tiên : <a style="color: #11b719">${goi.doUuTien}</a></li>
-									<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài<sub>/tuần</sub></li>
+									<li>Giới hạn bài đăng : ${goi.soluongbaidang} bài</li>
 									<li>${goi.mota}</li>
 								</ul>
 							</div>

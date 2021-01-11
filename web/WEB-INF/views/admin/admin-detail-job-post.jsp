@@ -120,8 +120,7 @@
 																<div class="form-group">
 																	<label for="first-name-column">Người đăng</label>
 																	<input type="text" id="first-name-column"
-																		class="form-control" placeholder="<c:out value="
-																		${job.ofAccount.fullname}"></c:out>"
+																		class="form-control" placeholder="<c:out value="${job.ofAccount.fullname}"></c:out>"
 																	name="tenCongTy-column" disabled="trending-up">
 																</div>
 															</div>
@@ -129,8 +128,7 @@
 																<div class="form-group">
 																	<label for="first-name-column">Tên công việc</label>
 																	<input type="text" id="first-name-column"
-																		class="form-control" placeholder="<c:out value="
-																		${job.jobTitle}"></c:out>"
+																		class="form-control" placeholder="<c:out value="${job.jobTitle}"></c:out>"
 																	name="chuyenNganh-column" disabled="trending-up">
 																</div>
 															</div>

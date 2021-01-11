@@ -7,12 +7,11 @@ public class Pricing {
 	int soluongbaidang;
 	int thoihan;
 	String mota;
-	String doUuTien;
 	
 	public Pricing() {
 	}
 
-	public Pricing(int id, String tengoi, int gia, int soluongbaidang, int thoihan, String mota, String doUuTien) {
+	public Pricing(int id, String tengoi, int gia, int soluongbaidang, int thoihan, String mota) {
 		super();
 		this.id = id;
 		this.tengoi = tengoi;
@@ -20,17 +19,8 @@ public class Pricing {
 		this.soluongbaidang = soluongbaidang;
 		this.thoihan = thoihan;
 		this.mota = mota;
-		this.doUuTien = doUuTien;
 	}
 
-
-	public String getDoUuTien() {
-		return doUuTien;
-	}
-
-	public void setDoUuTien(String doUuTien) {
-		this.doUuTien = doUuTien;
-	}
 
 	public int getId() {
 		return id;
@@ -85,7 +75,7 @@ public class Pricing {
 	@Override
 	public String toString() {
 		return "Pricing [id=" + id + ", tengoi=" + tengoi + ", gia=" + gia + ", soluongbaidang=" + soluongbaidang
-				+ ", thoihan=" + thoihan + ", mota=" + mota + ", doUuTien=" + doUuTien + "]";
+				+ ", thoihan=" + thoihan + ", mota=" + mota +  "]";
 	}
 
 	

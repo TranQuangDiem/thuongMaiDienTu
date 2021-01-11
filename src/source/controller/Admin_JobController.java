@@ -52,8 +52,9 @@ public class Admin_JobController {
 		return model;
 	}
 
-	@RequestMapping(value = "")
-	public @ResponseBody String hidePost() {
+	@RequestMapping(value = "/admin-hide-post")
+	public @ResponseBody String hidePost(@RequestParam(value="id")int id,@RequestParam("isHide") boolean isHide) {
+		
 		return null;
 	}
 }

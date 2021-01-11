@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -47,13 +45,13 @@ public class Job {
 	public String toStringOfJobType(int jobtype) {
 		switch (jobtype) {
 		case TYPE_PROJECT:
-			return "Làm Việc Theo Dự Án";
+			return "Làm Việc Theo Dự Án";
 		case TYPE_PARTTIME:
-			return "Làm Việc Bán Thời Gian";
+			return "Làm Việc Bán Thời Gian";
 		case TYPE_FULLTIME:
-			return "Làm Việc Toàn Thời Gian";
+			return "Làm Việc Toàn Thời Gian";
 		case TYPE_CONTEST:
-			return "Cuộc Thi Thiết Kế";
+			return "Cuộc Thi Thiết Kế";
 		default:
 			return null;
 		}
@@ -73,4 +71,5 @@ public class Job {
 	
 	
 	
+
 }
