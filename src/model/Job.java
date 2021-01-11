@@ -19,8 +19,9 @@ import lombok.ToString;
 @ToString
 public class Job {
 	/* JOB STATUS */
-	public static final int STATUS_OPEN = 1;
-	public static final int STATUS_CLOSE = 0;
+	public static final int STATUS_OPEN = 1;// Đang tuyển
+	public static final int STATUS_FINISH = 2;// Hoàn thành
+	public static final int STATUS_HIDE= 3;// Ẩn
 	/* JOB TYPE */
 	public static final int TYPE_PROJECT = 1;
 	public static final int TYPE_PARTTIME = 2;
@@ -57,6 +58,19 @@ public class Job {
 			return null;
 		}
 	}
+	public String toStringOfStatus(int status) {
+		switch (status) {
+		case STATUS_OPEN:
+			return "Đang tuyển";
+		case STATUS_FINISH:
+			return "Hoàn thành";
+		case STATUS_HIDE:
+			return "Ẩn";
+		default:
+			return null;
+		}
+	}
+	
 	
 	
 }

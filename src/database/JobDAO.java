@@ -16,35 +16,91 @@ import model.HoaDon;
 import model.Job;
 
 public class JobDAO {
-	
+	public static Job getJobById(int id) {
+		try {
+			String query="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`  FROM job JOIN account ON job.idAccount=account.id WHERE job.id=?";
+			PreparedStatement ps= ConnectionDB.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			if(!rs.next()) {
+				return null;
+			}else {
+				Account acc = new Account();
+				Job job = new Job();
+				job.setId(rs.getInt(1));
+				job.setJobTitle(rs.getString(2));
+				job.setJobDescription(rs.getString(3));
+				// 4
+				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				job.setSoluongtuyen(rs.getInt(6));
+				job.setCreateday(rs.getDate(7));
+				job.setFinishday(rs.getDate(8));
+				job.setView(rs.getInt(9));
+				job.setMajor(rs.getString(10));
+				job.setLanguage(rs.getString(11));
+				job.setExp(rs.getString(12));
+				job.setEducation(rs.getString(13));
+				job.setStatus(rs.getInt(14));
+				job.setCity(rs.getString(15));
+				job.setJobType(rs.getInt(16));
+				// Account
+				acc.setId(rs.getInt(4));
+				acc.setFullname(rs.getString(17));
+				acc.setName(rs.getString(18));
+				job.setOfAccount(acc);
+				return job;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public static boolean canPostJob(int idAcc) {
-		HoaDon bill=HoaDonDatabase.findLatestEBill(idAcc);
-		Date today=DateHelper.getDateWithoutTimeUsingCalendar();
-		if (bill==null) return false;
-		else if((today.compareTo(bill.getNgayHetHan()))>0)  
+		HoaDon bill = HoaDonDatabase.findLatestEBill(idAcc);
+		Date today = DateHelper.getDateWithoutTimeUsingCalendar();
+		if (bill == null)
 			return false;
-		else if((bill.getSoluongbaidang()-getNumberJobWhen(bill.getNgayMua(), idAcc))<0) {
+		else if ((today.compareTo(bill.getNgayHetHan())) > 0)
 			return false;
-		}else {
+		else if ((bill.getSoluongbaidang() - getNumberJobWhen(bill.getNgayMua(), idAcc)) < 0) {
+			return false;
+		} else {
 			return true;
 		}
 	}
-	
-	public static int getNumberJobWhen(Date date,int idAcc) {
+
+	public static int getAllTotalRecords() {
 		try {
-			String query="SELECT COUNT(*) FROM job WHERE job.idAccount=? AND job.ngaydang>=?";
-			PreparedStatement ps=ConnectionDB.prepareStatement(query);
-			ps.setInt(1, idAcc);
-			ps.setDate(2, new java.sql.Date(date.getTime()));
-			ResultSet rs=ps.executeQuery();
+			String query = "SELECT COUNT(*) FROM job ";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
-			int result=rs.getInt(1);
+			int result = rs.getInt(1);
 			ps.close();
 			return result;
-		}catch (Exception e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 			return -1;
 		}
 	}
+
+	public static int getNumberJobWhen(Date date, int idAcc) {
+		try {
+			String query = "SELECT COUNT(*) FROM job WHERE job.idAccount=? AND job.ngaydang>=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setInt(1, idAcc);
+			ps.setDate(2, new java.sql.Date(date.getTime()));
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int result = rs.getInt(1);
+			ps.close();
+			return result;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
 	public static int numberJobIsOpen() {
 		try {
 			String query = "SELECT COUNT(*) FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE())";
@@ -78,7 +134,7 @@ public class JobDAO {
 
 	}
 
-	public static List<Job> getAllJobIsOpenWithPage(int start, int itemInOnePage, String query, String jobtitle) {
+	public static List<Job> getListJobsWithPage(int start, int itemInOnePage, String query, String jobtitle) {
 		try {
 
 			List<Job> listJobs = new ArrayList<Job>();
@@ -110,7 +166,7 @@ public class JobDAO {
 				job.setId(rs.getInt(1));
 				job.setJobTitle(rs.getString(2));
 				job.setJobDescription(rs.getString(3));
-				//4
+				// 4
 				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
 				job.setSoluongtuyen(rs.getInt(6));
 				job.setCreateday(rs.getDate(7));
@@ -140,11 +196,14 @@ public class JobDAO {
 			return null;
 		}
 	}
+
 	public static int createId() {
-		int rs=IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
-		while(isIdExists(rs)) rs=IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
+		int rs = IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
+		while (isIdExists(rs))
+			rs = IntegerHelper.getRandomNumberUsingNextInt(0, Integer.MAX_VALUE);
 		return rs;
 	}
+
 	public static List<Job> getAllJobIsOpen() {
 		try {
 			List<Job> listJobs = new ArrayList<Job>();
@@ -173,7 +232,7 @@ public class JobDAO {
 				acc.setId(rs.getInt(4));
 				acc.setFullname(rs.getString(17));
 				acc.setName(rs.getString(18));
-			
+
 				job.setOfAccount(acc);
 				listJobs.add(job);
 			}
@@ -191,7 +250,7 @@ public class JobDAO {
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			// set
 			Date finday = new SimpleDateFormat("MM/dd/yyyy").parse(form.getFinishday());
-			int id=createId();
+			int id = createId();
 			ps.setString(1, form.getJobname());
 			ps.setString(2, form.getJobdescription());
 			ps.setInt(3, idAcc);
@@ -210,12 +269,12 @@ public class JobDAO {
 			ps.setInt(16, id);
 			//
 			int row = ps.executeUpdate();
-			if(row!=1) {
+			if (row != 1) {
 				return -1;
-			}else {
+			} else {
 				return id;
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
@@ -233,17 +292,19 @@ public class JobDAO {
 			return false;
 		}
 	}
-	//save job
+
+	// save job
 	public static void luuJob(int idAccount, int idjob) {
 		try {
-			String sql = "insert into savejob (idAccount,idjob) value ("+idAccount+","+idjob+")";
+			String sql = "insert into savejob (idAccount,idjob) value (" + idAccount + "," + idjob + ")";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.executeUpdate(sql);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	//tim jod da luu theo idAccount
+
+	// tim jod da luu theo idAccount
 	private static List<Job> findJobSave(int idAccount) {
 		List<Job> list = new ArrayList<Job>();
 		try {
@@ -252,7 +313,7 @@ public class JobDAO {
 			System.out.println(e.getMessage());
 		}
 		return list;
-		
+
 	}
 
 }

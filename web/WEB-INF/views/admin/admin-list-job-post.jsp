@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<jsp:useBean id="dateHelper" class="customutil.DateHelper" />
+<jsp:useBean id="stringHelper" class="customutil.StringHelper" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,68 +37,41 @@
 				</div>
 				<div class="sidebar-menu">
 					<ul class="menu">
-
-
 						<li class='sidebar-title'>Main Menu</li>
-
-
-
 						<li class="sidebar-item "><a href="index.html"
 							class='sidebar-link'> <i data-feather="home" width="20"></i>
 								<span>Trang chủ</span>
 						</a></li>
-
-
-
-
 						<li class="sidebar-item  has-sub"><a href="#"
 							class='sidebar-link'> <i data-feather="triangle" width="20"></i>
 								<span>Quản Lý Tài Khoản</span>
 						</a>
-
 							<ul class="submenu ">
-
 								<li><a href="quanLyNTD.html">Employer</a></li>
-
 								<li><a href="quanLyFreelancer.html">Freelancer</a></li>
 							</ul></li>
-
-
-
-
 						<li class="sidebar-item  has-sub active"><a href="#"
 							class='sidebar-link'> <i data-feather="briefcase" width="20"></i>
 								<span>Quản Lý Gói</span>
 						</a>
-
 							<ul class="submenu ">
-
-								<li><a href="quanLyBaiDang.html">Bài Đăng</a></li>
-
+								<li><a href='<c:url value="admin-list-job-post"></c:url>'>Bài
+										Đăng</a></li>
 								<li><a href="quanLyGoiBaiDang.html">Gói Bài Đăng</a></li>
-
 							</ul></li>
-						<li class="sidebar-item  "><a href="quanLyChuyenMon.html"
+						<li class="sidebar-item "><a
+							href='<c:url value="admin-list-major"></c:url>'
 							class='sidebar-link'> <i data-feather="grid" width="20"></i>
 								<span>Quản Lý Chuyên Môn</span>
 						</a></li>
-
-
-
-
 						<li class="sidebar-item  "><a href="quanLyDanhGia.html"
 							class='sidebar-link'> <i data-feather="layers" width="20"></i>
 								<span>Quản Lý Đánh Giá</span>
 						</a></li>
-
 						<li class="sidebar-item"><a href="quanLyReport.html"
 							class='sidebar-link'> <i data-feather="alert-circle"
 								width="20"></i> <span>Quản Lý Reports</span>
 						</a></li>
-
-
-
-
 					</ul>
 				</div>
 				<button class="sidebar-toggler btn x">
@@ -144,7 +119,7 @@
 												<th>id</th>
 												<th>Người đăng</th>
 												<th>Tên công việc</th>
-												<th>Lượt xem</th>
+												<!-- 												<th>Lượt xem</th>-->
 												<th>Ngày đăng</th>
 												<th>Ngày kết thúc</th>
 												<th>Trạng thái</th>
@@ -153,69 +128,26 @@
 											</tr>
 										</thead>
 										<tbody>
-
-											<tr>
-												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyễn Văn A</td>
-												<td class="text-bold">Chỉnh sửa video</td>
-												<td class="text-bold">35</td>
-												<td class="text-bold">1/1/2021</td>
-												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-success">Hiện</span></td>
-												<td class="text-bold"><a
-													href="chiTietQuanLyBaiDang.html"
-													class="btn green mr0 btn-search-text-single btnSearchMore">
-														<i class="fa fa-ellipsis-h"></i>
-												</a></td>
-											</tr>
-
-											<tr>
-												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyễn Văn A</td>
-												<td class="text-bold">Chỉnh sửa video</td>
-												<td class="text-bold">35</td>
-												<td class="text-bold">1/1/2021</td>
-												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-danger">Ẩn</span></td>
-												<td class="text-bold"><a
-													href="chiTietQuanLyBaiDang.html"
-													class="btn green mr0 btn-search-text-single btnSearchMore">
-														<i class="fa fa-ellipsis-h"></i>
-												</a></td>
-											</tr>
-
-											<tr>
-												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyễn Văn A</td>
-												<td class="text-bold">Chỉnh sửa video</td>
-												<td class="text-bold">35</td>
-												<td class="text-bold">1/1/2021</td>
-												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-success">Hiện</span></td>
-												<td class="text-bold"><a
-													href="chiTietQuanLyBaiDang.html"
-													class="btn green mr0 btn-search-text-single btnSearchMore">
-														<i class="fa fa-ellipsis-h"></i>
-												</a></td>
-											</tr>
-
-											<tr>
-												<td class="text-bold">1</td>
-												<td class="text-bold">Nguyễn Văn A</td>
-												<td class="text-bold">Chỉnh sửa video</td>
-												<td class="text-bold">35</td>
-												<td class="text-bold">1/1/2021</td>
-												<td class="text-bold">10/1/2021</td>
-												<td><span class="badge bg-danger">Ẩn</span></td>
-												<td class="text-bold"><a
-													href="chiTietQuanLyBaiDang.html"
-													class="btn green mr0 btn-search-text-single btnSearchMore">
-														<i class="fa fa-ellipsis-h"></i>
-												</a></td>
-											</tr>
-											</tr>
-
-
+											<c:forEach var="job" items="${listJobs}">
+												<tr>
+													<td class="text-bold"><c:out value="${job.id}"></c:out></td>
+													<td class="text-bold"><c:out
+															value="${stringHelper.limitWords(job.ofAccount.fullname,20)}"></c:out></td>
+													<td class="text-bold"><c:out
+															value="${stringHelper.limitWords(job.jobTitle,20)}"></c:out></td>
+													<%-- 	<td class="text-bold"><c:out value="${job.view}"></c:out></td> --%>
+													<td class="text-bold"><c:out
+															value="${dateHelper.parseToString(job.createday)}"></c:out></td>
+													<td class="text-bold"><c:out
+															value="${dateHelper.parseToString(job.finishday)}"></c:out></td>
+													<td><span class="badge bg-success"> </span></td>
+													<td class="text-bold"><a
+														href='<c:url value="admin-detail-job-post?id=${job.id}"></c:url>'
+														class="btn green mr0 btn-search-text-single btnSearchMore">
+															<i class="fa fa-ellipsis-h"></i>
+													</a></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -226,11 +158,13 @@
 				<!-- Hoverable rows end -->
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#">Prev</a></li>
+						<li class="page-item"><a class="page-link" href="#">Trang đầu</a></li>
+						<li class="page-item"><a class="page-link" href="#">&lt;</a></li>
 						<li class="page-item active"><a class="page-link" href="#">1</a></li>
 						<li class="page-item"><a class="page-link" href="#">2</a></li>
 						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						<li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+						<li class="page-item"><a class="page-link" href="#">Trang cuôi</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -238,14 +172,22 @@
 
 		</div>
 	</div>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootsnav.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/feather-icons/feather.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/app.js"></script>
-
 	<script
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/main.js"></script>
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>

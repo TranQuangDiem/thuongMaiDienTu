@@ -14,14 +14,19 @@ public class DateHelper {
 		calendar.set(Calendar.MILLISECOND, 0);
 		return calendar.getTime();
 	}
+	public static String parseToString(Date date) {
+	    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+	    String strDate = formatter.format(date);
+	    return strDate;
+	}
 
 	public static boolean isBeforeToday(Date date) {
 		Date today=getDateWithoutTimeUsingCalendar();
-		
 		return date.before(today);
 	}
 	public static void main(String[] args) throws ParseException {
-		Date finday = new SimpleDateFormat("MM/dd/yyyy").parse("01/02/2020");
-		System.out.println(isBeforeToday(finday));
+		Date finday = new SimpleDateFormat("MM/dd/yyyy").parse("10/28/2020");
+		System.out.println(parseToString(finday));
+	
 	}
 }

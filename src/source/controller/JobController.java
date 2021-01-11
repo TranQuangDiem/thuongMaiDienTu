@@ -104,7 +104,7 @@ public class JobController {
 		String query = querySELECT.toString() + queryWHERE.toString() + queryORDER.toString() + " LIMIT ?,? ";
 		ModelAndView model = new ModelAndView("jobs");
 		model.addObject("listMajors", MajorDAO.getAll());
-		model.addObject("listJobs", JobDAO.getAllJobIsOpenWithPage(page, itemInOnePage, query, jobtitle));
+		model.addObject("listJobs", JobDAO.getListJobsWithPage(page, itemInOnePage, query, jobtitle));
 		model.addObject("numberJobIsOpen", JobDAO.numberJobIsOpen());
 		/** HANDLE PAGE */
 		int totalPages = (int) Math.ceil((double) totalRecords / itemInOnePage);
