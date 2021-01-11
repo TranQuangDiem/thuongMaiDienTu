@@ -32,7 +32,7 @@
 </head>
 
 <body>
-	
+
 	<div class="Loader"></div>
 	<div class="wrapper">
 		<!-- Start Navigation -->
@@ -278,7 +278,8 @@
 												href="${pageContext.request.contextPath}/job-apply-detail?id_job=${job.id}"
 												title="job Detail">
 												<div class="advance-search-img-box">
-													<img src='data:image/jpge;base64,<c:out value="${job.img}"></c:out>'
+													<img
+														src='data:image/jpge;base64,<c:out value="${job.img}"></c:out>'
 														class="img-responsive" alt="">
 												</div>
 											</a>
@@ -355,52 +356,39 @@
 							<ul class="pagination">
 								<c:if test="${pageIndex !=1 }">
 									<li><a
-										href="<c:url value="
-															jobs?${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
-															</c:url>">Trang
+										href="<c:url value="jobs?${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}"></c:url>">Trang
 											Đầu</a></li>
 								</c:if>
 								<c:if test="${previousPage!=-1}">
 									<li><a
-										href="<c:url value="
-															jobs?page=${previousPage}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
-															</c:url>">&laquo;</a></li>
+										href="<c:url value="jobs?page=${previousPage}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}"></c:url>">&laquo;</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${startPageIndex}"
 									end="${endPageIndex}">
 									<c:if test="${i==pageIndex }">
 										<li class="active"><a
-											href="<c:url value="
-																jobs?page=${i}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
-																</c:url>"><c:out
+											href="<c:url value="jobs?page=${i}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}"></c:url>"><c:out
 													value="${i}"></c:out></a></li>
 									</c:if>
 									<c:if test="${i!=pageIndex }">
 										<li><a
-											href="<c:url value="
-																jobs?page=${i}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
-																</c:url>"><c:out
+											href="<c:url value="jobs?page=${i}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}"></c:url>"><c:out
 													value="${i}"></c:out></a></li>
 									</c:if>
 								</c:forEach>
 								<c:if test="${endPageIndex<totalPage}">
 									<li><a
-										href="<c:url value="
-															jobs?page=${endPageIndex+1}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
-															</c:url>"><i
+										href="<c:url value="jobs?page=${endPageIndex+1}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}"></c:url>"><i
 											class="fa fa-ellipsis-h"></i></a></li>
 								</c:if>
 								<c:if test="${nextPage!=-1}">
 									<li><a
-										href="<c:url value="
-															jobs?page=${nextPage}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
+										href="<c:url value="jobs?page=${nextPage}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
 															</c:url>">&raquo;</a></li>
 								</c:if>
 								<c:if test="${pageIndex !=totalPage }">
 									<li><a
-										href="<c:url value="
-															jobs?page=${totalPage}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}">
-															</c:url>">Trang
+										href="<c:url value="jobs?page=${totalPage}&${jobtitlehref}${provincehref}${majorhref}${sortbyhref}${sortorderhref}"></c:url>">Trang
 											Cuối</a></li>
 								</c:if>
 							</ul>

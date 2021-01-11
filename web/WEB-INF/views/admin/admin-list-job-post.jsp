@@ -4,6 +4,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <jsp:useBean id="dateHelper" class="customutil.DateHelper" />
 <jsp:useBean id="stringHelper" class="customutil.StringHelper" />
+<jsp:useBean id="jobModel" class="model.Job" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,7 +141,13 @@
 															value="${dateHelper.parseToString(job.createday)}"></c:out></td>
 													<td class="text-bold"><c:out
 															value="${dateHelper.parseToString(job.finishday)}"></c:out></td>
-													<td><span class="badge bg-success"> </span></td>
+													<td><c:if test="${job.status==1}">
+															<span class="badge bg-success"><c:out value="${jobModel.toStringOfStatus(job.status)}"></c:out></span>
+														</c:if> <c:if test="${job.status==2}">
+															<span class="badge bg-warning"></span>
+														</c:if> <c:if test="${job.status==3}">
+															<span class="badge bg-danger"></span>
+														</c:if></td>
 													<td class="text-bold"><a
 														href='<c:url value="admin-detail-job-post?id=${job.id}"></c:url>'
 														class="btn green mr0 btn-search-text-single btnSearchMore">
@@ -155,24 +162,45 @@
 						</div>
 					</div>
 				</div>
-				<c:if test="">
-				<!-- Hoverable rows end -->
+
 				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#">Trang đầu</a></li>
-						
-						<li class="page-item"><a class="page-link" href="#">&lt;</a></li>
-						
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						
-						<li class="page-item"><a class="page-link" href="#">&gt;</a></li>
-						
-						<li class="page-item"><a class="page-link" href="#">Trang cuôi</a></li>
-					</ul>
+					<c:if test="${totalPage>1}">
+						<ul class="pagination">
+							<c:if test="${pageIndex!=-1 }">
+								<li class="page-item"><a class="page-link"
+									href='<c:url value="admin-list-job-post"></c:url>'>Trang
+										đầu</a></li>
+							</c:if>
+							<c:if test="${previousPage!=-1}">
+								<li class="page-item"><a class="page-link"
+									href="<c:url value="admin-list-job-post?page=${pageIndex-1}"></c:url>">&lt;</a></li>
+							</c:if>
+							<c:forEach var="i" begin="${startPageIndex}"
+								end="${endPageIndex}">
+								<c:if test="${i==pageIndex }">
+									<li class="page-item active"><a class="page-link"
+										href="<c:url value="admin-list-job-post?page=${i}"></c:url>"><c:out
+												value="${i}"></c:out></a></li>
+								</c:if>
+								<c:if test="${i!=pageIndex }">
+									<li class="page-item"><a class="page-link"
+										href="<c:url value="admin-list-job-post?page=${i}"></c:url>"><c:out
+												value="${i}"></c:out></a></li>
+								</c:if>
+							</c:forEach>
+							<c:if test="${nextPage!=-1}">
+								<li class="page-item"><a class="page-link"
+									href="<c:url value="admin-list-job-post?page=${pageIndex+1}"></c:url>">&gt;</a></li>
+							</c:if>
+							<c:if test="${pageIndex !=totalPage }">
+								<li class="page-item"><a class="page-link"
+									href="<c:url value="admin-list-job-post?page=${totalPage}"></c:url>">Trang
+										cuôi</a></li>
+							</c:if>
+						</ul>
+					</c:if>
 				</nav>
-				</c:if>
+
 			</div>
 
 
