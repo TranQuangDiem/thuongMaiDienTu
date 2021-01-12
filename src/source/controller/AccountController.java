@@ -44,10 +44,12 @@ public class AccountController {
 			@RequestParam("password") String password, HttpSession session) {
 		if (!AccountDAO.checkLogin(username, password)) {
 			return "error";
+		} else if (!AccountDAO.isActive(username)) {
+			return "active";
 		} else {
 			Account acc = AccountDAO.getByUsername(username);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, acc);
-			session.setAttribute("taikhoan", acc);//cua thg diem 
+			session.setAttribute("taikhoan", acc);// cua thg diem
 			return "success";
 		}
 	}
@@ -55,9 +57,10 @@ public class AccountController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = { "fullnamenew", "emailnew",
 			"usernamenew", "passwordnew" })
 	@ResponseBody
-	public String register(HttpServletRequest request,HttpSession session, @RequestParam("fullnamenew") String fullnamenew,
-			@RequestParam("emailnew") String emailnew, @RequestParam("usernamenew") String usernamenew,
-			@RequestParam("passwordnew") String passwordnew, @RequestParam("role-new") String rolenew) {
+	public String register(HttpServletRequest request, HttpSession session,
+			@RequestParam("fullnamenew") String fullnamenew, @RequestParam("emailnew") String emailnew,
+			@RequestParam("usernamenew") String usernamenew, @RequestParam("passwordnew") String passwordnew,
+			@RequestParam("role-new") String rolenew) {
 		List<String> toCheck = new ArrayList<>();
 		toCheck.add(fullnamenew);
 		toCheck.add(emailnew);
@@ -86,9 +89,9 @@ public class AccountController {
 		} else {
 			Account account = AccountDAO.getByUsername(usernamenew);
 			request.getSession().setAttribute(CommonConst.SESSION_ACCOUNT, account);
-			//tạo ví tiền khi đăng ký tài khoản
+			// tạo ví tiền khi đăng ký tài khoản
 			ViTienDatabase.save(account.getId());
-			session.setAttribute("taikhoan", account);//cua thg diem
+			session.setAttribute("taikhoan", account);// cua thg diem
 			return "success";
 		}
 	}

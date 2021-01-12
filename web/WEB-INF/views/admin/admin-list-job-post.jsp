@@ -141,12 +141,12 @@
 															value="${dateHelper.parseToString(job.createday)}"></c:out></td>
 													<td class="text-bold"><c:out
 															value="${dateHelper.parseToString(job.finishday)}"></c:out></td>
-													<td><c:if test="${job.status==1}">
-															<span class="badge bg-success"><c:out value="${jobModel.toStringOfStatus(job.status)}"></c:out></span>
-														</c:if> <c:if test="${job.status==2}">
-															<span class="badge bg-warning"></span>
-														</c:if> <c:if test="${job.status==3}">
-															<span class="badge bg-danger"></span>
+													<td><c:if test="${job.status==1 && job.active==1}">
+															<span class="badge bg-success"><c:out value="${jobModel.toStringOfStatus(job.status,job.active)}"></c:out></span>
+														</c:if> <c:if test="${job.status==2 && job.active==1}">
+															<span class="badge bg-warning"><c:out value="${jobModel.toStringOfStatus(job.status,job.active)}"></c:out></span>
+														</c:if> <c:if test="${job.active==2}">
+															<span class="badge bg-danger"><c:out value="${jobModel.toStringOfStatus(job.status,job.active)}"></c:out></span>
 														</c:if></td>
 													<td class="text-bold"><a
 														href='<c:url value="admin-detail-job-post?id=${job.id}"></c:url>'
@@ -162,7 +162,6 @@
 						</div>
 					</div>
 				</div>
-
 				<nav aria-label="Page navigation example">
 					<c:if test="${totalPage>1}">
 						<ul class="pagination">

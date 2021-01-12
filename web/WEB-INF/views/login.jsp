@@ -175,6 +175,9 @@
 		          case "error":
 		            showErrorLogin(true, "Bạn đã sai tài khoản hoặc mật khẩu");
 		            break;
+		          case "active":
+		        	  showErrorLogin(true, "Tài khoản của bạn đã bị khóa");
+			            break;
 		          case "success":
 		            $(location).attr("href", "${pageContext.request.contextPath}");
 		            break;

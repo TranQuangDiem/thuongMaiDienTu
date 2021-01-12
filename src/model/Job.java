@@ -16,11 +16,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Job {
-	/* JOB STATUS */
+	/** JOB ISHIDE */
+	public static final int ISHIDE=1;
+	public static final int ISNOTHIDE=2;
+	/** JOB STATUS */
 	public static final int STATUS_OPEN = 1;// Đang tuyển
 	public static final int STATUS_FINISH = 2;// Hoàn thành
-	public static final int STATUS_HIDE= 3;// Ẩn
-	/* JOB TYPE */
+	/** JOB TYPE */
 	public static final int TYPE_PROJECT = 1;
 	public static final int TYPE_PARTTIME = 2;
 	public static final int TYPE_FULLTIME = 3;
@@ -41,6 +43,7 @@ public class Job {
 	private String education;
 	private int status;
 	private String city;
+	private int active; // 1 Không Ẩn //2 Ẩn
 
 	public String toStringOfJobType(int jobtype) {
 		switch (jobtype) {
@@ -56,20 +59,34 @@ public class Job {
 			return null;
 		}
 	}
-	public String toStringOfStatus(int status) {
-		switch (status) {
-		case STATUS_OPEN:
-			return "Đang tuyển";
-		case STATUS_FINISH:
-			return "Hoàn thành";
-		case STATUS_HIDE:
-			return "Ẩn";
+
+	public String toStringOfStatus(int status,int active) {
+		if (active == ISNOTHIDE) {
+			return "Bị Ẩn";
+		} else {
+			switch (status) {
+			case STATUS_OPEN:
+				return "Đang tuyển";
+			case STATUS_FINISH:
+				return "Hoàn thành";
+			default:
+				return null;
+			}
+		}
+	}
+	public String toStringTypeEng() {
+		switch (this.jobType) {
+		case TYPE_PROJECT:
+			return "PROJECT";
+		case TYPE_PARTTIME:
+			return "PARTTIME";
+		case TYPE_FULLTIME:
+			return "FULLTIME";
+		case TYPE_CONTEST:
+			return "CONTEST";
 		default:
 			return null;
 		}
 	}
-	
-	
-	
 
 }
