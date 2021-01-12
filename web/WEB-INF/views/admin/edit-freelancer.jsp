@@ -69,7 +69,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Tỉnh/Thành phố</label>
-                                            <select class="form-select" disabled="disabled" id="disabledSelect" name="tinh-column">
+                                            <select class="form-select" disabled="disabled" id="disabledSelect" name="address.province">
                                             <option>Hồ Chí Minh</option>
                                         </select>
                                         </div>
@@ -77,7 +77,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Quận/Huyện</label>
-                                            <select class="form-select" disabled="disabled" id="disabledSelect" name="quan-column">
+                                            <select class="form-select" disabled="disabled" id="disabledSelect" name="address.district">
                                             <option>Thủ Đức</option>
                                         </select>
                                         </div>
@@ -85,7 +85,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Xã/Phường</label>
-                                            <select class="form-select" disabled="disabled" id="disabledSelect" name="phuong-column">
+                                            <select class="form-select" disabled="disabled" id="disabledSelect" name="address.ward">
                                             <option>Linh Trung</option>
                                         </select>
                                         </div>
@@ -101,9 +101,9 @@
                                         <div class="form-group">
                                             <label for="first-name-column">Mạng xã hội</label>
                                             <div class="social" id="first-name-column" style="font-size: 25px" name="social-column">
-                                            <a href="" style="margin-right: 15px"><i class="fa fa-facebook-f"></i></a>
-                                            <a href="" style="margin-right: 15px"><i class="fa fa-twitter"></i></a>
-                                            <a href="" style="margin-right: 15px"><i class="fa fa-linkedin"></i></a>
+                                            <a href="${acc.facebook}" style="margin-right: 15px"><i class="fa fa-facebook-f"></i></a>
+                                            <a href="${acc.twitter}" style="margin-right: 15px"><i class="fa fa-twitter"></i></a>
+                                            <a href="${acc.linkedin}" style="margin-right: 15px"><i class="fa fa-linkedin"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -117,18 +117,19 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Quyền hạn</label>
-                                            <select class="form-select" id="first-name-column" name="quyenHan-column">
-                                            <option>Admin</option>
-                                            <option>Người dùng</option>
+                                            <select class="form-select" id="first-name-column" name="access">
+                                            <option value="3">Admin</option>
+                                            <option value="-1">Người dùng</option>
+                                            
                                         </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Role</label>
-                                            <select class="form-select" id="first-name-column" name="role-column">
-                                            <option>Nhà tuyển dụng</option>
-                                            <option>Freelancer</option>
+                                            <select class="form-select" id="first-name-column" name="role">
+                                            <option  value="1">Nhà tuyển dụng</option>
+                                            <option  value="2">Freelancer</option>
                                         </select>
                                         </div>
                                     </div>
