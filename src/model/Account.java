@@ -38,6 +38,7 @@ public class Account {
 	private BufferedImage background;
 	private String linkedin;
 	private int access;
+	private boolean active;
 	
 	private boolean ready;
 	public Account() {
@@ -52,6 +53,22 @@ public class Account {
 		this.email = email;
 		this.phone = phone;
 		this.soluongbaidang = soluongbaidang;
+	}
+	
+
+
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
+	public void setAccess(int access) {
+		this.access = access;
 	}
 
 
@@ -178,7 +195,6 @@ public class Account {
 	}
 
 	public void setRole(int role) {
-		this.access=AccessHelper.takeAccess(role);
 		this.role = role;
 	}
 

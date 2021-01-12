@@ -6,9 +6,10 @@
 
 
 <script type="text/javascript" charset="UTF-8">
+
 <!-- Nav choose and clear -->
 $('li.sidebar-item').removeClass('active');
-item1=$( 'a[href*="${pageContext.request.contextPath}/admin-manager-freelancer"]');
+item1=$( 'a[href*="${pageContext.request.contextPath}/admin-manager-employer"]');
 for(var i=0;i<10;i++){
 	item1=item1.parent();
 	if(item1.hasClass('sidebar-item')){
@@ -16,6 +17,7 @@ for(var i=0;i<10;i++){
 		break;
 	};
 };
+
 
 
 <!-- access rolr -->
@@ -27,7 +29,7 @@ $("input[name='block']").val(${!acc.active});
 $("input[name='block-2']").val(${!acc.active});
 $("input[name='block']").prop('checked',${!acc.active});
 $("input[name='block']").on( "click", function(e) {
-//e.preventDefault();
+	//e.preventDefault();
   var curr = $("input[name='block']").val();
   if(curr=='true'){
 	  $("input[name='block']").val(false);
@@ -39,10 +41,6 @@ $("input[name='block']").on( "click", function(e) {
 	  $("input[name='block-2']").val(true);
   }
   console.log($('#form11').serialize());
-  
-  
- 
 });
+
 </script>
-
-

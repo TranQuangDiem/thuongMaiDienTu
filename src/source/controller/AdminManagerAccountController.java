@@ -2,6 +2,7 @@ package source.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -78,7 +79,7 @@ public class AdminManagerAccountController {
 		if (acc == null) {
 			model.setViewName("redirect:/admin-index");
 		} else {
-			model.addObject("account", acc);
+			model.addObject("acc", acc);
 		}
 		return model;
 	}
@@ -90,9 +91,23 @@ public class AdminManagerAccountController {
 		if (acc == null) {
 			model.setViewName("redirect:/admin-index");
 		} else {
-			model.addObject("account", acc);
+			model.addObject("acc", acc);
 		}
 		return model;
+	}
+	@RequestMapping(value = "/admin-update-edit-freelancer", method=RequestMethod.POST)
+	public String updateFreelancer(@RequestParam(value = "id") int id,@RequestParam(value = "block-2") boolean block,@RequestParam(value = "access") int access,@RequestParam(value = "role") int role) {
+		role=role|access;
+		
+		AccountDAO.updateEditAccount(id, role, !block);
+		return "redirect:/admin-edit-freelancer?id="+id;
+	}
+	@RequestMapping(value = "/admin-update-edit-employer", method=RequestMethod.POST)
+	public String updateEmployer(@RequestParam(value = "id") int id,@RequestParam(value = "block-2") boolean block,@RequestParam(value = "access") int access,@RequestParam(value = "role") int role) {
+		role=role|access;
+		
+		AccountDAO.updateEditAccount(id, role, !block);
+		return "redirect:/admin-edit-employer?id="+id;
 	}
 	
 }

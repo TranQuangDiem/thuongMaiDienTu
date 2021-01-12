@@ -315,11 +315,9 @@
 		<put-attribute name="main-content"
 			value="/WEB-INF/views/admin/edit-freelancer.jsp"></put-attribute>
 
-		<put-attribute name="jquerry"
-			value="/WEB-INF/views/admin/jquerry/jquerry-manager-employer.jsp"></put-attribute>
-		<put-list-attribute name="stylesheets"
-			inherit="true">
-
+		<put-attribute name="jquerry" 
+		value="/WEB-INF/views/admin/jquerry/jquerry-edit-freelancer.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets"  inherit="true">
 			<add-attribute
 				value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 			<add-attribute
@@ -337,9 +335,8 @@
 			value="/WEB-INF/views/admin/edit-employer.jsp"></put-attribute>
 
 		<put-attribute name="jquerry"
-			value="/WEB-INF/views/admin/jquerry/jquerry-manager-employer.jsp"></put-attribute>
-		<put-list-attribute name="stylesheets"
-			inherit="true">
+		value="/WEB-INF/views/admin/jquerry/jquerry-edit-employer.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets"  inherit="true">
 
 			<add-attribute
 				value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />

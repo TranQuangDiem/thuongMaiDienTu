@@ -262,8 +262,11 @@ public class AccountDAO {
 	}
 	public static int getTotalRecordsEmployer() {
 		try {
-			String query = "SELECT COUNT(id) FROM account where role=  "+CommonConst.LEVEL_EMPLOYER;
+			String query = "SELECT COUNT(id) FROM account where role in (?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			
+			ps.setInt(1, CommonConst.LEVEL_EMPLOYER);
+			ps.setInt(2, CommonConst.LEVEL_EMPLOYER|CommonConst.LEVEL_ADMIN);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			int result = rs.getInt(1);
@@ -276,8 +279,10 @@ public class AccountDAO {
 	}
 	public static int getTotalRecordsFreelancer() {
 		try {
-			String query = "SELECT COUNT(id) FROM account  where role=  "+CommonConst.LEVEL_FREELANCER;
+			String query = "SELECT COUNT(id) FROM account  where role in (?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setInt(1, CommonConst.LEVEL_FREELANCER);
+			ps.setInt(2, CommonConst.LEVEL_FREELANCER|CommonConst.LEVEL_ADMIN);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			int result = rs.getInt(1);
@@ -341,32 +346,32 @@ public class AccountDAO {
 		}
 	}
 	public static List<Account> getListAccountsEmployerWithPage(int start, int itemInOnePage, String jobtitle) {
-		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account where role ="+CommonConst.LEVEL_EMPLOYER+" LIMIT ?,?";
+		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account where role in (?,?) LIMIT ?,?";
 		try {
 
 			List<Account> listAccounts = new ArrayList<Account>();
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setInt(1, CommonConst.LEVEL_EMPLOYER);
+			ps.setInt(2, CommonConst.LEVEL_EMPLOYER|CommonConst.LEVEL_ADMIN);
 			if (!StringHelper.isStringNull(jobtitle)) {
-				ps.setString(1, "%" + jobtitle + "%");
+				ps.setString(3, "%" + jobtitle + "%");
 				if (start == 1)
-					ps.setInt(2, 0);
+					ps.setInt(4, 0);
 				else
-					ps.setInt(2, ((start - 1) * itemInOnePage + 1) - 1);
-				ps.setInt(3, itemInOnePage);
+					ps.setInt(4, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(5, itemInOnePage);
 
 			} else {
 				if (start == 1)
-					ps.setInt(1, 0);
+					ps.setInt(3, 0);
 				else
-					ps.setInt(1, ((start - 1) * itemInOnePage + 1) - 1);
-				ps.setInt(2, itemInOnePage);
+					ps.setInt(3, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(4, itemInOnePage);
 
 			}
 
 			ResultSet rs = ps.executeQuery();
-			if (!StringHelper.isStringNull(jobtitle)) {
-				ps.setString(1, "%" + jobtitle + "%");
-			}
+			
 			while (rs.next()) {
 				Account acc = new Account();
 				
@@ -393,32 +398,32 @@ public class AccountDAO {
 		}
 	}
 	public static List<Account> getListAccountsFreelancerWithPage(int start, int itemInOnePage, String jobtitle) {
-		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account where role ="+CommonConst.LEVEL_FREELANCER+" LIMIT ?,?";
+		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account where role in (?,?) LIMIT ?,?";
 		try {
 
 			List<Account> listAccounts = new ArrayList<Account>();
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setInt(1, CommonConst.LEVEL_FREELANCER);
+			ps.setInt(2, CommonConst.LEVEL_FREELANCER|CommonConst.LEVEL_ADMIN);
 			if (!StringHelper.isStringNull(jobtitle)) {
-				ps.setString(1, "%" + jobtitle + "%");
+				ps.setString(3, "%" + jobtitle + "%");
 				if (start == 1)
-					ps.setInt(2, 0);
+					ps.setInt(4, 0);
 				else
-					ps.setInt(2, ((start - 1) * itemInOnePage + 1) - 1);
-				ps.setInt(3, itemInOnePage);
+					ps.setInt(4, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(5, itemInOnePage);
 
 			} else {
 				if (start == 1)
-					ps.setInt(1, 0);
+					ps.setInt(3, 0);
 				else
-					ps.setInt(1, ((start - 1) * itemInOnePage + 1) - 1);
-				ps.setInt(2, itemInOnePage);
+					ps.setInt(3, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(4, itemInOnePage);
 
 			}
 
 			ResultSet rs = ps.executeQuery();
-			if (!StringHelper.isStringNull(jobtitle)) {
-				ps.setString(1, "%" + jobtitle + "%");
-			}
+			
 			while (rs.next()) {
 				Account acc = new Account();
 				
@@ -443,6 +448,24 @@ public class AccountDAO {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	public static boolean updateEditAccount(int id, int role, boolean active) {
+		int rs=0;
+		try {
+			String query = "update account set role=?, active=? WHERE id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setInt(1, role);
+			ps.setInt(2, active?1:0);
+			ps.setInt(3, id);
+			
+			rs = ps.executeUpdate();
+		
+		} catch (SQLException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		
+		return rs==1;
 	}
 	public static void main(String[] args) {
 		System.out.println(getAllTotalRecords());
