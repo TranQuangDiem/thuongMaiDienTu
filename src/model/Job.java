@@ -74,5 +74,19 @@ public class Job {
 			}
 		}
 	}
+	public String toStringTypeEng() {
+		switch (this.jobType) {
+		case TYPE_PROJECT:
+			return "PROJECT";
+		case TYPE_PARTTIME:
+			return "PARTTIME";
+		case TYPE_FULLTIME:
+			return "FULLTIME";
+		case TYPE_CONTEST:
+			return "CONTEST";
+		default:
+			return null;
+		}
+	}
 
 }

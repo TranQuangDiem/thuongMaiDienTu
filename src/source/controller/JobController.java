@@ -32,7 +32,6 @@ import database.MajorDAO;
 import dataform.FormApplyJob;
 import dataform.FormCreateJob;
 import model.Account;
-import model.Job;
 
 @Controller
 public class JobController {
@@ -128,8 +127,8 @@ public class JobController {
 		model.addObject("sortby", sortby == 0 ? "" : sortby);
 		model.addObject("sortorder", sortorder == 0 ? "" : sortorder);
 		/** DEBUG */
-		System.out.println(totalRecords);
-		System.out.println(query);
+//		System.out.println(totalRecords);
+//		System.out.println(query);
 		return model;
 
 	}
