@@ -141,10 +141,7 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
 	</definition>
-	<definition name="admin/admin-list-job-post" template="/WEB-INF/views/admin/admin-list-job-post.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/fragment/admin-header.jsp"></put-attribute>
-	</definition>
+	
 	<definition name="admin/admin-detail-job-post" template="/WEB-INF/views/admin/admin-detail-job-post.jsp">
 		<put-attribute name="header"
 			value="/WEB-INF/views/fragment/admin-header.jsp"></put-attribute>
@@ -236,6 +233,21 @@
 
 			<add-attribute value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 			<add-attribute value="/resources/ui-admin/assets/css/quanLyNTD.css" />
+		</put-list-attribute>
+		<put-list-attribute name="javascripts" inherit="true">
+			
+		</put-list-attribute>
+	</definition>
+	<definition name="admin/admin-list-job-post" extends="admin/layout">
+		
+		<put-attribute name="main-content"
+			value="/WEB-INF/views/admin/list-job-post.jsp"></put-attribute>
+		
+		<put-attribute name="jquerry"
+		value="/WEB-INF/views/admin/jquerry/jquerry.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets"  inherit="true">
+
+			
 		</put-list-attribute>
 		<put-list-attribute name="javascripts" inherit="true">
 			
