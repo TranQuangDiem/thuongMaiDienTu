@@ -135,7 +135,7 @@
 												<div class="form-group">
 													<label for="first-name-column">Số lượng tuyển</label> <input
 														type="text" id="first-name-column" class="form-control"
-														placeholder="<c:out value="${job.soluongtuyen}"></c:out>"
+														placeholder="<c:out value=" ${job.soluongtuyen}"></c:out>"
 														name="email-column" disabled="trending-up">
 												</div>
 											</div>
@@ -199,7 +199,7 @@
 												</div>
 											</div>
 
-											<div class="col-md-6 col-12" >
+											<div class="col-md-6 col-12">
 												<div class="form-group">
 													<label for="first-name-column">Ảnh</label> <img
 														class="img-fluid" alt=""
@@ -227,19 +227,18 @@
 												<div class="form-group">
 													<label for="first-name-column">Trạng thái</label> <input
 														type="text" id="first-name-column" class="form-control"
-														placeholder="<c:out value="${jobModel.toStringOfStatus(job.status)}">
+														placeholder="<c:out value="${jobModel.toStringOfStatus(job.status,job.active)}">
 																	</c:out>"
 														name="diaChi-column" disabled="trending-up">
 												</div>
 											</div>
-											<div id="show-result" class="col-md-12 col-12 text-center">
-												Sofm</div>
+											<div id="show-result" class="col-md-12 col-12 text-center"></div>
 											<div class="col-md-4 col-12"></div>
 											<div class="col-12 d-flex justify-content-end">
 												<div class="form-group checkbox-1 mr-3 mt-3">
 													<label for="first-name-column">Ẩn</label> <label
 														class="checkbox-2" name="block-column"> <c:choose>
-															<c:when test="${job.status==3}">
+															<c:when test="${job.active==2}">
 																<input checked name="isHide" type="checkbox">
 															</c:when>
 															<c:otherwise>
@@ -280,54 +279,62 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/main.js"></script>
 	<script type="text/javascript">
-		var showResult = function(isErr, message) {
-			const showerror = $("#show-result");
-			if (showerror.hasClass("text-danger"))
-				showerror.removeClass("text-danger");
-			if (showerror.hasClass("text-success"))
-				showerror.removeClass("text-success");
-			if (isErr == true)
-				showerror.addClass("text-danger");
-			else
-				showerror.addClass("text-success");
-			showerror.hide().text(message).fadeIn("slow");
-		};
+		$(document)
+				.ready(
+						function() {
+							const urlParams = new URLSearchParams(
+									window.location.search);
+							const id = urlParams.get('id');
+							console.log(id);
+							var showResult = function(isErr, message) {
+								const showerror = $("#show-result");
+								if (showerror.hasClass("text-danger"))
+									showerror.removeClass("text-danger");
+								if (showerror.hasClass("text-success"))
+									showerror.removeClass("text-success");
+								if (isErr == true)
+									showerror.addClass("text-danger");
+								else
+									showerror.addClass("text-success");
+								showerror.hide().text(message).fadeIn("slow");
+							};
 
-		$("#btn-save")
-				.click(
-						function(e) {
-							e.preventDefault();
-							$
-									.ajax({
-										type : "POST",
-										url : "${pageContext.request.contextPath}/admin-hide-post",
-										data : $("#form-login").serialize(),
-										success : function(res) {
-											switch (res) {
-											case "error":
-												showErrorLogin(true,
-														"Bạn đã sai tài khoản hoặc mật khẩu");
-												break;
-											case "success":
-												$(location)
-														.attr("href",
-																"${pageContext.request.contextPath}");
-												break;
-											default:
-												showErrorLogin(true,
-														"Đã có lỗi xảy ra");
-												break;
-											}
-										},
-									});
-						});
+							$("#btn-save")
+									.click(
+											function(e) {
+												var isHide = $("input[name='isHide']")[0].checked;
+												console.log(isHide);
+												e.preventDefault();
+												$
+														.ajax({
+															type : "POST",
+															url : "${pageContext.request.contextPath}/admin-hide-post",
+															data : {
+																'id' : id,
+																isHide : isHide
+															},
+															success : function(
+																	res) {
+																if (res
+																		.includes('ok')) {
+																	showResult(
+																			false,
+																			"Lưu thành công");
+																} else {
+																	showResult(
+																			true,
+																			"Đã có lỗi xảy ra với hệ thống");
+																}
+															},
+														});
+											});
 
-		$("#btn-back")
-				.click(
-						function(e) {
-							e.preventDefault();
-							window.location.href = '${pageContext.request.contextPath}/admin-list-job-post';
-
+							$("#btn-back")
+									.click(
+											function(e) {
+												e.preventDefault();
+												window.location.href = '${pageContext.request.contextPath}/admin-list-job-post';
+											});
 						});
 	</script>
 </body>

@@ -1,5 +1,6 @@
 package database;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ import model.Job;
 public class JobDAO {
 	public static Job getJobById(int id) {
 		try {
-			String query="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`  FROM job JOIN account ON job.idAccount=account.id WHERE job.id=?";
+			String query="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`,job.active  FROM job JOIN account ON job.idAccount=account.id WHERE job.id=?";
 			PreparedStatement ps= ConnectionDB.prepareStatement(query);
 			ps.setInt(1, id);
 			ResultSet rs=ps.executeQuery();
@@ -49,6 +50,7 @@ public class JobDAO {
 				acc.setFullname(rs.getString(17));
 				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
+				job.setActive(rs.getInt(19));
 				return job;
 			}
 		} catch (Exception e) {
@@ -56,7 +58,21 @@ public class JobDAO {
 			return null;
 		}
 	}
-
+	public static boolean setHidePost(int id ,boolean isHide) {
+		try {
+			String query="UPDATE job SET job.active=? WHERE job.id=?";
+			PreparedStatement ps= ConnectionDB.prepareStatement(query);
+			if (isHide) ps.setInt(1, 2);
+			else ps.setInt(1, 1);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+			ps.close();
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	public static boolean canPostJob(int idAcc) {
 		HoaDon bill = HoaDonDatabase.findLatestEBill(idAcc);
 		Date today = DateHelper.getDateWithoutTimeUsingCalendar();
@@ -107,7 +123,7 @@ public class JobDAO {
 
 	public static int numberJobIsOpen() {
 		try {
-			String query = "SELECT COUNT(*) FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE())";
+			String query = "SELECT COUNT(*) FROM job WHERE job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
@@ -188,6 +204,7 @@ public class JobDAO {
 				acc.setFullname(rs.getString(17));
 				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
+				job.setActive(rs.getInt(19));
 				listJobs.add(job);
 			}
 			ps.close();
@@ -250,7 +267,7 @@ public class JobDAO {
 	public static int insert(FormCreateJob form, int idAcc) {
 		try {
 
-			String query = "INSERT INTO job (job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,job.id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO job (job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,job.id,job.active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			// set
 			Date finday = new SimpleDateFormat("MM/dd/yyyy").parse(form.getFinishday());
@@ -271,6 +288,7 @@ public class JobDAO {
 			ps.setString(14, form.getLs_province());
 			ps.setInt(15, form.getJobtype());
 			ps.setInt(16, id);
+			ps.setInt(17, 1);
 			//
 			int row = ps.executeUpdate();
 			if (row != 1) {
@@ -315,7 +333,6 @@ public class JobDAO {
 			ps.setInt(2, idAccount);
 			ResultSet rs =ps.executeQuery();
 			return rs.next();
-		
 	}
 	//xóa job đã lưu
 	public static void deleteJobSave(int idJob,int idAccount) {
@@ -325,7 +342,6 @@ public class JobDAO {
 			ps.setInt(1, idJob);
 			ps.setInt(2, idAccount);
 			ps.executeUpdate();
-			
 		}catch (Exception e) {
 			// TODO: handle exception
 		}

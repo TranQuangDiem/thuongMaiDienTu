@@ -43,7 +43,7 @@
 					<div class="col-md-12 col-sm-12 banner-text">
 						<h1>7,000+ Browse Jobs</h1>
 
-						<form class="form-horizontal">
+						<form style="visibility: hidden;"  class="form-horizontal">
 							<div class="col-md-4 no-padd">
 								<div class="input-group">
 									<input type="text" class="form-control right-bor" id="joblist"

@@ -147,7 +147,7 @@ public class AccountDAO {
 	public static boolean addAccountByRegister(String username, String password, String fullname, String emailnew,
 			int rolenew) {
 		try {
-			String sql = "INSERT INTO account (account.username,account.`password`,account.fullname,account.email,account.role,account.ready) VALUES (?,MD5(?),?,?,?,?)";
+			String sql = "INSERT INTO account (account.username,account.`password`,account.fullname,account.email,account.role,account.ready,account.active) VALUES (?,MD5(?),?,?,?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setString(1, username);
 			ps.setString(2, password);
@@ -155,6 +155,7 @@ public class AccountDAO {
 			ps.setString(4, emailnew);
 			ps.setInt(5, rolenew);
 			ps.setInt(6, 1);
+			ps.setInt(7,1);
 			return ps.executeUpdate() == 1;
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -183,6 +184,18 @@ public class AccountDAO {
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ps.setString(1, username);
 			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			return rs.next();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public static boolean isActive(String username) {
+		try {
+			String query = "SELECT account.id FROM account WHERE account.username=? AND account.active=1";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			return rs.next();
 		} catch (SQLException | ClassNotFoundException e) {
