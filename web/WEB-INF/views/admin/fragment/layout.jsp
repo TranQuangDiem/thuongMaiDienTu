@@ -58,7 +58,7 @@
 								<li><a href="quanLyGoiBaiDang.html">Gói Bài Đăng</a></li>
 							</ul></li>
 						<li class="sidebar-item "><a
-							href='<c:url value="admin-list-major"></c:url>'
+							href="${pageContext.request.contextPath}/admin-list-major"
 							class='sidebar-link'> <i data-feather="grid" width="20"></i>
 								<span>Quản Lý Chuyên Môn</span>
 						</a></li>

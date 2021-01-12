@@ -495,7 +495,6 @@
 					if (!isNull(jobtitle) || !isNull(province) || !isNull(major)) {
 						window.location.href = "${pageContext.request.contextPath}/jobs?"+createURLForFormCategory().toString();
 					}
-
 				});
 			});
 		</script>
