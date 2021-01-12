@@ -6,8 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import config.CommonConst;
+import customutil.FileHelper;
+import customutil.StringHelper;
 import model.Account;
 import model.Evaluate;
+import model.Job;
 
 public class AccountDAO {
 
@@ -229,5 +233,207 @@ public class AccountDAO {
 		}
 
 	}
+	public static int getAllTotalRecords() {
+		try {
+			String query = "SELECT COUNT(id) FROM account ";
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int result = rs.getInt(1);
+			ps.close();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	public static int getTotalRecordsEmployer() {
+		try {
+			String query = "SELECT COUNT(id) FROM account where role=  "+CommonConst.LEVEL_EMPLOYER;
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int result = rs.getInt(1);
+			ps.close();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	public static int getTotalRecordsFreelancer() {
+		try {
+			String query = "SELECT COUNT(id) FROM account  where role=  "+CommonConst.LEVEL_FREELANCER;
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int result = rs.getInt(1);
+			ps.close();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	public static List<Account> getListAccountsWithPage(int start, int itemInOnePage, String jobtitle) {
+		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account LIMIT ?,?";
+		try {
+
+			List<Account> listAccounts = new ArrayList<Account>();
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			if (!StringHelper.isStringNull(jobtitle)) {
+				ps.setString(1, "%" + jobtitle + "%");
+				if (start == 1)
+					ps.setInt(2, 0);
+				else
+					ps.setInt(2, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(3, itemInOnePage);
+
+			} else {
+				if (start == 1)
+					ps.setInt(1, 0);
+				else
+					ps.setInt(1, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(2, itemInOnePage);
+
+			}
+
+			ResultSet rs = ps.executeQuery();
+			if (!StringHelper.isStringNull(jobtitle)) {
+				ps.setString(1, "%" + jobtitle + "%");
+			}
+			while (rs.next()) {
+				Account acc = new Account();
+				
+				// Account
+				acc.setId(rs.getInt(1));
+				acc.setUsername(rs.getString(2));
+				acc.setEmail(rs.getString(3));
+				acc.setCountEvaluate(rs.getInt(4));
+				acc.setCountJob(rs.getInt(5));
+				acc.setStar(rs.getInt(6));
+				acc.setCountJobFinish(rs.getInt(7));
+			
+				
+				listAccounts.add(acc);
+			}
+			ps.close();
+			return listAccounts;
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static List<Account> getListAccountsEmployerWithPage(int start, int itemInOnePage, String jobtitle) {
+		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account where role ="+CommonConst.LEVEL_EMPLOYER+" LIMIT ?,?";
+		try {
+
+			List<Account> listAccounts = new ArrayList<Account>();
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			if (!StringHelper.isStringNull(jobtitle)) {
+				ps.setString(1, "%" + jobtitle + "%");
+				if (start == 1)
+					ps.setInt(2, 0);
+				else
+					ps.setInt(2, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(3, itemInOnePage);
+
+			} else {
+				if (start == 1)
+					ps.setInt(1, 0);
+				else
+					ps.setInt(1, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(2, itemInOnePage);
+
+			}
+
+			ResultSet rs = ps.executeQuery();
+			if (!StringHelper.isStringNull(jobtitle)) {
+				ps.setString(1, "%" + jobtitle + "%");
+			}
+			while (rs.next()) {
+				Account acc = new Account();
+				
+				// Account
+				acc.setId(rs.getInt(1));
+				acc.setUsername(rs.getString(2));
+				acc.setEmail(rs.getString(3));
+				acc.setCountEvaluate(rs.getInt(4));
+				acc.setCountJob(rs.getInt(5));
+				acc.setStar(rs.getInt(6));
+				acc.setCountJobFinish(rs.getInt(7));
+			
+				
+				listAccounts.add(acc);
+			}
+			ps.close();
+			return listAccounts;
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static List<Account> getListAccountsFreelancerWithPage(int start, int itemInOnePage, String jobtitle) {
+		String query = "SELECT id,username,email,count_evaluate,count_job,star,count_job_finish  FROM account where role ="+CommonConst.LEVEL_FREELANCER+" LIMIT ?,?";
+		try {
+
+			List<Account> listAccounts = new ArrayList<Account>();
+			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			if (!StringHelper.isStringNull(jobtitle)) {
+				ps.setString(1, "%" + jobtitle + "%");
+				if (start == 1)
+					ps.setInt(2, 0);
+				else
+					ps.setInt(2, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(3, itemInOnePage);
+
+			} else {
+				if (start == 1)
+					ps.setInt(1, 0);
+				else
+					ps.setInt(1, ((start - 1) * itemInOnePage + 1) - 1);
+				ps.setInt(2, itemInOnePage);
+
+			}
+
+			ResultSet rs = ps.executeQuery();
+			if (!StringHelper.isStringNull(jobtitle)) {
+				ps.setString(1, "%" + jobtitle + "%");
+			}
+			while (rs.next()) {
+				Account acc = new Account();
+				
+				// Account
+				acc.setId(rs.getInt(1));
+				acc.setUsername(rs.getString(2));
+				acc.setEmail(rs.getString(3));
+				acc.setCountEvaluate(rs.getInt(4));
+				acc.setCountJob(rs.getInt(5));
+				acc.setStar(rs.getInt(6));
+				acc.setCountJobFinish(rs.getInt(7));
+			
+				
+				listAccounts.add(acc);
+			}
+			ps.close();
+			return listAccounts;
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static void main(String[] args) {
+		System.out.println(getAllTotalRecords());
+	}
+
 
 }
