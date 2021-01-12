@@ -36,33 +36,34 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form">
+                            <form id="form11" class="form" action="${pageContext.request.contextPath}/admin-update-edit-freelancer" method="post">
+                                <input type="hidden" name="id" value="${acc.id}"/>
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Họ và tên</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="Nguyễn Văn A"
+                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.fullname }"
                                                 name="tenCongTy-column" disabled="trending-up">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Chuyên ngành</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="Phát triển phần mềm"
+                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.major }"
                                                 name="chuyenNganh-column" disabled="trending-up">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Email</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="nguyenvana@gmail.com"
+                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.email }"
                                                 name="email-column" disabled="trending-up">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Điện thoại</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="+84012345678"
+                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.phone }"
                                                 name="sDT-column" disabled="trending-up">
                                         </div>
                                     </div>
@@ -70,7 +71,7 @@
                                         <div class="form-group">
                                             <label for="first-name-column">Tỉnh/Thành phố</label>
                                             <select class="form-select" disabled="disabled" id="disabledSelect" name="address.province">
-                                            <option>Hồ Chí Minh</option>
+                                            <option>${acc.address.province }</option>
                                         </select>
                                         </div>
                                     </div>
@@ -78,7 +79,7 @@
                                         <div class="form-group">
                                             <label for="first-name-column">Quận/Huyện</label>
                                             <select class="form-select" disabled="disabled" id="disabledSelect" name="address.district">
-                                            <option>Thủ Đức</option>
+                                            <option>${acc.address.district }</option>
                                         </select>
                                         </div>
                                     </div>
@@ -86,14 +87,14 @@
                                         <div class="form-group">
                                             <label for="first-name-column">Xã/Phường</label>
                                             <select class="form-select" disabled="disabled" id="disabledSelect" name="address.ward">
-                                            <option>Linh Trung</option>
+                                            <option>${acc.address.ward }</option>
                                         </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Địa chỉ</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
+                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.address.detailAddress }"
                                                 name="diaChi-column" disabled="trending-up">
                                         </div>
                                     </div>
@@ -110,7 +111,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column">Mô tả</label>
-                                            <textarea type="text" id="first-name-column" class="form-control" placeholder="Khu phố 6, phường Linh Trung, quận Thủ Đức, TP HCM"
+                                            <textarea type="text" id="first-name-column" class="form-control" placeholder="${acc.about }"
                                                 name="info-column" disabled="trending-up" ></textarea>
                                         </div>
                                     </div>
@@ -118,8 +119,9 @@
                                         <div class="form-group">
                                             <label for="first-name-column">Quyền hạn</label>
                                             <select class="form-select" id="first-name-column" name="access">
-                                            <option value="3">Admin</option>
-                                            <option value="-1">Người dùng</option>
+                                            <option value="0">Người dùng</option>
+                                            <option value="4">Admin</option>
+                                            
                                             
                                         </select>
                                         </div>
@@ -136,8 +138,9 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group checkbox-1">
                                             <label for="first-name-column">Block</label>
-                                            <label class="checkbox-2" name="block-column">
-                                                <input type="checkbox">
+                                            <label class="checkbox-2" >
+                                                <input type="hidden" name="block-2" value="false" />
+                                                <input type="checkbox" name="block" checked="true" value="false" />
                                                 <span class="background"></span>
                                                 <span class="mask"></span>
                                                 </label>
@@ -145,7 +148,7 @@
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary mr-1 mb-1">Save</button>
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1">Exit</button>
+                                        <a href="#"><button " class="btn btn-primary mr-1 mb-1">Exit</button></a>
                                     </div>
                                 </div>
                             </form>

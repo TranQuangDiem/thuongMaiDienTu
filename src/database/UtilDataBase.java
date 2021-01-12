@@ -19,7 +19,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star,about,email,phone, role, name, major, twitter, facebook, website, background, ready,count_job,count_evaluate,count_job_finish from account where id=?";
+			String sql = "select username, password, fullname, image, star,about,email,phone, role, name, major, twitter, facebook, website, background, ready,count_job,count_evaluate,count_job_finish,active from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -47,6 +47,7 @@ public class UtilDataBase {
 				rs.setCountJob(rsSet.getInt(17));
 				rs.setCountEvaluate(rsSet.getInt(18));
 				rs.setCountJobFinish(rsSet.getInt(19));
+				rs.setActive(rsSet.getInt(20)==1);
 				// System.out.println(rs.toString());
 
 			}
