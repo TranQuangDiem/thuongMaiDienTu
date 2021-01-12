@@ -71,7 +71,8 @@
 	<!-- Hoverable rows end -->
 	<nav aria-label="Page navigation example">
 		<c:if test="${totalPage>1}">
-			<ul class="pagination">
+			<ul class="pagination" style="left: 40%;
+    position: relative;">
 				<c:if test="${pageIndex!=-1 }">
 					<li class="page-item"><a class="page-link"
 						href='<c:url value="admin-manager-freelancer"></c:url>'>Trang
