@@ -83,7 +83,76 @@ public class UtilDataBase {
 
 		return rs;
 	}
-
+	public static List<Pricing> finAllPricingPage() {
+		List<Pricing> danhsachgoi = new ArrayList<Pricing>();
+		try {
+			String sql = "select * from goibaidang";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Pricing p = new Pricing(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6));
+				danhsachgoi.add(p);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return danhsachgoi;
+	}
+	public static int getAllTotalRecords() {
+		try {
+			String sql = "select count(*) from goibaidang ";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int result = rs.getInt(1);
+			ps.close();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	public static void savePricing(Pricing pricing) {
+		try {
+			String sql = "insert into goibaidang (tengoi,gia,soluongbaidang,thoihan,mota) values(?,?,?,?,?)";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setString(1, pricing.getTengoi());
+			ps.setInt(2, pricing.getGia());
+			ps.setInt(3, pricing.getSoluongbaidang());
+			ps.setInt(4, pricing.getThoihan());
+			ps.setString(5, pricing.getMota());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	public static void deletePricing(int id) {
+		try {
+			String sql = "delete from goibaidang where id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	public static void updatePricing(Pricing pricing) {
+		try {
+			String sql = "update goibaidang set tengoi=?,gia=?,soluongbaidang=?,thoihan=?,mota=? where id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setString(1, pricing.getTengoi());
+			ps.setInt(2, pricing.getGia());
+			ps.setInt(3, pricing.getSoluongbaidang());
+			ps.setInt(4, pricing.getThoihan());
+			ps.setString(5, pricing.getMota());
+			ps.setInt(6, pricing.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	public static List<Pricing> getPricing(boolean kiemtra) {
 		List<Pricing> danhsachgoi = new ArrayList<Pricing>();
 		try {
