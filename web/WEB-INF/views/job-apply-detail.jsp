@@ -57,7 +57,7 @@
 											<span class="fa fa-star-half fill"></span>
 										</div>
 									</li>
-									<li><img class="flag" src="${pageContext.request.contextPath}/resources/assets/img/gb.svg" alt=""> United Kingdom</li>
+									<li><img class="flag" src="${pageContext.request.contextPath}/resources/assets/img/Vietnam.svg" alt=""> ${job.city}</li>
 									<li><div class="verified-action">Verified</div></li>
 								</ul>
 							</div>
@@ -94,36 +94,29 @@
 						<div class="container-detail-box">
 						
 							<div class="apply-job-header">
-								<h4><span>Front End Developer</span> <img src="${pageContext.request.contextPath}/resources/assets/img/edit.png" alt=""></h4>
+								<h4><span>Front End Developer</span> <img src="${pageContext.request.contextPath}/${job.img}" alt=""></h4>
 								<a href="company-detail.html" class="cl-success"><span><i class="fa fa-building"></i>Google</span></a>
 								<span><i class="fa fa-map-marker"></i>United Kingdom</span>
 							</div>
 							
 							<div class="apply-job-detail">
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-								<p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+								<p>${job.jobDescription} </p>
 							</div>
 							
 							<div class="apply-job-detail">
 								<h5>Skills</h5>
 								<ul class="skills">
-									<li>Css3</li>
-									<li>Html5</li>
-									<li>Photoshop</li>
-									<li>Wordpress</li>
-									<li>PHP</li>
-									<li>Java Script</li>
-								</ul>
+									<li>${job.major}</li>
+							</ul>
 							</div>
 							
 							<div class="apply-job-detail">
 								<h5>Requirements</h5>
 								<ul class="job-requirements">
-									<li><span>Availability</span> Hourly</li>
-									<li><span>Education</span> Graduate</li>
-									<li><span>Age</span> 25+</li>
-									<li><span>Experience</span> Intermidiate (3 - 5Year)</li>
-									<li><span>Language</span> English, Hindi</li>
+									<li><span>Availability</span> ${job.toStringTypeEng()}</li>
+									<li><span>Education</span> ${job.education}</li>
+									<li><span>Experience</span> ${job.exp}</li>
+									<li><span>Language</span>${job.language} </li>
 								</ul>
 							</div>
 							
@@ -263,27 +256,25 @@
 						<!-- Job Detail -->
 						<div class="sidebar-container">
 							<div class="sidebar-box">
-								<span class="sidebar-status">Full Time</span>
+								<span class="sidebar-status">${job.toStringTypeEng()}</span>
 								<h4 class="flc-rate">20K - 30K</h4>
 								<div class="sidebar-inner-box">
 									<div class="sidebar-box-thumb">
-										<img src="${pageContext.request.contextPath}/resources/assets/img/com-2.jpg" class="img-responsive" alt="" />
+										<img src="${pageContext.request.contextPath}/${job.img}" class="img-responsive" alt="" />
 									</div>
 									<div class="sidebar-box-detail">
-										<h4>Google Info</h4>
-										<span class="desination">App Designer</span>
+										<h4>${job.jobTitle}</h4>
+										<span class="desination">${job.exp}</span>
 									</div>
 								</div>
 								<div class="sidebar-box-extra">
 									<ul>
-										<li>Php</li>
-										<li>Android</li>
-										<li>Html</li>
-										<li class="more-skill bg-primary">+3</li>
+										<li>${job.major}</li>
+										
 									</ul>
 									<ul class="status-detail">
-										<li class="br-1"><strong>Canada</strong>Location</li>
-										<li class="br-1"><strong>748</strong>View</li>
+										<li class="br-1"><strong>${job.city}</strong>Location</li>
+										<li class="br-1"><strong>${job.view}</strong>View</li>
 										<li><strong>03</strong>Post</li>
 									</ul>
 								</div>

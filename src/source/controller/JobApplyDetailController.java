@@ -21,6 +21,7 @@ public class JobApplyDetailController{
 	@RequestMapping(value="/job-apply-detail", params = { "id_job" }, method = RequestMethod.GET)
 	public String layout(Model model,@RequestParam(value = "id_job") int id_job) {
 		Job job = UtilDataBase.getJob(id_job);
+		List<Job> lst = JobApplyDetailDatabase.listDetail(id_job);
 		model.addAttribute("job", job);
 		
 		return "job-apply-detail";
@@ -56,5 +57,4 @@ public class JobApplyDetailController{
 		return (JobApplyDetailDatabase.changeStatusFreeLancer(freelancer_id,id_job, Subscriber.Status.valueOf(status)))?"Ok":"Error";
 	}
 	
-
 }
