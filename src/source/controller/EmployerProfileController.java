@@ -22,7 +22,6 @@ import database.UtilDataBase;
 import dataform.FormSettingsEmployer;
 import model.Account;
 import model.Evaluate;
-import model.Job;
 import model.Major;
 
 @Controller
@@ -107,14 +106,4 @@ public class EmployerProfileController {
 
 			
 		}
-		
-		@RequestMapping(value = "/employer-profile-job-list", params = { "id_employer" }, method = RequestMethod.GET)
-		public String jobList(Model model, @RequestParam(value = "id_employer") int id_employer) {
-			List<Job> lstjob = EmployerProfileDatabase.listjobEmployer(id_employer);
-			model.addAttribute("listjob",lstjob );
-			return "/employer-profile-job-list";
-		}
-		
-		
-		
 }

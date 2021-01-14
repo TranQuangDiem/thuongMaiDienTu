@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import customutil.FileHelper;
 import model.Account;
 import model.Address;
 import model.Evaluate;
@@ -45,33 +44,24 @@ public class EmployerProfileDatabase {
 	}
 
 	public static List<Job> listjobEmployer(int id_employer) {
-
+		List<Job> danhsachcongviec = new ArrayList<Job>();
 		try {
-			List<Job> congviecdadang = new ArrayList<>();
-			String query="SELECT *  FROM job  WHERE idAccount = ? ";
-			PreparedStatement ps = ConnectionDB.prepareStatement(query);
+			String sql = "select * from job where idAccount=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_employer);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Account acc = new Account();
-				Job job = new Job();
-				job.setJobTitle(rs.getString(2));
-				job.setJobDescription(rs.getString(3));
-				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
-				job.setCreateday(rs.getDate(7));
-				job.setCity(rs.getString(15));
-				
-
-				congviecdadang.add(job);
+				/** Load Job */
+//				Job j = new Job(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(6), rs.getInt(7),rs.getDate(8));
+//				danhsachcongviec.add(j);
 			}
-			return congviecdadang;
+			ConnectionDB.close(rs);
 		} catch (Exception e) {
-			e.printStackTrace();
-			return new ArrayList<Job>();
+			// TODO: handle exception
 		}
+		return danhsachcongviec;
 
 	}
-
 
 	public static int countJob(int id_employer) {
 		int count = 0;
