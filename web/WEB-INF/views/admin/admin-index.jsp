@@ -1,7 +1,3 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
-<%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Freelancer đồ họa</title>
     
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ui-admin/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ui-admin/assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ui-admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ui-admin/assets/css/app.css">
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ui-admin/assets/css/cssindex.css">
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/ui-admin/assets/images/favicon.svg" type="image/x-icon">
-</head>
- 
+    <link rel="stylesheet" href="assets/css/cssindex.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
     <div id="app">
@@ -216,7 +210,7 @@
                     </div>
                 </div>
             </div>
-           <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3">
                 <div class="card card-statistic">
                     <div class="card-body p-0">
                         <div class="d-flex flex-column">
@@ -351,14 +345,14 @@
             </footer>
         </div>
     </div>
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/feather-icons/feather.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/app.js"></script>
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
     
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/pages/dashboard.js"></script>
+    <script src="assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
