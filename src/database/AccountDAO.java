@@ -63,7 +63,7 @@ public class AccountDAO {
 
 	public static Account getByUsername(String username) {
 		try {
-			String query = "select id,username, account.`password`, fullname, image, star,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where username=?";
+			String query = "select id,username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where username=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
@@ -79,12 +79,11 @@ public class AccountDAO {
 				acc.setEmail(rs.getString(8));
 				acc.setPhone(rs.getString(9));
 				acc.setRole(rs.getInt(10));
-				acc.setName(rs.getString(11));
-				acc.setMajor(rs.getString(12));
-				acc.setTwitter(rs.getString(13));
-				acc.setFacebook(rs.getString(14));
-				acc.setWebsite(rs.getString(15));
-				acc.setBackground(rs.getBlob(16) == null ? null : rs.getBlob(15));
+				acc.setMajor(rs.getString(11));
+				acc.setTwitter(rs.getString(12));
+				acc.setFacebook(rs.getString(13));
+				acc.setWebsite(rs.getString(14));
+				acc.setBackground(rs.getBlob(15) == null ? null : rs.getBlob(15));
 				acc.setAddress(UtilDataBase.getAddress(rs.getInt(1)));
 				acc.setLinkedin(rs.getString(16));
 				acc.setReady(rs.getInt(17) == 1);
@@ -231,7 +230,7 @@ public class AccountDAO {
 	public static Account getUserById(int id) {
 		try {
 			Account rs = null;
-			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, account.`name`, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where id=?";
+			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rsSet = ps.executeQuery();
