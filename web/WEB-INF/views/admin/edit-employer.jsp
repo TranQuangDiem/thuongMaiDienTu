@@ -29,8 +29,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img class="rounded-circle mt-5" src="assets/images/avatar/avatar-s-1.png" width="120">
-                            <h3 class="font-weight-bold">nguyenvana</h3>
+                            <img class="rounded-circle mt-5" src="data:image/png;base64,${acc.imageBase64}" width="120">
+                            <h3 class="font-weight-bold">${acc.name}</h3>
                         </div>
        
                     </div>
@@ -41,8 +41,8 @@
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="first-name-column">Tên công ty</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.name}"
+                                            <label for="first-name-column">Tên nhà tuyển dụng</label>
+                                            <input type="text" id="first-name-column" class="form-control" placeholder="${acc.fullname}"
                                                 name="tenCongTy-column" disabled="trending-up">
                                         </div>
                                     </div>

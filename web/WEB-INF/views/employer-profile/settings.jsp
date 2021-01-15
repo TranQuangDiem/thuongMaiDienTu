@@ -14,11 +14,11 @@
 								method="post">
 								<input type="hidden" name="idAccount" class="form-control" value="${employer.id}">
 			<div class="col-md-4 col-sm-6">
-				<label>Tên công ty</label>
+				<label>Tên nhà tuyển dụng</label>
 				<input type="text" name="fullname" class="form-control" value="${employer.fullname}">
 			</div>
 			<div class="col-md-4 col-sm-6">
-				<label>Chuyên ngành công ty</label>
+				<label>Chuyên ngành tuyển dụng</label>
 				<select name="major" class="form-control">
 					
 					<c:forEach var="itemMajor" items="${lstMajor}"

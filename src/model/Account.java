@@ -22,6 +22,7 @@ public class Account {
 	private int star;
 	private int countJob;
 	private int countJobFinish;
+	private int countHired;
 	private int countEvaluate;
 	private String about;
 	private String email;
@@ -215,24 +216,38 @@ public class Account {
 	}
 
 	public String getTwitter() {
-		return twitter;
+		if(twitter==null)return "";
+		if(twitter.contains("https://www."))return twitter;
+		if(twitter.contains("www."))return "https://"+twitter;
+		return "https://www."+twitter;
+		
 	}
 
 	public void setTwitter(String twitter) {
 		this.twitter = twitter;
 	}
+	public String getWebsite() {
+		if(website==null)return "";
+		if(website.contains("https://www."))return website;
+		if(website.contains("www."))return "https://"+website;
+		
+		return "https://www."+website;
+	}
 
 	public String getFacebook() {
-		return facebook;
+		if(facebook==null)return "";
+		if(facebook.contains("https://www."))return facebook;
+		if(facebook.contains("www."))return "https://"+facebook;
+		
+		return "https://www."+facebook;
+		
 	}
 
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
 	}
 
-	public String getWebsite() {
-		return website;
-	}
+	
 
 	public void setWebsite(String website) {
 		this.website = website;
@@ -418,5 +433,16 @@ public class Account {
 		NumberFormat formatter = new DecimalFormat("#0.00");     
 		return formatter.format(rs);
 	}
+
+
+	public int getCountHired() {
+		return countHired;
+	}
+
+
+	public void setCountHired(int countHired) {
+		this.countHired = countHired;
+	}
+	
 
 }

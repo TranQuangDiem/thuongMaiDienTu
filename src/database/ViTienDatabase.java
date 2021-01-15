@@ -14,7 +14,7 @@ public class ViTienDatabase {
 		try {
 			String sql = "select id, idAccount, tongtien from vitien where idAccount=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
-			System.out.println(idAccount);
+			//System.out.println(idAccount);
 			ps.setInt(1, idAccount);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

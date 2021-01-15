@@ -65,12 +65,12 @@
 				<div class="row bottom-mrg">
 					<div class="col-md-12 col-sm-12">
 						<div class="advance-detail detail-desc-caption">
-							<h4>${employer.name}</h4>
+							<h4>${employer.fullname}</h4>
 							<span class="designation">${employer.major}</span>
 							<ul>
 								<li><strong class="j-view">${employer.soluongbaidang}</strong>Công
 									việc đã đăng</li>
-								<li><strong class="j-applied">570</strong>Đã tuyển dụng</li>
+								<li><strong class="j-applied">${employer.countHired}</strong>Đã tuyển dụng</li>
 								<li><strong id="starAverage" class="j-shared rate-custom">${employer.starAverage}
 										<i class="fa fa-star"></i>
 								</strong>Đánh Giá</li>
@@ -83,11 +83,11 @@
 					<div class="detail pannel-footer">
 						<div class="col-md-5 col-sm-5">
 							<ul class="detail-footer-social">
-								<li><a title="Trang Facebook" href="#"><i
+								<li><a title="Trang Facebook" href="${employer.facebook}"><i
 										class="fa fa-facebook"></i></a></li>
-								<li><a title="Trang Twitter" href="#"><i
+								<li><a title="Trang Twitter" href="${employer.twitter}"><i
 										class="fa fa-twitter"></i></a></li>
-								<li><a title="Trang Web" href="#"><i
+								<li><a title="Trang Web" href="${employer.website}"><i
 										class="fa fa-globe"></i></i></a></li>
 							</ul>
 						</div>
@@ -112,7 +112,7 @@
 					<div class="full-card">
 						<div class="deatil-tab-employ tool-tab">
 							<ul class="nav simple nav-tabs" id="simple-design-tab">
-								<li class="active"><a href="#about">Thông Tin Công Ty</a></li>
+								<li class="active"><a href="#about">Thông Tin nhà tuyển dụng</a></li>
 								<li><a href="#address">Địa Chỉ</a></li>
 								<li><a href="#post-job">Công Việc Đã Đăng</a></li>
 								<li><a style="display: none;" href="#friends">Friends</a></li>
@@ -124,7 +124,7 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About Company ${employer.name}</h3>
+									<h3>Về nhà tuyển dụng ${employer.name}</h3>
 									${employer.about}
 								</div>
 								<!-- End About Sec -->
@@ -133,7 +133,7 @@
 								<div id="address" class="tab-pane fade">
 									<h3>Thông tin liên hệ</h3>
 									<ul class="job-detail-des">
-										<li><span>Tên công ty:</span>${employer.name}</li>
+										<li><span>Tên nhà tuyển dụng:</span>${employer.name}</li>
 										<li><span>Tỉnh / Thành Phố:</span>${employer.address.province}</li>
 										<li><span>Quận / Huyện:</span>${employer.address.district}</li>
 										<li><span>Phường / Xã:</span>${employer.address.ward}</li> 

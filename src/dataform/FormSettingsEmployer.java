@@ -25,6 +25,7 @@ public class FormSettingsEmployer {
 	private String email;
 	private String phone;
 	private String major;
+	
 	public String getFullname() {
 		return fullname;
 	}

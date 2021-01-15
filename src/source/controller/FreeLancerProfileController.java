@@ -48,7 +48,7 @@ public class FreeLancerProfileController {
 	
 	@RequestMapping(value = "/freelancer-profile/settings/update", method = RequestMethod.POST)
 	public String submitSettings(@ModelAttribute("FormSettingsFreelancer")FormSettingsFreelancer  formSettingsFreelancer ) {
-		System.out.println(formSettingsFreelancer);
+		//System.out.println(formSettingsFreelancer);
 		
 			FreeLancerProfileDatabase.update(formSettingsFreelancer.toAccount());
 		

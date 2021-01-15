@@ -29,8 +29,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img class="rounded-circle mt-5" src="assets/images/avatar/avatar-s-1.png" width="120">
-                            <h3 class="font-weight-bold">nguyenvana</h3>
+                            <img class="rounded-circle mt-5" src="data:image/png;base64,${acc.imageBase64}" width="120">
+                            <h3 class="font-weight-bold">${acc.fullname}</h3>
                         </div>
        
                     </div>

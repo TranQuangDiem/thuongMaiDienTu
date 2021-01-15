@@ -5,13 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import config.CommonConst;
-import customutil.FileHelper;
 import customutil.StringHelper;
 import model.Account;
-import model.Evaluate;
-import model.Job;
 
 public class AccountDAO {
 
@@ -31,6 +27,30 @@ public class AccountDAO {
 	public static boolean increaseCountJob(int id) {
 		try {
 			String query="UPDATE account SET account.count_job=account.count_job+1 WHERE account.id=?";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ps.setInt(1, id);
+			int row=ps.executeUpdate();
+			return row==1;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public static boolean increaseCountJobFinish(int id) {
+		try {
+			String query="UPDATE account SET account.count_job_finish=account.count_job_finish+1 WHERE account.id=?";
+			PreparedStatement ps=ConnectionDB.prepareStatement(query);
+			ps.setInt(1, id);
+			int row=ps.executeUpdate();
+			return row==1;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public static boolean increaseCountHired(int id) {
+		try {
+			String query="UPDATE account SET account.count_hired=account.count_hired+1 WHERE account.id=?";
 			PreparedStatement ps=ConnectionDB.prepareStatement(query);
 			ps.setInt(1, id);
 			int row=ps.executeUpdate();
