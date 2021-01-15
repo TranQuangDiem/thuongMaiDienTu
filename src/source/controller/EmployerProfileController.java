@@ -106,4 +106,10 @@ public class EmployerProfileController {
 
 			
 		}
+		@RequestMapping(value = "/test")
+		public String test() {
+			return "test";
+		}
+			
+		
 }

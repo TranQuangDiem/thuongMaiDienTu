@@ -1,6 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:useBean id="accessHelper" class="customutil.AccessHelper" />
+
 <div class="container">
 	<button type="button" class="navbar-toggle" data-toggle="collapse"
 		data-target="#navbar-menu">
@@ -17,9 +19,9 @@
 			data-out="fadeOutUp">
 			<li><a href="${pageContext.request.contextPath}/jobs">Công
 					Việc</a></li>
-
+			
 			<c:if
-				test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 1}">
+				test="${not empty sessionScope.currentAccount && accessHelper.accessEmployer(sessionScope.currentAccount.role)}">
 				<li class="dropdown megamenu-fw ">
 				<li><a href="${pageContext.request.contextPath}/create-job">Đăng
 						tin</a></li>
@@ -55,18 +57,18 @@
 						<c:out value="${sessionScope.currentAccount.fullname}"></c:out></a>
 					<ul class="dropdown-menu"
 						style="border: none; width: auto; top: 30px; left: 0.3px">
-						<c:if test="${sessionScope.currentAccount.role==2}">
+						<c:if test="${accessHelper.accessFreelancer(sessionScope.currentAccount.role)}">
 							<li><a
 								href="${pageContext.request.contextPath}/freelancer-profile?id_freelancer=${sessionScope.currentAccount.id}">Tài
 									khoản của tôi</a></li>
 						</c:if>
-						<c:if test="${sessionScope.currentAccount.role==1}">
+						<c:if test="${accessHelper.accessEmployer(sessionScope.currentAccount.role)}">
 							<li><a
 								href="${pageContext.request.contextPath}/employer-profile?id_employer=${sessionScope.currentAccount.id}">Tài
 									khoản của tôi</a></li>
 						</c:if>
 						<li><a href="<c:url value="/vitien"/>">Ví của tôi</a></li>
-						<c:if test="${sessionScope.currentAccount.role==3}">
+						<c:if test="${accessHelper.accessAdmin(sessionScope.currentAccount.role)}">
 							<li><a
 								href="${pageContext.request.contextPath}/admin-index">Trang Admin</a></li>
 						</c:if>

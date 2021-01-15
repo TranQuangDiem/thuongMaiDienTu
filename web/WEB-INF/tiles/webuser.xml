@@ -135,6 +135,16 @@
 
 		</put-list-attribute>
 	</definition>
+	<definition name="test"
+		template="/WEB-INF/views/test.jsp" >
+		
+		<put-list-attribute name="stylesheets" inherit="true">
+			
+		</put-list-attribute>
+		<put-list-attribute name="javascripts" inherit="true">	
+
+		</put-list-attribute>
+	</definition>
 	
 
 </tiles-definitions>  
