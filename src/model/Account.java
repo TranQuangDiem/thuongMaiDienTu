@@ -38,7 +38,7 @@ public class Account {
 	private String website;
 	private BufferedImage background;
 	private String linkedin;
-	private int access;
+	
 	private boolean active;
 	
 	private boolean ready;
@@ -68,10 +68,7 @@ public class Account {
 	}
 
 
-	public void setAccess(int access) {
-		this.access = access;
-	}
-
+	
 
 	public int getSoluongbaidang() {
 		return soluongbaidang;
@@ -287,9 +284,6 @@ public class Account {
 	
 
 
-	public int getAccess() {
-		return access;
-	}
 
 
 	
@@ -365,8 +359,7 @@ public class Account {
 		builder.append(background);
 		builder.append(", linkedin=");
 		builder.append(linkedin);
-		builder.append(", access=");
-		builder.append(access);
+		
 		builder.append(", ready=");
 		builder.append(ready);
 		builder.append("]");

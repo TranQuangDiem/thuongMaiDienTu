@@ -19,7 +19,7 @@ public class UtilDataBase {
 	public static Account getAccount(int id_account) {
 		Account rs = null;
 		try {
-			String sql = "select username, password, fullname, image, star,about,email,phone, role, name, major, twitter, facebook, website, background, ready,count_job,count_evaluate,count_job_finish,active from account where id=?";
+			String sql = "select username, password, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background, ready,count_job,count_evaluate,count_job_finish,active from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id_account);
 			ResultSet rsSet = ps.executeQuery();
@@ -36,18 +36,18 @@ public class UtilDataBase {
 				rs.setEmail(rsSet.getString(7));
 				rs.setPhone(rsSet.getString(8));
 				rs.setRole(rsSet.getInt(9));
-				rs.setName(rsSet.getString(10));
-				rs.setMajor(rsSet.getString(11));
-				rs.setTwitter(rsSet.getString(12));
-				rs.setFacebook(rsSet.getString(13));
-				rs.setWebsite(rsSet.getString(14));
-				rs.setBackground(rsSet.getBlob(15));
+				
+				rs.setMajor(rsSet.getString(10));
+				rs.setTwitter(rsSet.getString(11));
+				rs.setFacebook(rsSet.getString(12));
+				rs.setWebsite(rsSet.getString(13));
+				rs.setBackground(rsSet.getBlob(14));
 				rs.setAddress(getAddress(id_account));
-				rs.setReady(rsSet.getInt(16)==1);
-				rs.setCountJob(rsSet.getInt(17));
-				rs.setCountEvaluate(rsSet.getInt(18));
-				rs.setCountJobFinish(rsSet.getInt(19));
-				rs.setActive(rsSet.getInt(20)==1);
+				rs.setReady(rsSet.getInt(15)==1);
+				rs.setCountJob(rsSet.getInt(16));
+				rs.setCountEvaluate(rsSet.getInt(17));
+				rs.setCountJobFinish(rsSet.getInt(18));
+				rs.setActive(rsSet.getInt(19)==1);
 				// System.out.println(rs.toString());
 
 			}
