@@ -42,7 +42,7 @@ public class FreeLancerProfileController {
 		model.addAttribute("currentAccount", currentAccount);
 		model.addAttribute("savejob", JobDAO.findJobSave(id_freelancer));
 		
-		System.out.println(freelancer);
+		//System.out.println(freelancer);
 		return "freelancer-profile";
 	}
 	
