@@ -32,8 +32,8 @@
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label id="label-hireable">Trạng Thái</label>
-				<input type="checkbox" class="form-control" value="true" name="ready" id="checkbox-active-freelancer" checked="true">
-				<p id="p-hireable-freelancer">Sẵn Sàng</p>
+				<input type="checkbox" class="form-control" value="true" name="ready" id="checkbox-active-job" checked="true">
+				<p id="p-hireable">Đang tuyển dụng</p>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<label>Email</label>
@@ -133,7 +133,9 @@
 				$("input[name='ready']").prop('checked', ${employer.ready});
 				$("input[name='ready']").val('${employer.ready}');
 				$("input[name='ready']").change();
+				
 			</c:if>
+			
 			
 			
 			<c:if test="${not empty employer.address.province}">

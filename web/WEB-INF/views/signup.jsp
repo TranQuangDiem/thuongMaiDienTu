@@ -53,14 +53,17 @@
 							placeholder="Tài Khoản"> <input type="password"
 							name="passwordnew" class="form-control" placeholder="Mật Khẩu">
 						<div class="row row-signup">
-							<div class="col-sm-4">
+							<div class="col-sm-3">
 								<p class="permissions">Bạn là :</p>
 							</div>
-							<div class="col-sm-8">
+							<div class="col-sm-9" style="display: contents;">
 								<input type="radio" value="2" name="role-new" id="radio-freelancer"
-									checked="true"> <label class="label-signup"
-									for="radio-freelancer">Freelancer</label> <input value="1" type="radio"
-									name="role-new" id="radio-employer"> <label
+									checked="true"> 
+									<label style="margin-right: 5px;" class="label-signup"
+									for="radio-freelancer">Freelancer</label>
+									 <input value="1" type="radio"
+									name="role-new" id="radio-employer">
+									 <label
 									class="label-signup" for="radio-employer">Nhà Tuyển
 									Dụng</label>
 							</div>
