@@ -60,7 +60,7 @@ public class HoaDonDatabase {
 	}
 	public static HoaDon findLatestEBill(int idAcc) {
 		try {
-			String query="SELECT h.id,h.idAccount,h.tenGoi,h.soLuongBaiDang,h.ngayMua,h.ngayHetHan,h.giaTri FROM hoadon AS h WHERE h.idAccount=? AND h.ngayHetHan IN (SELECT MAX(h2.ngayHetHan) FROM hoadon h2 WHERE h2.idAccount=?)";
+			String query="SELECT h.id,h.idAccount,h.tenGoi,h.soLuongBaiDang,h.ngayMua,h.ngayHetHan,h.giaTri,h.active FROM hoadon AS h WHERE h.idAccount=? AND h.active=1 AND h.ngayHetHan IN (SELECT MAX(h2.ngayHetHan) FROM hoadon h2 WHERE h2.idAccount=?) ";
 			PreparedStatement ps=ConnectionDB.prepareStatement(query);
 			ps.setInt(1,idAcc);
 			ps.setInt(2,idAcc);
@@ -75,7 +75,7 @@ public class HoaDonDatabase {
 			bill.setNgayMua(rs.getDate(5));
 			bill.setNgayHetHan(rs.getDate(6));
 			bill.setGiaTri(rs.getDouble(7));
-			System.out.println(bill);
+			bill.setActive(rs.getInt(1));
 			return bill;
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -125,5 +125,8 @@ public class HoaDonDatabase {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	public static void main(String[] args) {
+		System.out.println(findLatestEBill(15));
 	}
 }
