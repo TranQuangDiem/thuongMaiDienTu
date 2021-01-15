@@ -126,13 +126,14 @@
 	</definition>
 	<definition name="job-detail"
 		template="/WEB-INF/views/job-detail.jsp" extends="webuser/layout">
-		
+		<put-attribute name="subscribers" value="/subscribers" />
 		<put-list-attribute name="stylesheets" inherit="true">
 			
 		</put-list-attribute>
 		<put-list-attribute name="javascripts" inherit="true">	
 
 		</put-list-attribute>
+		
 	</definition>
 	
 	<definition name="payment-methode"

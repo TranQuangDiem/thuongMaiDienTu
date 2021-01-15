@@ -8,7 +8,7 @@
 		<tr id="subscriber-${subscriber.id}">
 			<td>
 				<div class="image-text">
-					<img src="${pageContext.request.contextPath}${subscriber.account.image}" alt="">
+					<img src="data:image/png;base64,${subscriber.account.imageBase64}" alt="">
 				</div>
 			</td>
 			<td>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div id="content-box" class="container table-section" style="padding-left: 30px;">
-	<h3>Subscribers</h3>
+	<h3>Danh sách ứng viên</h3>
 	<div class="table" style="max-height: 50vh; overflow-y: auto;">
 		<table>
 			<thead>
@@ -12,19 +12,19 @@
 						<p></p>
 					</th>
 					<th>
-						<p>Full name</p>
+						<p>Tên ứng viên</p>
 					</th>
 					<th>
-						<p>Describe</p>
+						<p>Tên tài khoản</p>
 					</th>
 					<th>
-						<p>Date apply</p>
+						<p>Ngày ứng tuyển</p>
 					</th>
 					<th>
-						<p>Evaluate</p>
+						<p>Đánh giá</p>
 					</th>
 					<th>
-						<p>Accept</p>
+						<p>Chấp thuận</p>
 					</th>
 				</tr>
 			</thead>

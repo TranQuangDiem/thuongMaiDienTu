@@ -104,7 +104,7 @@
                                             <div class="social" id="first-name-column" style="font-size: 25px" name="social-column">
                                             <a href="${acc.facebook}" style="margin-right: 15px"><i class="fa fa-facebook-f"></i></a>
                                             <a href="${acc.twitter}" style="margin-right: 15px"><i class="fa fa-twitter"></i></a>
-                                            <a href="${acc.linkedin}" style="margin-right: 15px"><i class="fa fa-linkedin"></i></a>
+                                            <a href="${acc.website}" style="margin-right: 15px"><i class="fa fa-globe"></i></a>
                                             </div>
                                         </div>
                                     </div>

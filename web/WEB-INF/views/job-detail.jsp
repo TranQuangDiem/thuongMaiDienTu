@@ -21,6 +21,8 @@
 	<c:forEach var="css" items="${stylesheets}">
        <link rel="stylesheet" type="text/css" href="<c:url value="${css}"/>">
     </c:forEach>
+    <script type="text/javascript"
+			src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
 
 
 </head>
@@ -358,8 +360,7 @@
 		<!-- Scripts
 			================================================== -->
 		<!-- Scripts==================================================-->
-		<script type="text/javascript"
-			src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
+		
 		<script type="text/javascript"
 			src="${pageContext.request.contextPath}/resources/assets/plugins/js/viewportchecker.js"></script>
 		<script type="text/javascript"

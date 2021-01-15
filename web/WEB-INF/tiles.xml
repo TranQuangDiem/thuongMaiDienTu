@@ -67,62 +67,7 @@
 
 		</put-list-attribute>
 	</definition>
-	<definition name="job-apply-detail"
-		template="/WEB-INF/views/job-apply-detail.jsp">
-		<put-attribute name="subscribers" value="/subscribers" />
-		<put-attribute name="header"
-			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
-		<put-attribute name="footer"
-			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
-		<put-list-attribute name="stylesheets">
-			<add-attribute
-				value="/resources/assets/plugins/css/plugins.css" />
-			<add-attribute value="/resources/assets/css/style.css" />
-			<add-attribute
-				value="/resources/assets/css/colors/green-style.css" />
-			<add-attribute value="/resources/assets/css/style1.css" />
-			<add-attribute
-				value="/resources/assets/css/css-header.css" />
-		</put-list-attribute>
-		<put-list-attribute name="javascripts">
-			<add-attribute
-				value="/resources/assets/plugins/js/jquery.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/viewportchecker.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/bootstrap.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/bootsnav.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/select2.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/wysihtml5-0.3.0.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/bootstrap-wysihtml5.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/datedropper.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/dropzone.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/loader.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/owl.carousel.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/slick.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/gmap3.min.js" />
-			<add-attribute
-				value="/resources/assets/plugins/js/jquery.easy-autocomplete.min.js" />
-			<add-attribute
-				value="/resources/assets/js/jQuery.style.switcher.js" />
-			<add-attribute
-				value="/resources/assets/js/vietnamlocalselector.js" />
-			<add-attribute value="/resources/assets/js/custom.js" />
-
-
-
-		</put-list-attribute>
-	</definition>
+	
 	<definition name="index-6"
 		template="/WEB-INF/views/index-6.jsp">
 		<put-attribute name="title" value="Trang chủ"></put-attribute>
@@ -162,13 +107,7 @@
 	</definition>
 
 	
-	<definition name="job-detail"
-		template="/WEB-INF/views/job-detail.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/fragment/header.jsp"></put-attribute>
-		<put-attribute name="footer"
-			value="/WEB-INF/views/fragment/footer.jsp"></put-attribute>
-	</definition>
+	
 
 
 	

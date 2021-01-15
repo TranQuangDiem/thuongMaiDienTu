@@ -275,7 +275,7 @@
 									<div class="row no-mrg">
 										<div class="col-md-6 col-sm-6">
 											<a
-												href="${pageContext.request.contextPath}/job-apply-detail?id_job=${job.id}"
+												href="${pageContext.request.contextPath}/job-detail?id_job=${job.id}"
 												title="job Detail">
 												<div class="advance-search-img-box">
 													<img
@@ -285,7 +285,7 @@
 											</a>
 											<div class="advance-search-caption">
 												<a
-													href="${pageContext.request.contextPath}/job-apply-detail?id_job=${job.id}"
+													href="${pageContext.request.contextPath}/job-detail?id_job=${job.id}"
 													title="Job Dtail">
 													<h4>
 														<c:out value="${job.jobTitle }"></c:out>

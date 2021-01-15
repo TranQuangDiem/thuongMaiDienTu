@@ -17,14 +17,7 @@ import model.Job;
 import model.Subscriber;
 @Controller
 public class JobApplyDetailController{
-	// url: /job-apply-detail?id_job=1
-	@RequestMapping(value="/job-apply-detail", params = { "id_job" }, method = RequestMethod.GET)
-	public String layout(Model model,@RequestParam(value = "id_job") int id_job) {
-		Job job = UtilDataBase.getJob(id_job);
-		model.addAttribute("job", job);
-		
-		return "job-apply-detail";
-	}
+	
 	@RequestMapping(value = "/subscribers", params = { "id_job" }, method = RequestMethod.GET)
 	public String subscribers(Model model,@RequestParam(value = "id_job") int id_job) {
 
