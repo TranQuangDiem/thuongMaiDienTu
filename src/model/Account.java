@@ -37,7 +37,7 @@ public class Account {
 	private String facebook;
 	private String website;
 	private BufferedImage background;
-	private String linkedin;
+	
 	
 	private boolean active;
 	
@@ -86,14 +86,7 @@ public class Account {
 		this.address = address;
 	}
 	
-	public String getLinkedin() {
-		return linkedin;
-	}
-
-	public void setLinkedin(String linkedin) {
-		this.linkedin = linkedin;
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -350,9 +343,7 @@ public class Account {
 		builder.append(website);
 		builder.append(", background=");
 		builder.append(background);
-		builder.append(", linkedin=");
-		builder.append(linkedin);
-		
+	
 		builder.append(", ready=");
 		builder.append(ready);
 		builder.append("]");

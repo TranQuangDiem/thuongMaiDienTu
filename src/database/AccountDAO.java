@@ -63,7 +63,7 @@ public class AccountDAO {
 
 	public static Account getByUsername(String username) {
 		try {
-			String query = "select id,username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where username=?";
+			String query = "select id,username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,ready,count_job,count_evaluate from account where username=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
@@ -85,10 +85,10 @@ public class AccountDAO {
 				acc.setWebsite(rs.getString(14));
 				acc.setBackground(rs.getBlob(15) == null ? null : rs.getBlob(15));
 				acc.setAddress(UtilDataBase.getAddress(rs.getInt(1)));
-				acc.setLinkedin(rs.getString(16));
-				acc.setReady(rs.getInt(17) == 1);
-				acc.setCountJob(rs.getInt(18));
-				acc.setCountEvaluate(rs.getInt(19));
+			
+				acc.setReady(rs.getInt(16) == 1);
+				acc.setCountJob(rs.getInt(17));
+				acc.setCountEvaluate(rs.getInt(18));
 				return acc;
 			} else {
 				return null;
@@ -230,7 +230,7 @@ public class AccountDAO {
 	public static Account getUserById(int id) {
 		try {
 			Account rs = null;
-			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate,count_job_finish,active from account where id=?";
+			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,ready,count_job,count_evaluate,count_job_finish,active from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rsSet = ps.executeQuery();
@@ -254,12 +254,12 @@ public class AccountDAO {
 				rs.setWebsite(rsSet.getString(13));
 				rs.setBackground(rsSet.getBlob(14) == null ? null : rsSet.getBlob(15));
 				rs.setAddress(UtilDataBase.getAddress(id));
-				rs.setLinkedin(rsSet.getString(15));
-				rs.setReady(rsSet.getInt(16) == 1);
-				rs.setCountJob(rsSet.getInt(17));
-				rs.setCountEvaluate(rsSet.getInt(18));
-				rs.setCountJobFinish(rsSet.getInt(19));
-				rs.setActive(rsSet.getInt(20)==1);//1 is active
+				
+				rs.setReady(rsSet.getInt(15) == 1);
+				rs.setCountJob(rsSet.getInt(16));
+				rs.setCountEvaluate(rsSet.getInt(17));
+				rs.setCountJobFinish(rsSet.getInt(18));
+				rs.setActive(rsSet.getInt(19)==1);//1 is active
 			}
 			return rs;
 		} catch (Exception e) {
