@@ -129,7 +129,7 @@
 
 						<div class="apply-job-header">
 							<h4>
-								<span>${job.major}</span> <img src="/img/edit.png" alt="">
+								<span>${job.jobTitle}</span> <img src="/img/edit.png" alt="">
 							</h4>
 							<a href="company-detail.html" class="cl-success"><span><i
 									class="fa fa-building"></i>Google</span></a> <span><i
@@ -141,14 +141,15 @@
 						</div>
 
 						<div class="apply-job-detail">
-							<h5>Skills</h5>
+							<h5>chuyên môn</h5>
 							<ul class="skills">
-								<li>Css3</li>
-								<li>Html5</li>
+								<li>${job.major}</li>
+								<!-- <li>Html5</li>
 								<li>Photoshop</li>
 								<li>Wordpress</li>
 								<li>PHP</li>
 								<li>Java Script</li>
+								 -->
 							</ul>
 						</div>
 
@@ -164,13 +165,14 @@
 						</div>
 
 						<a href="#" class="btn btn-success">Apply Ngay</a>
+						<c:if test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 2}">
 						<c:if test="${kiemtra==false}">
 						<button id="save" onclick="save()" class="btn btn-success"
 							value="lưu">Lưu</button></c:if>
 							<c:if test="${kiemtra==true}">
 						<button id="save" style="background:red" onclick="save()" class="btn btn-success"
 							value="Đã lưu">Đã lưu</button></c:if>
-
+</c:if>
 					</div>
 
 					<!-- Similar Jobs -->
@@ -203,9 +205,8 @@
 													</div>
 													<div class="popular-jobs-box-extra">
 														<ul>
-															<li>Php</li>
-															<li>Android</li>
-															<li>Html</li>
+															<li>${listjob1.major}</li>
+															
 															<li class="more-skill bg-primary">+${listjob1.soluongtuyen}</li>
 														</ul>
 														<p>${listjob1.major}</p>
@@ -239,16 +240,13 @@
 										</div>
 										<div class="sidebar-box-detail">
 											<h4>Google Info</h4>
-											<span class="desination">${job1.major}</span>
+											<span class="desination">${job1.jobTitle}</span>
 										</div>
 									</div>
 									<div class="sidebar-box-extra">
 										<ul>
-											<li>Php</li>
-											<li>Android</li>
-											<li>Html</li>
-											<li class="more-skill bg-primary">+3</li>
-										</ul>
+											<li>${job1.major}</li>
+																					</ul>
 										<ul class="status-detail">
 											<li class="br-1"><strong>${job1.city}</strong>Location</li>
 											<li class="br-1"><strong>${job1.view}</strong>View</li>
