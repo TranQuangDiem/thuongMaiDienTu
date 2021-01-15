@@ -290,7 +290,7 @@
 													<h4>
 														<c:out value="${job.jobTitle }"></c:out>
 													</h4>
-												</a> <span> <c:out value="${job.ofAccount.name }"></c:out>
+												</a> <span> <c:out value="${job.ofAccount.fullname}"></c:out>
 												</span>
 											</div>
 										</div>

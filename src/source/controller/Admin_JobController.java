@@ -15,7 +15,7 @@ public class Admin_JobController {
 	@RequestMapping(value = "/admin-list-job-post")
 	public ModelAndView listJobPost(@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 		ModelAndView model = new ModelAndView("admin/admin-list-job-post");
-		String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`,job.active  FROM job JOIN account ON job.idAccount=account.id LIMIT ?,?";
+		String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,job.active  FROM job JOIN account ON job.idAccount=account.id LIMIT ?,?";
 		/** HANDLE PAGE */
 		int totalRecords = JobDAO.getAllTotalRecords();
 		int itemInOnePage = 10;

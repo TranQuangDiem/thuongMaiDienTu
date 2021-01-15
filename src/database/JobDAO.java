@@ -19,7 +19,7 @@ import model.Job;
 public class JobDAO {
 	public static Job getJobById(int id) {
 		try {
-			String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`,job.active  FROM job JOIN account ON job.idAccount=account.id WHERE job.id=?";
+			String query = "SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,job.active  FROM job JOIN account ON job.idAccount=account.id WHERE job.id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
@@ -47,9 +47,8 @@ public class JobDAO {
 				// Account
 				acc.setId(rs.getInt(4));
 				acc.setFullname(rs.getString(17));
-				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
-				job.setActive(rs.getInt(19));
+				job.setActive(rs.getInt(18));
 				return job;
 			}
 		} catch (Exception e) {
@@ -61,7 +60,7 @@ public class JobDAO {
 	public static List<Job> listJobsForIndex(){
 		try {
 			List<Job> listJobs=new ArrayList<>();
-			String query="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`,job.active  FROM job JOIN account ON job.idAccount=account.id WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1 ORDER BY job.ngaydang DESC LIMIT 0,20 ";
+			String query="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,job.active  FROM job JOIN account ON job.idAccount=account.id WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1 ORDER BY job.ngaydang DESC LIMIT 0,20 ";
 			PreparedStatement ps=ConnectionDB.prepareStatement(query);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
@@ -86,9 +85,8 @@ public class JobDAO {
 				// Account
 				acc.setId(rs.getInt(4));
 				acc.setFullname(rs.getString(17));
-				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
-				job.setActive(rs.getInt(19));
+				job.setActive(rs.getInt(18));
 				listJobs.add(job);
 			}
 			return listJobs;
@@ -242,9 +240,8 @@ public class JobDAO {
 				// Account
 				acc.setId(rs.getInt(4));
 				acc.setFullname(rs.getString(17));
-				acc.setName(rs.getString(18));
 				job.setOfAccount(acc);
-				job.setActive(rs.getInt(19));
+				job.setActive(rs.getInt(18));
 				listJobs.add(job);
 			}
 			ps.close();

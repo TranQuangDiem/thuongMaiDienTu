@@ -124,15 +124,8 @@
 											src="data:image/jpge;base64,<c:out value="${job.img}"></c:out>">
 									</div>
 								</div>
-								<div class="col-md-4 col-12">
-									<div class="form-group">
-										<label for="first-name-column">Công ty</label> <input
-											type="text" id="first-name-column" class="form-control"
-											placeholder="<c:out value="${job.ofAccount.name}"></c:out>"
-											name="diaChi-column" disabled="trending-up">
-									</div>
-								</div>
-								<div class="col-md-4 col-12">
+								
+								<div class="col-md-6 col-12">
 									<div class="form-group">
 										<label for="first-name-column">Loại công việc</label> <input
 											type="text" id="first-name-column" class="form-control"
@@ -141,7 +134,7 @@
 											name="diaChi-column" disabled="trending-up">
 									</div>
 								</div>
-								<div class="col-md-4 col-12">
+								<div class="col-md-6 col-12">
 									<div class="form-group">
 										<label for="first-name-column">Trạng thái</label> <input
 											type="text" id="first-name-column" class="form-control"

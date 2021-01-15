@@ -59,7 +59,7 @@ public class JobController {
 		int itemInOnePage = 10;
 		/** CREATE QUERY */
 		StringBuilder querySELECT = new StringBuilder(
-				"SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`,job.active  FROM job JOIN account ON job.idAccount=account.id ");
+				"SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,job.active  FROM job JOIN account ON job.idAccount=account.id ");
 		/** SEARCH */
 		StringBuilder queryWHERE = new StringBuilder("WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1");
 		StringBuilder queryORDER = new StringBuilder("");
