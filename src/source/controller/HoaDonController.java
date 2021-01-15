@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import config.CommonConst;
+import database.AccountDAO;
 import database.HoaDonDatabase;
 import database.UtilDataBase;
 import database.ViTienDatabase;
@@ -24,7 +25,7 @@ public class HoaDonController {
 	public String vitien(Model model,HttpServletRequest request) {
 		Account currentAccount=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		if (currentAccount!=null) {
-			Account freelancer=UtilDataBase.getAccount(currentAccount.getId());
+			Account freelancer=AccountDAO.getUserById(currentAccount.getId());
 			model.addAttribute("vitien", ViTienDatabase.findIdAccount(currentAccount.getId()));
 			List<HoaDon> list=HoaDonDatabase.findByIdAccount(currentAccount.getId());
 			model.addAttribute("hoadon", list);

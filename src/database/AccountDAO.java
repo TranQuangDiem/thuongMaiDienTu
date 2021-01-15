@@ -230,7 +230,7 @@ public class AccountDAO {
 	public static Account getUserById(int id) {
 		try {
 			Account rs = null;
-			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate from account where id=?";
+			String sql = "select username, account.`password`, fullname, image, star,about,email,phone, role, major, twitter, facebook, website, background,linkedin,ready,count_job,count_evaluate,count_job_finish,active from account where id=?";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rsSet = ps.executeQuery();
@@ -246,17 +246,20 @@ public class AccountDAO {
 				rs.setEmail(rsSet.getString(7));
 				rs.setPhone(rsSet.getString(8));
 				rs.setRole(rsSet.getInt(9));
-				rs.setName(rsSet.getString(10));
-				rs.setMajor(rsSet.getString(11));
-				rs.setTwitter(rsSet.getString(12));
-				rs.setFacebook(rsSet.getString(13));
-				rs.setWebsite(rsSet.getString(14));
-				rs.setBackground(rsSet.getBlob(15) == null ? null : rsSet.getBlob(15));
+				
+				rs.setMajor(rsSet.getString(10));
+				rs.setTwitter(rsSet.getString(11));
+				rs.setFacebook(rsSet.getString(12));
+				
+				rs.setWebsite(rsSet.getString(13));
+				rs.setBackground(rsSet.getBlob(14) == null ? null : rsSet.getBlob(15));
 				rs.setAddress(UtilDataBase.getAddress(id));
-				rs.setLinkedin(rsSet.getString(16));
-				rs.setReady(rsSet.getInt(17) == 1);
-				rs.setCountJob(rsSet.getInt(18));
-				rs.setCountEvaluate(rsSet.getInt(19));
+				rs.setLinkedin(rsSet.getString(15));
+				rs.setReady(rsSet.getInt(16) == 1);
+				rs.setCountJob(rsSet.getInt(17));
+				rs.setCountEvaluate(rsSet.getInt(18));
+				rs.setCountJobFinish(rsSet.getInt(19));
+				rs.setActive(rsSet.getInt(20)==1);//1 is active
 			}
 			return rs;
 		} catch (Exception e) {

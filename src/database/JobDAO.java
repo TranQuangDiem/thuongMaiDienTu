@@ -289,7 +289,7 @@ public class JobDAO {
 				// Account
 				acc.setId(rs.getInt(4));
 				acc.setFullname(rs.getString(17));
-				acc.setName(rs.getString(18));
+				
 
 				job.setOfAccount(acc);
 				listJobs.add(job);

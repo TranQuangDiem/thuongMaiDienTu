@@ -22,6 +22,34 @@
 		</put-list-attribute>
 
 	</definition>
+	<definition name="admin/index"
+		extends="admin/layout">
+
+		<put-attribute name="main-content"
+			value="/WEB-INF/views/admin/index.jsp"></put-attribute>
+
+		<put-attribute name="jquerry"
+			value="/WEB-INF/views/admin/jquerry/jquerry-index.jsp"></put-attribute>
+		<put-list-attribute name="stylesheets"
+			inherit="true">
+			<add-attribute
+				value="/resources/ui-admin/assets/css/cssindex.css" />
+			<add-attribute
+				value="/resources/ui-admin/assets/vendors/chartjs/Chart.min.css" />
+			
+
+		</put-list-attribute>
+		<put-list-attribute name="javascripts"
+			inherit="true">
+			<add-attribute
+				value="/resources/ui-admin/assets/vendors/chartjs/Chart.min.js" />
+			<add-attribute
+				value="/resources/ui-admin/assets/vendors/apexcharts/apexcharts.min.js" />
+			<add-attribute
+				value="/resources/ui-admin/assets/js/pages/dashboard.js" />
+
+		</put-list-attribute>
+	</definition>
 	<definition name="admin/manager-freelancer"
 		extends="admin/layout">
 

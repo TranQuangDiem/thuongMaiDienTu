@@ -124,7 +124,7 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>Về nhà tuyển dụng ${employer.name}</h3>
+									<h3>Về nhà tuyển dụng ${employer.fullname}</h3>
 									${employer.about}
 								</div>
 								<!-- End About Sec -->
@@ -133,7 +133,7 @@
 								<div id="address" class="tab-pane fade">
 									<h3>Thông tin liên hệ</h3>
 									<ul class="job-detail-des">
-										<li><span>Tên nhà tuyển dụng:</span>${employer.name}</li>
+										<li><span>Tên nhà tuyển dụng:</span>${employer.fullname}</li>
 										<li><span>Tỉnh / Thành Phố:</span>${employer.address.province}</li>
 										<li><span>Quận / Huyện:</span>${employer.address.district}</li>
 										<li><span>Phường / Xã:</span>${employer.address.ward}</li> 

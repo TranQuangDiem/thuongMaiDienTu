@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import config.CommonConst;
 import model.Account;
+import model.Job;
 
 public class AccessHelper {
 	//6 admin + freelancer
@@ -44,6 +45,14 @@ public class AccessHelper {
 	public static boolean accessFreelancer(int role) {
 		return (FREELANCER_ACCESS&role)>0;
 		
+	}
+	public static boolean accessManagerApply(Account account,Job job) {
+		
+		if(account==null) {
+			return false;
+		}else  if((account.getId()==job.getOfAccount().getId())) {
+			return true;
+		}return false;
 	}
 	
 	

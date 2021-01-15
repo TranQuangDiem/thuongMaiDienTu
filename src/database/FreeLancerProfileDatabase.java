@@ -25,7 +25,7 @@ public class FreeLancerProfileDatabase {
 				ResultSet rsSet = ps.executeQuery();
 				while (rsSet.next()) {
 					int id_guest = rsSet.getInt(2);
-					Account guest = UtilDataBase.getAccount(id_guest);
+					Account guest = AccountDAO.getUserById(id_guest);
 					Evaluate e = new Evaluate();
 					e.setId(rsSet.getInt(1));
 					e.setGuest(guest); 
@@ -58,7 +58,7 @@ public class FreeLancerProfileDatabase {
 				ResultSet rsSet = ps.executeQuery();
 				while (rsSet.next()) {
 					int id_guest = rsSet.getInt(2);
-					Account guest = UtilDataBase.getAccount(id_guest);
+					Account guest = AccountDAO.getUserById(id_guest);
 					Evaluate e = new Evaluate();
 					e.setId(rsSet.getInt(1));
 					e.setGuest(guest); 
@@ -86,7 +86,7 @@ public class FreeLancerProfileDatabase {
 		String sql;
 		PreparedStatement ps;
 		Connection con;
-		Account account= UtilDataBase.getAccount(id_account);
+		Account account= AccountDAO.getUserById(id_account);
 		try {
 			sql = "insert  into evaluate(id_account, id_guest,time,star,content)" + " values(?,?,?,?,?);";
 			ps = ConnectionDB.prepareStatement(sql);

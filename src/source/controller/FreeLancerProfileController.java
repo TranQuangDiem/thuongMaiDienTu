@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import config.CommonConst;
+import database.AccountDAO;
 import database.FreeLancerProfileDatabase;
 import database.JobDAO;
 import database.MajorDAO;
@@ -35,7 +36,7 @@ public class FreeLancerProfileController {
 	public String layout(HttpServletRequest request,Model model, @RequestParam(value = "id_freelancer") int id_freelancer) {
 		
 		Account currentAccount=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-		Account freelancer=UtilDataBase.getAccount(id_freelancer);
+		Account freelancer=AccountDAO.getUserById(id_freelancer);
 		List<Major> lstMajor=MajorDAO.getAll();
 		model.addAttribute("lstMajor", lstMajor);
 		model.addAttribute("freelancer", freelancer);

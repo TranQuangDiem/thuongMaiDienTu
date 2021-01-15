@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import config.CommonConst;
+import database.AccountDAO;
 import database.EmployerProfileDatabase;
 import database.FreeLancerProfileDatabase;
 import database.MajorDAO;
@@ -38,7 +39,7 @@ public class EmployerProfileController {
 			List<Major> lstMajor=MajorDAO.getAll();
 			model.addAttribute("lstMajor", lstMajor);
 			model.addAttribute("currentAccount", currentAccount);
-			Account employer=UtilDataBase.getAccount(id_employer);
+			Account employer=AccountDAO.getUserById(id_employer);
 			model.addAttribute("employer",employer);
 			model.addAttribute("listjob", EmployerProfileDatabase.listjobEmployer(id_employer));
 			return "employer-profile";

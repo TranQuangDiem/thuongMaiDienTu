@@ -28,7 +28,7 @@ public class Account {
 	private String email;
 	private String phone;
 	private int role;
-	private String name;
+	
 	private String major;
 	private int soluongbaidang;
 	private Address address;
@@ -196,13 +196,7 @@ public class Account {
 		this.role = role;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	public String getMajor() {
 		return major;
@@ -340,8 +334,7 @@ public class Account {
 		builder.append(phone);
 		builder.append(", role=");
 		builder.append(role);
-		builder.append(", name=");
-		builder.append(name);
+		
 		builder.append(", major=");
 		builder.append(major);
 		builder.append(", soluongbaidang=");

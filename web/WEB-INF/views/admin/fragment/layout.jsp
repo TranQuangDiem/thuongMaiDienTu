@@ -36,7 +36,7 @@
 				<div class="sidebar-menu">
 					<ul class="menu">
 						<li class='sidebar-title'>Main Menu</li>
-						<li class="sidebar-item "><a href="index.html"
+						<li class="sidebar-item "><a href="${pageContext.request.contextPath}/admin-index"
 							class='sidebar-link'> <i data-feather="home" width="20"></i>
 								<span>Trang chủ</span>
 						</a></li>
@@ -87,11 +87,12 @@
 	</div>
 	<!-- Scripts
 			================================================== -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
 		<c:forEach var="script" items="${javascripts}">
 			<script src="<c:url value="${script}"/>"></script>
 		</c:forEach>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/assets/plugins/js/jquery.min.js"></script>
+	
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/assets/plugins/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
@@ -104,8 +105,7 @@
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/app.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/main.js"></script>
-		<script
-		src="${pageContext.request.contextPath}/resources/ui-admin/assets/js/jquery.min.js"></script>
+		
 	<script type="text/javascript" charset="UTF-8">
 		
 	</script>

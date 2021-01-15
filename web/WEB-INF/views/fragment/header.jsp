@@ -47,7 +47,7 @@
 				<%-- 	<li><a href="<c:url value="/pricing"/>"><i
 						class="fa fa-sign-in" aria-hidden="true"></i>Gói bài đăng</a></li> --%>
 				<!-- <li><a href="thanhtoan"><i class="fa fa-dollar"></i>Nạp tiền</a></li> -->
-				<c:if test="${sessionScope.currentAccount.role==1}">
+				<c:if test="${accessHelper.accessEmployer(sessionScope.currentAccount.role)}">
 					<li><a href="pricing.html"><i class="fa fa-sign-in"
 							aria-hidden="true"></i>Gói Bài Đăng</a></li>
 				</c:if>

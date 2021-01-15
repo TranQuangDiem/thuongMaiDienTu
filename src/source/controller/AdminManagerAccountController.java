@@ -91,7 +91,7 @@ public class AdminManagerAccountController {
 			return model;
 		}
 		ModelAndView model = new ModelAndView("admin/edit-employer");
-		Account acc = UtilDataBase.getAccount(id);
+		Account acc = AccountDAO.getUserById(id);
 		if (acc == null) {
 			model.setViewName("redirect:/admin-index");
 		} else {
@@ -106,7 +106,7 @@ public class AdminManagerAccountController {
 			return model;
 		}
 		ModelAndView model = new ModelAndView("admin/edit-freelancer");
-		Account acc = UtilDataBase.getAccount(id);
+		Account acc = AccountDAO.getUserById(id);
 		if (acc == null) {
 			model.setViewName("redirect:/admin-index");
 		} else {

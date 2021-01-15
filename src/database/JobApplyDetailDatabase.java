@@ -49,7 +49,7 @@ public class JobApplyDetailDatabase {
 				
 				Subscriber subscriber= new Subscriber();
 				subscriber.setId(rsSet.getInt(1));
-				subscriber.setAccount(UtilDataBase.getAccount(rsSet.getInt(2)));
+				subscriber.setAccount(AccountDAO.getUserById(rsSet.getInt(2)));
 				subscriber.setDateApply(rsSet.getTimestamp(3));
 				subscriber.setStatus(rsSet.getInt(4));
 				subscriber.setJob(UtilDataBase.getJob(id_job));

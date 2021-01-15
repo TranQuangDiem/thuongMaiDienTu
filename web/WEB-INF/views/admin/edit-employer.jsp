@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                             <img class="rounded-circle mt-5" src="data:image/png;base64,${acc.imageBase64}" width="120">
-                            <h3 class="font-weight-bold">${acc.name}</h3>
+                            <h3 class="font-weight-bold">${acc.fullname}</h3>
                         </div>
        
                     </div>

@@ -124,6 +124,16 @@
 
 		</put-list-attribute>
 	</definition>
+	<definition name="job-detail"
+		template="/WEB-INF/views/job-detail.jsp" extends="webuser/layout">
+		
+		<put-list-attribute name="stylesheets" inherit="true">
+			
+		</put-list-attribute>
+		<put-list-attribute name="javascripts" inherit="true">	
+
+		</put-list-attribute>
+	</definition>
 	
 	<definition name="payment-methode"
 		template="/WEB-INF/views/payment-methode.jsp" extends="webuser/layout">
