@@ -1,5 +1,7 @@
 package source.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
+import customutil.AccessHelper;
 import customutil.StringHelper;
 import database.MajorDAO;
 import model.Major;
@@ -15,7 +18,11 @@ import model.Major;
 @Controller
 public class Admin_MajorController {
 	@RequestMapping(value = "/admin-list-major")
-	public ModelAndView listMajor() {
+	public ModelAndView listMajor(HttpSession session) {
+		if(!AccessHelper.access(session, AccessHelper.ADMIN_ACCESS)){
+			ModelAndView model = new ModelAndView("redirect:/index");
+			return model;
+		}
 		ModelAndView model = new ModelAndView("admin/admin-list-major");
 		model.addObject("listMajor",MajorDAO.getAll());
 		return model;
