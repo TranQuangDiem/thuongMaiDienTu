@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Freelancer đồ họa</title>
     
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/ui-admin/assets/css/bootstrap.css">
     
-    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+    <link rel="stylesheet" href="resources/ui-admin/assets/vendors/chartjs/Chart.min.css">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="resources/ui-admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="resources/ui-admin/assets/css/app.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/cssindex.css">
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="resources/ui-admin/assets/css/cssindex.css">
+    <link rel="shortcut icon" href="resources/ui-admin/assets/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
     <div id="app">
@@ -195,14 +197,14 @@
                             <div class='px-3 py-3 d-flex justify-content-between height100'>
                                 <h3 class='card-title'>Tổng Doanh Thu</h3>
                                 <div class="card-right d-flex align-items-center align-items-right">
-                                    <p>100,000,000 VNĐ</p>
+                                    <p>100,000,000 VNĐ</p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
                                 <canvas id="canvas1" style="height:100px !important"></canvas>
                                 <!-- truyen vao day -->
                                 <input type="hidden" id="index-input1-1" value="[90, 40, 20, 70, 10, 5, 23]">
-                                <input type="hidden" id="index-input1-2" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
+                                  <input type="hidden" id="index-input1-2" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
                                 <input type="hidden" id="index-input1-3" value="Doanh thu">
                                 
                             </div>
@@ -345,14 +347,14 @@
             </footer>
         </div>
     </div>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="resources/ui-admin/assets/js/feather-icons/feather.min.js"></script>
+    <script src="resources/ui-admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="resources/ui-admin/assets/js/app.js"></script>
     
-    <script src="assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="resources/ui-admin/assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="resources/ui-admin/assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="resources/ui-admin/assets/js/pages/dashboard.js"></script>
 
-    <script src="assets/js/main.js"></script>
+    <script src="resources/ui-admin/assets/js/main.js"></script>
 </body>
 </html>
