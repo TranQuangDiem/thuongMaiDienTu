@@ -12,7 +12,7 @@
 					<div class="mng-company">
 						<div class="col-md-2 col-sm-2">
 							<div class="mng-company-pic">
-								<img src="${pageContext.request.contextPath}/${job.img}=
+								<img src="${pageContext.request.contextPath}/${job.img}
 									class="img-responsive" alt="">
 							</div>
 						</div>
@@ -47,17 +47,6 @@
 				</article>
 			</c:forEach>
 		</c:if>
-	</div>
-	<div class="row">
-		<ul class="pagination">
-			<li><a href="#">«</a></li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
-			<li><a href="#">»</a></li>
-		</ul>
 	</div>
 </div>
 <!-- End Job List -->

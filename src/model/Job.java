@@ -17,8 +17,8 @@ import lombok.ToString;
 @ToString
 public class Job {
 	/** JOB ISHIDE */
-	public static final int ISHIDE=1;
-	public static final int ISNOTHIDE=2;
+	public static final int ISHIDE = 1;
+	public static final int ISNOTHIDE = 2;
 	/** JOB STATUS */
 	public static final int STATUS_OPEN = 1;// Đang tuyển
 	public static final int STATUS_FINISH = 2;// Hoàn thành
@@ -60,7 +60,7 @@ public class Job {
 		}
 	}
 
-	public String toStringOfStatus(int status,int active) {
+	public String toStringOfStatus(int status, int active) {
 		if (active == ISNOTHIDE) {
 			return "Bị Ẩn";
 		} else {
@@ -74,6 +74,7 @@ public class Job {
 			}
 		}
 	}
+
 	public String toStringTypeEng() {
 		switch (this.jobType) {
 		case TYPE_PROJECT:

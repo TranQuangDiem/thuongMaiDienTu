@@ -47,7 +47,7 @@ public class EmployerProfileDatabase {
 	public static List<Job> listjobEmployer(int id_employer) {
 
 		try {
-			List<Job> congviecdadang = new ArrayList<>();
+			List<Job> listjob = new ArrayList<>();
 			String query="SELECT *  FROM job  WHERE idAccount = ? ";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
 			ps.setInt(1, id_employer);
@@ -60,16 +60,15 @@ public class EmployerProfileDatabase {
 				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
 				job.setCreateday(rs.getDate(7));
 				job.setCity(rs.getString(15));
-				
 
-				congviecdadang.add(job);
+
+				listjob.add(job);
 			}
-			return congviecdadang;
+			return listjob;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ArrayList<Job>();
 		}
-
 	}
 
 
