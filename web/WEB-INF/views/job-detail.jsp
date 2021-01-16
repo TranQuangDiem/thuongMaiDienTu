@@ -126,6 +126,7 @@
 
 				<div class="col-md-8 col-sm-8">
 					<div class="container-detail-box">
+					<form action="${pageContext.request.contextPath}/applyjobdetail" id="form-apply" method="post">
 
 						<div class="apply-job-header">
 							<h4>
@@ -163,7 +164,8 @@
 							</ul>
 						</div>
 
-						<a href="#" class="btn btn-success">Apply Ngay</a>
+						<button href="${pageContext.request.contextPath}/job-detail?id_job=${job.id}" form="form-apply" class="btn btn-success">Apply Ngay</button>>
+						</form>
 						<c:if test="${kiemtra==false}">
 						<button id="save" onclick="save()" class="btn btn-success"
 							value="lưu">Lưu</button></c:if>

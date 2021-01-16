@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,10 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sun.mail.util.logging.MailHandler;
-
 import config.CommonConst;
-import customutil.AccessHelper;
 import customutil.DateHelper;
 import customutil.MyMailHandler;
 import customutil.StringHelper;
@@ -61,7 +57,8 @@ public class JobController {
 		StringBuilder querySELECT = new StringBuilder(
 				"SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,account.`name`,job.active  FROM job JOIN account ON job.idAccount=account.id ");
 		/** SEARCH */
-		StringBuilder queryWHERE = new StringBuilder("WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1");
+		StringBuilder queryWHERE = new StringBuilder(
+				"WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1");
 		StringBuilder queryORDER = new StringBuilder("");
 		if (!StringHelper.isStringNull(province)) {
 			queryWHERE.append(" ");
@@ -125,8 +122,7 @@ public class JobController {
 		model.addObject("province", StringHelper.isStringNull(province) ? "" : province);
 		model.addObject("major", major == 0 ? "" : major);
 		model.addObject("sortby", sortby == 0 ? "" : sortby);
-		model.addObject("sortorder", sortorder == 0 ? "" : sortorder);
-		/** DEBUG */
+		model.addObject("sortorder", sortorder == 0 ? "" : sortorder);/** DEBUG */
 //		System.out.println(totalRecords);
 //		System.out.println(query);
 		return model;
@@ -197,16 +193,27 @@ public class JobController {
 		}
 	}
 
-	@RequestMapping(value = "/applyjob", params = { "id" }, method = RequestMethod.POST)
-	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, @RequestParam("id") int id,
-			HttpServletRequest request) {
+	@RequestMapping(value = "/applyjob", method = RequestMethod.POST)
+	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, HttpServletRequest request) {
 		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		System.out.println(formApplyJob);
-		String fullname = formApplyJob.getFullname();
-		String email = formApplyJob.getEmail();
-		int id_jod = formApplyJob.getIdJob();
-		JobApplyDatabase.insert(formApplyJob, id);
+		long millis = System.currentTimeMillis();
+		java.sql.Date date = new java.sql.Date(millis);
+		System.out.println(date);
+
+		JobApplyDatabase.insert(formApplyJob, 2, date);
 		return "redirect:/job-apply-detail?id_job=" + formApplyJob.getIdJob();
+	}
+
+	@RequestMapping(value = "/applyjobdetail", params = { "id_job" }, method = RequestMethod.POST)
+	public String applyJobdetail(@RequestParam("id_job") int id_job, HttpServletRequest request) {
+		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+		long millis = System.currentTimeMillis();
+		java.sql.Date date = new java.sql.Date(millis);
+		System.out.println(date);
+
+		JobApplyDatabase.insertInDetail(id_job, 2, date);
+		return "redirect:/job-apply-detail?id_job=" + id_job;
 	}
 
 }
