@@ -34,6 +34,7 @@ public class AccessHelper {
 			return true;
 		}return false;
 	}
+	
 	public static boolean accessAdmin(int role) {
 		return (ADMIN_ACCESS&role)>0;
 		
@@ -54,6 +55,7 @@ public class AccessHelper {
 			return true;
 		}return false;
 	}
+	
 	
 	
 
