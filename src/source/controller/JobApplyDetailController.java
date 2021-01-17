@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import config.CommonConst;
 import customutil.AccessHelper;
+import database.AccountDAO;
 import database.JobApplyDetailDatabase;
 import database.JobDAO;
 import database.UtilDataBase;
@@ -60,7 +61,12 @@ public class JobApplyDetailController{
 		if(!AccessHelper.accessManagerApply(account, job)) {
 			return "Error";
 		}
-		return (JobApplyDetailDatabase.changeStatusFreeLancer(freelancer_id,id_job, Subscriber.Status.valueOf(status)))?"Ok":"Error";
+		boolean rs=(JobApplyDetailDatabase.changeStatusFreeLancer(freelancer_id,id_job, Subscriber.Status.valueOf(status)));
+		if(rs) {
+			rs= AccountDAO.increaseCountHired(account.getId());
+		
+		}
+		return rs?"Ok":"Error";
 	}
 	
 
