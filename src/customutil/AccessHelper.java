@@ -13,8 +13,8 @@ public class AccessHelper {
 	//2 freelancer
 	//1 employer
 	public final static int ADMIN_ACCESS = 4;
-	public final static int EMPLOYER_ACCESS = 2;
-	public final static int FREELANCER_ACCESS = 1;
+	public final static int EMPLOYER_ACCESS = 1;
+	public final static int FREELANCER_ACCESS = 2;
 	public static void access(HttpSession session, int access, Runnable accept, Runnable deny) {
 		Account account = (Account)session.getAttribute(CommonConst.SESSION_ACCOUNT);
 		if(account==null) {
