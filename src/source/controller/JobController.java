@@ -7,8 +7,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +32,11 @@ import database.AccountDAO;
 import database.JobApplyDatabase;
 import database.JobDAO;
 import database.MajorDAO;
+import database.UtilDataBase;
 import dataform.FormApplyJob;
 import dataform.FormCreateJob;
 import model.Account;
+import model.Job;
 
 @Controller
 public class JobController {
@@ -55,13 +60,15 @@ public class JobController {
 			@RequestParam(value = "province", required = false, defaultValue = "") String province,
 			@RequestParam(value = "major", required = false, defaultValue = "0") int major,
 			@RequestParam(value = "sortby", required = false, defaultValue = "0") int sortby,
-			@RequestParam(value = "sortorder", required = false, defaultValue = "0") int sortorder) {
+			@RequestParam(value = "sortorder", required = false, defaultValue = "0") int sortorder,
+			HttpServletRequest request) {
 		int itemInOnePage = 10;
 		/** CREATE QUERY */
 		StringBuilder querySELECT = new StringBuilder(
 				"SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype,account.fullname,job.active  FROM job JOIN account ON job.idAccount=account.id ");
 		/** SEARCH */
-		StringBuilder queryWHERE = new StringBuilder("WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1");
+		StringBuilder queryWHERE = new StringBuilder(
+				"WHERE  job.`status`=1 AND finishday >= (SELECT CURDATE()) AND job.active=1");
 		StringBuilder queryORDER = new StringBuilder("");
 		if (!StringHelper.isStringNull(province)) {
 			queryWHERE.append(" ");
@@ -125,8 +132,7 @@ public class JobController {
 		model.addObject("province", StringHelper.isStringNull(province) ? "" : province);
 		model.addObject("major", major == 0 ? "" : major);
 		model.addObject("sortby", sortby == 0 ? "" : sortby);
-		model.addObject("sortorder", sortorder == 0 ? "" : sortorder);
-		/** DEBUG */
+		model.addObject("sortorder", sortorder == 0 ? "" : sortorder);/** DEBUG */
 //		System.out.println(totalRecords);
 //		System.out.println(query);
 		return model;
@@ -197,16 +203,38 @@ public class JobController {
 		}
 	}
 
-	@RequestMapping(value = "/applyjob", params = { "id" }, method = RequestMethod.POST)
-	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, @RequestParam("id") int id,
+	@RequestMapping(value = "/applyjob", method = RequestMethod.POST)
+	public String applyJob(@ModelAttribute("FormApplyJob") FormApplyJob formApplyJob, Model model,
 			HttpServletRequest request) {
-		Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-		System.out.println(formApplyJob);
-		String fullname = formApplyJob.getFullname();
-		String email = formApplyJob.getEmail();
-		int id_jod = formApplyJob.getIdJob();
-		JobApplyDatabase.insert(formApplyJob, id);
-		return "redirect:/job-apply-detail?id_job=" + formApplyJob.getIdJob();
+		Account currentAccount = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+		if (currentAccount != null) {
+			Account freelancer = AccountDAO.getUserById(currentAccount.getId());
+			model.addAttribute("freelancer", freelancer);
+			System.out.println(formApplyJob);
+			long millis = System.currentTimeMillis();
+			java.sql.Date date = new java.sql.Date(millis);
+
+			JobApplyDatabase.insert(formApplyJob, freelancer.getId(), date);
+			return "redirect:/job-detail?id_job=" + formApplyJob.getIdJob();
+		} else {
+			return "redirect:/loginpage";
+		}
+	}
+	@RequestMapping(value = "/applyjobdetail",params = { "id_job" })
+	public String applyJobdetail( Model model, @RequestParam(value = "id_job") int id_job , HttpServletRequest request, HttpServletResponse response , HttpSession session ) {
+		Account currentAccount = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+		if (currentAccount != null) {
+			Account freelancer = AccountDAO.getUserById(currentAccount.getId());
+			model.addAttribute("freelancer", freelancer);
+			long millis = System.currentTimeMillis();
+			java.sql.Date date = new java.sql.Date(millis);
+			JobApplyDatabase.insertInDetail(id_job, 2, date);
+			return "redirect:/job-detail?id_job=" +id_job ;
+		} else {
+			return "redirect:/loginpage";
+		}
+
 	}
 
+	
 }

@@ -23,6 +23,7 @@ import database.UtilDataBase;
 import dataform.FormSettingsEmployer;
 import model.Account;
 import model.Evaluate;
+import model.Job;
 import model.Major;
 
 @Controller
@@ -32,9 +33,7 @@ public class EmployerProfileController {
 		@RequestMapping(value="/employer-profile", params = { "id_employer" })
 		public String layout(HttpServletRequest request,Model model, @RequestParam(value = "id_employer") int id_employer) {
 			Account currentAccount=(Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
-
-			model.addAttribute("currentAccount", currentAccount);
-			
+		model.addAttribute("currentAccount", currentAccount);
 
 			List<Major> lstMajor=MajorDAO.getAll();
 			model.addAttribute("lstMajor", lstMajor);
@@ -111,6 +110,15 @@ public class EmployerProfileController {
 		public String test() {
 			return "test";
 		}
+		
+		@RequestMapping(value = "/post-job", params = { "id_employer" }, method = RequestMethod.POST)
+		public String string(Model model, @RequestParam(value = "id_employer") int id_employer) {
+			List<Job> listjob = EmployerProfileDatabase.listjobEmployer(id_employer);			
+			model.addAttribute("list", listjob + "");
+			return "employer-profile/post-job";
+		}
+		
+
 			
 		
 }

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- Start Job List -->
 <div id="post-job" class="tab-pane fade">
-	<h3>You have ${employer.soluongbaidang} job post</h3>
+	<h3>You have ${countJob} job post</h3>
 	<div class="row">
 		<c:if test="${not empty listjob}">
 			<c:forEach var="job" items="${listjob}">
@@ -20,17 +20,16 @@
 						<div class="col-md-5 col-sm-5">
 							<div class="mng-company-name">
 								<h4>
-									${job.tencongviec} <span class="cmp-tagline">(Software
-										Company)</span>
+									 <span class="cmp-tagline">(Software Company)${job.jobTitle}</span>
 								</h4>
-								<span class="cmp-time">Ngày đăng: ${job.ngaydang}</span>
+								<span class="cmp-time">Ngày đăng: ${job.createday}</span>
 							</div>
 						</div>
 
 						<div class="col-md-4 col-sm-4">
 							<div class="mng-company-location">
 								<p>
-									<i class="fa fa-map-marker"></i> ${employer.addressString}
+									<i class="fa fa-map-marker"></i>${job.city}
 								</p>
 							</div>
 						</div>

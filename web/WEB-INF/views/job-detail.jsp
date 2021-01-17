@@ -27,6 +27,7 @@
 
 </head>
 <body>
+
 	<div class="Loader"></div>
 	<div class="wrapper">
 		<!-- Start Navigation -->
@@ -84,11 +85,14 @@
 
 		<!-- Job Detail Start -->
 		<section>
+		
 			<div class="container">
 
 				<div class="col-md-8 col-sm-8">
-					<div class="container-detail-box">
-
+			
+				
+					<div class="container-detail-box">				
+					
 						<div class="apply-job-header">
 							<h4>
 								<span>${job.jobTitle}</span> <img src="/img/edit.png" alt="">
@@ -101,6 +105,7 @@
 						<div class="apply-job-detail">
 							<p>${job.jobDescription}</p>
 						</div>
+						
 
 						<div class="apply-job-detail">
 							<h5>chuyên môn</h5>
@@ -126,7 +131,11 @@
 							</ul>
 						</div>
 
-						<a href="#" class="btn btn-success">Apply Ngay</a>
+
+						<button data-idjob="${job.id}" href="" data-toggle="modal"
+												data-target="#apply-job" class="btn advance-search"
+												 style="background:#11b719;color: #fff;">Apply Ngay</button>
+						
 						<c:if test="${not empty sessionScope.currentAccount && sessionScope.currentAccount.role == 2}">
 						<c:if test="${kiemtra==false}">
 						<button id="save" onclick="save()" class="btn btn-success"
@@ -329,6 +338,45 @@
 			</div>
 		</div>
 		<!-- End Sign Up Window -->
+		<div class="modal fade" id="apply-job" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel2" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="apply-job-box">
+							<img src="assets/img/com-1.jpg" class="img-responsive" alt="">
+							<h4>${job1.jobTitle}</h4>
+							<p>${job1.jobTitle}</p>
+						</div>
+						<div class="apply-job-form">
+							<form class="form-inline" accept-charset="UTF-8"
+								action="${pageContext.request.contextPath}/applyjob"
+								enctype="multipart/form-data" method="post">
+								<div class="col-sm-12">
+									<div class="form-group">
+										<input type="hidden" value="${job.id}" name="idJob" /> <input
+											type="text" name="fullname" class="form-control"
+											placeholder="Your Name" required=""> <input
+											type="email" name="email" class="form-control"
+											placeholder="Your Email" required="">
+										<textarea class="form-control" name="about"
+											placeholder="About You / Paste your CV"></textarea>
+										<div class="fileUpload">
+											<span>Upload CV</span> <input type="file" name="cv"
+												class="upload" />
+										</div>
+										<div class="center">
+											<button type="submit" id="subscribe" class="submit-btn">
+												Apply </button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<button class="w3-button w3-teal w3-xlarge w3-right"
 			onclick="openRightMenu()">
 			<i class="spin fa fa-cog" aria-hidden="true"></i>
@@ -446,6 +494,15 @@
 
 				}
 			}
+
+			$(document).ready(function () {
+			$('#apply-job').on('show.bs.modal', function (e) {
+			    var id_job = $(e.relatedTarget).data('idjob');
+			    
+			    $("input[name='idJob']").val(id_job);
+			    
+				});
+			});
 		</script>
 	</div>
 </body>

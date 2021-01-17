@@ -7,9 +7,12 @@
 	<div class="row no-mrg">
 		<h3 style="margin-bottom: 30px;">Báo cáo</h3>
 		<div class="edit-pro">
-			<form>
-				<input class="form-control" id="input-title" type="text" placeholder="Tiêu đề báo cáo">
-				<textarea class="form-control" placeholder="nội dung chi tiết báo cáo"></textarea>
+			<form enctype="multipart/form-data" modelAttribute="formreport"	
+			
+			id="form-report" action="${pageContext.request.contextPath}/report" method="post">
+			
+				<input class="form-control" name="title" id="input-title" type="text" placeholder="Tiêu đề báo cáo">
+				<textarea class="form-control"  name="content"placeholder="nội dung chi tiết báo cáo"></textarea>
 				<div class="row" style="margin-bottom: 45px;">
 					<div class="col-sm-2">
 						<div class="image-upload-wrap" id="image-upload-wrap1">
@@ -54,28 +57,12 @@
 					  </div>
 					</div>
 				</div>
-					<button type="button" class="update-btn btn-report" data-toggle="modal" data-target="#modal-report" >Gửi</button>
+					<button type="submit" >Gửi</button>
 			</form>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="modal-report" role="dialog">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal">&times;</button>
-		  <h4 class="modal-title title-modal-report">Thành Công</h4>
-		</div>
-		<div class="modal-body">
-			<img id="img-success-report" src="assets/img/success.png" alt="success.png">
-		  <p>Báo cáo của bạn đã được báo cáo thành công gửi thành công</p>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		</div>
-	  </div>
-	</div>
-  </div>
+
 <!-- End Report -->
 <script type="text/javascript">
 	
