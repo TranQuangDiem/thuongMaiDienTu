@@ -385,6 +385,31 @@ public class JobDAO {
 			// TODO: handle exception
 		}
 	}
+	public static void tangView(int idjob,int view) {
+		try {
+			String sql = "update job set view=? where id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, view);
+			ps.setInt(2, idjob);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	public static int view(int idjob) {
+		int luotxem=0;
+		try {
+			String sql = "select view from job where id=?";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, idjob);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			luotxem= rs.getInt(1);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return luotxem;
+	}
 
 	// tim jod da luu theo idAccount
 	public static List<Job> findJobSave(int idAccount) {

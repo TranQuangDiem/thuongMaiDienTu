@@ -53,7 +53,7 @@
 							<h4>${job.jobTitle}</h4>
 							<p>${job.ofAccount.fullname}</p>
 							<ul>
-								<li><a href="#"><i class="fa fa-user"></i> ${job.soluongtuyen} Position</a></li>
+								<li><a href="#"><i class="fa fa-user"></i>Cần tuyển ${job.soluongtuyen}</a></li>
 								<li><i class="fa fa-map-marker"></i> ${job.city}</li>
 								<li><div class="verified-action">Verified</div></li>
 							</ul>
@@ -151,7 +151,7 @@
 
 						<div class="row">
 							<div class="col-md-12">
-								<h4>Similar Jobs</h4>
+								<h4>Công việc liên quan</h4>
 							</div>
 						</div>
 
@@ -163,7 +163,7 @@
 									<c:forEach var="listjob1" items="${joblienquan}">
 										<div style="padding-top: 8px" class="freelance-box">
 											<div class="popular-jobs-container">
-												<div style="padding-top: 0px" class="popular-jobs-box">
+												<div style="padding-top: 0px;height:45%" class="popular-jobs-box">
 													<div style="padding-top: 7px" class="popular-jobs-box">
 														<div style="padding-top: 0px"
 															class="popular-jobs-box-detail">

@@ -64,7 +64,7 @@
 								</ul>
 							</div>
 							<div class="pr-buy-button">
-								<a onclick="thongbao()" href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
+								<a onclick="return confirm('gói bài đăng này sẽ thay thế gói bạn đang dùng. Bạn chắc chắn muốn mua gói bài đăng này')" href="${urlThanhtoan}?id=${goi.id}" class="pr-btn active"
 									title="Price Button">Mua</a>
 							</div>
 						</div>

@@ -73,6 +73,8 @@ public class HomeController {
 		model.addAttribute("job", job);
 		model.addAttribute("job1", UtilDataBase.listJobLimit(1));
 		model.addAttribute("joblienquan", UtilDataBase.listJobType(job.getJobType()));
+		int view = JobDAO.view(id_job);
+		JobDAO.tangView(id_job, view+1);
 		Account acc = (Account) session.getAttribute("taikhoan");
 		if (acc != null) {
 			model.addAttribute("kiemtra", JobDAO.kiemtrajobSave(id_job, acc.getId()));
