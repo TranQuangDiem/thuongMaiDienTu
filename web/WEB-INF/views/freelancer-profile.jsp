@@ -475,7 +475,7 @@
 				
 				
 			});
-		<!--	function deletejob(idjob,idAccount){
+		/*	function deletejob(idjob,idAccount){
 			var	url ="<c:url value="/deletejob"/>?id_job="+idjob+ "&idAccount="+idAccount;
 			var result='';
 			$.ajax({url,function (data){
@@ -515,10 +515,10 @@
 				}
 			}
 			});
-			}-->
+			} */
 			</script>
 			
-			</div>
+			
 	</body>
 	
 

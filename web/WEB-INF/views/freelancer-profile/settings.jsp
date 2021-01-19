@@ -20,13 +20,13 @@
 			<div class="col-md-4 col-sm-6">
 				<label>Chuyên ngành</label>
 				<select name="major" class="form-control">
-					<c:if test="${freelancer.role==2}">
+					
 					<c:forEach var="itemMajor" items="${lstMajor}"
 						varStatus="tagStatus">
 						<option value="${itemMajor.name}">${itemMajor.name}</option>
 					</c:forEach>
 						
-					</c:if>
+					
 				</select>
 				
 			</div>
