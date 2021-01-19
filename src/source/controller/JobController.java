@@ -46,7 +46,7 @@ public class JobController {
 		Account account = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
 		if (account == null) {
 			return new ModelAndView("redirect:loginpage");
-		} else if (AccessHelper.access(request.getSession(),AccessHelper.EMPLOYER_ACCESS)) {
+		} else if (!AccessHelper.access(request.getSession(),AccessHelper.EMPLOYER_ACCESS)) {
 			return new ModelAndView("redirect:index");
 		}
 		ModelAndView model = new ModelAndView("create-job");

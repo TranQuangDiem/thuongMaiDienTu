@@ -102,7 +102,7 @@ public class HoaDonDatabase {
 	public static List<HoaDon> findByIdAccount(int idAccount) {
 		List<HoaDon> hoadon = new ArrayList<HoaDon>();
 		try {
-			String sql="select * from hoadon where idAccount="+idAccount +" order by ngayHetHan DESC";
+			String sql="select * from hoadon where idAccount="+idAccount +" order by id DESC";
 			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
 //			ps.setInt(1, idAccount);
 			ResultSet rs = ps.executeQuery(sql);
