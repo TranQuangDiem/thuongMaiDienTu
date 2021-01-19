@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import config.CommonConst;
 import customutil.AccessHelper;
+import customutil.MyMailHandler;
 import database.AccountDAO;
 import database.JobApplyDatabase;
 import database.JobApplyDetailDatabase;
@@ -67,14 +68,30 @@ public class JobApplyDetailController {
 			@RequestParam(value = "id_job") int id_job, @RequestParam(value = "status") String status) {
 
 		Job job = JobDAO.getJobById(id_job);
-		Account account = (Account) session.getAttribute(CommonConst.SESSION_ACCOUNT);
-		if (!AccessHelper.accessManagerApply(account, job)) {
+		Account currentAccount = (Account) session.getAttribute(CommonConst.SESSION_ACCOUNT);
+		if (!AccessHelper.accessManagerApply(currentAccount, job)) {
 			return "Error";
 		}
 		boolean rs = (JobApplyDetailDatabase.changeStatusFreeLancer(freelancer_id, id_job,
 				Subscriber.Status.valueOf(status)));
 		if (rs) {
-			rs = AccountDAO.increaseCountHired(account.getId());
+			AccountDAO.increaseCountHired(currentAccount.getId());
+			AccountDAO.increaseCountJobFinish(freelancer_id);
+			Account freelancer=AccountDAO.getUserById(freelancer_id);
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					try {
+						MyMailHandler.sendEmail(freelancer.getEmail(), "Tìm Việc Đồ Hoạ", "Bạn đã được tuyển");
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+						
+					}
+					
+				}
+			}).start();
+			
 
 		}
 		return rs ? "Ok" : "Error";
