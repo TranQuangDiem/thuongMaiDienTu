@@ -112,7 +112,8 @@
 												<header class="card-header cursor-pointer collapsed"
 													data-toggle="collapse" data-target="#full-message${hoadon.id}"
 													aria-expanded="false">
-												<div class="card-title flexbox">
+													
+													<div class="card-title flexbox">
 													<img class="img-responsive img-circle avatar"
 														src="${pageContext.request.contextPath}/resources/assets/img/check.png" alt="...">
 													<div>
@@ -128,7 +129,12 @@
 															<br> <small class="d-inline-block">Đến:</small> <small>Web
 																site</small>
 														</div>
+														
 													</div>
+													<span style="margin: 21px;font-size: 18px;color:red"><c:if test="${hoadon.active==1}">Đang sử dụng</c:if></span>
+													
+													
+												
 												</div>
 												</header>
 												<div class="collapse" id="full-message${hoadon.id}"
@@ -136,6 +142,8 @@
 													<div class="card-body">
 
 														<p style="color: red">-${hoadon.giaTri} VNĐ</p>
+														<p>Ngày hết hạn: <span style="color: red">${hoadon.ngayHetHan}</span></p>
+														<p>Số lượng bài đăng: <span style="color: red">${hoadon.soluongbaidang}</span> bài</p>
 													</div>
 												</div>
 											</div>

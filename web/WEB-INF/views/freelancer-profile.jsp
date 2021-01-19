@@ -102,7 +102,7 @@
 							<div class="tab-content">
 								<!-- Start About Sec -->
 								<div id="about" class="tab-pane fade in active">
-									<h3>About Freelancer ${freelancer.name}</h3>
+									<h3>About Freelancer ${freelancer.username}</h3>
 									<!-- About -->
 									${freelancer.about}
 								</div>
@@ -258,6 +258,9 @@
 								<div id="save-job" class="tab-pane fade">
 	<!-- <h3>You have 22 job post</h3> -->
 	<div id="jobsave" class="row">
+	<c:if test="${empty savejob}">
+	<h1>Chưa có công việc được lưu</h1>
+	</c:if>
 	<c:if test="${not empty savejob}">
 									<c:forEach var="listjob1" items="${savejob}">
 		<article>
@@ -285,13 +288,13 @@
 				</div>
 				
 			</div>
-			<span class="tg-themetag tg-featuretag">Premium</span>
+	<!-- 		<span class="tg-themetag tg-featuretag">Premium</span> -->
 		</article>
 		</c:forEach>
 								</c:if>
 		
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 		<ul class="pagination">
 			<li><a href="#">«</a></li>
 			<li class="active"><a href="#">1</a></li>
@@ -301,7 +304,7 @@
 			<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
 			<li><a href="#">»</a></li>
 		</ul>
-	</div>
+	</div> -->
 </div>
 								<!-- End công việc đã lưu -->
 							</div>
