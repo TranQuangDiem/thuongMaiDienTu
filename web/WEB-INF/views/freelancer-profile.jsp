@@ -90,13 +90,14 @@
                     <div class="full-card">
                       <div class="deatil-tab-employ tool-tab">
 							<ul class="nav simple nav-tabs" id="simple-design-tab">
-								<li class="active"><a href="#about">Thông Tin Cá Nhân</a></li>
+								<li class="active" ><a href="#about" style="padding-left: 14px; padding-right: 14px;">Thông Tin Cá Nhân</a></li>
 								<li><a href="#address">Địa Chỉ</a></li>
-								<li><a href="#post-job">Công Việc Đã Hoàn Thành</a></li>
+								<li><a href="#post-job">Công Việc Đã Nhận</a></li>
 								<li><a style="display: none;" href="#friends">Friends</a></li>
 								<li><a href="#rate">Đánh Giá <span class="info-bar">5</span></a></li>
 								<li><a href="#settings">Cài Đặt</a></li>
 								<li><a href="#save-job">Công Việc Đã lưu</a></li>
+								<li><a href="#job-finish">Hoàn Thành</a></li>
 							</ul>
 							<!-- Start All Sec -->
 							<div class="tab-content">
@@ -307,6 +308,62 @@
 	</div> -->
 </div>
 								<!-- End công việc đã lưu -->
+								<!-- Start công việc đã hoàn thành -->
+								<div id="job-finish" class="tab-pane fade">
+	<div id="jobfinish" class="row">
+	<c:if test="${empty listjob2}">
+	<h1>Chưa có công việc được hoàn thành</h1>
+	</c:if>
+	<c:if test="${not empty listjob2}">
+									<c:forEach var="listjob2" items="${listjob2}">
+		<article>
+			<div class="mng-company">
+			<a href="${pageContext.request.contextPath}/job-detail?id_job=${listjob2.id}">
+				<div class="col-md-2 col-sm-2">
+					<div class="mng-company-pic"><img src='data:image/jpge;base64,${listjob2.img}' class="img-responsive" alt=""></div>
+				</div>
+				
+				<div class="col-md-5 col-sm-5">
+					<div class="mng-company-name">
+						<!-- <h4>Autodesk <span class="cmp-tagline">(Software Company)</span></h4><span class="cmp-time">10 Hour Ago</span></div> -->
+						<h4>${listjob2.jobTitle}</h4>
+						</div>
+				</div>
+				</a>
+				<div class="col-md-4 col-sm-4">
+					<div class="mng-company-location">
+						<p><i class="fa fa-map-marker"></i> ${listjob2.city}</p>
+					</div>
+				</div>
+				
+				<div class="col-md-1 col-sm-1">
+					<div class="mng-company-action"></div>
+				</div>
+				
+				
+			</div>
+	<!-- 		<span class="tg-themetag tg-featuretag">Premium</span> -->
+		</article>
+		</c:forEach>
+								</c:if>
+		
+	</div>
+	<!-- <div class="row">
+		<ul class="pagination">
+			<li><a href="#">«</a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
+			<li><a href="#">»</a></li>
+		</ul>
+	</div> -->
+</div>
+</div>
+						<!-- End công việc đã hoàn thành -->
+								
+								
 							</div>
 							<!-- Start All Sec -->
 						</div>  

@@ -1,6 +1,5 @@
 package database;
 
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +8,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import customutil.FileHelper;
 import model.Account;
 import model.Address;
 import model.Evaluate;
+import model.Job;
 
 public class FreeLancerProfileDatabase {
 
@@ -215,9 +216,90 @@ public class FreeLancerProfileDatabase {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	
+	public static List<Job> listjobfreelancer(int id_freelancer) {
+		List<Job> listjob = new ArrayList<>();
+		
+		try {
+			
+			
+			String sql="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype FROM job join subscriber on job.id=subscriber.id_job where subscriber.id_account=? AND subscriber.status=2";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, id_freelancer);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Account acc = new Account();
+				Job job = new Job();
+				job.setId(rs.getInt(1));
+				job.setJobTitle(rs.getString(2));
+				job.setJobDescription(rs.getString(3));
+				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				job.setSoluongtuyen(rs.getInt(6));
+				job.setCreateday(rs.getDate(7));
+				job.setFinishday(rs.getDate(8));
+				job.setView(rs.getInt(4));
+				job.setMajor(rs.getString(10));
+				job.setLanguage(rs.getString(11));
+				job.setExp(rs.getString(12));
+				job.setEducation(rs.getString(13));
+				job.setStatus(rs.getInt(14));
+				job.setCity(rs.getString(15));
+				job.setJobType(rs.getInt(16));
+				
+				acc.setId(rs.getInt(4));
+				job.setOfAccount(acc);	
+				
+				
+				listjob.add(job);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return listjob;
 
-	public static void main(String[] args) {
-		getEvaluate(1);
 	}
 
+	public static List<Job> listjobfreelancerfinish(int id_freelancer) {
+		List<Job> listjob = new ArrayList<>();
+		
+		try {
+			
+			
+			String sql="SELECT job.id,job.tencongviec,job.chitiet,job.idAccount,job.img,job.soluongtuyen,job.ngaydang,job.finishday,job.`view`,job.major,job.`language`,job.exp,job.education,job.`status`,job.city,job.jobtype FROM job join subscriber on job.id=subscriber.id_job where subscriber.id_account=? AND subscriber.status=3";
+			PreparedStatement ps = ConnectionDB.prepareStatement(sql);
+			ps.setInt(1, id_freelancer);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Account acc = new Account();
+				Job job = new Job();
+				job.setId(rs.getInt(1));
+				job.setJobTitle(rs.getString(2));
+				job.setJobDescription(rs.getString(3));
+				
+				job.setImg(FileHelper.convertImgToString(rs.getBlob(5)));
+				job.setSoluongtuyen(rs.getInt(6));
+				job.setCreateday(rs.getDate(7));
+				job.setFinishday(rs.getDate(8));
+				job.setView(rs.getInt(4));
+				job.setMajor(rs.getString(10));
+				job.setLanguage(rs.getString(11));
+				job.setExp(rs.getString(12));
+				job.setEducation(rs.getString(13));
+				job.setStatus(rs.getInt(14));
+				job.setCity(rs.getString(15));
+				job.setJobType(rs.getInt(16));
+				
+				
+				
+				
+				
+				listjob.add(job);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return listjob;
+
+	}
 }

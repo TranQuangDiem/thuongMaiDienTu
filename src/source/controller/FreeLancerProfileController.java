@@ -42,7 +42,8 @@ public class FreeLancerProfileController {
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
 		model.addAttribute("savejob", JobDAO.findJobSave(id_freelancer));
-		
+		model.addAttribute("listjob",FreeLancerProfileDatabase.listjobfreelancer(id_freelancer));
+		model.addAttribute("listjob2",FreeLancerProfileDatabase.listjobfreelancerfinish(id_freelancer));
 		//System.out.println(freelancer);
 		return "freelancer-profile";
 	}
