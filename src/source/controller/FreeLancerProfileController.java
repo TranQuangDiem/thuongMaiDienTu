@@ -39,7 +39,7 @@ public class FreeLancerProfileController {
 		Account freelancer=AccountDAO.getUserById(id_freelancer);
 		List<Major> lstMajor=MajorDAO.getAll();
 		model.addAttribute("lstMajor", lstMajor);
-		System.out.println(lstMajor.size());
+		//System.out.println(lstMajor.size());
 		model.addAttribute("freelancer", freelancer);
 		model.addAttribute("currentAccount", currentAccount);
 		model.addAttribute("savejob", JobDAO.findJobSave(id_freelancer));
