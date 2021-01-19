@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import config.CommonConst;
 import database.AccountDAO;
 import database.EmployerProfileDatabase;
 import database.FreeLancerProfileDatabase;
 import database.MajorDAO;
+import database.ReportDatabase;
 import database.UtilDataBase;
+import dataform.FormReport;
 import dataform.FormSettingsEmployer;
 import model.Account;
 import model.Evaluate;
@@ -41,6 +44,8 @@ public class EmployerProfileController {
 			Account employer=AccountDAO.getUserById(id_employer);
 			model.addAttribute("employer",employer);
 			model.addAttribute("listjob", EmployerProfileDatabase.listjobEmployer(id_employer));
+			model.addAttribute("count",EmployerProfileDatabase.countJob(id_employer) );
+			
 			return "employer-profile";
 		}
 		@RequestMapping(value = "/employer-profile-settings", params = { "id_employer" }, method = RequestMethod.GET)
@@ -116,6 +121,28 @@ public class EmployerProfileController {
 			List<Job> listjob = EmployerProfileDatabase.listjobEmployer(id_employer);			
 			model.addAttribute("list", listjob + "");
 			return "employer-profile/post-job";
+		}
+		@RequestMapping(value = "/employer-report", params = { "id_employer" }, method = RequestMethod.GET)
+		public String report(Model model, @RequestParam(value = "id_employer") int id_employer) {
+			model.addAttribute("id_employer", id_employer + "");
+			return "employer-profile/report";
+		}
+
+		@RequestMapping(value = "/report",params = { "id_employer" },  method = RequestMethod.POST)
+		public String report(@ModelAttribute("formreport") FormReport form,@RequestParam(value = "id_employer") int id_employer,
+				 HttpServletRequest request) {
+			Account acc = (Account) request.getSession().getAttribute(CommonConst.SESSION_ACCOUNT);
+			System.out.println(form);
+			MultipartFile img1 = form.getImg1();
+			MultipartFile img2 = form.getImg2();
+			MultipartFile img3 = form.getImg3();
+			String title = form.getTitle();
+			String content = form.getContent();
+			long millis = System.currentTimeMillis();
+			java.sql.Date date = new java.sql.Date(millis);
+			ReportDatabase.insert(form, acc.getId(), id_employer, date);
+			return "/employer-profile/report";
+
 		}
 		
 

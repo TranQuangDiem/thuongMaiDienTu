@@ -25,12 +25,11 @@ public class ReportDatabase {
 //			System.out.println(e.getMessage());
 //		}
 //	}
-	public static int insert(FormReport form, int id , int id_report, Date date) {
+	public static void insert(FormReport form, int id , int id_report, Date date) {
 		try {
 
 			String query = "INSERT INTO report (report.id_report, report.id_reported,report.title, report.content, report.img1, report.img2, report.img3,report.date_report) VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = ConnectionDB.prepareStatement(query);
-			// set
 			ps.setInt(1, id_report);
 			ps.setInt(2, id);
 			ps.setString(3, form.getTitle());
@@ -38,18 +37,11 @@ public class ReportDatabase {
 			ps.setBlob(5, form.getImg1().getInputStream());
 			ps.setBlob(6, form.getImg2().getInputStream());
 			ps.setBlob(7, form.getImg3().getInputStream());
-			ps.setDate(8, new java.sql.Date(System.currentTimeMillis()));		
-			int row = ps.executeUpdate();
+			ps.setDate(8, date);
+			ps.executeUpdate();
 			
-			if (row != 1) {
-				return -1;
-			} else {
-				return id;
-			}
-
 		} catch (Exception e) {
-			e.printStackTrace();
-			return -1;
+			System.out.println(e.getMessage());
 		}
 	}
 

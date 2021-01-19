@@ -68,9 +68,10 @@
 							<h4>${employer.fullname}</h4>
 							<span class="designation">${employer.major}</span>
 							<ul>
-								<li><strong class="j-view">${employer.soluongbaidang}</strong>Công
-									việc đã đăng</li>
-								<li><strong class="j-applied">${employer.countHired}</strong>Đã tuyển dụng</li>
+								<li><strong class="j-view">${count}</strong>Công việc đã
+									đăng</li>
+								<li><strong class="j-applied">${employer.countHired}</strong>Đã
+									tuyển dụng</li>
 								<li><strong id="starAverage" class="j-shared rate-custom">${employer.starAverage}
 										<i class="fa fa-star"></i>
 								</strong>Đánh Giá</li>
@@ -112,13 +113,14 @@
 					<div class="full-card">
 						<div class="deatil-tab-employ tool-tab">
 							<ul class="nav simple nav-tabs" id="simple-design-tab">
-								<li class="active"><a href="#about">Thông Tin nhà tuyển dụng</a></li>
+								<li class="active"><a href="#about">Thông Tin nhà tuyển
+										dụng</a></li>
 								<li><a href="#address">Địa Chỉ</a></li>
 								<li><a href="#post-job">Công Việc Đã Đăng</a></li>
 								<li><a style="display: none;" href="#friends">Friends</a></li>
 								<li><a href="#rate">Đánh Giá <span class="info-bar">5</span></a></li>
 								<li><a href="#settings">Cài Đặt</a></li>
-								<li><a class="report-tabname" href="#report"><i class="fa fa-exclamation-triangle"></i> Báo Cáo</a></li>
+								<li><a href="#report"><i></i> Báo Cáo</a></li>
 							</ul>
 							<!-- Start All Sec -->
 							<div class="tab-content">
@@ -136,7 +138,7 @@
 										<li><span>Tên nhà tuyển dụng:</span>${employer.fullname}</li>
 										<li><span>Tỉnh / Thành Phố:</span>${employer.address.province}</li>
 										<li><span>Quận / Huyện:</span>${employer.address.district}</li>
-										<li><span>Phường / Xã:</span>${employer.address.ward}</li> 
+										<li><span>Phường / Xã:</span>${employer.address.ward}</li>
 										<li><span>Địa chỉ:</span>${employer.address.detailAddress}</li>
 										<li><span>Điện Thoại:</span>+84 ${employer.phone}</li>
 										<li><span>Email:</span>${employer.email}</li>
@@ -145,9 +147,9 @@
 								<!-- End Address Sec -->
 
 								<!-- Start Job List -->
-								<tiles:insertAttribute name="job-list"/>
+								<tiles:insertAttribute name="job-list" />
 								<!-- End Job List -->
-								
+
 
 								<!-- Start Friend List -->
 								<div id="friends" class="tab-pane fade">
@@ -335,82 +337,98 @@
 								<!-- Start Settings -->
 								<tiles:insertAttribute name="settings" />
 								<!-- End Settings -->
-								
+
 								<!-- Start Report -->
-<div id="report" class="tab-pane fade">
-	<div class="row no-mrg">
-		<h3 style="margin-bottom: 30px;">Báo cáo</h3>
-		<div class="edit-pro">
-			<form>
-				<input class="form-control" id="input-title" type="text" placeholder="Tiêu đề báo cáo">
-				<textarea class="form-control" placeholder="nội dung chi tiết báo cáo"></textarea>
-				<div class="row" style="margin-bottom: 45px;">
-					<div class="col-sm-2">
-						<div class="image-upload-wrap" id="image-upload-wrap1">
-						<input class="file-upload-input" id="file-upload-input1" type='file' onchange="readURL(this,'image1','image-upload-wrap1','file-upload-content1','image-title1');" accept="image/*" />
-						<div class="drag-text">
-						  <h6>Drag and drop a file or select add Image</h6>
-						</div>
-					  </div>
-					  <div class="file-upload-content" id="file-upload-content1">
-						<img class="file-upload-image"  id="image1" src="#" alt="your image" />
-						<div class="image-title-wrap">
-						  <button type="button" onclick="removeUpload('file-upload-input1','image-upload-wrap1','file-upload-content1')" class="remove-image">Remove <span id="image-title1" class="image-title">Uploaded Image</span></button>
-						</div>
-					  </div>
-					</div>
-					<div class="col-sm-2">
-						<div class="image-upload-wrap" id="image-upload-wrap2">
-						<input class="file-upload-input" id="file-upload-input2" type='file' onchange="readURL(this,'image2','image-upload-wrap2','file-upload-content2','image-title2');" accept="image/*" />
-						<div class="drag-text">
-						  <h6>Drag and drop a file or select add Image</h6>
-						</div>
-					  </div>
-					  <div class="file-upload-content" id="file-upload-content2">
-						<img class="file-upload-image" id="image2" src="#" alt="your image" />
-						<div class="image-title-wrap">
-						  <button type="button" onclick="removeUpload('file-upload-input2','image-upload-wrap2','file-upload-content2')" class="remove-image">Remove <span id="image-title2" class="image-title">Uploaded Image</span></button>
-						</div>
-					  </div>
-					</div>
-					<div class="col-sm-2">
-						<div class="image-upload-wrap" id="image-upload-wrap3">
-						<input class="file-upload-input" id="file-upload-input3" type='file' onchange="readURL(this,'image3','image-upload-wrap3','file-upload-content3','image-title3');" accept="image/*" />
-						<div class="drag-text">
-						  <h6>Drag and drop a file or select add Image</h6>
-						</div>
-					  </div>
-					  <div class="file-upload-content" id="file-upload-content3">
-						<img class="file-upload-image" id="image3" src="#" alt="your image" />
-						<div class="image-title-wrap">
-						  <button type="button" onclick="removeUpload('file-upload-input3','image-upload-wrap3','file-upload-content3')" class="remove-image">Remove <span id="image-title3" class="image-title">Uploaded Image</span></button>
-						</div>
-					  </div>
-					</div>
-				</div>
-					<button type="button" class="update-btn btn-report" data-toggle="modal" data-target="#modal-report" >Gửi</button>
-			</form>
-		</div>
-	</div>
-</div>
-<div class="modal fade" id="modal-report" role="dialog">
-	<div class="modal-dialog modal-lg">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal">&times;</button>
-		  <h4 class="modal-title title-modal-report">Thành Công</h4>
-		</div>
-		<div class="modal-body">
-			<img id="img-success-report" src="assets/img/success.png" alt="success.png">
-		  <p>Báo cáo của bạn đã được báo cáo thành công gửi thành công</p>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		</div>
-	  </div>
-	</div>
-  </div>
-<!-- End Report -->
+								<div id="report" class="tab-pane fade">
+									<div class="row no-mrg">
+										<h3 style="margin-bottom: 30px;">Báo cáo</h3>
+										<div class="edit-pro">
+											<form enctype="multipart/form-data"
+												modelAttribute="formreport" id="form-report"
+												action="${pageContext.request.contextPath}/report" method="post">
+												<input name="id_employer" type="hidden"
+													value="${id_employer}">
+												<input name="title" class="form-control" id="input-title"
+													type="text" placeholder="Tiêu đề báo cáo">
+												<textarea name="content" class="form-control"
+													placeholder="nội dung chi tiết báo cáo"></textarea>
+												<div class="row" style="margin-bottom: 45px;">
+													<div class="col-sm-2">
+														<div class="image-upload-wrap" id="image-upload-wrap1">
+															<input name="img1" class="file-upload-input"
+																id="file-upload-input1" type='file'
+																onchange="readURL(this,'image1','image-upload-wrap1','file-upload-content1','image-title1');"
+																accept="image/*" />
+															<div class="drag-text">
+																<h6>Drag and drop a file or select add Image</h6>
+															</div>
+														</div>
+														<div class="file-upload-content" id="file-upload-content1">
+															<img class="file-upload-image" id="img1" src="#"
+																alt="your image" />
+															<div class="image-title-wrap">
+																<button type="button"
+																	onclick="removeUpload('file-upload-input1','image-upload-wrap1','file-upload-content1')"
+																	class="remove-image">
+																	Remove <span id="image-title1" class="image-title">Uploaded
+																		Image</span>
+																</button>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-2">
+														<div class="image-upload-wrap" id="image-upload-wrap2">
+															<input name="img2" class="file-upload-input"
+																id="file-upload-input2" type='file'
+																onchange="readURL(this,'image2','image-upload-wrap2','file-upload-content2','image-title2');"
+																accept="image/*" />
+															<div class="drag-text">
+																<h6>Drag and drop a file or select add Image</h6>
+															</div>
+														</div>
+														<div class="file-upload-content" id="file-upload-content2">
+															<img class="file-upload-image" id="img2" src="#"
+																alt="your image" />
+															<div class="image-title-wrap">
+																<button type="button"
+																	onclick="removeUpload('file-upload-input2','image-upload-wrap2','file-upload-content2')"
+																	class="remove-image">
+																	Remove <span id="image-title2" class="image-title">Uploaded
+																		Image</span>
+																</button>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-2">
+														<div class="image-upload-wrap" id="image-upload-wrap3">
+															<input name="img3" class="file-upload-input"
+																id="file-upload-input3" type='file'
+																onchange="readURL(this,'image3','image-upload-wrap3','file-upload-content3','image-title3');"
+																accept="image/*" />
+															<div class="drag-text">
+																<h6>Drag and drop a file or select add Image</h6>
+															</div>
+														</div>
+														<div class="file-upload-content" id="file-upload-content3">
+															<img class="file-upload-image" id="img3" src="#"
+																alt="your image" />
+															<div class="image-title-wrap">
+																<button type="button"
+																	onclick="removeUpload('file-upload-input3','image-upload-wrap3','file-upload-content3')"
+																	class="remove-image">
+																	Remove <span id="image-title3" class="image-title">Uploaded
+																		Image</span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<button type="submit">Gửi</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!-- End Report -->
 							</div>
 							<!-- Start All Sec -->
 						</div>
@@ -523,12 +541,13 @@
 		<c:forEach var="script" items="${javascripts}">
 			<script src="<c:url value="${script}"/>"></script>
 		</c:forEach>
-		
+
 		<script type="text/javascript">
 	
 	
 	
 </script>
+
 	</div>
 </body>
 

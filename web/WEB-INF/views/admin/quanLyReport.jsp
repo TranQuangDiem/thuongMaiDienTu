@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -225,35 +227,35 @@
                 <td>Spam bài đăng</td>
                 <td>Spam quá nhiều</td>
                 <td>Nguyễn Văn B</td>
-                <td><a href="#popup1"><i class="fa fa-ellipsis-h" style="color:brown : #cecccc"></i></a></td>
+                <td><a href="#popup1"><i></i></a></td>
               </tr>
               <tr>
                 <td>Nguyễn Văn A</td>
                 <td>Spam bài đăng</td>
                 <td>Spam quá nhiều</td>
                 <td>Nguyễn Văn B</td>
-                <td><a href="#popup1"><i class="fa fa-ellipsis-h" style="color:brown : #cecccc"></i></a></td>
+                <td><a href="#popup1"><i"></i></a></td>
               </tr>
               <tr>
                 <td>Nguyễn Văn A</td>
                 <td>Spam bài đăng</td>
                 <td>Spam quá nhiều</td>
                 <td>Nguyễn Văn B</td>
-                <td><a href="#popup1"><i class="fa fa-ellipsis-h" style="color:brown : #cecccc"></i></a></td>
+                <td><a href="#popup1"><i"></i></a></td>
               </tr>
               <tr>
                 <td>Nguyễn Văn A</td>
                 <td>Spam bài đăng</td>
                 <td>Spam quá nhiều</td>
                 <td>Nguyễn Văn B</td>
-                <td><a href="#popup1"><i class="fa fa-ellipsis-h" style="color:brown : #cecccc"></i></a></td>
+                <td><a href="#popup1"><i"></i></a></td>
               </tr>
               <tr>
                 <td>Nguyễn Văn A</td>
                 <td>Spam bài đăng</td>
                 <td>Spam quá nhiều</td>
                 <td>Nguyễn Văn B</td>
-                <td><a href="#popup1"><i class="fa fa-ellipsis-h" style="color:brown : #cecccc"></i></a></td>
+                <td><a href="#popup1"><i ></i></a></td>
               </tr>
               
 

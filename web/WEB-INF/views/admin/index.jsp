@@ -16,14 +16,14 @@
                             <div class='px-3 py-3 d-flex justify-content-between height100'>
                                 <h3 class='card-title'>Tổng Doanh Thu</h3>
                                 <div class="card-right d-flex align-items-center align-items-right">
-                                    <p>100,000,000 VNĐ</p>
+                                    <p>${total}</p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
                                 <canvas id="canvas1" style="height:100px !important"></canvas>
                                 <!-- truyen vao day -->
-                                <input type="hidden" id="index-input1-1" value="[90, 40, 20, 70, 10, 5, 23]">
-                                <input type="hidden" id="index-input1-2" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
+                                <input type="hidden" id="index-input1-1" value="[${statis4Month}, ${statis3Month}, ${statis2Month}, ${statis1Month}, ${statis}]">
+                                <input type="hidden" id="index-input1-2" value="[Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
                                 <input type="hidden" id="index-input1-3" value="Doanh thu">
                                 
                             </div>
@@ -44,8 +44,8 @@
                             <div class="chart-wrapper">
                                 <canvas id="canvas2" style="height:100px !important"></canvas>
                                 <!-- truyen vao day -->
-                                <input type="hidden" id="index-input2-1" value="[90, 40, 20, 70, 10, 5, 20]">
-                                <input type="hidden" id="index-input2-2" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
+                                <input type="hidden" id="index-input2-1" value="[0, 0,0, 0, 0]">
+                                <input type="hidden" id="index-input2-2" value="[Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
                                 <input type="hidden" id="index-input2-3" value="Doanh thu 2">
                             </div>
                         </div>
@@ -59,14 +59,14 @@
                             <div class='px-3 py-3 d-flex justify-content-between height100'>
                                 <h3 class='card-title'>Tổng Số Thành Viên</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>1,544 </p>
+                                    <p>${totalacc} </p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
                                 <canvas id="canvas3" style="height:100px !important"></canvas>
                                 <!-- truyen vao day -->
-                                <input type="hidden" id="index-input3-1" value="[90, 40, 20, 70, 10, 5, 23]">
-                                <input type="hidden" id="index-input3-2" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
+                                <input type="hidden" id="index-input3-1" value="[ 0, 0,0, 0, 0]">
+                                <input type="hidden" id="index-input3-2" value="[Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
                                 <input type="hidden" id="index-input3-3" value="Doanh thu">
                             </div>
                         </div>
@@ -80,14 +80,14 @@
                             <div class='px-3 py-3 d-flex justify-content-between height100'>
                                 <h3 class='card-title'>Doanh thu hôm nay</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>423 </p>
+                                    <p>${statistoday} </p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
                                 <canvas id="canvas4" style="height:100px !important"></canvas>
                                 <!-- truyen vao day -->
-                                <input type="hidden" id="index-input4-1" value="[90, 40, 20, 70, 10, 5, 23]">
-                                <input type="hidden" id="index-input4-2" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
+                                <input type="hidden" id="index-input4-1" value="[${statis4Month}, ${statis3Month}, ${statis2Month}, ${statis1Month}, ${statis}]">
+                                <input type="hidden" id="index-input4-2" value="[Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
                                 <input type="hidden" id="index-input4-3" value="Doanh thu">
                             </div>
                         </div>
@@ -105,8 +105,8 @@
                         <div class="row">
                             <div class="col-md-4 col-12">
                                 <div class="pl-3">
-                                    <h1 class='mt-5'>$21,102</h1>
-                                    <p class='text-xs'><span class="text-green"><i data-feather="bar-chart" width="15"></i> +19%</span> than last month</p>
+                                    <h1 class='mt-5'>${sale}</h1>
+                                    <p class='text-xs'><span class="text-green"><i data-feather="bar-chart" width="15"></i> ${profit} %</span> than last month</p>
                                     <div class="legends">
                                         <div class="legend d-flex flex-row align-items-center">
                                             <div class='w-3 h-3 rounded-full bg-info mr-2 color-blue'></div><span class='text-xs'>Last Month</span>
@@ -122,7 +122,7 @@
                                 <input type="hidden" id="bar1" value="[Tháng 7,Tháng 8,Tháng 9,Tháng 10,Tháng 11,Tháng 12,Tháng 1]">
                                 <input type="hidden" id="bar2" value="[VNĐ]">
                                 <input type="hidden" id="bar3" value="[#3498db,#3498db,#3498db,#3498db,#3498db,#3498db,#8e44ad]">
-                                <input type="hidden" id="bar4" value="[100,20,160,110,170,70,90]">
+                                <input type="hidden" id="bar4" value="[70,20,160,110,${statis2Month},${statis1Month},${statis}]">
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                             purple: '#9b59b6',
                             grey: '#7f8c8d' -->
                         <input type="hidden" id="doughnut2" value="[#e74c3c,#e67e22,#2ecc71]">
-                        <input type="hidden" id="doughnut3" value="[200,111,321]">
+                        <input type="hidden" id="doughnut3" value="[${total},11,1]">
                         <input type="hidden" id="doughnut4" value="Doanh thu từ những nguồn sau">
                     </div>
                 </div>

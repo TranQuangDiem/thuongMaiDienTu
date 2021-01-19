@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- Start Job List -->
 <div id="post-job" class="tab-pane fade">
-	<h3>You have ${countJob} job post</h3>
+	<h3>Bạn đã đăng ${count} công việc</h3>
 	<div class="row">
 		<c:if test="${not empty listjob}">
 			<c:forEach var="job" items="${listjob}">

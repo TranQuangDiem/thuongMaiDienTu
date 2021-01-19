@@ -21,6 +21,7 @@ public class FormReport {
 	MultipartFile img2;
 	MultipartFile img3;
 	int id_report;
+	int id_employer;
 	int id_reported;
 	String title;
 	String content;
