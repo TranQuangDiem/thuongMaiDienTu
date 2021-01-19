@@ -78,12 +78,20 @@ public class JobApplyDetailController {
 			AccountDAO.increaseCountHired(currentAccount.getId());
 			AccountDAO.increaseCountJobFinish(freelancer_id);
 			Account freelancer=AccountDAO.getUserById(freelancer_id);
-			try {
-				MyMailHandler.sendEmail(freelancer.getEmail(), "Tìm Việc Đồ Hoạ", "Bạn đã được tuyển");
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
+			new Thread(new Runnable() {
 				
-			}
+				@Override
+				public void run() {
+					try {
+						MyMailHandler.sendEmail(freelancer.getEmail(), "Tìm Việc Đồ Hoạ", "Bạn đã được tuyển");
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+						
+					}
+					
+				}
+			}).start();
+			
 
 		}
 		return rs ? "Ok" : "Error";
