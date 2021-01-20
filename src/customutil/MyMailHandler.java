@@ -25,7 +25,7 @@ public class MyMailHandler {
 		javaMailProperties.put("mail.debug", "true");
 		javaMailProperties.put("mail.smtp.allow8bitmime", "true");
 		javaMailProperties.put("mail.smtps.allow8bitmime", "true");
-
+//		javaMailProperties.put("mail.password", "ongdinh101199");
 		mailSender.setJavaMailProperties(javaMailProperties);
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -53,6 +53,7 @@ public class MyMailHandler {
 		javaMailProperties.put("mail.debug", "true");
 		javaMailProperties.put("mail.smtp.allow8bitmime", "true");
 		javaMailProperties.put("mail.smtps.allow8bitmime", "true");
+//		javaMailProperties.put("mail.password", "ongdinh101199");
 
 		mailSender.setJavaMailProperties(javaMailProperties);
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
