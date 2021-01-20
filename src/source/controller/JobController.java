@@ -230,6 +230,7 @@ public class JobController {
 			long millis = System.currentTimeMillis();
 			java.sql.Date date = new java.sql.Date(millis);
 			JobApplyDatabase.insertInDetail(id_job, 2, date);
+			AccountDAO.increaseCountJob(currentAccount.getId());
 			return "redirect:/job-detail?id_job=" +id_job ;
 		} else {
 			return "redirect:/loginpage";
