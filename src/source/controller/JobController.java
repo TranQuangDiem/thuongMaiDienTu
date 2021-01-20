@@ -216,7 +216,8 @@ public class JobController {
 
 			JobApplyDatabase.insert(formApplyJob, freelancer.getId(), date);
 			return "redirect:/job-detail?id_job=" + formApplyJob.getIdJob();
-		} else {
+						 
+		}else {
 			return "redirect:/loginpage";
 		}
 	}
