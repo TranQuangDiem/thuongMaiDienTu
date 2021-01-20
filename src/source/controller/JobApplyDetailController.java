@@ -77,6 +77,7 @@ public class JobApplyDetailController {
 		if (rs) {
 			AccountDAO.increaseCountHired(currentAccount.getId());
 			AccountDAO.increaseCountJobFinish(freelancer_id);
+			AccountDAO.increaseCountJob(freelancer_id);
 			Account freelancer=AccountDAO.getUserById(freelancer_id);
 			new Thread(new Runnable() {
 				
